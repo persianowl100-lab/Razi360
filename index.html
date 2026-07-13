@@ -1,5 +1,549 @@
-<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="UTF-8"><title>خدمات هوش مصنوعی رازی 360</title><link rel="stylesheet" href="style.css"></head><body>
-<header><h1>خدمات هوش مصنوعی رازی 360</h1><nav><a href="index.html">خانه</a> | <a href="shop.html">فروشگاه</a></nav></header>
-<section class='hero'><h2>به دنیای هوش مصنوعی خوش آمدید</h2><p>طراحی سایت، تولید محتوا، ساخت پاورپوینت، ترجمه و...</p><a class='btn' href='shop.html'>مشاهده خدمات</a></section>
-<footer><div>© Razi360.ir</div><div class='enamad'>[محل قرارگیری کد رسمی اینماد]</div></footer>
-</body></html>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>رازی ۳۶۰ | خدمات هوش مصنوعی و رایانه‌ای</title>
+  <!-- Font Awesome 6 for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- فونت وزیرمتن (Vazirmatn) - فونت مدرن و جذاب فارسی -->
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(145deg, #1a140c 0%, #241e14 40%, #2b2113 100%);
+      color: #f7efe2;
+      line-height: 1.7;
+      overflow-x: hidden;
+      letter-spacing: 0.2px;
+    }
+
+    /* المان‌های شیشه‌ای با تم نارنجی ملایم */
+    .glass {
+      background: rgba(30, 24, 16, 0.7);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 180, 60, 0.2);
+      box-shadow: 0 25px 45px -10px rgba(180, 100, 20, 0.2);
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* هدر */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 32px;
+      margin: 20px auto 0;
+      border-radius: 60px;
+      position: sticky;
+      top: 20px;
+      z-index: 1000;
+      flex-wrap: wrap;
+      background: rgba(22, 18, 10, 0.75);
+      backdrop-filter: blur(22px);
+      border: 1px solid rgba(255, 170, 40, 0.25);
+      box-shadow: 0 20px 35px rgba(255, 140, 0, 0.15);
+      transition: all 0.4s ease;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      font-size: 2.5rem;
+      color: #ffb347;
+      filter: drop-shadow(0 0 14px #ff9f1c);
+      transition: transform 0.4s ease;
+    }
+
+    .logo:hover .logo-icon {
+      transform: rotate(10deg) scale(1.1);
+    }
+
+    .logo-text {
+      font-size: 2rem;
+      font-weight: 900;
+      background: linear-gradient(to left, #ffd166, #f4a261, #e9a554);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 1px;
+      font-family: 'Vazirmatn', sans-serif;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      text-decoration: none;
+      color: #f5e1c0;
+      font-weight: 600;
+      padding: 12px 20px;
+      border-radius: 40px;
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+      background: transparent;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 1rem;
+      font-family: 'Vazirmatn', sans-serif;
+    }
+
+    .nav-item i {
+      font-size: 1.1rem;
+      transition: transform 0.3s;
+    }
+
+    .nav-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 40px;
+      padding: 2px;
+      background: linear-gradient(135deg, #ffb347, #ff8c1a);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .nav-item:hover {
+      color: #fff7e6;
+      background: rgba(255, 160, 30, 0.1);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 25px -10px rgba(255, 140, 0, 0.4);
+    }
+
+    .nav-item:hover::before {
+      opacity: 1;
+    }
+
+    .nav-item:hover i {
+      transform: translateY(-2px) scale(1.2);
+      color: #ffb347;
+    }
+
+    .store-btn {
+      background: linear-gradient(135deg, #f4a261, #e67e22);
+      color: #1a140c !important;
+      font-weight: 800;
+      box-shadow: 0 8px 20px rgba(230, 126, 34, 0.5);
+      border: none;
+      letter-spacing: 0.5px;
+    }
+
+    .store-btn:hover {
+      background: linear-gradient(135deg, #f5b06e, #f08c2e);
+      box-shadow: 0 15px 30px rgba(255, 160, 20, 0.7);
+      color: #0d0a05 !important;
+    }
+
+    /* بخش اصلی Hero */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 50px auto 70px;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .hero-content {
+      flex: 1 1 500px;
+    }
+
+    .hero-title {
+      font-size: 3.6rem;
+      font-weight: 900;
+      background: linear-gradient(to right, #ffddb0, #f9b953, #ffa726);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+      line-height: 1.5;
+      font-family: 'Vazirmatn', sans-serif;
+    }
+
+    .hero-desc {
+      font-size: 1.25rem;
+      color: #ead2ac;
+      margin-bottom: 35px;
+      max-width: 600px;
+      font-weight: 400;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.4s ease;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border: none;
+      font-family: 'Vazirmatn', sans-serif;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ffa726, #f57c00);
+      color: #1e140a;
+      box-shadow: 0 15px 30px -8px rgba(245, 124, 0, 0.5);
+      font-weight: 800;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 40px -8px rgba(255, 160, 20, 0.7);
+      filter: brightness(1.1);
+      color: #0a0704;
+    }
+
+    .btn-outline {
+      border: 2px solid #f4a261;
+      color: #f4a261;
+      background: transparent;
+      backdrop-filter: blur(10px);
+      font-weight: 600;
+    }
+
+    .btn-outline:hover {
+      background: rgba(244, 162, 97, 0.15);
+      border-color: #ffc078;
+      color: #ffd8a8;
+      transform: scale(1.05);
+    }
+
+    .hero-visual {
+      flex: 1 1 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .ai-sphere {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle at 30% 30%, #ffb347, #d97706);
+      border-radius: 50%;
+      box-shadow: 0 0 90px #ff8c1a80, inset 0 0 50px #ffe9c7;
+      animation: floatSphere 6s infinite ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      color: #fff3e0;
+      text-shadow: 0 0 25px #361e00;
+    }
+
+    @keyframes floatSphere {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-25px) rotate(8deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin: 60px 0 40px;
+      font-weight: 900;
+      background: linear-gradient(to left, #ffcd94, #e89a45);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-family: 'Vazirmatn', sans-serif;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+      margin-bottom: 70px;
+    }
+
+    .service-card {
+      background: rgba(40, 30, 18, 0.5);
+      backdrop-filter: blur(14px);
+      border-radius: 36px;
+      padding: 35px 22px;
+      text-align: center;
+      border: 1px solid rgba(255, 180, 60, 0.25);
+      transition: all 0.45s cubic-bezier(0.2, 0.9, 0.4, 1);
+      position: relative;
+      overflow: hidden;
+      font-family: 'Vazirmatn', sans-serif;
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,179,71,0.2) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.5s;
+      transform: rotate(20deg);
+    }
+
+    .service-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      border-color: #ffa726;
+      box-shadow: 0 35px 50px -20px rgba(255, 140, 0, 0.5);
+      background: rgba(50, 35, 20, 0.7);
+    }
+
+    .service-card:hover::after {
+      opacity: 1;
+    }
+
+    .service-icon {
+      font-size: 3.2rem;
+      color: #ffb347;
+      margin-bottom: 20px;
+      transition: transform 0.4s, text-shadow 0.3s;
+    }
+
+    .service-card:hover .service-icon {
+      transform: rotateY(180deg) scale(1.2);
+      text-shadow: 0 0 30px #f59e0b;
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: #fff0db;
+    }
+
+    .service-card p {
+      color: #d6b588;
+    }
+
+    footer {
+      background: rgba(20, 15, 8, 0.8);
+      backdrop-filter: blur(25px);
+      border-top: 2px solid rgba(244, 162, 97, 0.4);
+      padding: 50px 0 25px;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 35px;
+    }
+
+    .footer-col {
+      flex: 1 1 220px;
+    }
+
+    .footer-logo {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #f4a261;
+      font-family: 'Vazirmatn', sans-serif;
+    }
+
+    .enamad-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 180, 60, 0.08);
+      border-radius: 20px;
+      padding: 20px;
+      margin-top: 20px;
+      border: 1px dashed #f4a261;
+      transition: 0.3s;
+      width: fit-content;
+    }
+
+    .enamad-placeholder img {
+      width: 110px;
+      height: auto;
+      filter: drop-shadow(0 0 10px #ffa040);
+    }
+
+    .enamad-placeholder:hover {
+      background: rgba(255, 160, 30, 0.15);
+      border-color: #ffd58c;
+      transform: scale(1.03);
+    }
+
+    .footer-links a {
+      color: #cfb185;
+      text-decoration: none;
+      display: block;
+      margin: 10px 0;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      color: #ffb347;
+      transform: translateX(-8px);
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 40px;
+      color: #a6906c;
+      font-family: 'Vazirmatn', sans-serif;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 20px;
+        border-radius: 40px;
+      }
+      .hero-title {
+        font-size: 2.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- هدر با دکمه فروشگاه -->
+    <header class="glass">
+      <div class="logo">
+        <i class="fas fa-brain logo-icon"></i>
+        <span class="logo-text">رازی ۳۶۰</span>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="nav-item"><i class="fas fa-home"></i> صفحه اصلی</a>
+        <a href="#" class="nav-item"><i class="fas fa-cogs"></i> خدمات</a>
+        <a href="#" class="nav-item"><i class="fas fa-info-circle"></i> درباره ما</a>
+        <a href="#" class="nav-item"><i class="fas fa-envelope"></i> تماس با ما</a>
+        <a href="#" class="nav-item store-btn"><i class="fas fa-shopping-cart"></i> فروشگاه</a>
+      </div>
+    </header>
+
+    <!-- بخش Hero -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">آینده هوش مصنوعی، امروز در رازی ۳۶۰</h1>
+        <p class="hero-desc">
+          راه‌حل‌های هوشمند رایانه‌ای، اتوماسیون پیشرفته، طراحی ربات‌های مجازی و خدمات یادگیری ماشین. تحول دیجیتال را با ما تجربه کنید.
+        </p>
+        <div class="cta-group">
+          <a href="#" class="btn btn-primary"><i class="fas fa-rocket"></i> شروع رایگان</a>
+          <a href="#" class="btn btn-outline"><i class="fas fa-store"></i> ورود به فروشگاه</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="ai-sphere">
+          <i class="fas fa-robot"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- خدمات -->
+    <h2 class="section-title">خدمات برتر هوش مصنوعی</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <i class="fas fa-comments service-icon"></i>
+        <h3>چت‌بات هوشمند</h3>
+        <p>طراحی دستیار مجازی با پردازش زبان طبیعی فارسی برای کسب‌وکارها.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-image service-icon"></i>
+        <h3>بینایی ماشین</h3>
+        <p>تشخیص تصویر، تحلیل ویدئو و نظارت هوشمند با دقت بالا.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-chart-line service-icon"></i>
+        <h3>تحلیل داده</h3>
+        <p>پیش‌بینی و داده‌کاوی پیشرفته برای تصمیم‌گیری بهتر.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-cloud service-icon"></i>
+        <h3>رایانش ابری</h3>
+        <p>زیرساخت ابری اختصاصی و مقیاس‌پذیر مبتنی بر هوش مصنوعی.</p>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin: 30px 0 50px;">
+      <a href="#" class="btn btn-outline" style="font-size: 1.2rem;"><i class="fas fa-arrow-left"></i> مشاهده همه خدمات</a>
+    </div>
+  </div>
+
+  <!-- فوتر با آدرس و شماره تماس به‌روز شده -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <div class="footer-logo"><i class="fas fa-robot"></i> رازی ۳۶۰</div>
+          <p style="margin-top: 15px; color: #cdb088;">ارائه‌دهنده راهکارهای نوین هوش مصنوعی و رایانه‌ای از ۱۳۹۸</p>
+          <div class="enamad-placeholder">
+            <img src="https://trustseal.e-rasaneh.ir/Images/logo/81.png" alt="اینماد" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%2333220d\' rx=\'20\'/%3E%3Ctext x=\'50\' y=\'55\' font-size=\'14\' fill=\'%23f4a261\' text-anchor=\'middle\' font-weight=\'bold\'%3Eاینماد%3C/text%3E%3Ctext x=\'50\' y=\'75\' font-size=\'10\' fill=\'%23ffddb0\' text-anchor=\'middle\'%3Eنماد اعتماد%3C/text%3E%3C/svg%3E';">
+          </div>
+        </div>
+        <div class="footer-col footer-links">
+          <h4 style="color: #ffcd94; margin-bottom: 15px;">دسترسی سریع</h4>
+          <a href="#"><i class="fas fa-chevron-left"></i> فروشگاه محصولات</a>
+          <a href="#"><i class="fas fa-chevron-left"></i> پشتیبانی آنلاین</a>
+          <a href="#"><i class="fas fa-chevron-left"></i> پروژه‌های اخیر</a>
+          <a href="#"><i class="fas fa-chevron-left"></i> وبلاگ</a>
+        </div>
+        <div class="footer-col footer-links">
+          <h4 style="color: #ffcd94; margin-bottom: 15px;">اطلاعات تماس</h4>
+          <a href="#"><i class="fas fa-map-marker-alt"></i> کرمانشاه، بلوار گلریزان، پلاک ۱۰</a>
+          <a href="#"><i class="fas fa-phone"></i> ۰۹۱۸۴۷۳۷۲۰۱</a>
+          <a href="#"><i class="fas fa-envelope"></i> info@razi360.ir</a>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© ۲۰۲۵ کلیه حقوق برای <span style="color:#f4a261;">رازی ۳۶۰</span> محفوظ است. طراحی خلاقانه و مدرن</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('mouseenter', function(e) {
+        this.style.transition = 'all 0.35s cubic-bezier(0.23, 1, 0.32, 1)';
+      });
+    });
+
+    document.querySelector('.logo').addEventListener('click', function() {
+      const icon = this.querySelector('.logo-icon');
+      icon.style.transform = 'rotate(360deg) scale(1.3)';
+      setTimeout(() => { icon.style.transform = ''; }, 500);
+    });
+  </script>
+</body>
+</html>
