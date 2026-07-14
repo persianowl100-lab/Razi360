@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>تماس با ما | رازی ۳۶۰</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(145deg, #1a140c 0%, #241e14 40%, #2b2113 100%);
+      color: #f7efe2;
+      line-height: 1.7;
+      overflow-x: hidden;
+      letter-spacing: 0.2px;
+      min-height: 100vh;
+    }
+
+    /* هدر */
+    .glass {
+      background: rgba(30, 24, 16, 0.7);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 180, 60, 0.2);
+      box-shadow: 0 25px 45px -10px rgba(180, 100, 20, 0.2);
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 32px;
+      margin: 20px auto 0;
+      border-radius: 60px;
+      position: sticky;
+      top: 20px;
+      z-index: 1000;
+      flex-wrap: wrap;
+      background: rgba(22, 18, 10, 0.75);
+      backdrop-filter: blur(22px);
+      border: 1px solid rgba(255, 170, 40, 0.25);
+      box-shadow: 0 20px 35px rgba(255, 140, 0, 0.15);
+      transition: all 0.4s ease;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      font-size: 2.5rem;
+      color: #ffb347;
+      filter: drop-shadow(0 0 14px #ff9f1c);
+      transition: transform 0.4s ease;
+    }
+
+    .logo:hover .logo-icon {
+      transform: rotate(10deg) scale(1.1);
+    }
+
+    .logo-text {
+      font-size: 2rem;
+      font-weight: 900;
+      background: linear-gradient(to left, #ffd166, #f4a261, #e9a554);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      text-decoration: none;
+      color: #f5e1c0;
+      font-weight: 600;
+      padding: 12px 20px;
+      border-radius: 40px;
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+      background: transparent;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 1rem;
+    }
+
+    .nav-item i {
+      font-size: 1.1rem;
+      transition: transform 0.3s;
+    }
+
+    .nav-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 40px;
+      padding: 2px;
+      background: linear-gradient(135deg, #ffb347, #ff8c1a);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .nav-item:hover {
+      color: #fff7e6;
+      background: rgba(255, 160, 30, 0.1);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 25px -10px rgba(255, 140, 0, 0.4);
+    }
+
+    .nav-item:hover::before {
+      opacity: 1;
+    }
+
+    .nav-item:hover i {
+      transform: translateY(-2px) scale(1.2);
+      color: #ffb347;
+    }
+
+    .nav-item.active {
+      background: rgba(255, 160, 30, 0.15);
+      color: #ffb347;
+      border: 1px solid rgba(255, 180, 60, 0.3);
+    }
+
+    .store-btn {
+      background: linear-gradient(135deg, #f4a261, #e67e22);
+      color: #1a140c !important;
+      font-weight: 800;
+      box-shadow: 0 8px 20px rgba(230, 126, 34, 0.5);
+      border: none;
+      letter-spacing: 0.5px;
+    }
+
+    .store-btn:hover {
+      background: linear-gradient(135deg, #f5b06e, #f08c2e);
+      box-shadow: 0 15px 30px rgba(255, 160, 20, 0.7);
+      color: #0d0a05 !important;
+    }
+
+    /* عنوان صفحه */
+    .page-header {
+      text-align: center;
+      padding: 80px 20px 50px;
+    }
+
+    .page-title {
+      font-size: 3.5rem;
+      font-weight: 900;
+      background: linear-gradient(to right, #ffddb0, #f9b953, #ffa726);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 15px;
+    }
+
+    .page-subtitle {
+      font-size: 1.2rem;
+      color: #cdb088;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* محتوای اصلی */
+    .contact-main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin: 40px 0 60px;
+    }
+
+    @media (max-width: 900px) {
+      .contact-main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* بخش اطلاعات تماس */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .info-card {
+      background: rgba(40, 30, 18, 0.5);
+      backdrop-filter: blur(14px);
+      border-radius: 25px;
+      padding: 30px;
+      border: 1px solid rgba(255, 180, 60, 0.2);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-card::before {
+      content: "";
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(255, 179, 71, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      transition: all 0.5s ease;
+    }
+
+    .info-card:hover {
+      border-color: #ffa726;
+      transform: translateY(-5px);
+      box-shadow: 0 20px 35px -15px rgba(255, 140, 0, 0.4);
+      background: rgba(50, 35, 20, 0.7);
+    }
+
+    .info-card:hover::before {
+      width: 200px;
+      height: 200px;
+    }
+
+    .info-card-icon {
+      font-size: 2.2rem;
+      color: #ffb347;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .info-card h3 {
+      font-size: 1.4rem;
+      color: #fff0db;
+      margin-bottom: 10px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+
+    .info-card p, .info-card a {
+      color: #c4a87c;
+      text-decoration: none;
+      font-size: 1.05rem;
+      position: relative;
+      z-index: 1;
+      display: block;
+      transition: color 0.3s;
+    }
+
+    .info-card a:hover {
+      color: #ffb347;
+    }
+
+    /* شماره تماس با انیمیشن جذاب */
+    .phone-number-container {
+      background: rgba(40, 30, 18, 0.6);
+      backdrop-filter: blur(14px);
+      border-radius: 25px;
+      padding: 35px 30px;
+      border: 2px solid rgba(255, 180, 60, 0.3);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .phone-number-container::after {
+      content: "";
+      position: absolute;
+      inset: -3px;
+      border-radius: 28px;
+      background: linear-gradient(45deg, #ffa726, #f57c00, #ffb347, #e67e22);
+      background-size: 400% 400%;
+      z-index: -1;
+      animation: gradientBorder 3s ease infinite;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .phone-number-container:hover::after {
+      opacity: 1;
+    }
+
+    @keyframes gradientBorder {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .phone-label {
+      font-size: 1.1rem;
+      color: #cdb088;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .phone-number {
+      font-size: 3rem;
+      font-weight: 900;
+      background: linear-gradient(to left, #ffd166, #f4a261, #ffb347);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 3px;
+      position: relative;
+      z-index: 1;
+      animation: phonePulse 2s infinite ease-in-out;
+      display: inline-block;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .phone-number:hover {
+      transform: scale(1.05);
+      animation: phoneShake 0.5s ease-in-out;
+    }
+
+    @keyframes phonePulse {
+      0%, 100% { 
+        text-shadow: 0 0 10px rgba(255, 167, 38, 0.5), 0 0 20px rgba(255, 167, 38, 0.3);
+      }
+      50% { 
+        text-shadow: 0 0 25px rgba(255, 167, 38, 0.9), 0 0 50px rgba(255, 167, 38, 0.6), 0 0 75px rgba(255, 140, 0, 0.4);
+      }
+    }
+
+    @keyframes phoneShake {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-5deg); }
+      75% { transform: rotate(5deg); }
+    }
+
+    .phone-icon-ring {
+      font-size: 3.5rem;
+      color: #ffb347;
+      animation: ringAnimation 1.5s infinite;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes ringAnimation {
+      0%, 100% { transform: rotate(0deg); }
+      10% { transform: rotate(15deg); }
+      20% { transform: rotate(-15deg); }
+      30% { transform: rotate(10deg); }
+      40% { transform: rotate(-10deg); }
+      50% { transform: rotate(0deg); }
+    }
+
+    /* پشتیبانی ۲۴/۷ */
+    .support-badge {
+      background: linear-gradient(135deg, rgba(255, 167, 38, 0.2), rgba(245, 124, 0, 0.1));
+      border: 1px solid rgba(255, 180, 60, 0.3);
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .support-icon {
+      font-size: 2.5rem;
+      color: #ffb347;
+      animation: supportFloat 3s infinite ease-in-out;
+      display: inline-block;
+    }
+
+    @keyframes supportFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .support-text {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #ffcd94;
+      margin: 10px 0;
+    }
+
+    .support-hours {
+      color: #f4a261;
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    /* شبکه‌های اجتماعی */
+    .social-section {
+      margin-top: 10px;
+    }
+
+    .social-title {
+      font-size: 1.3rem;
+      color: #ffcd94;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .social-grid {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .social-card {
+      background: rgba(40, 30, 18, 0.6);
+      backdrop-filter: blur(14px);
+      border-radius: 20px;
+      padding: 25px 20px;
+      border: 1px solid rgba(255, 180, 60, 0.2);
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: pointer;
+      text-decoration: none;
+      min-width: 110px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(255, 167, 38, 0.3), rgba(245, 124, 0, 0.1));
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .social-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 30px -15px rgba(255, 140, 0, 0.5);
+      border-color: #ffa726;
+    }
+
+    .social-card:hover::before {
+      opacity: 1;
+    }
+
+    .social-icon-custom {
+      font-size: 3rem;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.4s;
+    }
+
+    .social-card:hover .social-icon-custom {
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    .telegram-icon {
+      color: #2AABEE;
+      filter: drop-shadow(0 0 15px rgba(42, 171, 238, 0.6));
+    }
+
+    .eitaa-icon {
+      color: #F7941D;
+      filter: drop-shadow(0 0 15px rgba(247, 148, 29, 0.6));
+    }
+
+    .rubika-icon {
+      color: #00BFA5;
+      filter: drop-shadow(0 0 15px rgba(0, 191, 165, 0.6));
+    }
+
+    .social-name {
+      color: #f5e1c0;
+      font-weight: 700;
+      font-size: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* فرم تماس */
+    .contact-form-card {
+      background: rgba(40, 30, 18, 0.5);
+      backdrop-filter: blur(14px);
+      border-radius: 30px;
+      padding: 40px;
+      border: 1px solid rgba(255, 180, 60, 0.2);
+      transition: all 0.4s ease;
+    }
+
+    .contact-form-card:hover {
+      border-color: #ffa726;
+      box-shadow: 0 30px 45px -20px rgba(255, 140, 0, 0.4);
+    }
+
+    .form-title {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #ffcd94;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    .form-label {
+      display: block;
+      color: #cdb088;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 180, 60, 0.3);
+      background: rgba(30, 24, 16, 0.6);
+      color: #f7efe2;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      border-color: #f4a261;
+      box-shadow: 0 0 20px rgba(255, 167, 38, 0.2);
+      background: rgba(40, 30, 18, 0.8);
+    }
+
+    .form-textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      font-family: 'Vazirmatn', sans-serif;
+      background: linear-gradient(135deg, #ffa726, #f57c00);
+      color: #1e140a;
+      box-shadow: 0 15px 30px -8px rgba(245, 124, 0, 0.5);
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 40px -8px rgba(255, 160, 20, 0.7);
+      filter: brightness(1.1);
+    }
+
+    /* فوتر */
+    footer {
+      background: rgba(20, 15, 8, 0.8);
+      backdrop-filter: blur(25px);
+      border-top: 2px solid rgba(244, 162, 97, 0.4);
+      padding: 50px 0 25px;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 35px;
+    }
+
+    .footer-col {
+      flex: 1 1 220px;
+    }
+
+    .footer-logo {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #f4a261;
+    }
+
+    .enamad-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 180, 60, 0.08);
+      border-radius: 20px;
+      padding: 20px;
+      margin-top: 20px;
+      border: 1px dashed #f4a261;
+      transition: 0.3s;
+      width: fit-content;
+    }
+
+    .enamad-placeholder img {
+      width: 110px;
+      height: auto;
+      filter: drop-shadow(0 0 10px #ffa040);
+    }
+
+    .enamad-placeholder:hover {
+      background: rgba(255, 160, 30, 0.15);
+      border-color: #ffd58c;
+      transform: scale(1.03);
+    }
+
+    .footer-links a {
+      color: #cfb185;
+      text-decoration: none;
+      display: block;
+      margin: 10px 0;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      color: #ffb347;
+      transform: translateX(-8px);
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 40px;
+      color: #a6906c;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 20px;
+        border-radius: 40px;
+      }
+      .page-title {
+        font-size: 2.5rem;
+      }
+      .nav-links {
+        justify-content: center;
+      }
+      .phone-number {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- هدر -->
+    <header class="glass">
+      <a href="../index.html" class="logo">
+        <i class="fas fa-brain logo-icon"></i>
+        <span class="logo-text">رازی ۳۶۰</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html" class="nav-item"><i class="fas fa-home"></i> صفحه اصلی</a>
+        <a href="services.html" class="nav-item"><i class="fas fa-cogs"></i> خدمات</a>
+        <a href="about.html" class="nav-item"><i class="fas fa-info-circle"></i> درباره ما</a>
+        <a href="contact.html" class="nav-item active"><i class="fas fa-envelope"></i> تماس با ما</a>
+        <a href="shop.html" class="nav-item store-btn"><i class="fas fa-shopping-cart"></i> فروشگاه</a>
+      </div>
+    </header>
+
+    <!-- عنوان صفحه -->
+    <div class="page-header">
+      <h1 class="page-title">تماس با ما</h1>
+      <p class="page-subtitle">ما همیشه آماده پاسخگویی و کمک به شما هستیم</p>
+    </div>
+
+    <!-- محتوای اصلی -->
+    <div class="contact-main">
+      
+      <!-- ستون سمت راست: اطلاعات تماس -->
+      <div class="contact-info">
+        
+        <!-- شماره تماس با انیمیشن جذاب -->
+        <div class="phone-number-container">
+          <i class="fas fa-phone-alt phone-icon-ring"></i>
+          <div class="phone-label">شماره تماس مستقیم</div>
+          <a href="tel:09184737201" class="phone-number">۰۹۱۸۴۷۳۷۲۰۱</a>
+          <p style="color: #cdb088; margin-top: 10px; position: relative; z-index: 1;">کلیک کنید تا تماس بگیرید</p>
+        </div>
+
+        <!-- پشتیبانی ۲۴/۷ -->
+        <div class="support-badge">
+          <i class="fas fa-headset support-icon"></i>
+          <div class="support-text">پشتیبانی ۲۴ ساعته</div>
+          <div class="support-hours">۷ روز هفته</div>
+          <p style="color: #c4a87c; margin-top: 10px;">همیشه آنلاین، همیشه پاسخگو</p>
+        </div>
+
+        <!-- آدرس -->
+        <div class="info-card">
+          <i class="fas fa-map-marker-alt info-card-icon"></i>
+          <h3>آدرس دفتر</h3>
+          <p>کرمانشاه، بلوار گلریزان، پلاک ۱۰</p>
+        </div>
+
+        <!-- ایمیل -->
+        <div class="info-card">
+          <i class="fas fa-envelope info-card-icon"></i>
+          <h3>ایمیل</h3>
+          <a href="mailto:info@razi360.ir">info@razi360.ir</a>
+        </div>
+
+        <!-- شبکه‌های اجتماعی -->
+        <div class="social-section">
+          <h3 class="social-title">ما را در شبکه‌های اجتماعی دنبال کنید</h3>
+          <div class="social-grid">
+            
+            <!-- تلگرام -->
+            <a href="https://t.me/razi360" target="_blank" class="social-card" title="تلگرام">
+              <i class="fab fa-telegram-plane social-icon-custom telegram-icon"></i>
+              <span class="social-name">تلگرام</span>
+            </a>
+
+            <!-- ایتا -->
+            <a href="https://eitaa.com/razi360" target="_blank" class="social-card" title="ایتا">
+              <i class="fas fa-comment-dots social-icon-custom eitaa-icon"></i>
+              <span class="social-name">ایتا</span>
+            </a>
+
+            <!-- روبیکا -->
+            <a href="https://rubika.ir/razi360" target="_blank" class="social-card" title="روبیکا">
+              <i class="fas fa-comment social-icon-custom rubika-icon"></i>
+              <span class="social-name">روبیکا</span>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ستون سمت چپ: فرم تماس -->
+      <div class="contact-form-card">
+        <h3 class="form-title">📩 ارسال پیام</h3>
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">نام و نام خانوادگی</label>
+            <input type="text" class="form-input" placeholder="نام خود را وارد کنید..." required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">شماره تماس</label>
+            <input type="tel" class="form-input" placeholder="شماره تماس خود را وارد کنید..." required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">ایمیل (اختیاری)</label>
+            <input type="email" class="form-input" placeholder="example@email.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">موضوع پیام</label>
+            <input type="text" class="form-input" placeholder="موضوع پیام خود را بنویسید..." required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">متن پیام</label>
+            <textarea class="form-textarea" placeholder="پیام خود را اینجا بنویسید..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            <i class="fas fa-paper-plane"></i>
+            ارسال پیام
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- فوتر -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <div class="footer-logo"><i class="fas fa-robot"></i> رازی ۳۶۰</div>
+          <p style="margin-top: 15px; color: #cdb088;">ارائه‌دهنده راهکارهای نوین هوش مصنوعی و رایانه‌ای از ۱۳۹۸</p>
+          <div class="enamad-placeholder">
+            <img src="https://trustseal.e-rasaneh.ir/Images/logo/81.png" alt="اینماد" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%2333220d\' rx=\'20\'/%3E%3Ctext x=\'50\' y=\'55\' font-size=\'14\' fill=\'%23f4a261\' text-anchor=\'middle\' font-weight=\'bold\'%3Eاینماد%3C/text%3E%3Ctext x=\'50\' y=\'75\' font-size=\'10\' fill=\'%23ffddb0\' text-anchor=\'middle\'%3Eنماد اعتماد%3C/text%3E%3C/svg%3E';">
+          </div>
+        </div>
+        <div class="footer-col footer-links">
+          <h4 style="color: #ffcd94; margin-bottom: 15px;">دسترسی سریع</h4>
+          <a href="shop.html"><i class="fas fa-chevron-left"></i> فروشگاه محصولات</a>
+          <a href="#"><i class="fas fa-chevron-left"></i> پشتیبانی آنلاین</a>
+          <a href="#"><i class="fas fa-chevron-left"></i> پروژه‌های اخیر</a>
+          <a href="blog.html"><i class="fas fa-chevron-left"></i> وبلاگ</a>
+        </div>
+        <div class="footer-col footer-links">
+          <h4 style="color: #ffcd94; margin-bottom: 15px;">اطلاعات تماس</h4>
+          <a href="#"><i class="fas fa-map-marker-alt"></i> کرمانشاه، بلوار گلریزان، پلاک ۱۰</a>
+          <a href="tel:09184737201"><i class="fas fa-phone"></i> ۰۹۱۸۴۷۳۷۲۰۱</a>
+          <a href="mailto:info@razi360.ir"><i class="fas fa-envelope"></i> info@razi360.ir</a>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© ۲۰۲۵ کلیه حقوق برای <span style="color:#f4a261;">رازی ۳۶۰</span> محفوظ است. طراحی خلاقانه و مدرن</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // انیمیشن لوگو
+    document.querySelector('.logo').addEventListener('click', function(e) {
+      const icon = this.querySelector('.logo-icon');
+      icon.style.transform = 'rotate(360deg) scale(1.3)';
+      setTimeout(() => { icon.style.transform = ''; }, 500);
+    });
+
+    // هندل کردن فرم
+    function handleSubmit(event) {
+      event.preventDefault();
+      const btn = event.target.querySelector('.btn-submit');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-check-circle"></i> پیام شما ارسال شد!';
+      btn.style.background = 'linear-gradient(135deg, #4CAF50, #2E7D32)';
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.style.background = 'linear-gradient(135deg, #ffa726, #f57c00)';
+      }, 3000);
+      event.target.reset();
+    }
+  </script>
+</body>
+</html>
