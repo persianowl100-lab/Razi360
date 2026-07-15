@@ -2,10 +2,10 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>فروشگاه | رازی ۳۶۰</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
   <style>
     * {
       margin: 0;
@@ -14,93 +14,543 @@
     }
 
     body {
-      font-family: 'Vazirmatn', sans-serif;
+      font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
       background: linear-gradient(145deg, #1a140c 0%, #241e14 40%, #2b2113 100%);
       color: #f7efe2;
       line-height: 1.7;
+      overflow-x: hidden;
+      letter-spacing: 0.2px;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 20px;
     }
 
-    .glass-card {
+    .glass {
       background: rgba(30, 24, 16, 0.7);
       backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       border: 1px solid rgba(255, 180, 60, 0.2);
       box-shadow: 0 25px 45px -10px rgba(180, 100, 20, 0.2);
-      border-radius: 30px;
-      padding: 50px 40px;
-      max-width: 600px;
-      width: 100%;
     }
 
-    h1 {
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 32px;
+      margin: 20px auto 0;
+      border-radius: 60px;
+      position: sticky;
+      top: 20px;
+      z-index: 1000;
+      flex-wrap: wrap;
+      background: rgba(22, 18, 10, 0.75);
+      backdrop-filter: blur(22px);
+      border: 1px solid rgba(255, 170, 40, 0.25);
+      box-shadow: 0 20px 35px rgba(255, 140, 0, 0.15);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
       font-size: 2.5rem;
+      color: #ffb347;
+      filter: drop-shadow(0 0 14px #ff9f1c);
+      transition: transform 0.4s ease;
+    }
+
+    .logo:hover .logo-icon {
+      transform: rotate(10deg) scale(1.1);
+    }
+
+    .logo-text {
+      font-size: 2rem;
       font-weight: 900;
       background: linear-gradient(to left, #ffd166, #f4a261, #e9a554);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin-bottom: 20px;
+      letter-spacing: 1px;
     }
 
-    p {
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      text-decoration: none;
+      color: #f5e1c0;
+      font-weight: 600;
+      padding: 12px 20px;
+      border-radius: 40px;
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+      background: transparent;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 1rem;
+    }
+
+    .nav-item i {
+      font-size: 1.1rem;
+      transition: transform 0.3s;
+    }
+
+    .nav-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 40px;
+      padding: 2px;
+      background: linear-gradient(135deg, #ffb347, #ff8c1a);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .nav-item:hover {
+      color: #fff7e6;
+      background: rgba(255, 160, 30, 0.1);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 25px -10px rgba(255, 140, 0, 0.4);
+    }
+
+    .nav-item:hover::before {
+      opacity: 1;
+    }
+
+    .nav-item:hover i {
+      transform: translateY(-2px) scale(1.2);
+      color: #ffb347;
+    }
+
+    .nav-item.active {
+      background: rgba(255, 160, 30, 0.15);
+      color: #ffb347;
+      border: 1px solid rgba(255, 180, 60, 0.3);
+    }
+
+    .store-btn {
+      background: linear-gradient(135deg, #f4a261, #e67e22);
+      color: #1a140c !important;
+      font-weight: 800;
+      box-shadow: 0 8px 20px rgba(230, 126, 34, 0.5);
+    }
+
+    .store-btn:hover {
+      background: linear-gradient(135deg, #f5b06e, #f08c2e);
+      box-shadow: 0 15px 30px rgba(255, 160, 20, 0.7);
+    }
+
+    .page-header {
+      text-align: center;
+      padding: 80px 20px 50px;
+    }
+
+    .page-title {
+      font-size: 3.5rem;
+      font-weight: 900;
+      background: linear-gradient(to right, #ffddb0, #f9b953, #ffa726);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 15px;
+    }
+
+    .page-subtitle {
       font-size: 1.2rem;
       color: #cdb088;
-      margin-bottom: 30px;
     }
 
-    .btn {
-      display: inline-flex;
+    /* گرید محصولات */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin: 40px 0 60px;
+    }
+
+    .product-card {
+      background: rgba(40, 30, 18, 0.5);
+      backdrop-filter: blur(14px);
+      border-radius: 25px;
+      border: 1px solid rgba(255, 180, 60, 0.2);
+      overflow: hidden;
+      transition: all 0.45s cubic-bezier(0.2, 0.9, 0.4, 1);
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-12px);
+      border-color: #ffa726;
+      box-shadow: 0 30px 45px -20px rgba(255, 140, 0, 0.5);
+      background: rgba(50, 35, 20, 0.75);
+    }
+
+    .product-image-wrapper {
+      width: 100%;
+      height: 250px;
+      background: linear-gradient(135deg, rgba(255, 167, 38, 0.1), rgba(245, 124, 0, 0.05));
+      display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 15px 30px;
+      justify-content: center;
+      border-bottom: 1px solid rgba(255, 180, 60, 0.2);
+      overflow: hidden;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover .product-image {
+      transform: scale(1.05);
+    }
+
+    .product-placeholder {
+      font-size: 5rem;
+      color: #f4a261;
+      opacity: 0.6;
+      transition: all 0.5s ease;
+    }
+
+    .product-card:hover .product-placeholder {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: linear-gradient(135deg, #ffa726, #f57c00);
+      color: #1a140c;
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      z-index: 2;
+      box-shadow: 0 5px 15px rgba(245, 124, 0, 0.4);
+    }
+
+    .product-info {
+      padding: 25px;
+    }
+
+    .product-category {
+      color: #f4a261;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .product-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff0db;
+      margin-bottom: 10px;
+    }
+
+    .product-description {
+      color: #bda16b;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 180, 60, 0.15);
+      padding-top: 20px;
+    }
+
+    .product-price {
+      font-size: 1.4rem;
+      font-weight: 900;
+      background: linear-gradient(to left, #ffd166, #f4a261);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .btn-buy {
+      padding: 10px 22px;
       border-radius: 50px;
       font-weight: 700;
-      text-decoration: none;
-      transition: all 0.4s ease;
-      font-size: 1.1rem;
+      font-size: 0.9rem;
       font-family: 'Vazirmatn', sans-serif;
       background: linear-gradient(135deg, #f4a261, #e67e22);
       color: #1a140c;
-      box-shadow: 0 8px 20px rgba(230, 126, 34, 0.5);
       border: none;
       cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
     }
 
-    .btn:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(255, 160, 20, 0.7);
+    .btn-buy:hover {
       background: linear-gradient(135deg, #f5b06e, #f08c2e);
+      box-shadow: 0 10px 20px rgba(230, 126, 34, 0.4);
+      transform: translateY(-3px);
     }
 
-    .construction-icon {
-      font-size: 5rem;
+    /* فوتر */
+    footer {
+      background: rgba(20, 15, 8, 0.8);
+      backdrop-filter: blur(25px);
+      border-top: 2px solid rgba(244, 162, 97, 0.4);
+      padding: 50px 0 25px;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 35px;
+    }
+
+    .footer-col {
+      flex: 1 1 220px;
+    }
+
+    .footer-logo {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #f4a261;
+    }
+
+    .enamad-container {
+      margin-top: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .enamad-container:hover {
+      transform: scale(1.05);
+    }
+
+    .enamad-container img {
+      width: 120px;
+      height: auto;
+      filter: drop-shadow(0 0 10px rgba(255, 167, 38, 0.4));
+      border-radius: 10px;
+    }
+
+    .footer-links a {
+      color: #cfb185;
+      text-decoration: none;
+      display: block;
+      margin: 10px 0;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
       color: #ffb347;
-      margin-bottom: 20px;
-      animation: float 3s infinite ease-in-out;
+      transform: translateX(-8px);
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
+    .copyright {
+      text-align: center;
+      margin-top: 40px;
+      color: #a6906c;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 20px;
+        border-radius: 40px;
+      }
+      .page-title {
+        font-size: 2.5rem;
+      }
+      .nav-links {
+        justify-content: center;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="glass-card">
-    <i class="fas fa-shopping-cart construction-icon"></i>
-    <h1>🛒 فروشگاه رازی ۳۶۰</h1>
-    <p>محصولات و خدمات هوش مصنوعی و رایانه‌ای به زودی در این بخش قرار خواهند گرفت.</p>
-    <p style="font-size: 0.9rem; color: #a6906c;">منتظر محصولات شگفت‌انگیز ما باشید...</p>
-    <a href="../index.html" class="btn">
-      <i class="fas fa-arrow-right"></i>
-      بازگشت به صفحه اصلی
-    </a>
+  <div class="container">
+    <!-- هدر -->
+    <header class="glass">
+      <a href="../index.html" class="logo">
+        <i class="fas fa-brain logo-icon"></i>
+        <span class="logo-text">رازی ۳۶۰</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html" class="nav-item"><i class="fas fa-home"></i> صفحه اصلی</a>
+        <a href="services.html" class="nav-item"><i class="fas fa-cogs"></i> خدمات</a>
+        <a href="about.html" class="nav-item"><i class="fas fa-info-circle"></i> درباره ما</a>
+        <a href="contact.html" class="nav-item"><i class="fas fa-envelope"></i> تماس با ما</a>
+        <a href="shop.html" class="nav-item store-btn active"><i class="fas fa-shopping-cart"></i> فروشگاه</a>
+      </div>
+    </header>
+
+    <!-- عنوان صفحه -->
+    <div class="page-header">
+      <h1 class="page-title">🛒 فروشگاه رازی ۳۶۰</h1>
+      <p class="page-subtitle">محصولات و خدمات هوش مصنوعی و رایانه‌ای با بهترین کیفیت</p>
+    </div>
+
+    <!-- محصولات -->
+    <div class="products-grid">
+      
+      <!-- محصول ۱ -->
+      <div class="product-card">
+        <span class="product-badge">جدید</span>
+        <div class="product-image-wrapper">
+          <img src="../images/products/product1.jpg" alt="پلنر هوشمند" class="product-image" onerror="this.style.display='none'; this.parentNode.querySelector('.product-placeholder').style.display='block';">
+          <i class="fas fa-calendar-check product-placeholder" style="display:none;"></i>
+        </div>
+        <div class="product-info">
+          <div class="product-category">
+            <i class="fas fa-calendar-check"></i> نرم‌افزار
+          </div>
+          <h3 class="product-title">پلنر هوشمند روزانه</h3>
+          <p class="product-description">برنامه‌ریزی خودکار با هوش مصنوعی، مناسب برای مدیریت زمان و افزایش بهره‌وری</p>
+          <div class="product-footer">
+            <span class="product-price">۲۹۹,۰۰۰ تومان</span>
+            <a href="#" class="btn-buy">
+              <i class="fas fa-shopping-basket"></i> خرید
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- محصول ۲ -->
+      <div class="product-card">
+        <span class="product-badge">پرطرفدار</span>
+        <div class="product-image-wrapper">
+          <img src="../images/products/product2.jpg" alt="پکیج طراحی سایت" class="product-image" onerror="this.style.display='none'; this.parentNode.querySelector('.product-placeholder').style.display='block';">
+          <i class="fas fa-globe product-placeholder" style="display:none;"></i>
+        </div>
+        <div class="product-info">
+          <div class="product-category">
+            <i class="fas fa-globe"></i> خدمات
+          </div>
+          <h3 class="product-title">پکیج طراحی سایت اختصاصی</h3>
+          <p class="product-description">طراحی وب‌سایت حرفه‌ای با سئو پیشرفته، ریسپانسیو و پشتیبانی یکساله</p>
+          <div class="product-footer">
+            <span class="product-price">۴,۹۹۰,۰۰۰ تومان</span>
+            <a href="#" class="btn-buy">
+              <i class="fas fa-shopping-basket"></i> خرید
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- محصول ۳ -->
+      <div class="product-card">
+        <div class="product-image-wrapper">
+          <img src="../images/products/product3.jpg" alt="دستیار آموزشی" class="product-image" onerror="this.style.display='none'; this.parentNode.querySelector('.product-placeholder').style.display='block';">
+          <i class="fas fa-graduation-cap product-placeholder" style="display:none;"></i>
+        </div>
+        <div class="product-info">
+          <div class="product-category">
+            <i class="fas fa-graduation-cap"></i> نرم‌افزار
+          </div>
+          <h3 class="product-title">دستیار آموزشی هوشمند</h3>
+          <p class="product-description">همراه تحصیلی مبتنی بر هوش مصنوعی برای دانشجویان و دانش‌آموزان</p>
+          <div class="product-footer">
+            <span class="product-price">۴۹۹,۰۰۰ تومان</span>
+            <a href="#" class="btn-buy">
+              <i class="fas fa-shopping-basket"></i> خرید
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- محصول ۴ -->
+      <div class="product-card">
+        <span class="product-badge">ویژه</span>
+        <div class="product-image-wrapper">
+          <img src="../images/products/product4.jpg" alt="مشاوره حقوقی" class="product-image" onerror="this.style.display='none'; this.parentNode.querySelector('.product-placeholder').style.display='block';">
+          <i class="fas fa-balance-scale product-placeholder" style="display:none;"></i>
+        </div>
+        <div class="product-info">
+          <div class="product-category">
+            <i class="fas fa-balance-scale"></i> خدمات
+          </div>
+          <h3 class="product-title">بسته مشاوره حقوقی</h3>
+          <p class="product-description">تنظیم لایحه، دادخواست و مشاوره آنلاین با تحلیل هوشمند پرونده</p>
+          <div class="product-footer">
+            <span class="product-price">۱,۴۹۰,۰۰۰ تومان</span>
+            <a href="#" class="btn-buy">
+              <i class="fas fa-shopping-basket"></i> خرید
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
+
+  <!-- فوتر -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <div class="footer-logo"><i class="fas fa-robot"></i> رازی ۳۶۰</div>
+          <p style="margin-top: 15px; color: #cdb088;">ارائه‌دهنده راهکارهای نوین هوش مصنوعی و رایانه‌ای از ۱۳۹۸</p>
+          <div class="enamad-container">
+            <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=666728&Code=DkrrjsLDcX9eK5iTH8wDmkrgY7MmVCCn'>
+              <img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=666728&Code=DkrrjsLDcX9eK5iTH8wDmkrgY7MmVCCn' alt='نماد اعتماد الکترونیکی' style='cursor:pointer' code='DkrrjsLDcX9eK5iTH8wDmkrgY7MmVCCn'>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col footer-links">
+          <h4 style="color: #ffcd94; margin-bottom: 15px;">دسترسی سریع</h4>
+          <a href="shop.html"><i class="fas fa-chevron-left"></i> فروشگاه محصولات</a>
+          <a href="contact.html"><i class="fas fa-chevron-left"></i> پشتیبانی آنلاین</a>
+          <a href="services.html"><i class="fas fa-chevron-left"></i> پروژه‌های اخیر</a>
+          <a href="blog.html"><i class="fas fa-chevron-left"></i> وبلاگ</a>
+        </div>
+        <div class="footer-col footer-links">
+          <h4 style="color: #ffcd94; margin-bottom: 15px;">اطلاعات تماس</h4>
+          <a href="#"><i class="fas fa-map-marker-alt"></i> کرمانشاه، بلوار گلریزان، پلاک ۱۰</a>
+          <a href="tel:09184737201"><i class="fas fa-phone"></i> ۰۹۱۸۴۷۳۷۲۰۱</a>
+          <a href="mailto:info@razi360.ir"><i class="fas fa-envelope"></i> info@razi360.ir</a>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© ۲۰۲۵ کلیه حقوق برای <span style="color:#f4a261;">رازی ۳۶۰</span> محفوظ است. طراحی خلاقانه و مدرن</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.logo').addEventListener('click', function(e) {
+      const icon = this.querySelector('.logo-icon');
+      icon.style.transform = 'rotate(360deg) scale(1.3)';
+      setTimeout(() => { icon.style.transform = ''; }, 500);
+    });
+  </script>
 </body>
 </html>
