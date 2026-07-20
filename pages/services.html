@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>خدمات ما | رازی ۳۶۰</title>
+  <title>خدمات | رازی ۳۶۰</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
   <style>
@@ -23,7 +23,6 @@
       min-height: 100vh;
     }
 
-    /* هدر */
     .glass {
       background: rgba(30, 24, 16, 0.7);
       backdrop-filter: blur(18px);
@@ -163,7 +162,6 @@
       color: #0d0a05 !important;
     }
 
-    /* صفحه خدمات */
     .page-header {
       text-align: center;
       padding: 80px 20px 50px;
@@ -186,7 +184,6 @@
       margin: 0 auto;
     }
 
-    /* کارت‌های خدمات اصلی */
     .services-main {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -325,7 +322,6 @@
       transform: translateY(-3px);
     }
 
-    /* بخش CTA */
     .cta-section {
       text-align: center;
       padding: 70px 20px;
@@ -373,7 +369,6 @@
       filter: brightness(1.1);
     }
 
-    /* فوتر */
     footer {
       background: rgba(20, 15, 8, 0.8);
       backdrop-filter: blur(25px);
@@ -399,29 +394,20 @@
       color: #f4a261;
     }
 
-    .enamad-placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 180, 60, 0.08);
-      border-radius: 20px;
-      padding: 20px;
+    .enamad-container {
       margin-top: 20px;
-      border: 1px dashed #f4a261;
-      transition: 0.3s;
-      width: fit-content;
+      transition: transform 0.3s ease;
     }
 
-    .enamad-placeholder img {
-      width: 110px;
+    .enamad-container:hover {
+      transform: scale(1.05);
+    }
+
+    .enamad-container img {
+      width: 120px;
       height: auto;
-      filter: drop-shadow(0 0 10px #ffa040);
-    }
-
-    .enamad-placeholder:hover {
-      background: rgba(255, 160, 30, 0.15);
-      border-color: #ffd58c;
-      transform: scale(1.03);
+      filter: drop-shadow(0 0 10px rgba(255, 167, 38, 0.4));
+      border-radius: 10px;
     }
 
     .footer-links a {
@@ -479,49 +465,13 @@
     <!-- عنوان صفحه -->
     <div class="page-header">
       <h1 class="page-title">خدمات تخصصی رازی ۳۶۰</h1>
-      <p class="page-subtitle">راهکارهای هوشمند و جامع برای زندگی دیجیتال، تحصیل، کسب‌وکار و امور حقوقی شما</p>
+      <p class="page-subtitle">راهکارهای هوشمند و جامع برای آموزش، حقوق، برنامه‌نویسی و زیرساخت‌های ابری</p>
     </div>
 
     <!-- کارت‌های خدمات اصلی -->
     <div class="services-main">
       
-      <!-- خدمت ۱: پلنر برنامه‌ریزی روزانه -->
-      <div class="service-detail-card">
-        <div class="service-icon-wrapper">
-          <i class="fas fa-calendar-check service-detail-icon"></i>
-        </div>
-        <h3>پلنر هوشمند روزانه</h3>
-        <p>برنامه‌ریزی دقیق و خودکار روزانه با هوش مصنوعی که اولویت‌های شما را می‌شناسد و بهترین زمان‌بندی را پیشنهاد می‌دهد.</p>
-        <ul class="service-features">
-          <li><i class="fas fa-check-circle"></i> زمان‌بندی خودکار وظایف</li>
-          <li><i class="fas fa-check-circle"></i> یادآوری هوشمند با اعلان</li>
-          <li><i class="fas fa-check-circle"></i> تحلیل بهره‌وری هفتگی</li>
-          <li><i class="fas fa-check-circle"></i> همگام‌سازی با تقویم گوگل</li>
-        </ul>
-        <a href="#" class="btn-service">
-          <i class="fas fa-arrow-left"></i> شروع برنامه‌ریزی
-        </a>
-      </div>
-
-      <!-- خدمت ۲: طراحی و مدیریت سایت -->
-      <div class="service-detail-card">
-        <div class="service-icon-wrapper">
-          <i class="fas fa-globe service-detail-icon"></i>
-        </div>
-        <h3>طراحی و مدیریت سایت</h3>
-        <p>طراحی وب‌سایت‌های حرفه‌ای، ریسپانسیو و مدرن با پشتیبانی کامل، سئو و مدیریت محتوای پیشرفته برای کسب‌وکار شما.</p>
-        <ul class="service-features">
-          <li><i class="fas fa-check-circle"></i> طراحی اختصاصی و ریسپانسیو</li>
-          <li><i class="fas fa-check-circle"></i> بهینه‌سازی سئو</li>
-          <li><i class="fas fa-check-circle"></i> پشتیبانی ۲۴/۷</li>
-          <li><i class="fas fa-check-circle"></i> فروشگاه اینترنتی</li>
-        </ul>
-        <a href="#" class="btn-service">
-          <i class="fas fa-arrow-left"></i> سفارش طراحی سایت
-        </a>
-      </div>
-
-      <!-- خدمت ۳: دستیار آموزشی -->
+      <!-- خدمت ۱: دستیار آموزشی هوشمند -->
       <div class="service-detail-card">
         <div class="service-icon-wrapper">
           <i class="fas fa-graduation-cap service-detail-icon"></i>
@@ -529,31 +479,67 @@
         <h3>دستیار آموزشی هوشمند</h3>
         <p>همراه تحصیلی مبتنی بر هوش مصنوعی برای دانشجویان و دانش‌آموزان؛ از حل تمرین تا برنامه‌ریزی درسی و آمادگی آزمون.</p>
         <ul class="service-features">
-          <li><i class="fas fa-check-circle"></i> پاسخگویی به سوالات درسی</li>
-          <li><i class="fas fa-check-circle"></i> برنامه‌ریزی مطالعه شخصی</li>
-          <li><i class="fas fa-check-circle"></i> آزمون‌های تستی و تشریحی</li>
+          <li><i class="fas fa-check-circle"></i> پاسخگویی هوشمند به سوالات درسی</li>
+          <li><i class="fas fa-check-circle"></i> برنامه‌ریزی مطالعه شخصی‌سازی‌شده</li>
+          <li><i class="fas fa-check-circle"></i> آزمون‌های تستی و تشریحی آنلاین</li>
           <li><i class="fas fa-check-circle"></i> منابع و جزوات اختصاصی</li>
         </ul>
-        <a href="#" class="btn-service">
-          <i class="fas fa-arrow-left"></i> شروع یادگیری
+        <a href="contact.html" class="btn-service">
+          <i class="fas fa-arrow-left"></i> درخواست مشاوره
         </a>
       </div>
 
-      <!-- خدمت ۴: مشاوره حقوقی و لایحه‌نویسی -->
+      <!-- خدمت ۲: وکیل هوش مصنوعی -->
       <div class="service-detail-card">
         <div class="service-icon-wrapper">
           <i class="fas fa-balance-scale service-detail-icon"></i>
         </div>
-        <h3>مشاوره حقوقی و لایحه‌نویسی</h3>
-        <p>خدمات حقوقی آنلاین با تحلیل هوشمند پرونده‌ها، تنظیم لوایح، دادخواست‌ها و شکواییه‌ها توسط متخصصین و هوش مصنوعی.</p>
+        <h3>وکیل هوش مصنوعی</h3>
+        <p>مشاوره حقوقی آنلاین، تحلیل هوشمند پرونده‌ها و تنظیم لوایح با کمک پیشرفته‌ترین الگوریتم‌های حقوقی.</p>
         <ul class="service-features">
-          <li><i class="fas fa-check-circle"></i> مشاوره آنلاین حقوقی</li>
-          <li><i class="fas fa-check-circle"></i> تنظیم لایحه دفاعیه</li>
-          <li><i class="fas fa-check-circle"></i> دادخواست و شکواییه</li>
+          <li><i class="fas fa-check-circle"></i> مشاوره حقوقی فوری</li>
+          <li><i class="fas fa-check-circle"></i> تنظیم لایحه دفاعیه و دادخواست</li>
           <li><i class="fas fa-check-circle"></i> تحلیل هوشمند پرونده</li>
+          <li><i class="fas fa-check-circle"></i> پیش‌بینی نتیجه دعاوی</li>
         </ul>
-        <a href="#" class="btn-service">
+        <a href="contact.html" class="btn-service">
           <i class="fas fa-arrow-left"></i> دریافت مشاوره
+        </a>
+      </div>
+
+      <!-- خدمت ۳: پرامپت‌ها و کدهای کاربردی -->
+      <div class="service-detail-card">
+        <div class="service-icon-wrapper">
+          <i class="fas fa-code service-detail-icon"></i>
+        </div>
+        <h3>پرامپت‌ها و کدهای کاربردی</h3>
+        <p>ارائه پرامپت‌های آماده و کدهای اختصاصی برای چت‌بات‌ها، مدل‌های هوش مصنوعی و اتوماسیون وظایف.</p>
+        <ul class="service-features">
+          <li><i class="fas fa-check-circle"></i> پرامپت‌های حرفه‌ای ChatGPT</li>
+          <li><i class="fas fa-check-circle"></i> کدهای پایتون و جاوااسکریپت</li>
+          <li><i class="fas fa-check-circle"></i> اتوماسیون وظایف تکراری</li>
+          <li><i class="fas fa-check-circle"></i> بانک پرامپت‌های طبقه‌بندی‌شده</li>
+        </ul>
+        <a href="shop.html" class="btn-service">
+          <i class="fas fa-arrow-left"></i> مشاهده محصولات
+        </a>
+      </div>
+
+      <!-- خدمت ۴: رایانش ابری -->
+      <div class="service-detail-card">
+        <div class="service-icon-wrapper">
+          <i class="fas fa-cloud service-detail-icon"></i>
+        </div>
+        <h3>رایانش ابری</h3>
+        <p>زیرساخت ابری اختصاصی و مقیاس‌پذیر مبتنی بر هوش مصنوعی برای کسب‌وکارها و استارتاپ‌ها.</p>
+        <ul class="service-features">
+          <li><i class="fas fa-check-circle"></i> سرورهای ابری پرسرعت</li>
+          <li><i class="fas fa-check-circle"></i> پردازش موازی داده‌ها</li>
+          <li><i class="fas fa-check-circle"></i> ذخیره‌سازی امن اطلاعات</li>
+          <li><i class="fas fa-check-circle"></i> مقیاس‌پذیری خودکار</li>
+        </ul>
+        <a href="contact.html" class="btn-service">
+          <i class="fas fa-arrow-left"></i> درخواست سرویس
         </a>
       </div>
 
@@ -576,15 +562,17 @@
         <div class="footer-col">
           <div class="footer-logo"><i class="fas fa-robot"></i> رازی ۳۶۰</div>
           <p style="margin-top: 15px; color: #cdb088;">ارائه‌دهنده راهکارهای نوین هوش مصنوعی و رایانه‌ای از ۱۳۹۸</p>
-          <div class="enamad-placeholder">
-            <img src="https://trustseal.e-rasaneh.ir/Images/logo/81.png" alt="اینماد" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%2333220d\' rx=\'20\'/%3E%3Ctext x=\'50\' y=\'55\' font-size=\'14\' fill=\'%23f4a261\' text-anchor=\'middle\' font-weight=\'bold\'%3Eاینماد%3C/text%3E%3Ctext x=\'50\' y=\'75\' font-size=\'10\' fill=\'%23ffddb0\' text-anchor=\'middle\'%3Eنماد اعتماد%3C/text%3E%3C/svg%3E';">
+          <div class="enamad-container">
+            <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=666728&Code=DkrrjsLDcX9eK5iTH8wDmkrgY7MmVCCn'>
+              <img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=666728&Code=DkrrjsLDcX9eK5iTH8wDmkrgY7MmVCCn' alt='نماد اعتماد الکترونیکی' style='cursor:pointer' code='DkrrjsLDcX9eK5iTH8wDmkrgY7MmVCCn'>
+            </a>
           </div>
         </div>
         <div class="footer-col footer-links">
           <h4 style="color: #ffcd94; margin-bottom: 15px;">دسترسی سریع</h4>
           <a href="shop.html"><i class="fas fa-chevron-left"></i> فروشگاه محصولات</a>
-          <a href="#"><i class="fas fa-chevron-left"></i> پشتیبانی آنلاین</a>
-          <a href="#"><i class="fas fa-chevron-left"></i> پروژه‌های اخیر</a>
+          <a href="shop.html"><i class="fas fa-chevron-left"></i> دوره‌های آموزشی</a>
+          <a href="contact.html"><i class="fas fa-chevron-left"></i> پشتیبانی آنلاین</a>
           <a href="blog.html"><i class="fas fa-chevron-left"></i> وبلاگ</a>
         </div>
         <div class="footer-col footer-links">
@@ -601,7 +589,6 @@
   </footer>
 
   <script>
-    // انیمیشن آیکون لوگو
     document.querySelector('.logo').addEventListener('click', function(e) {
       const icon = this.querySelector('.logo-icon');
       icon.style.transform = 'rotate(360deg) scale(1.3)';
