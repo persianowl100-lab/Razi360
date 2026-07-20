@@ -4,590 +4,159 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>رازی ۳۶۰ | خدمات هوش مصنوعی و رایانه‌ای</title>
-  <!-- Font Awesome 6 for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- فونت وزیرمتن (Vazirmatn) - فونت مدرن و جذاب فارسی -->
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
+      font-family: 'Vazirmatn', sans-serif;
       background: linear-gradient(145deg, #1a140c 0%, #241e14 40%, #2b2113 100%);
       color: #f7efe2;
       line-height: 1.7;
       overflow-x: hidden;
-      letter-spacing: 0.2px;
     }
-
-    .glass {
-      background: rgba(30, 24, 16, 0.7);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(255, 180, 60, 0.2);
-      box-shadow: 0 25px 45px -10px rgba(180, 100, 20, 0.2);
-    }
-
-    .container {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
+    .container { max-width: 1300px; margin: 0 auto; padding: 0 24px; }
+    
+    /* هدر */
     header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 32px;
-      margin: 20px auto 0;
-      border-radius: 60px;
-      position: sticky;
-      top: 20px;
-      z-index: 1000;
-      flex-wrap: wrap;
-      background: rgba(22, 18, 10, 0.75);
-      backdrop-filter: blur(22px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 32px; margin: 20px auto 0; border-radius: 60px;
+      position: sticky; top: 20px; z-index: 1000; flex-wrap: wrap;
+      background: rgba(22, 18, 10, 0.75); backdrop-filter: blur(22px);
       border: 1px solid rgba(255, 170, 40, 0.25);
       box-shadow: 0 20px 35px rgba(255, 140, 0, 0.15);
-      transition: all 0.4s ease;
     }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .logo-icon {
-      font-size: 2.5rem;
-      color: #ffb347;
-      filter: drop-shadow(0 0 14px #ff9f1c);
-      transition: transform 0.4s ease;
-    }
-
-    .logo:hover .logo-icon {
-      transform: rotate(10deg) scale(1.1);
-    }
-
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: pointer; }
+    .logo-icon { font-size: 2.5rem; color: #ffb347; filter: drop-shadow(0 0 14px #ff9f1c); transition: transform 0.4s; }
+    .logo:hover .logo-icon { transform: rotate(10deg) scale(1.1); }
     .logo-text {
-      font-size: 2rem;
-      font-weight: 900;
+      font-size: 2rem; font-weight: 900;
       background: linear-gradient(to left, #ffd166, #f4a261, #e9a554);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: 1px;
-      font-family: 'Vazirmatn', sans-serif;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
+    .nav-links { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
     .nav-item {
-      text-decoration: none;
-      color: #f5e1c0;
-      font-weight: 600;
-      padding: 12px 20px;
-      border-radius: 40px;
-      position: relative;
+      text-decoration: none; color: #f5e1c0; font-weight: 600;
+      padding: 12px 20px; border-radius: 40px; position: relative;
       transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
-      background: transparent;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 1rem;
-      font-family: 'Vazirmatn', sans-serif;
+      background: transparent; display: flex; align-items: center; gap: 6px; font-size: 1rem;
     }
-
-    .nav-item i {
-      font-size: 1.1rem;
-      transition: transform 0.3s;
-    }
-
-    .nav-item::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 40px;
-      padding: 2px;
-      background: linear-gradient(135deg, #ffb347, #ff8c1a);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-
-    .nav-item:hover {
-      color: #fff7e6;
-      background: rgba(255, 160, 30, 0.1);
-      transform: translateY(-3px);
-      box-shadow: 0 15px 25px -10px rgba(255, 140, 0, 0.4);
-    }
-
-    .nav-item:hover::before {
-      opacity: 1;
-    }
-
-    .nav-item:hover i {
-      transform: translateY(-2px) scale(1.2);
-      color: #ffb347;
-    }
-
+    .nav-item i { font-size: 1.1rem; transition: transform 0.3s; }
+    .nav-item:hover { color: #fff7e6; background: rgba(255, 160, 30, 0.1); transform: translateY(-3px); box-shadow: 0 15px 25px -10px rgba(255, 140, 0, 0.4); }
+    .nav-item:hover i { transform: translateY(-2px) scale(1.2); color: #ffb347; }
     .store-btn {
-      background: linear-gradient(135deg, #f4a261, #e67e22);
-      color: #1a140c !important;
-      font-weight: 800;
-      box-shadow: 0 8px 20px rgba(230, 126, 34, 0.5);
-      border: none;
-      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, #f4a261, #e67e22) !important;
+      color: #1a140c !important; font-weight: 800;
+      box-shadow: 0 8px 20px rgba(230, 126, 34, 0.5); border: none;
     }
+    .store-btn:hover { background: linear-gradient(135deg, #f5b06e, #f08c2e) !important; box-shadow: 0 15px 30px rgba(255, 160, 20, 0.7); }
 
-    .store-btn:hover {
-      background: linear-gradient(135deg, #f5b06e, #f08c2e);
-      box-shadow: 0 15px 30px rgba(255, 160, 20, 0.7);
-      color: #0d0a05 !important;
-    }
-
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 50px auto 70px;
-      flex-wrap: wrap;
-      gap: 30px;
-    }
-
-    .hero-content {
-      flex: 1 1 500px;
-    }
-
+    /* Hero */
+    .hero { display: flex; align-items: center; justify-content: space-between; margin: 50px auto 70px; flex-wrap: wrap; gap: 30px; }
+    .hero-content { flex: 1 1 500px; }
     .hero-title {
-      font-size: 3.6rem;
-      font-weight: 900;
+      font-size: 3.6rem; font-weight: 900;
       background: linear-gradient(to right, #ffddb0, #f9b953, #ffa726);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 20px;
-      line-height: 1.5;
-      font-family: 'Vazirmatn', sans-serif;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 20px; line-height: 1.5;
     }
-
-    .hero-desc {
-      font-size: 1.25rem;
-      color: #ead2ac;
-      margin-bottom: 35px;
-      max-width: 600px;
-      font-weight: 400;
-    }
-
-    .cta-group {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
+    .hero-desc { font-size: 1.25rem; color: #ead2ac; margin-bottom: 35px; max-width: 600px; }
+    .cta-group { display: flex; gap: 20px; flex-wrap: wrap; }
     .btn {
-      padding: 16px 36px;
-      border-radius: 50px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.4s ease;
-      font-size: 1.1rem;
-      cursor: pointer;
-      border: none;
-      font-family: 'Vazirmatn', sans-serif;
+      padding: 16px 36px; border-radius: 50px; font-weight: 700; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px; transition: all 0.4s; font-size: 1.1rem; border: none;
     }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #ffa726, #f57c00);
-      color: #1e140a;
-      box-shadow: 0 15px 30px -8px rgba(245, 124, 0, 0.5);
-      font-weight: 800;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 25px 40px -8px rgba(255, 160, 20, 0.7);
-      filter: brightness(1.1);
-      color: #0a0704;
-    }
-
-    .btn-outline {
-      border: 2px solid #f4a261;
-      color: #f4a261;
-      background: transparent;
-      backdrop-filter: blur(10px);
-      font-weight: 600;
-    }
-
-    .btn-outline:hover {
-      background: rgba(244, 162, 97, 0.15);
-      border-color: #ffc078;
-      color: #ffd8a8;
-      transform: scale(1.05);
-    }
-
-    .hero-visual {
-      flex: 1 1 400px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-
+    .btn-primary { background: linear-gradient(135deg, #ffa726, #f57c00); color: #1e140a; box-shadow: 0 15px 30px -8px rgba(245, 124, 0, 0.5); }
+    .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 25px 40px -8px rgba(255, 160, 20, 0.7); filter: brightness(1.1); }
+    .btn-outline { border: 2px solid #f4a261; color: #f4a261; background: transparent; backdrop-filter: blur(10px); }
+    .btn-outline:hover { background: rgba(244, 162, 97, 0.15); border-color: #ffc078; color: #ffd8a8; transform: scale(1.05); }
+    .hero-visual { flex: 1 1 400px; display: flex; justify-content: center; align-items: center; }
     .ai-sphere {
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle at 30% 30%, #ffb347, #d97706);
-      border-radius: 50%;
-      box-shadow: 0 0 90px #ff8c1a80, inset 0 0 50px #ffe9c7;
-      animation: floatSphere 6s infinite ease-in-out;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 5rem;
-      color: #fff3e0;
-      text-shadow: 0 0 25px #361e00;
+      width: 300px; height: 300px; background: radial-gradient(circle at 30% 30%, #ffb347, #d97706);
+      border-radius: 50%; box-shadow: 0 0 90px #ff8c1a80, inset 0 0 50px #ffe9c7;
+      animation: floatSphere 6s infinite ease-in-out; display: flex; align-items: center; justify-content: center;
+      font-size: 5rem; color: #fff3e0;
     }
-
     @keyframes floatSphere {
-      0% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-25px) rotate(8deg); }
-      100% { transform: translateY(0px) rotate(0deg); }
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-25px); }
     }
 
+    /* عناوین */
     .section-title {
-      font-size: 2.5rem;
-      text-align: center;
-      margin: 60px 0 40px;
-      font-weight: 900;
+      font-size: 2.5rem; text-align: center; margin: 60px 0 40px; font-weight: 900;
       background: linear-gradient(to left, #ffcd94, #e89a45);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-family: 'Vazirmatn', sans-serif;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-      margin-bottom: 70px;
-    }
-
+    /* خدمات */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; margin-bottom: 30px; }
     .service-card {
-      background: rgba(40, 30, 18, 0.5);
-      backdrop-filter: blur(14px);
-      border-radius: 36px;
-      padding: 35px 22px;
-      text-align: center;
-      border: 1px solid rgba(255, 180, 60, 0.25);
-      transition: all 0.45s cubic-bezier(0.2, 0.9, 0.4, 1);
-      position: relative;
-      overflow: hidden;
-      font-family: 'Vazirmatn', sans-serif;
+      background: rgba(40, 30, 18, 0.5); backdrop-filter: blur(14px); border-radius: 36px;
+      padding: 35px 22px; text-align: center; border: 1px solid rgba(255, 180, 60, 0.25);
+      transition: all 0.45s cubic-bezier(0.2, 0.9, 0.4, 1); position: relative; overflow: hidden;
     }
+    .service-card:hover { transform: translateY(-15px) scale(1.02); border-color: #ffa726; box-shadow: 0 35px 50px -20px rgba(255, 140, 0, 0.5); background: rgba(50, 35, 20, 0.7); }
+    .service-icon { font-size: 3.2rem; color: #ffb347; margin-bottom: 20px; transition: transform 0.4s; }
+    .service-card:hover .service-icon { transform: rotateY(180deg) scale(1.2); text-shadow: 0 0 30px #f59e0b; }
+    .service-card h3 { font-size: 1.5rem; margin-bottom: 12px; color: #fff0db; }
+    .service-card p { color: #d6b588; }
 
-    .service-card::after {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,179,71,0.2) 0%, transparent 70%);
-      opacity: 0;
-      transition: opacity 0.5s;
-      transform: rotate(20deg);
-    }
-
-    .service-card:hover {
-      transform: translateY(-15px) scale(1.02);
-      border-color: #ffa726;
-      box-shadow: 0 35px 50px -20px rgba(255, 140, 0, 0.5);
-      background: rgba(50, 35, 20, 0.7);
-    }
-
-    .service-card:hover::after {
-      opacity: 1;
-    }
-
-    .service-icon {
-      font-size: 3.2rem;
-      color: #ffb347;
-      margin-bottom: 20px;
-      transition: transform 0.4s, text-shadow 0.3s;
-    }
-
-    .service-card:hover .service-icon {
-      transform: rotateY(180deg) scale(1.2);
-      text-shadow: 0 0 30px #f59e0b;
-    }
-
-    .service-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 12px;
-      color: #fff0db;
-    }
-
-    .service-card p {
-      color: #d6b588;
-    }
+    /* دکمه مشاهده همه خدمات */
+    .services-cta { text-align: center; margin: 30px 0 50px; }
 
     /* دوره‌های آموزشی */
-    .courses-section {
-      margin: 70px 0;
-      padding: 50px 0;
-    }
-
-    .courses-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
+    .courses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
     .course-card {
-      background: rgba(40, 30, 18, 0.5);
-      backdrop-filter: blur(14px);
-      border-radius: 28px;
-      padding: 30px;
-      border: 1px solid rgba(255, 180, 60, 0.2);
-      transition: all 0.45s cubic-bezier(0.2, 0.9, 0.4, 1);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
+      background: rgba(40, 30, 18, 0.5); backdrop-filter: blur(14px); border-radius: 28px;
+      padding: 30px; border: 1px solid rgba(255, 180, 60, 0.2);
+      transition: all 0.45s cubic-bezier(0.2, 0.9, 0.4, 1); display: flex; flex-direction: column;
     }
-
-    .course-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: linear-gradient(90deg, #ffa726, #f57c00, #ffb347);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.5s ease;
-    }
-
-    .course-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .course-card:hover {
-      transform: translateY(-12px);
-      border-color: #ffa726;
-      box-shadow: 0 30px 45px -20px rgba(255, 140, 0, 0.5);
-      background: rgba(50, 35, 20, 0.75);
-    }
-
+    .course-card:hover { transform: translateY(-12px); border-color: #ffa726; box-shadow: 0 30px 45px -20px rgba(255, 140, 0, 0.5); background: rgba(50, 35, 20, 0.75); }
     .course-icon-wrapper {
-      width: 70px;
-      height: 70px;
-      background: linear-gradient(135deg, rgba(255, 167, 38, 0.2), rgba(245, 124, 0, 0.1));
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      border: 1px solid rgba(255, 180, 60, 0.3);
-      transition: all 0.4s ease;
+      width: 70px; height: 70px; background: linear-gradient(135deg, rgba(255, 167, 38, 0.2), rgba(245, 124, 0, 0.1));
+      border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+      border: 1px solid rgba(255, 180, 60, 0.3); transition: all 0.4s;
     }
-
-    .course-card:hover .course-icon-wrapper {
-      background: linear-gradient(135deg, rgba(255, 167, 38, 0.4), rgba(245, 124, 0, 0.2));
-      transform: rotate(-5deg) scale(1.05);
-      box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3);
-    }
-
-    .course-icon {
-      font-size: 2.2rem;
-      color: #ffb347;
-      transition: transform 0.4s;
-    }
-
-    .course-card:hover .course-icon {
-      transform: scale(1.2);
-    }
-
-    .course-level {
-      display: inline-block;
-      background: rgba(255, 167, 38, 0.15);
-      color: #f4a261;
-      padding: 4px 14px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-      width: fit-content;
-    }
-
-    .course-title {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: #fff0db;
-      margin-bottom: 10px;
-    }
-
-    .course-description {
-      color: #bda16b;
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-      line-height: 1.7;
-      flex-grow: 1;
-    }
-
-    .course-details {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-      font-size: 0.85rem;
-      color: #cdb088;
-    }
-
-    .course-details span {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .course-details i {
-      color: #f4a261;
-    }
-
+    .course-card:hover .course-icon-wrapper { background: linear-gradient(135deg, rgba(255, 167, 38, 0.4), rgba(245, 124, 0, 0.2)); transform: rotate(-5deg) scale(1.05); }
+    .course-icon { font-size: 2.2rem; color: #ffb347; transition: transform 0.4s; }
+    .course-card:hover .course-icon { transform: scale(1.2); }
+    .course-level { display: inline-block; background: rgba(255, 167, 38, 0.15); color: #f4a261; padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 12px; width: fit-content; }
+    .course-title { font-size: 1.4rem; font-weight: 800; color: #fff0db; margin-bottom: 10px; }
+    .course-description { color: #bda16b; font-size: 0.95rem; margin-bottom: 20px; line-height: 1.7; flex-grow: 1; }
+    .course-details { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 20px; font-size: 0.85rem; color: #cdb088; }
+    .course-details span { display: flex; align-items: center; gap: 5px; }
+    .course-details i { color: #f4a261; }
     .btn-course {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      font-family: 'Vazirmatn', sans-serif;
-      background: linear-gradient(135deg, #f4a261, #e67e22);
-      color: #1a140c;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px 24px; border-radius: 50px; font-weight: 700; font-size: 0.95rem;
+      background: linear-gradient(135deg, #f4a261, #e67e22); color: #1a140c; text-decoration: none; transition: all 0.3s; border: none; cursor: pointer;
     }
+    .btn-course:hover { background: linear-gradient(135deg, #f5b06e, #f08c2e); box-shadow: 0 10px 25px rgba(230, 126, 34, 0.5); transform: translateY(-3px); }
 
-    .btn-course:hover {
-      background: linear-gradient(135deg, #f5b06e, #f08c2e);
-      box-shadow: 0 10px 25px rgba(230, 126, 34, 0.5);
-      transform: translateY(-3px);
-    }
-
-    .courses-cta {
-      text-align: center;
-      margin-top: 50px;
-    }
-
-    footer {
-      background: rgba(20, 15, 8, 0.8);
-      backdrop-filter: blur(25px);
-      border-top: 2px solid rgba(244, 162, 97, 0.4);
-      padding: 50px 0 25px;
-      margin-top: 60px;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 35px;
-    }
-
-    .footer-col {
-      flex: 1 1 220px;
-    }
-
-    .footer-logo {
-      font-size: 2rem;
-      font-weight: 900;
-      color: #f4a261;
-      font-family: 'Vazirmatn', sans-serif;
-    }
-
-    .enamad-container {
-      margin-top: 20px;
-      display: flex;
-      justify-content: flex-start;
-      transition: transform 0.3s ease;
-    }
-
-    .enamad-container:hover {
-      transform: scale(1.05);
-    }
-
-    .enamad-container img {
-      width: 120px;
-      height: auto;
-      filter: drop-shadow(0 0 10px rgba(255, 167, 38, 0.4));
-      border-radius: 10px;
-    }
-
-    .footer-links a {
-      color: #cfb185;
-      text-decoration: none;
-      display: block;
-      margin: 10px 0;
-      transition: 0.3s;
-      font-weight: 500;
-    }
-
-    .footer-links a:hover {
-      color: #ffb347;
-      transform: translateX(-8px);
-    }
-
-    .copyright {
-      text-align: center;
-      margin-top: 40px;
-      color: #a6906c;
-      font-family: 'Vazirmatn', sans-serif;
-    }
+    /* فوتر */
+    footer { background: rgba(20, 15, 8, 0.8); backdrop-filter: blur(25px); border-top: 2px solid rgba(244, 162, 97, 0.4); padding: 50px 0 25px; margin-top: 60px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 35px; }
+    .footer-col { flex: 1 1 220px; }
+    .footer-logo { font-size: 2rem; font-weight: 900; color: #f4a261; }
+    .enamad-box { margin-top: 20px; background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 15px; display: inline-block; border: 1px solid rgba(255, 180, 60, 0.3); transition: all 0.3s; }
+    .enamad-box:hover { background: rgba(255, 255, 255, 0.1); border-color: #f4a261; transform: scale(1.05); box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3); }
+    .enamad-box img { width: 100px; height: auto; display: block; }
+    .footer-links a { color: #cfb185; text-decoration: none; display: block; margin: 10px 0; transition: 0.3s; font-weight: 500; }
+    .footer-links a:hover { color: #ffb347; transform: translateX(-8px); }
+    .copyright { text-align: center; margin-top: 40px; color: #a6906c; }
 
     @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        gap: 20px;
-        border-radius: 40px;
-      }
-      .hero-title {
-        font-size: 2.6rem;
-      }
-      .courses-grid {
-        grid-template-columns: 1fr;
-      }
+      header { flex-direction: column; gap: 20px; border-radius: 40px; }
+      .hero-title { font-size: 2.6rem; }
+      .courses-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <!-- هدر -->
-    <header class="glass">
+    <header>
       <a href="index.html" class="logo">
         <i class="fas fa-brain logo-icon"></i>
         <span class="logo-text">رازی ۳۶۰</span>
@@ -605,22 +174,18 @@
     <section class="hero">
       <div class="hero-content">
         <h1 class="hero-title">آینده هوش مصنوعی، امروز در رازی ۳۶۰</h1>
-        <p class="hero-desc">
-          راه‌حل‌های هوشمند رایانه‌ای، اتوماسیون پیشرفته، طراحی ربات‌های مجازی و خدمات یادگیری ماشین. تحول دیجیتال را با ما تجربه کنید.
-        </p>
+        <p class="hero-desc">راه‌حل‌های هوشمند رایانه‌ای، اتوماسیون پیشرفته، طراحی ربات‌های مجازی و خدمات یادگیری ماشین. تحول دیجیتال را با ما تجربه کنید.</p>
         <div class="cta-group">
           <a href="pages/get-started.html" class="btn btn-primary"><i class="fas fa-rocket"></i> شروع رایگان</a>
           <a href="pages/shop.html" class="btn btn-outline"><i class="fas fa-store"></i> ورود به فروشگاه</a>
         </div>
       </div>
       <div class="hero-visual">
-        <div class="ai-sphere">
-          <i class="fas fa-robot"></i>
-        </div>
+        <div class="ai-sphere"><i class="fas fa-robot"></i></div>
       </div>
     </section>
 
-    <!-- خدمات جدید -->
+    <!-- خدمات -->
     <h2 class="section-title">خدمات تخصصی رازی ۳۶۰</h2>
     <div class="services-grid">
       <div class="service-card">
@@ -644,129 +209,85 @@
         <p>زیرساخت ابری اختصاصی و مقیاس‌پذیر مبتنی بر هوش مصنوعی.</p>
       </div>
     </div>
+    
+    <!-- دکمه مشاهده همه خدمات (زیر ۴ باکس) -->
+    <div class="services-cta">
+      <a href="pages/services.html" class="btn btn-outline" style="font-size: 1.2rem; padding: 16px 38px;">
+        <i class="fas fa-arrow-left"></i> مشاهده همه خدمات
+      </a>
+    </div>
 
-    <!-- 🆕 دوره‌های آموزشی کاربردی -->
-    <div class="courses-section">
-      <h2 class="section-title">🎓 دوره‌های آموزشی هوش مصنوعی</h2>
-      <p style="text-align: center; color: #cdb088; font-size: 1.1rem; margin-bottom: 20px;">
-        کار با قدرتمندترین مدل‌های هوش مصنوعی را به‌صورت عملی یاد بگیرید
-      </p>
-      
-      <div class="courses-grid">
-        
-        <!-- دوره مقدماتی -->
-        <div class="course-card">
-          <div class="course-icon-wrapper">
-            <i class="fas fa-robot course-icon"></i>
-          </div>
-          <span class="course-level">🎯 مقدماتی</span>
-          <h3 class="course-title">مبانی هوش مصنوعی و یادگیری ماشین</h3>
-          <p class="course-description">
-            آشنایی کامل با مفاهیم پایه هوش مصنوعی، الگوریتم‌های یادگیری ماشین و پیاده‌سازی پروژه‌های عملی با پایتون
-          </p>
-          <div class="course-details">
-            <span><i class="fas fa-clock"></i> ۴۸ ساعت</span>
-            <span><i class="fas fa-video"></i> ۳۲ جلسه</span>
-            <span><i class="fas fa-user-graduate"></i> ۲,۳۴۰ نفر</span>
-          </div>
-          <a href="#" class="btn-course">
-            <i class="fas fa-arrow-left"></i> مشاهده دوره
-          </a>
+    <!-- دوره‌های آموزشی -->
+    <h2 class="section-title" style="margin-top: 20px;">🎓 دوره‌های آموزشی هوش مصنوعی</h2>
+    <p style="text-align: center; color: #cdb088; font-size: 1.1rem; margin-bottom: 30px;">کار با قدرتمندترین مدل‌های هوش مصنوعی را به‌صورت عملی یاد بگیرید</p>
+    
+    <div class="courses-grid">
+      <div class="course-card">
+        <div class="course-icon-wrapper"><i class="fas fa-robot course-icon"></i></div>
+        <span class="course-level">🎯 مقدماتی</span>
+        <h3 class="course-title">مبانی هوش مصنوعی و یادگیری ماشین</h3>
+        <p class="course-description">آشنایی کامل با مفاهیم پایه هوش مصنوعی، الگوریتم‌های یادگیری ماشین و پیاده‌سازی پروژه‌های عملی با پایتون</p>
+        <div class="course-details">
+          <span><i class="fas fa-clock"></i> ۴۸ ساعت</span>
+          <span><i class="fas fa-video"></i> ۳۲ جلسه</span>
+          <span><i class="fas fa-user-graduate"></i> ۲,۳۴۰ نفر</span>
         </div>
-
-        <!-- دوره چت جی پی تی -->
-        <div class="course-card">
-          <div class="course-icon-wrapper">
-            <i class="fas fa-comment-dots course-icon"></i>
-          </div>
-          <span class="course-level">💬 کاربردی</span>
-          <h3 class="course-title">کار با ChatGPT و پرامپت نویسی</h3>
-          <p class="course-description">
-            آموزش کامل کار با چت جی پی تی، نوشتن پرامپت‌های حرفه‌ای و استفاده از نسخه‌های رایگان و پولی
-          </p>
-          <div class="course-details">
-            <span><i class="fas fa-clock"></i> ۲۰ ساعت</span>
-            <span><i class="fas fa-video"></i> ۱۴ جلسه</span>
-            <span><i class="fas fa-user-graduate"></i> ۱,۸۵۰ نفر</span>
-          </div>
-          <a href="#" class="btn-course">
-            <i class="fas fa-arrow-left"></i> مشاهده دوره
-          </a>
-        </div>
-
-        <!-- دوره دیپ سیک -->
-        <div class="course-card">
-          <div class="course-icon-wrapper">
-            <i class="fas fa-search course-icon"></i>
-          </div>
-          <span class="course-level">🔍 کاربردی</span>
-          <h3 class="course-title">راهنمای جامع DeepSeek</h3>
-          <p class="course-description">
-            نصب، تنظیم و استفاده از دیپ سیک روی سیستم شخصی و سرور، مقایسه با مدل‌های دیگر و بهینه‌سازی پاسخ‌ها
-          </p>
-          <div class="course-details">
-            <span><i class="fas fa-clock"></i> ۱۶ ساعت</span>
-            <span><i class="fas fa-video"></i> ۱۰ جلسه</span>
-            <span><i class="fas fa-user-graduate"></i> ۱,۲۳۰ نفر</span>
-          </div>
-          <a href="#" class="btn-course">
-            <i class="fas fa-arrow-left"></i> مشاهده دوره
-          </a>
-        </div>
-
-        <!-- دوره جمینای -->
-        <div class="course-card">
-          <div class="course-icon-wrapper">
-            <i class="fas fa-gem course-icon"></i>
-          </div>
-          <span class="course-level">✨ کاربردی</span>
-          <h3 class="course-title">Google Gemini از مبتدی تا پیشرفته</h3>
-          <p class="course-description">
-            آشنایی با قابلیت‌های جمینای گوگل، کار با نسخه‌های مختلف و ادغام با سرویس‌های گوگل
-          </p>
-          <div class="course-details">
-            <span><i class="fas fa-clock"></i> ۱۸ ساعت</span>
-            <span><i class="fas fa-video"></i> ۱۲ جلسه</span>
-            <span><i class="fas fa-user-graduate"></i> ۹۸۰ نفر</span>
-          </div>
-          <a href="#" class="btn-course">
-            <i class="fas fa-arrow-left"></i> مشاهده دوره
-          </a>
-        </div>
-
-        <!-- دوره خرید اکانت -->
-        <div class="course-card">
-          <div class="course-icon-wrapper">
-            <i class="fas fa-credit-card course-icon"></i>
-          </div>
-          <span class="course-level">💳 خرید اکانت</span>
-          <h3 class="course-title">خرید دلاری اکانت رسمی از ایران</h3>
-          <p class="course-description">
-            راهنمای کامل خرید اشتراک ChatGPT Plus، DeepSeek Pro، Gemini Advanced و سایر مدل‌ها با پرداخت دلاری از ایران
-          </p>
-          <div class="course-details">
-            <span><i class="fas fa-clock"></i> ۸ ساعت</span>
-            <span><i class="fas fa-video"></i> ۶ جلسه</span>
-            <span><i class="fas fa-user-graduate"></i> ۲,۵۶۰ نفر</span>
-          </div>
-          <a href="#" class="btn-course">
-            <i class="fas fa-arrow-left"></i> مشاهده دوره
-          </a>
-        </div>
-
+        <a href="pages/shop.html" class="btn-course"><i class="fas fa-arrow-left"></i> مشاهده دوره</a>
       </div>
-
-      <!-- دکمه لینک شده به فروشگاه -->
-      <div class="courses-cta">
-        <a href="pages/shop.html" class="btn btn-outline" style="font-size: 1.2rem; padding: 18px 40px;">
-          <i class="fas fa-arrow-left"></i> مشاهده همه دوره‌های آموزشی
-        </a>
+      <div class="course-card">
+        <div class="course-icon-wrapper"><i class="fas fa-comment-dots course-icon"></i></div>
+        <span class="course-level">💬 کاربردی</span>
+        <h3 class="course-title">کار با ChatGPT و پرامپت نویسی</h3>
+        <p class="course-description">آموزش کامل کار با چت جی پی تی، نوشتن پرامپت‌های حرفه‌ای و استفاده از نسخه‌های رایگان و پولی</p>
+        <div class="course-details">
+          <span><i class="fas fa-clock"></i> ۲۰ ساعت</span>
+          <span><i class="fas fa-video"></i> ۱۴ جلسه</span>
+          <span><i class="fas fa-user-graduate"></i> ۱,۸۵۰ نفر</span>
+        </div>
+        <a href="pages/shop.html" class="btn-course"><i class="fas fa-arrow-left"></i> مشاهده دوره</a>
+      </div>
+      <div class="course-card">
+        <div class="course-icon-wrapper"><i class="fas fa-search course-icon"></i></div>
+        <span class="course-level">🔍 کاربردی</span>
+        <h3 class="course-title">راهنمای جامع DeepSeek</h3>
+        <p class="course-description">نصب، تنظیم و استفاده از دیپ سیک روی سیستم شخصی و سرور، مقایسه با مدل‌های دیگر و بهینه‌سازی پاسخ‌ها</p>
+        <div class="course-details">
+          <span><i class="fas fa-clock"></i> ۱۶ ساعت</span>
+          <span><i class="fas fa-video"></i> ۱۰ جلسه</span>
+          <span><i class="fas fa-user-graduate"></i> ۱,۲۳۰ نفر</span>
+        </div>
+        <a href="pages/shop.html" class="btn-course"><i class="fas fa-arrow-left"></i> مشاهده دوره</a>
+      </div>
+      <div class="course-card">
+        <div class="course-icon-wrapper"><i class="fas fa-gem course-icon"></i></div>
+        <span class="course-level">✨ کاربردی</span>
+        <h3 class="course-title">Google Gemini از مبتدی تا پیشرفته</h3>
+        <p class="course-description">آشنایی با قابلیت‌های جمینای گوگل، کار با نسخه‌های مختلف و ادغام با سرویس‌های گوگل</p>
+        <div class="course-details">
+          <span><i class="fas fa-clock"></i> ۱۸ ساعت</span>
+          <span><i class="fas fa-video"></i> ۱۲ جلسه</span>
+          <span><i class="fas fa-user-graduate"></i> ۹۸۰ نفر</span>
+        </div>
+        <a href="pages/shop.html" class="btn-course"><i class="fas fa-arrow-left"></i> مشاهده دوره</a>
+      </div>
+      <div class="course-card">
+        <div class="course-icon-wrapper"><i class="fas fa-credit-card course-icon"></i></div>
+        <span class="course-level">💳 خرید اکانت</span>
+        <h3 class="course-title">خرید دلاری اکانت رسمی از ایران</h3>
+        <p class="course-description">راهنمای کامل خرید اشتراک ChatGPT Plus، DeepSeek Pro، Gemini Advanced و سایر مدل‌ها با پرداخت دلاری از ایران</p>
+        <div class="course-details">
+          <span><i class="fas fa-clock"></i> ۸ ساعت</span>
+          <span><i class="fas fa-video"></i> ۶ جلسه</span>
+          <span><i class="fas fa-user-graduate"></i> ۲,۵۶۰ نفر</span>
+        </div>
+        <a href="pages/shop.html" class="btn-course"><i class="fas fa-arrow-left"></i> مشاهده دوره</a>
       </div>
     </div>
 
-    <!-- دکمه لینک شده به صفحه خدمات -->
-    <div style="display: flex; justify-content: center; margin: 30px 0 50px;">
-      <a href="pages/services.html" class="btn btn-outline" style="font-size: 1.2rem;"><i class="fas fa-arrow-left"></i> مشاهده همه خدمات</a>
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="pages/shop.html" class="btn btn-outline" style="font-size: 1.2rem; padding: 18px 40px;">
+        <i class="fas fa-arrow-left"></i> مشاهده همه دوره‌های آموزشی
+      </a>
     </div>
   </div>
 
@@ -777,7 +298,7 @@
         <div class="footer-col">
           <div class="footer-logo"><i class="fas fa-robot"></i> رازی ۳۶۰</div>
           <p style="margin-top: 15px; color: #cdb088;">ارائه‌دهنده راهکارهای نوین هوش مصنوعی و رایانه‌ای از ۱۳۹۸</p>
-          <div class="enamad-container">
+          <div class="enamad-box">
             <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=666728&Code=DkrrjsLDcX9eK5iTH8wDmkrgY7MmVCCn'>
               <img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=666728&Code=DkrrjsLDcX9eK5iTH8wDmkrgY7MmVCCn' alt='نماد اعتماد الکترونیکی' style='cursor:pointer' code='DkrrjsLDcX9eK5iTH8wDmkrgY7MmVCCn'>
             </a>
@@ -804,20 +325,11 @@
   </footer>
 
   <script>
-    document.querySelectorAll('.service-card').forEach(card => {
-      card.addEventListener('mouseenter', function(e) {
-        this.style.transition = 'all 0.35s cubic-bezier(0.23, 1, 0.32, 1)';
-      });
-    });
-
     document.querySelector('.logo').addEventListener('click', function(e) {
       e.preventDefault();
       const icon = this.querySelector('.logo-icon');
       icon.style.transform = 'rotate(360deg) scale(1.3)';
-      setTimeout(() => { 
-        icon.style.transform = '';
-        window.location.href = 'index.html';
-      }, 500);
+      setTimeout(() => { icon.style.transform = ''; window.location.href = 'index.html'; }, 500);
     });
   </script>
 </body>
