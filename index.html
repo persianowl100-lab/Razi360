@@ -11,9 +11,7 @@
     body {
       font-family: 'Vazirmatn', sans-serif;
       background: linear-gradient(145deg, #1a140c 0%, #241e14 40%, #2b2113 100%);
-      color: #f7efe2;
-      line-height: 1.7;
-      overflow-x: hidden;
+      color: #f7efe2; line-height: 1.7; overflow-x: hidden;
     }
     .container { max-width: 1300px; margin: 0 auto; padding: 0 24px; }
     
@@ -36,18 +34,15 @@
     }
     .nav-links { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
     .nav-item {
-      text-decoration: none; color: #f5e1c0; font-weight: 600;
-      padding: 12px 20px; border-radius: 40px; position: relative;
-      transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
-      background: transparent; display: flex; align-items: center; gap: 6px; font-size: 1rem;
+      text-decoration: none; color: #f5e1c0; font-weight: 600; padding: 12px 20px; border-radius: 40px;
+      transition: all 0.35s; background: transparent; display: flex; align-items: center; gap: 6px; font-size: 1rem;
     }
     .nav-item i { font-size: 1.1rem; transition: transform 0.3s; }
     .nav-item:hover { color: #fff7e6; background: rgba(255, 160, 30, 0.1); transform: translateY(-3px); box-shadow: 0 15px 25px -10px rgba(255, 140, 0, 0.4); }
     .nav-item:hover i { transform: translateY(-2px) scale(1.2); color: #ffb347; }
     .store-btn {
       background: linear-gradient(135deg, #f4a261, #e67e22) !important;
-      color: #1a140c !important; font-weight: 800;
-      box-shadow: 0 8px 20px rgba(230, 126, 34, 0.5); border: none;
+      color: #1a140c !important; font-weight: 800; box-shadow: 0 8px 20px rgba(230, 126, 34, 0.5); border: none !important;
     }
     .store-btn:hover { background: linear-gradient(135deg, #f5b06e, #f08c2e) !important; box-shadow: 0 15px 30px rgba(255, 160, 20, 0.7); }
 
@@ -94,23 +89,21 @@
     .service-card {
       background: rgba(40, 30, 18, 0.5); backdrop-filter: blur(14px); border-radius: 36px;
       padding: 35px 22px; text-align: center; border: 1px solid rgba(255, 180, 60, 0.25);
-      transition: all 0.45s cubic-bezier(0.2, 0.9, 0.4, 1); position: relative; overflow: hidden;
+      transition: all 0.45s; position: relative; overflow: hidden;
     }
     .service-card:hover { transform: translateY(-15px) scale(1.02); border-color: #ffa726; box-shadow: 0 35px 50px -20px rgba(255, 140, 0, 0.5); background: rgba(50, 35, 20, 0.7); }
     .service-icon { font-size: 3.2rem; color: #ffb347; margin-bottom: 20px; transition: transform 0.4s; }
     .service-card:hover .service-icon { transform: rotateY(180deg) scale(1.2); text-shadow: 0 0 30px #f59e0b; }
     .service-card h3 { font-size: 1.5rem; margin-bottom: 12px; color: #fff0db; }
     .service-card p { color: #d6b588; }
-
-    /* دکمه مشاهده همه خدمات */
     .services-cta { text-align: center; margin: 30px 0 50px; }
 
-    /* دوره‌های آموزشی */
+    /* دوره‌ها */
     .courses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
     .course-card {
       background: rgba(40, 30, 18, 0.5); backdrop-filter: blur(14px); border-radius: 28px;
       padding: 30px; border: 1px solid rgba(255, 180, 60, 0.2);
-      transition: all 0.45s cubic-bezier(0.2, 0.9, 0.4, 1); display: flex; flex-direction: column;
+      transition: all 0.45s; display: flex; flex-direction: column;
     }
     .course-card:hover { transform: translateY(-12px); border-color: #ffa726; box-shadow: 0 30px 45px -20px rgba(255, 140, 0, 0.5); background: rgba(50, 35, 20, 0.75); }
     .course-icon-wrapper {
@@ -139,17 +132,82 @@
     .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 35px; }
     .footer-col { flex: 1 1 220px; }
     .footer-logo { font-size: 2rem; font-weight: 900; color: #f4a261; }
-    .enamad-box { margin-top: 20px; background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 15px; display: inline-block; border: 1px solid rgba(255, 180, 60, 0.3); transition: all 0.3s; }
+    .enamad-box {
+      margin-top: 20px; background: rgba(255, 255, 255, 0.05); border-radius: 15px;
+      padding: 15px; display: inline-block; border: 1px solid rgba(255, 180, 60, 0.3); transition: all 0.3s;
+    }
     .enamad-box:hover { background: rgba(255, 255, 255, 0.1); border-color: #f4a261; transform: scale(1.05); box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3); }
     .enamad-box img { width: 100px; height: auto; display: block; }
     .footer-links a { color: #cfb185; text-decoration: none; display: block; margin: 10px 0; transition: 0.3s; font-weight: 500; }
     .footer-links a:hover { color: #ffb347; transform: translateX(-8px); }
     .copyright { text-align: center; margin-top: 40px; color: #a6906c; }
 
+    /* ==================== پاپ‌آپ ==================== */
+    .popup-overlay {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(8px); z-index: 9999;
+      justify-content: center; align-items: center; padding: 20px;
+    }
+    .popup-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(50px) scale(0.9); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    
+    .popup-container {
+      background: linear-gradient(145deg, #241e14, #2b2113);
+      border: 2px solid rgba(255, 180, 60, 0.4); border-radius: 30px;
+      padding: 45px 35px 35px; max-width: 480px; width: 100%; text-align: center;
+      position: relative; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 167, 38, 0.2);
+      animation: slideUp 0.5s cubic-bezier(0.23, 1, 0.32, 1); font-family: 'Vazirmatn', sans-serif;
+    }
+    .popup-close {
+      position: absolute; top: 15px; left: 15px; background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2); color: #cdb088; width: 40px; height: 40px;
+      border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: flex;
+      align-items: center; justify-content: center; transition: all 0.3s ease; z-index: 2;
+    }
+    .popup-close:hover { background: rgba(255, 80, 80, 0.3); border-color: #ff5050; color: #ff6b6b; transform: rotate(90deg); }
+    
+    .popup-icon {
+      width: 80px; height: 80px; background: linear-gradient(135deg, rgba(255, 167, 38, 0.3), rgba(245, 124, 0, 0.2));
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px; border: 2px solid rgba(255, 180, 60, 0.5); animation: giftBounce 2s infinite;
+    }
+    .popup-icon i { font-size: 2.5rem; color: #ffb347; }
+    @keyframes giftBounce { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+    
+    .popup-title {
+      font-size: 1.8rem; font-weight: 900;
+      background: linear-gradient(to left, #ffd166, #f4a261, #ffb347);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 5px;
+    }
+    .popup-subtitle { color: #cdb088; font-size: 1.1rem; margin-bottom: 25px; font-weight: 600; }
+    
+    .popup-features { text-align: right; margin-bottom: 30px; padding: 0 10px; }
+    .popup-feature { display: flex; align-items: center; gap: 12px; padding: 10px 0; color: #c4a87c; font-size: 0.95rem; border-bottom: 1px solid rgba(255, 180, 60, 0.1); }
+    .popup-feature:hover { color: #f4a261; transform: translateX(-5px); }
+    .popup-feature i { color: #4CAF50; font-size: 1.1rem; flex-shrink: 0; }
+    
+    .popup-download-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; padding: 16px 30px; border-radius: 50px; font-weight: 800; font-size: 1.1rem;
+      font-family: 'Vazirmatn', sans-serif; background: linear-gradient(135deg, #4CAF50, #2E7D32);
+      color: white; text-decoration: none; transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4); position: relative; overflow: hidden;
+    }
+    .popup-download-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(76, 175, 80, 0.6); background: linear-gradient(135deg, #43A047, #1B5E20); }
+    .popup-download-btn i { font-size: 1.3rem; animation: downloadBounce 1.5s infinite; }
+    @keyframes downloadBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+    .popup-note { color: #a6906c; font-size: 0.8rem; margin-top: 15px; }
+
     @media (max-width: 768px) {
       header { flex-direction: column; gap: 20px; border-radius: 40px; }
       .hero-title { font-size: 2.6rem; }
       .courses-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 500px) {
+      .popup-container { padding: 35px 20px 25px; border-radius: 20px; }
+      .popup-title { font-size: 1.4rem; }
+      .popup-download-btn { font-size: 0.95rem; padding: 14px 20px; }
     }
   </style>
 </head>
@@ -210,7 +268,6 @@
       </div>
     </div>
     
-    <!-- دکمه مشاهده همه خدمات (زیر ۴ باکس) -->
     <div class="services-cta">
       <a href="pages/services.html" class="btn btn-outline" style="font-size: 1.2rem; padding: 16px 38px;">
         <i class="fas fa-arrow-left"></i> مشاهده همه خدمات
@@ -324,7 +381,81 @@
     </div>
   </footer>
 
+  <!-- ==================== پاپ‌آپ دانلود ==================== -->
+  <div id="download-popup" class="popup-overlay">
+    <div class="popup-container">
+      <button class="popup-close" onclick="closePopup()">
+        <i class="fas fa-times"></i>
+      </button>
+      
+      <div class="popup-icon">
+        <i class="fas fa-gift"></i>
+      </div>
+      
+      <h2 class="popup-title">🎁 هدیه ویژه برای شما!</h2>
+      <p class="popup-subtitle">جدول برنامه‌ریزی هوشمند روزانه</p>
+      
+      <div class="popup-features">
+        <div class="popup-feature">
+          <i class="fas fa-check-circle"></i>
+          <span>برنامه‌ریزی ساعتی و روزانه</span>
+        </div>
+        <div class="popup-feature">
+          <i class="fas fa-check-circle"></i>
+          <span>اولویت‌بندی هوشمند وظایف</span>
+        </div>
+        <div class="popup-feature">
+          <i class="fas fa-check-circle"></i>
+          <span>قابل پرینت و استفاده روزانه</span>
+        </div>
+        <div class="popup-feature">
+          <i class="fas fa-check-circle"></i>
+          <span>طراحی شده توسط تیم رازی ۳۶۰</span>
+        </div>
+      </div>
+      
+      <!-- 🔗 لینک به صفحه smart-planner.html -->
+      <a href="pages/smart-planner.html" class="popup-download-btn">
+        <i class="fas fa-download"></i>
+        دانلود رایگان جدول برنامه‌ریزی
+      </a>
+      
+      <p class="popup-note">با کلیک روی دکمه بالا، به صفحه دانلود هدایت می‌شوید</p>
+    </div>
+  </div>
+
   <script>
+    // نمایش پاپ‌آپ بعد از ۲ ثانیه
+    function showPopup() {
+      const popup = document.getElementById('download-popup');
+      if (popup) {
+        setTimeout(() => { popup.classList.add('active'); }, 2000);
+      }
+    }
+
+    // بستن پاپ‌آپ
+    function closePopup() {
+      const popup = document.getElementById('download-popup');
+      if (popup) { popup.classList.remove('active'); }
+    }
+
+    // بستن با کلیک روی فضای خارج
+    document.addEventListener('click', function(e) {
+      const popup = document.getElementById('download-popup');
+      if (e.target === popup) { closePopup(); }
+    });
+
+    // بستن با کلید Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') { closePopup(); }
+    });
+
+    // اجرا هنگام لود صفحه
+    document.addEventListener('DOMContentLoaded', function() {
+      showPopup();
+    });
+
+    // انیمیشن لوگو
     document.querySelector('.logo').addEventListener('click', function(e) {
       e.preventDefault();
       const icon = this.querySelector('.logo-icon');
