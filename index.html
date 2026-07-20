@@ -24,7 +24,6 @@
       letter-spacing: 0.2px;
     }
 
-    /* المان‌های شیشه‌ای با تم نارنجی ملایم */
     .glass {
       background: rgba(30, 24, 16, 0.7);
       backdrop-filter: blur(18px);
@@ -39,7 +38,6 @@
       padding: 0 24px;
     }
 
-    /* هدر */
     header {
       display: flex;
       align-items: center;
@@ -162,7 +160,6 @@
       color: #0d0a05 !important;
     }
 
-    /* بخش اصلی Hero */
     .hero {
       display: flex;
       align-items: center;
@@ -289,7 +286,7 @@
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 30px;
       margin-bottom: 70px;
     }
@@ -353,7 +350,7 @@
       color: #d6b588;
     }
 
-    /* بخش دوره‌های آموزشی */
+    /* دوره‌های آموزشی */
     .courses-section {
       margin: 70px 0;
       padding: 50px 0;
@@ -589,7 +586,7 @@
 </head>
 <body>
   <div class="container">
-    <!-- هدر با دکمه فروشگاه -->
+    <!-- هدر -->
     <header class="glass">
       <a href="index.html" class="logo">
         <i class="fas fa-brain logo-icon"></i>
@@ -604,7 +601,7 @@
       </div>
     </header>
 
-    <!-- بخش Hero -->
+    <!-- هیرو -->
     <section class="hero">
       <div class="hero-content">
         <h1 class="hero-title">آینده هوش مصنوعی، امروز در رازی ۳۶۰</h1>
@@ -623,23 +620,23 @@
       </div>
     </section>
 
-    <!-- خدمات -->
-    <h2 class="section-title">خدمات برتر هوش مصنوعی</h2>
+    <!-- خدمات جدید -->
+    <h2 class="section-title">خدمات تخصصی رازی ۳۶۰</h2>
     <div class="services-grid">
       <div class="service-card">
-        <i class="fas fa-comments service-icon"></i>
-        <h3>چت‌بات هوشمند</h3>
-        <p>طراحی دستیار مجازی با پردازش زبان طبیعی فارسی برای کسب‌وکارها.</p>
+        <i class="fas fa-graduation-cap service-icon"></i>
+        <h3>دستیار آموزشی هوشمند</h3>
+        <p>همراه تحصیلی مبتنی بر هوش مصنوعی برای دانشجویان و دانش‌آموزان؛ از حل تمرین تا برنامه‌ریزی درسی.</p>
       </div>
       <div class="service-card">
-        <i class="fas fa-image service-icon"></i>
-        <h3>بینایی ماشین</h3>
-        <p>تشخیص تصویر، تحلیل ویدئو و نظارت هوشمند با دقت بالا.</p>
+        <i class="fas fa-balance-scale service-icon"></i>
+        <h3>وکیل هوش مصنوعی</h3>
+        <p>مشاوره حقوقی آنلاین، تحلیل پرونده‌ها و تنظیم لوایح با کمک هوش مصنوعی.</p>
       </div>
       <div class="service-card">
-        <i class="fas fa-chart-line service-icon"></i>
-        <h3>تحلیل داده</h3>
-        <p>پیش‌بینی و داده‌کاوی پیشرفته برای تصمیم‌گیری بهتر.</p>
+        <i class="fas fa-code service-icon"></i>
+        <h3>پرامپت‌ها و کدهای کاربردی</h3>
+        <p>ارائه پرامپت‌های آماده و کدهای اختصاصی برای چت‌بات‌ها و مدل‌های هوش مصنوعی.</p>
       </div>
       <div class="service-card">
         <i class="fas fa-cloud service-icon"></i>
@@ -648,16 +645,16 @@
       </div>
     </div>
 
-    <!-- 🆕 بخش دوره‌های آموزشی هوش مصنوعی -->
+    <!-- 🆕 دوره‌های آموزشی کاربردی -->
     <div class="courses-section">
       <h2 class="section-title">🎓 دوره‌های آموزشی هوش مصنوعی</h2>
       <p style="text-align: center; color: #cdb088; font-size: 1.1rem; margin-bottom: 20px;">
-        از مبتدی تا پیشرفته، مسیر یادگیری هوش مصنوعی را با بهترین اساتید طی کنید
+        کار با قدرتمندترین مدل‌های هوش مصنوعی را به‌صورت عملی یاد بگیرید
       </p>
       
       <div class="courses-grid">
         
-        <!-- دوره ۱ -->
+        <!-- دوره مقدماتی -->
         <div class="course-card">
           <div class="course-icon-wrapper">
             <i class="fas fa-robot course-icon"></i>
@@ -677,100 +674,80 @@
           </a>
         </div>
 
-        <!-- دوره ۲ -->
+        <!-- دوره چت جی پی تی -->
         <div class="course-card">
           <div class="course-icon-wrapper">
-            <i class="fas fa-brain course-icon"></i>
+            <i class="fas fa-comment-dots course-icon"></i>
           </div>
-          <span class="course-level">🚀 پیشرفته</span>
-          <h3 class="course-title">یادگیری عمیق و شبکه‌های عصبی</h3>
+          <span class="course-level">💬 کاربردی</span>
+          <h3 class="course-title">کار با ChatGPT و پرامپت نویسی</h3>
           <p class="course-description">
-            آموزش تخصصی Deep Learning با TensorFlow و PyTorch، پیاده‌سازی شبکه‌های CNN، RNN و Transformer
+            آموزش کامل کار با چت جی پی تی، نوشتن پرامپت‌های حرفه‌ای و استفاده از نسخه‌های رایگان و پولی
           </p>
           <div class="course-details">
-            <span><i class="fas fa-clock"></i> ۶۴ ساعت</span>
-            <span><i class="fas fa-video"></i> ۴۰ جلسه</span>
-            <span><i class="fas fa-user-graduate"></i> ۱,۸۹۰ نفر</span>
+            <span><i class="fas fa-clock"></i> ۲۰ ساعت</span>
+            <span><i class="fas fa-video"></i> ۱۴ جلسه</span>
+            <span><i class="fas fa-user-graduate"></i> ۱,۸۵۰ نفر</span>
           </div>
           <a href="#" class="btn-course">
             <i class="fas fa-arrow-left"></i> مشاهده دوره
           </a>
         </div>
 
-        <!-- دوره ۳ -->
+        <!-- دوره دیپ سیک -->
         <div class="course-card">
           <div class="course-icon-wrapper">
-            <i class="fas fa-language course-icon"></i>
+            <i class="fas fa-search course-icon"></i>
           </div>
-          <span class="course-level">💡 متوسط</span>
-          <h3 class="course-title">پردازش زبان طبیعی (NLP)</h3>
+          <span class="course-level">🔍 کاربردی</span>
+          <h3 class="course-title">راهنمای جامع DeepSeek</h3>
           <p class="course-description">
-            آموزش کامل پردازش متن فارسی و انگلیسی، ساخت چت‌بات، تحلیل احساسات و مدل‌های زبانی بزرگ (LLM)
+            نصب، تنظیم و استفاده از دیپ سیک روی سیستم شخصی و سرور، مقایسه با مدل‌های دیگر و بهینه‌سازی پاسخ‌ها
           </p>
           <div class="course-details">
-            <span><i class="fas fa-clock"></i> ۵۶ ساعت</span>
-            <span><i class="fas fa-video"></i> ۳۶ جلسه</span>
-            <span><i class="fas fa-user-graduate"></i> ۱,۵۶۰ نفر</span>
+            <span><i class="fas fa-clock"></i> ۱۶ ساعت</span>
+            <span><i class="fas fa-video"></i> ۱۰ جلسه</span>
+            <span><i class="fas fa-user-graduate"></i> ۱,۲۳۰ نفر</span>
           </div>
           <a href="#" class="btn-course">
             <i class="fas fa-arrow-left"></i> مشاهده دوره
           </a>
         </div>
 
-        <!-- دوره ۴ -->
+        <!-- دوره جمینای -->
         <div class="course-card">
           <div class="course-icon-wrapper">
-            <i class="fas fa-chart-bar course-icon"></i>
+            <i class="fas fa-gem course-icon"></i>
           </div>
-          <span class="course-level">📊 کاربردی</span>
-          <h3 class="course-title">علم داده و تحلیل پیشرفته</h3>
+          <span class="course-level">✨ کاربردی</span>
+          <h3 class="course-title">Google Gemini از مبتدی تا پیشرفته</h3>
           <p class="course-description">
-            تسلط بر ابزارهای Data Science، آمار و احتمال، مصورسازی داده‌ها و پیاده‌سازی پروژه‌های واقعی
+            آشنایی با قابلیت‌های جمینای گوگل، کار با نسخه‌های مختلف و ادغام با سرویس‌های گوگل
           </p>
           <div class="course-details">
-            <span><i class="fas fa-clock"></i> ۵۲ ساعت</span>
-            <span><i class="fas fa-video"></i> ۳۴ جلسه</span>
-            <span><i class="fas fa-user-graduate"></i> ۲,۱۲۰ نفر</span>
+            <span><i class="fas fa-clock"></i> ۱۸ ساعت</span>
+            <span><i class="fas fa-video"></i> ۱۲ جلسه</span>
+            <span><i class="fas fa-user-graduate"></i> ۹۸۰ نفر</span>
           </div>
           <a href="#" class="btn-course">
             <i class="fas fa-arrow-left"></i> مشاهده دوره
           </a>
         </div>
 
-        <!-- دوره ۵ -->
+        <!-- دوره خرید اکانت -->
         <div class="course-card">
           <div class="course-icon-wrapper">
-            <i class="fas fa-eye course-icon"></i>
+            <i class="fas fa-credit-card course-icon"></i>
           </div>
-          <span class="course-level">🎯 تخصصی</span>
-          <h3 class="course-title">بینایی کامپیوتر و پردازش تصویر</h3>
+          <span class="course-level">💳 خرید اکانت</span>
+          <h3 class="course-title">خرید دلاری اکانت رسمی از ایران</h3>
           <p class="course-description">
-            آموزش تشخیص اشیاء، چهره، پلاک خودرو و پیاده‌سازی سیستم‌های نظارت تصویری هوشمند با OpenCV
+            راهنمای کامل خرید اشتراک ChatGPT Plus، DeepSeek Pro، Gemini Advanced و سایر مدل‌ها با پرداخت دلاری از ایران
           </p>
           <div class="course-details">
-            <span><i class="fas fa-clock"></i> ۶۰ ساعت</span>
-            <span><i class="fas fa-video"></i> ۳۸ جلسه</span>
-            <span><i class="fas fa-user-graduate"></i> ۱,۳۴۰ نفر</span>
-          </div>
-          <a href="#" class="btn-course">
-            <i class="fas fa-arrow-left"></i> مشاهده دوره
-          </a>
-        </div>
-
-        <!-- دوره ۶ -->
-        <div class="course-card">
-          <div class="course-icon-wrapper">
-            <i class="fas fa-graduation-cap course-icon"></i>
-          </div>
-          <span class="course-level">🏆 جامع</span>
-          <h3 class="course-title">دوره جامع هوش مصنوعی (VIP)</h3>
-          <p class="course-description">
-            پکیج کامل صفر تا صد هوش مصنوعی شامل تمام مباحث بالا + منتورینگ اختصاصی و پروژه‌های عملی
-          </p>
-          <div class="course-details">
-            <span><i class="fas fa-clock"></i> ۲۰۰ ساعت</span>
-            <span><i class="fas fa-video"></i> ۱۲۰ جلسه</span>
-            <span><i class="fas fa-user-graduate"></i> ۸۹۰ نفر</span>
+            <span><i class="fas fa-clock"></i> ۸ ساعت</span>
+            <span><i class="fas fa-video"></i> ۶ جلسه</span>
+            <span><i class="fas fa-user-graduate"></i> ۲,۵۶۰ نفر</span>
           </div>
           <a href="#" class="btn-course">
             <i class="fas fa-arrow-left"></i> مشاهده دوره
@@ -791,7 +768,7 @@
     </div>
   </div>
 
-  <!-- فوتر با اینماد رسمی -->
+  <!-- فوتر -->
   <footer>
     <div class="container">
       <div class="footer-content">
