@@ -8,10 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- فونت وزیرمتن (Vazirmatn) - فونت مدرن و جذاب فارسی -->
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-  <!-- جلوگیری از کش شدن -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
   <style>
     * {
       margin: 0;
@@ -357,6 +353,160 @@
       color: #d6b588;
     }
 
+    /* بخش دوره‌های آموزشی */
+    .courses-section {
+      margin: 70px 0;
+      padding: 50px 0;
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .course-card {
+      background: rgba(40, 30, 18, 0.5);
+      backdrop-filter: blur(14px);
+      border-radius: 28px;
+      padding: 30px;
+      border: 1px solid rgba(255, 180, 60, 0.2);
+      transition: all 0.45s cubic-bezier(0.2, 0.9, 0.4, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .course-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #ffa726, #f57c00, #ffb347);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.5s ease;
+    }
+
+    .course-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .course-card:hover {
+      transform: translateY(-12px);
+      border-color: #ffa726;
+      box-shadow: 0 30px 45px -20px rgba(255, 140, 0, 0.5);
+      background: rgba(50, 35, 20, 0.75);
+    }
+
+    .course-icon-wrapper {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, rgba(255, 167, 38, 0.2), rgba(245, 124, 0, 0.1));
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255, 180, 60, 0.3);
+      transition: all 0.4s ease;
+    }
+
+    .course-card:hover .course-icon-wrapper {
+      background: linear-gradient(135deg, rgba(255, 167, 38, 0.4), rgba(245, 124, 0, 0.2));
+      transform: rotate(-5deg) scale(1.05);
+      box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3);
+    }
+
+    .course-icon {
+      font-size: 2.2rem;
+      color: #ffb347;
+      transition: transform 0.4s;
+    }
+
+    .course-card:hover .course-icon {
+      transform: scale(1.2);
+    }
+
+    .course-level {
+      display: inline-block;
+      background: rgba(255, 167, 38, 0.15);
+      color: #f4a261;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+
+    .course-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff0db;
+      margin-bottom: 10px;
+    }
+
+    .course-description {
+      color: #bda16b;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      line-height: 1.7;
+      flex-grow: 1;
+    }
+
+    .course-details {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      font-size: 0.85rem;
+      color: #cdb088;
+    }
+
+    .course-details span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .course-details i {
+      color: #f4a261;
+    }
+
+    .btn-course {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      font-family: 'Vazirmatn', sans-serif;
+      background: linear-gradient(135deg, #f4a261, #e67e22);
+      color: #1a140c;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-course:hover {
+      background: linear-gradient(135deg, #f5b06e, #f08c2e);
+      box-shadow: 0 10px 25px rgba(230, 126, 34, 0.5);
+      transform: translateY(-3px);
+    }
+
+    .courses-cta {
+      text-align: center;
+      margin-top: 50px;
+    }
+
     footer {
       background: rgba(20, 15, 8, 0.8);
       backdrop-filter: blur(25px);
@@ -431,6 +581,9 @@
       .hero-title {
         font-size: 2.6rem;
       }
+      .courses-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -438,16 +591,16 @@
   <div class="container">
     <!-- هدر با دکمه فروشگاه -->
     <header class="glass">
-      <a href="index.html?v=2" class="logo">
+      <a href="index.html" class="logo">
         <i class="fas fa-brain logo-icon"></i>
         <span class="logo-text">رازی ۳۶۰</span>
       </a>
       <div class="nav-links">
-        <a href="index.html?v=2" class="nav-item"><i class="fas fa-home"></i> صفحه اصلی</a>
-        <a href="pages/services.html?v=2" class="nav-item"><i class="fas fa-cogs"></i> خدمات</a>
-        <a href="pages/about.html?v=2" class="nav-item"><i class="fas fa-info-circle"></i> درباره ما</a>
-        <a href="pages/contact.html?v=2" class="nav-item"><i class="fas fa-envelope"></i> تماس با ما</a>
-        <a href="pages/shop.html?v=2" class="nav-item store-btn"><i class="fas fa-shopping-cart"></i> فروشگاه</a>
+        <a href="index.html" class="nav-item"><i class="fas fa-home"></i> صفحه اصلی</a>
+        <a href="pages/services.html" class="nav-item"><i class="fas fa-cogs"></i> خدمات</a>
+        <a href="pages/about.html" class="nav-item"><i class="fas fa-info-circle"></i> درباره ما</a>
+        <a href="pages/contact.html" class="nav-item"><i class="fas fa-envelope"></i> تماس با ما</a>
+        <a href="pages/shop.html" class="nav-item store-btn"><i class="fas fa-shopping-cart"></i> فروشگاه</a>
       </div>
     </header>
 
@@ -459,8 +612,8 @@
           راه‌حل‌های هوشمند رایانه‌ای، اتوماسیون پیشرفته، طراحی ربات‌های مجازی و خدمات یادگیری ماشین. تحول دیجیتال را با ما تجربه کنید.
         </p>
         <div class="cta-group">
-          <a href="pages/get-started.html?v=2" class="btn btn-primary"><i class="fas fa-rocket"></i> شروع رایگان</a>
-          <a href="pages/shop.html?v=2" class="btn btn-outline"><i class="fas fa-store"></i> ورود به فروشگاه</a>
+          <a href="pages/get-started.html" class="btn btn-primary"><i class="fas fa-rocket"></i> شروع رایگان</a>
+          <a href="pages/shop.html" class="btn btn-outline"><i class="fas fa-store"></i> ورود به فروشگاه</a>
         </div>
       </div>
       <div class="hero-visual">
@@ -495,8 +648,146 @@
       </div>
     </div>
 
+    <!-- 🆕 بخش دوره‌های آموزشی هوش مصنوعی -->
+    <div class="courses-section">
+      <h2 class="section-title">🎓 دوره‌های آموزشی هوش مصنوعی</h2>
+      <p style="text-align: center; color: #cdb088; font-size: 1.1rem; margin-bottom: 20px;">
+        از مبتدی تا پیشرفته، مسیر یادگیری هوش مصنوعی را با بهترین اساتید طی کنید
+      </p>
+      
+      <div class="courses-grid">
+        
+        <!-- دوره ۱ -->
+        <div class="course-card">
+          <div class="course-icon-wrapper">
+            <i class="fas fa-robot course-icon"></i>
+          </div>
+          <span class="course-level">🎯 مقدماتی</span>
+          <h3 class="course-title">مبانی هوش مصنوعی و یادگیری ماشین</h3>
+          <p class="course-description">
+            آشنایی کامل با مفاهیم پایه هوش مصنوعی، الگوریتم‌های یادگیری ماشین و پیاده‌سازی پروژه‌های عملی با پایتون
+          </p>
+          <div class="course-details">
+            <span><i class="fas fa-clock"></i> ۴۸ ساعت</span>
+            <span><i class="fas fa-video"></i> ۳۲ جلسه</span>
+            <span><i class="fas fa-user-graduate"></i> ۲,۳۴۰ نفر</span>
+          </div>
+          <a href="#" class="btn-course">
+            <i class="fas fa-arrow-left"></i> مشاهده دوره
+          </a>
+        </div>
+
+        <!-- دوره ۲ -->
+        <div class="course-card">
+          <div class="course-icon-wrapper">
+            <i class="fas fa-brain course-icon"></i>
+          </div>
+          <span class="course-level">🚀 پیشرفته</span>
+          <h3 class="course-title">یادگیری عمیق و شبکه‌های عصبی</h3>
+          <p class="course-description">
+            آموزش تخصصی Deep Learning با TensorFlow و PyTorch، پیاده‌سازی شبکه‌های CNN، RNN و Transformer
+          </p>
+          <div class="course-details">
+            <span><i class="fas fa-clock"></i> ۶۴ ساعت</span>
+            <span><i class="fas fa-video"></i> ۴۰ جلسه</span>
+            <span><i class="fas fa-user-graduate"></i> ۱,۸۹۰ نفر</span>
+          </div>
+          <a href="#" class="btn-course">
+            <i class="fas fa-arrow-left"></i> مشاهده دوره
+          </a>
+        </div>
+
+        <!-- دوره ۳ -->
+        <div class="course-card">
+          <div class="course-icon-wrapper">
+            <i class="fas fa-language course-icon"></i>
+          </div>
+          <span class="course-level">💡 متوسط</span>
+          <h3 class="course-title">پردازش زبان طبیعی (NLP)</h3>
+          <p class="course-description">
+            آموزش کامل پردازش متن فارسی و انگلیسی، ساخت چت‌بات، تحلیل احساسات و مدل‌های زبانی بزرگ (LLM)
+          </p>
+          <div class="course-details">
+            <span><i class="fas fa-clock"></i> ۵۶ ساعت</span>
+            <span><i class="fas fa-video"></i> ۳۶ جلسه</span>
+            <span><i class="fas fa-user-graduate"></i> ۱,۵۶۰ نفر</span>
+          </div>
+          <a href="#" class="btn-course">
+            <i class="fas fa-arrow-left"></i> مشاهده دوره
+          </a>
+        </div>
+
+        <!-- دوره ۴ -->
+        <div class="course-card">
+          <div class="course-icon-wrapper">
+            <i class="fas fa-chart-bar course-icon"></i>
+          </div>
+          <span class="course-level">📊 کاربردی</span>
+          <h3 class="course-title">علم داده و تحلیل پیشرفته</h3>
+          <p class="course-description">
+            تسلط بر ابزارهای Data Science، آمار و احتمال، مصورسازی داده‌ها و پیاده‌سازی پروژه‌های واقعی
+          </p>
+          <div class="course-details">
+            <span><i class="fas fa-clock"></i> ۵۲ ساعت</span>
+            <span><i class="fas fa-video"></i> ۳۴ جلسه</span>
+            <span><i class="fas fa-user-graduate"></i> ۲,۱۲۰ نفر</span>
+          </div>
+          <a href="#" class="btn-course">
+            <i class="fas fa-arrow-left"></i> مشاهده دوره
+          </a>
+        </div>
+
+        <!-- دوره ۵ -->
+        <div class="course-card">
+          <div class="course-icon-wrapper">
+            <i class="fas fa-eye course-icon"></i>
+          </div>
+          <span class="course-level">🎯 تخصصی</span>
+          <h3 class="course-title">بینایی کامپیوتر و پردازش تصویر</h3>
+          <p class="course-description">
+            آموزش تشخیص اشیاء، چهره، پلاک خودرو و پیاده‌سازی سیستم‌های نظارت تصویری هوشمند با OpenCV
+          </p>
+          <div class="course-details">
+            <span><i class="fas fa-clock"></i> ۶۰ ساعت</span>
+            <span><i class="fas fa-video"></i> ۳۸ جلسه</span>
+            <span><i class="fas fa-user-graduate"></i> ۱,۳۴۰ نفر</span>
+          </div>
+          <a href="#" class="btn-course">
+            <i class="fas fa-arrow-left"></i> مشاهده دوره
+          </a>
+        </div>
+
+        <!-- دوره ۶ -->
+        <div class="course-card">
+          <div class="course-icon-wrapper">
+            <i class="fas fa-graduation-cap course-icon"></i>
+          </div>
+          <span class="course-level">🏆 جامع</span>
+          <h3 class="course-title">دوره جامع هوش مصنوعی (VIP)</h3>
+          <p class="course-description">
+            پکیج کامل صفر تا صد هوش مصنوعی شامل تمام مباحث بالا + منتورینگ اختصاصی و پروژه‌های عملی
+          </p>
+          <div class="course-details">
+            <span><i class="fas fa-clock"></i> ۲۰۰ ساعت</span>
+            <span><i class="fas fa-video"></i> ۱۲۰ جلسه</span>
+            <span><i class="fas fa-user-graduate"></i> ۸۹۰ نفر</span>
+          </div>
+          <a href="#" class="btn-course">
+            <i class="fas fa-arrow-left"></i> مشاهده دوره
+          </a>
+        </div>
+
+      </div>
+
+      <div class="courses-cta">
+        <a href="pages/courses.html" class="btn btn-outline" style="font-size: 1.2rem; padding: 18px 40px;">
+          <i class="fas fa-arrow-left"></i> مشاهده همه دوره‌های آموزشی
+        </a>
+      </div>
+    </div>
+
     <div style="display: flex; justify-content: center; margin: 30px 0 50px;">
-      <a href="pages/services.html?v=2" class="btn btn-outline" style="font-size: 1.2rem;"><i class="fas fa-arrow-left"></i> مشاهده همه خدمات</a>
+      <a href="pages/services.html" class="btn btn-outline" style="font-size: 1.2rem;"><i class="fas fa-arrow-left"></i> مشاهده همه خدمات</a>
     </div>
   </div>
 
@@ -515,10 +806,10 @@
         </div>
         <div class="footer-col footer-links">
           <h4 style="color: #ffcd94; margin-bottom: 15px;">دسترسی سریع</h4>
-          <a href="pages/shop.html?v=2"><i class="fas fa-chevron-left"></i> فروشگاه محصولات</a>
-          <a href="pages/contact.html?v=2"><i class="fas fa-chevron-left"></i> پشتیبانی آنلاین</a>
-          <a href="pages/services.html?v=2"><i class="fas fa-chevron-left"></i> پروژه‌های اخیر</a>
-          <a href="pages/blog.html?v=2"><i class="fas fa-chevron-left"></i> وبلاگ</a>
+          <a href="pages/shop.html"><i class="fas fa-chevron-left"></i> فروشگاه محصولات</a>
+          <a href="pages/courses.html"><i class="fas fa-chevron-left"></i> دوره‌های آموزشی</a>
+          <a href="pages/contact.html"><i class="fas fa-chevron-left"></i> پشتیبانی آنلاین</a>
+          <a href="pages/blog.html"><i class="fas fa-chevron-left"></i> وبلاگ</a>
         </div>
         <div class="footer-col footer-links">
           <h4 style="color: #ffcd94; margin-bottom: 15px;">اطلاعات تماس</h4>
@@ -546,7 +837,7 @@
       icon.style.transform = 'rotate(360deg) scale(1.3)';
       setTimeout(() => { 
         icon.style.transform = '';
-        window.location.href = 'index.html?v=2';
+        window.location.href = 'index.html';
       }, 500);
     });
   </script>
