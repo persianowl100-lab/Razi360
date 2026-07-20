@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول‌ساز آزاد | برنامه دلخواه | قابل ویرایش کامل</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazir', 'Tahoma', 'Segoe UI', sans-serif;
+            background: #e9eef3;
+            padding: 30px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            direction: rtl;
+        }
+
+        .builder {
+            max-width: 1400px;
+            width: 100%;
+            background: white;
+            border-radius: 48px;
+            box-shadow: 0 30px 60px rgba(0, 10, 30, 0.12);
+            padding: 30px;
+        }
+
+        /* سربرگ اصلی */
+        .master-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .title-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            flex: 2;
+        }
+
+        .title-section input {
+            border: 2px solid #cbd5e1;
+            border-radius: 40px;
+            padding: 16px 25px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: #fbfdff;
+            min-width: 280px;
+            flex: 1;
+            font-family: inherit;
+        }
+
+        .title-section input:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(37,99,235,0.15);
+        }
+
+        .global-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .global-btn {
+            background: white;
+            border: 1px solid #a5bbd9;
+            padding: 14px 26px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #1e3a6b;
+            cursor: pointer;
+            transition: 0.15s;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+        }
+
+        .global-btn:hover {
+            background: #dfeafd;
+            border-color: #3c6eb0;
+            transform: scale(1.02);
+        }
+
+        .global-btn.danger {
+            background: #fff0ee;
+            border-color: #e2b9b9;
+            color: #aa3030;
+        }
+
+        /* کنترل‌های اصلی جدول */
+        .dimension-controls {
+            background: #f2f7fe;
+            border-radius: 60px;
+            padding: 20px 28px;
+            margin: 30px 0 25px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            border: 1px solid #bdd2ec;
+        }
+
+        .dimension-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 40px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .dimension-item label {
+            font-weight: 700;
+            color: #16345c;
+        }
+
+        .dimension-item input {
+            width: 80px;
+            padding: 12px 16px;
+            border: 1px solid #acc2e0;
+            border-radius: 30px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .dimension-item button {
+            background: #1f4e8c;
+            border: none;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.15s;
+            border: 1px solid #1f4e8c;
+        }
+
+        .dimension-item button:hover {
+            background: #0f3a66;
+        }
+
+        .inline-btn {
+            background: #e5edf9;
+            border: 1px solid #99b5db;
+            padding: 12px 22px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            color: #16345c;
+            transition: 0.1s;
+        }
+
+        .inline-btn:hover {
+            background: #cddff5;
+        }
+
+        /* قالب جدول */
+        .table-bay {
+            overflow-x: auto;
+            border-radius: 32px;
+            border: 2px solid #d5e0f0;
+            background: white;
+            margin: 30px 0 30px;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.03);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+            table-layout: fixed;
+        }
+
+        th, td {
+            border: 1px solid #c9d6ec;
+            padding: 0;
+            vertical-align: top;
+        }
+
+        th {
+            background: #1f4e8c;
+            color: white;
+            font-weight: 600;
+            padding: 18px 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .th-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .th-content input {
+            width: 90%;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 30px;
+            padding: 8px 12px;
+            color: white;
+            font-weight: 500;
+            text-align: center;
+            font-family: inherit;
+        }
+
+        .th-content input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .th-actions {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 5px;
+        }
+
+        .th-actions button {
+            background: rgba(255,255,255,0.25);
+            border: 1px solid rgba(255,255,255,0.6);
+            color: white;
+            border-radius: 30px;
+            padding: 5px 12px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            font-weight: 700;
+            transition: 0.1s;
+        }
+
+        .th-actions button:hover {
+            background: white;
+            color: #1f4e8c;
+        }
+
+        td:first-child, th:first-child {
+            width: 150px;
+        }
+
+        .row-header-cell {
+            background: #eaf1fd;
+            font-weight: 700;
+            color: #113355;
+            text-align: center;
+            vertical-align: middle;
+            position: relative;
+        }
+
+        .row-header-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            padding: 12px 5px;
+        }
+
+        .row-header-content input {
+            width: 90%;
+            border: 1px solid #a2bbda;
+            border-radius: 30px;
+            padding: 8px 12px;
+            background: white;
+            text-align: center;
+            font-weight: 600;
+            color: #0b2b48;
+            font-family: inherit;
+        }
+
+        .row-remove-btn {
+            background: #ffe2e2;
+            border: 1px solid #dc9f9f;
+            border-radius: 30px;
+            padding: 5px 12px;
+            color: #a52a2a;
+            font-weight: 700;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-top: 5px;
+            width: fit-content;
+        }
+
+        .editable-cell {
+            width: 100%;
+            min-height: 90px;
+            padding: 14px 12px;
+            border: none;
+            resize: vertical;
+            font-family: inherit;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            background: white;
+            transition: 0.1s;
+            overflow-y: auto;
+            cursor: text;
+        }
+
+        .editable-cell:focus {
+            outline: 2px solid #1f4e8c;
+            background: #fffef4;
+            border-radius: 16px;
+        }
+
+        /* فوتر و پرینت */
+        .master-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 35px;
+        }
+
+        .big-action {
+            padding: 16px 42px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            background: white;
+            box-shadow: 0 8px 18px rgba(0,20,40,0.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .big-action.print {
+            background: #0a253b;
+            color: white;
+        }
+
+        .big-action.save {
+            background: #1f4e8c;
+            color: white;
+        }
+
+        .big-action.reset {
+            background: #e3ebf5;
+            color: #16345c;
+        }
+
+        .big-action:hover {
+            transform: translateY(-4px);
+            filter: brightness(1.05);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #4d6a92;
+            font-size: 0.9rem;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0.2in;
+            }
+            .builder {
+                box-shadow: none;
+                padding: 0;
+            }
+            .dimension-controls, .master-actions, .global-actions, .th-actions, .row-remove-btn, footer {
+                display: none !important;
+            }
+            th {
+                background: #1f4e8c !important;
+                print-color-adjust: exact;
+            }
+            .row-header-cell {
+                background: #eaf1fd !important;
+                print-color-adjust: exact;
+            }
+            input {
+                border: none !important;
+                background: transparent !important;
+                color: black !important;
+                font-weight: 600;
+            }
+            .editable-cell {
+                border: none;
+                background: white;
+                padding: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="builder">
+    <!-- بخش عنوان اصلی دلخواه -->
+    <div class="master-header">
+        <div class="title-section">
+            <input type="text" id="mainTitleInput" value="جدول برنامه ریزی شخصی" placeholder="عنوان اصلی جدول ...">
+        </div>
+        <div class="global-actions">
+            <button class="global-btn" onclick="addCustomRow()">➕ افزودن سطر (ردیف)</button>
+            <button class="global-btn" onclick="addCustomColumn()">📌 افزودن ستون</button>
+            <button class="global-btn danger" onclick="removeLastRow()">✖ حذف آخرین سطر</button>
+            <button class="global-btn danger" onclick="removeLastColumn()">✖ حذف آخرین ستون</button>
+        </div>
+    </div>
+
+    <!-- کنترل سریع ابعاد: ساخت جدول با تعداد دلخواه سطر و ستون -->
+    <div class="dimension-controls">
+        <div class="dimension-item">
+            <label>تعداد سطرها:</label>
+            <input type="number" id="rowCount" min="1" max="30" value="5">
+        </div>
+        <div class="dimension-item">
+            <label>تعداد ستون‌ها:</label>
+            <input type="number" id="colCount" min="1" max="20" value="4">
+        </div>
+        <button class="inline-btn" onclick="buildTableFromInput()">🎯 ساخت جدول جدید</button>
+        <span style="color:#365a82;">(هر بار عنوان ستون و سطر دلخواه خود را بنویسید)</span>
+    </div>
+
+    <!-- محفظه جدول -->
+    <div class="table-bay" id="tableBay">
+        <table id="dynamicTable">
+            <thead id="tableHead">
+                <tr>
+                    <th><div class="th-content">عنوان سطرها <br> <input type="text" placeholder="مثلاً روز" value="روز"></div></th>
+                    <th><div class="th-content">ستون ۱ <br> <input type="text" placeholder="عنوان" value="صبح"><div class="th-actions"><button onclick="renameColumn(this)">تغییر نام</button></div></div></th>
+                    <th><div class="th-content">ستون ۲ <br> <input type="text" placeholder="عنوان" value="ظهر"><div class="th-actions"><button onclick="renameColumn(this)">تغییر نام</button></div></div></th>
+                    <th><div class="th-content">ستون ۳ <br> <input type="text" placeholder="عنوان" value="عصر"><div class="th-actions"><button onclick="renameColumn(this)">تغییر نام</button></div></div></th>
+                    <th><div class="th-content">ستون ۴ <br> <input type="text" placeholder="عنوان" value="شب"><div class="th-actions"><button onclick="renameColumn(this)">تغییر نام</button></div></div></th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!-- سطرها با JS پر می‌شوند -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- دکمه‌های نهایی -->
+    <div class="master-actions">
+        <button class="big-action print" onclick="window.print()">🖨️ پرینت / PDF</button>
+        <button class="big-action save" onclick="saveFullTable()">💾 ذخیره در مرورگر</button>
+        <button class="big-action reset" onclick="resetToInitial()">🔄 بازنشانی</button>
+    </div>
+
+    <footer>هر خانه قابل ویرایش است — روی عنوان‌ها کلیک کنید و هر نامی بنویسید — جدول کاملاً دلخواه شما</footer>
+</div>
+
+<script>
+    (function() {
+        const tableHead = document.getElementById('tableHead');
+        const tableBody = document.getElementById('tableBody');
+        const mainTitleInput = document.getElementById('mainTitleInput');
+
+        // ------ توابع کمکی برای ساخت جدول پویا ------
+        function rebuildTable(rows, cols, initialRowHeaders, initialColHeaders) {
+            // rows: تعداد سطرها (بدون احتساب هدر)
+            // cols: تعداد ستون‌ها (بدون احتساب ستون اول که عنوان سطرهاست)
+            let theadRow = tableHead.querySelector('tr');
+            if (!theadRow) {
+                theadRow = document.createElement('tr');
+                tableHead.innerHTML = '';
+                tableHead.appendChild(theadRow);
+            } else {
+                theadRow.innerHTML = '';
+            }
+
+            // ایجاد سلول اول هدر (عنوان سطرها)
+            let firstTh = document.createElement('th');
+            firstTh.innerHTML = `<div class="th-content">عنوان سطرها <br> <input type="text" placeholder="عنوان سطر" value="${initialRowHeaders[0] || 'روز'}"></div>`;
+            theadRow.appendChild(firstTh);
+
+            // ایجاد ستون‌های هدر
+            for (let c = 0; c < cols; c++) {
+                let th = document.createElement('th');
+                let colTitle = (initialColHeaders && initialColHeaders[c]) ? initialColHeaders[c] : `ستون ${c+1}`;
+                th.innerHTML = `<div class="th-content">${colTitle} <br> <input type="text" placeholder="عنوان" value="${colTitle}"><div class="th-actions"><button onclick="renameColumn(this)">تغییر نام</button></div></div>`;
+                theadRow.appendChild(th);
+            }
+
+            // ساخت بدنه
+            tableBody.innerHTML = '';
+            for (let r = 0; r < rows; r++) {
+                let tr = document.createElement('tr');
+
+                // سلول اول (عنوان سطر) - قابل ویرایش
+                let tdHeader = document.createElement('td');
+                tdHeader.className = 'row-header-cell';
+                tdHeader.innerHTML = `<div class="row-header-content">
+                    <input type="text" placeholder="عنوان سطر" value="ردیف ${r+1}">
+                    <button class="row-remove-btn" onclick="removeThisRow(this)">✖ حذف سطر</button>
+                </div>`;
+                tr.appendChild(tdHeader);
+
+                // سلول‌های داده
+                for (let c = 0; c < cols; c++) {
+                    let td = document.createElement('td');
+                    let div = document.createElement('div');
+                    div.className = 'editable-cell';
+                    div.setAttribute('contenteditable', 'true');
+                    div.innerText = '......';
+                    td.appendChild(div);
+                    tr.appendChild(td);
+                }
+                tableBody.appendChild(tr);
+            }
+        }
+
+        // ساخت اولیه (۵×۴ با عناوین پیشنهادی)
+        rebuildTable(5, 4, ['روز'], ['صبح', 'ظهر', 'عصر', 'شب']);
+
+        // ------ تابع ساخت از روی ورودی تعداد -----
+        window.buildTableFromInput = function() {
+            let rows = parseInt(document.getElementById('rowCount').value) || 3;
+            let cols = parseInt(document.getElementById('colCount').value) || 3;
+            if (rows < 1) rows = 1;
+            if (cols < 1) cols = 1;
+            // عناوین پیش‌فرض ستون: ستون ۱,۲,...
+            let colTitles = [];
+            for (let i=1; i<=cols; i++) colTitles.push(`ستون ${i}`);
+            rebuildTable(rows, cols, ['عنوان سطر'], colTitles);
+        };
+
+        // ------ اضافه کردن سطر جدید با عنوان دلخواه -----
+        window.addCustomRow = function() {
+            let newRowTitle = prompt('عنوان سطر جدید را وارد کنید:', 'ردیف جدید');
+            if (newRowTitle === null) return;
+            let cols = document.querySelectorAll('#tableHead th').length - 1; // تعداد ستون‌های غیر از اول
+            let tr = document.createElement('tr');
+
+            let tdHeader = document.createElement('td');
+            tdHeader.className = 'row-header-cell';
+            tdHeader.innerHTML = `<div class="row-header-content">
+                <input type="text" placeholder="عنوان سطر" value="${newRowTitle}">
+                <button class="row-remove-btn" onclick="removeThisRow(this)">✖ حذف سطر</button>
+            </div>`;
+            tr.appendChild(tdHeader);
+
+            for (let c = 0; c < cols; c++) {
+                let td = document.createElement('td');
+                let div = document.createElement('div');
+                div.className = 'editable-cell';
+                div.setAttribute('contenteditable', 'true');
+                div.innerText = '......';
+                td.appendChild(div);
+                tr.appendChild(td);
+            }
+            tableBody.appendChild(tr);
+        };
+
+        // حذف آخرین سطر
+        window.removeLastRow = function() {
+            if (tableBody.children.length > 1) {
+                tableBody.removeChild(tableBody.lastElementChild);
+            } else {
+                alert('حداقل یک سطر باید باقی بماند.');
+            }
+        };
+
+        // حذف یک سطر خاص (با دکمه داخلش)
+        window.removeThisRow = function(btn) {
+            let row = btn.closest('tr');
+            if (tableBody.children.length <= 1) {
+                alert('آخرین سطر را نمی‌توان حذف کرد.');
+                return;
+            }
+            if (row) row.remove();
+        };
+
+        // اضافه کردن ستون جدید
+        window.addCustomColumn = function() {
+            let colTitle = prompt('عنوان ستون جدید را وارد کنید:', 'ستون جدید');
+            if (colTitle === null) return;
+
+            // به هدر اضافه کن
+            let theadRow = tableHead.querySelector('tr');
+            let newTh = document.createElement('th');
+            newTh.innerHTML = `<div class="th-content">${colTitle} <br> <input type="text" placeholder="عنوان" value="${colTitle}"><div class="th-actions"><button onclick="renameColumn(this)">تغییر نام</button></div></div>`;
+            theadRow.appendChild(newTh);
+
+            // به هر سطر یک سلول اضافه کن
+            let rows = tableBody.querySelectorAll('tr');
+            rows.forEach(row => {
+                let td = document.createElement('td');
+                let div = document.createElement('div');
+                div.className = 'editable-cell';
+                div.setAttribute('contenteditable', 'true');
+                div.innerText = '......';
+                td.appendChild(div);
+                row.appendChild(td);
+            });
+        };
+
+        // حذف آخرین ستون
+        window.removeLastColumn = function() {
+            let theadRow = tableHead.querySelector('tr');
+            if (theadRow.children.length <= 2) { // اولی عنوان سطرها + حداقل یک ستون
+                alert('حداقل یک ستون باید باقی بماند.');
+                return;
+            }
+            // حذف از هدر
+            theadRow.removeChild(theadRow.lastElementChild);
+
+            // حذف از هر سطر
+            let rows = tableBody.querySelectorAll('tr');
+            rows.forEach(row => {
+                if (row.children.length > 1) {
+                    row.removeChild(row.lastElementChild);
+                }
+            });
+        };
+
+        // تغییر نام ستون (با کلیک روی دکمه)
+        window.renameColumn = function(btn) {
+            let th = btn.closest('th');
+            if (!th) return;
+            let inputField = th.querySelector('.th-content input');
+            if (inputField) {
+                let newVal = prompt('عنوان جدید ستون را وارد کنید:', inputField.value);
+                if (newVal !== null) inputField.value = newVal;
+            }
+        };
+
+        // ذخیره کامل در localStorage
+        window.saveFullTable = function() {
+            // عنوان اصلی
+            localStorage.setItem('mainTitle', mainTitleInput.value);
+
+            // ذخیره تعداد سطر و ستون (برای بازسازی)
+            let headers = document.querySelectorAll('#tableHead th');
+            let colCount = headers.length - 1; // ستون‌های داده
+            let rowCount = tableBody.children.length;
+
+            // ذخیره عناوین ستون‌ها (شامل اولین ستون عنوان سطر)
+            let colTitles = [];
+            headers.forEach(th => {
+                let inp = th.querySelector('.th-content input');
+                colTitles.push(inp ? inp.value : '');
+            });
+
+            // ذخیره عناوین سطرها و محتوای سلول‌ها
+            let rowTitles = [];
+            let rowsData = [];
+            let rows = tableBody.querySelectorAll('tr');
+            rows.forEach(row => {
+                // عنوان سطر (اولین td)
+                let firstCell = row.querySelector('td:first-child .row-header-content input');
+                rowTitles.push(firstCell ? firstCell.value : '');
+
+                // داده‌های سلول‌ها
+                let cells = row.querySelectorAll('.editable-cell');
+                let rowContent = [];
+                cells.forEach(cell => rowContent.push(cell.innerText));
+                rowsData.push(rowContent);
+            });
+
+            localStorage.setItem('colTitles', JSON.stringify(colTitles));
+            localStorage.setItem('rowTitles', JSON.stringify(rowTitles));
+            localStorage.setItem('rowsData', JSON.stringify(rowsData));
+            localStorage.setItem('savedRowCount', rowCount);
+            localStorage.setItem('savedColCount', colCount);
+
+            alert('جدول با تمام عناوین و محتوا ذخیره شد.');
+        };
+
+        // بازگردانی از storage
+        function loadFromStorage() {
+            if (!localStorage.getItem('mainTitle')) return;
+            mainTitleInput.value = localStorage.getItem('mainTitle');
+
+            let colTitles = JSON.parse(localStorage.getItem('colTitles') || '[]');
+            let rowTitles = JSON.parse(localStorage.getItem('rowTitles') || '[]');
+            let rowsData = JSON.parse(localStorage.getItem('rowsData') || '[]');
+
+            if (colTitles.length === 0 || rowTitles.length === 0) return;
+
+            // بازسازی هدر
+            let theadRow = tableHead.querySelector('tr');
+            theadRow.innerHTML = '';
+            colTitles.forEach((title, idx) => {
+                let th = document.createElement('th');
+                if (idx === 0) {
+                    // ستون اول (عنوان سطرها)
+                    th.innerHTML = `<div class="th-content">عنوان سطرها <br> <input type="text" placeholder="عنوان سطر" value="${title}"></div>`;
+                } else {
+                    th.innerHTML = `<div class="th-content">${title} <br> <input type="text" placeholder="عنوان" value="${title}"><div class="th-actions"><button onclick="renameColumn(this)">تغییر نام</button></div></div>`;
+                }
+                theadRow.appendChild(th);
+            });
+
+            // بازسازی بدنه
+            tableBody.innerHTML = '';
+            for (let r = 0; r < rowTitles.length; r++) {
+                let tr = document.createElement('tr');
+                let tdHeader = document.createElement('td');
+                tdHeader.className = 'row-header-cell';
+                tdHeader.innerHTML = `<div class="row-header-content">
+                    <input type="text" placeholder="عنوان سطر" value="${rowTitles[r] || ''}">
+                    <button class="row-remove-btn" onclick="removeThisRow(this)">✖ حذف سطر</button>
+                </div>`;
+                tr.appendChild(tdHeader);
+
+                let rowContent = rowsData[r] || [];
+                for (let c = 0; c < rowContent.length; c++) {
+                    let td = document.createElement('td');
+                    let div = document.createElement('div');
+                    div.className = 'editable-cell';
+                    div.setAttribute('contenteditable', 'true');
+                    div.innerText = rowContent[c] || '......';
+                    td.appendChild(div);
+                    tr.appendChild(td);
+                }
+                tableBody.appendChild(tr);
+            }
+        }
+
+        // بازنشانی به یک نمونه اولیه
+        window.resetToInitial = function() {
+            if (confirm('همه تغییرات پاک می‌شود. ادامه می‌دهید؟')) {
+                localStorage.clear();
+                mainTitleInput.value = 'جدول برنامه ریزی شخصی';
+                rebuildTable(5, 4, ['روز'], ['صبح', 'ظهر', 'عصر', 'شب']);
+            }
+        };
+
+        // بارگیری خودکار
+        window.addEventListener('load', function() {
+            if (localStorage.length > 0) {
+                loadFromStorage();
+            }
+        });
+
+    })();
+</script>
+</body>
+</html>
