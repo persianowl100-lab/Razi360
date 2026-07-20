@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>درباره ما | رازی ۳۶۰</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(145deg, #1a140c 0%, #241e14 40%, #2b2113 100%);
+      color: #f7efe2;
+      line-height: 1.8;
+      overflow-x: hidden;
+      letter-spacing: 0.2px;
+      min-height: 100vh;
+    }
+
+    .container { max-width: 1300px; margin: 0 auto; padding: 0 24px; }
+
+    /* هدر */
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 32px; margin: 20px auto 0; border-radius: 60px;
+      position: sticky; top: 20px; z-index: 1000; flex-wrap: wrap;
+      background: rgba(22, 18, 10, 0.75); backdrop-filter: blur(22px);
+      border: 1px solid rgba(255, 170, 40, 0.25);
+      box-shadow: 0 20px 35px rgba(255, 140, 0, 0.15);
+    }
+
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon { font-size: 2.5rem; color: #ffb347; filter: drop-shadow(0 0 14px #ff9f1c); transition: transform 0.4s; }
+    .logo:hover .logo-icon { transform: rotate(10deg) scale(1.1); }
+    .logo-text {
+      font-size: 2rem; font-weight: 900;
+      background: linear-gradient(to left, #ffd166, #f4a261, #e9a554);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .nav-item {
+      text-decoration: none; color: #f5e1c0; font-weight: 600;
+      padding: 12px 20px; border-radius: 40px; position: relative;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+      background: transparent; display: flex; align-items: center; gap: 6px; font-size: 1rem;
+    }
+    .nav-item i { font-size: 1.1rem; transition: transform 0.3s; }
+    .nav-item:hover { color: #fff7e6; background: rgba(255, 160, 30, 0.1); transform: translateY(-3px); box-shadow: 0 15px 25px -10px rgba(255, 140, 0, 0.4); }
+    .nav-item:hover i { transform: translateY(-2px) scale(1.2); color: #ffb347; }
+    .nav-item.active { background: rgba(255, 160, 30, 0.15); color: #ffb347; border: 1px solid rgba(255, 180, 60, 0.3); }
+    
+    .store-btn {
+      background: linear-gradient(135deg, #f4a261, #e67e22) !important;
+      color: #1a140c !important; font-weight: 800;
+      box-shadow: 0 8px 20px rgba(230, 126, 34, 0.5); border: none !important;
+    }
+    .store-btn:hover { background: linear-gradient(135deg, #f5b06e, #f08c2e) !important; box-shadow: 0 15px 30px rgba(255, 160, 20, 0.7); }
+
+    /* عنوان صفحه */
+    .page-header { text-align: center; padding: 80px 20px 50px; }
+    .page-title {
+      font-size: 3.5rem; font-weight: 900;
+      background: linear-gradient(to right, #ffddb0, #f9b953, #ffa726);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 15px;
+    }
+    .page-subtitle { font-size: 1.2rem; color: #cdb088; max-width: 700px; margin: 0 auto; }
+
+    /* بخش اصلی */
+    .about-content { margin: 40px 0 60px; }
+
+    /* بخش داستان ما */
+    .story-section {
+      background: rgba(40, 30, 18, 0.5); backdrop-filter: blur(14px);
+      border-radius: 30px; padding: 50px 40px; margin-bottom: 40px;
+      border: 1px solid rgba(255, 180, 60, 0.2);
+      transition: all 0.4s ease;
+    }
+    .story-section:hover { border-color: #ffa726; box-shadow: 0 20px 40px -15px rgba(255, 140, 0, 0.3); }
+    
+    .story-title {
+      font-size: 2rem; font-weight: 900; color: #ffcd94;
+      margin-bottom: 25px; display: flex; align-items: center; gap: 12px;
+    }
+    .story-title i { color: #ffb347; font-size: 2.2rem; }
+    .story-text { color: #cdb088; font-size: 1.1rem; line-height: 2; margin-bottom: 20px; text-align: justify; }
+    .highlight { color: #f4a261; font-weight: 700; }
+
+    /* بخش تیم ما */
+    .team-section { margin: 50px 0; }
+    .team-title {
+      font-size: 2rem; font-weight: 900; color: #ffcd94;
+      text-align: center; margin-bottom: 40px;
+    }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+    
+    .team-card {
+      background: rgba(40, 30, 18, 0.5); backdrop-filter: blur(14px);
+      border-radius: 25px; padding: 35px 25px; text-align: center;
+      border: 1px solid rgba(255, 180, 60, 0.2);
+      transition: all 0.45s cubic-bezier(0.2, 0.9, 0.4, 1);
+      position: relative; overflow: hidden;
+    }
+    .team-card::before {
+      content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+      background: linear-gradient(90deg, #ffa726, #f57c00, #ffb347);
+      transform: scaleX(0); transform-origin: right; transition: transform 0.5s ease;
+    }
+    .team-card:hover::before { transform: scaleX(1); }
+    .team-card:hover { transform: translateY(-10px); border-color: #ffa726; box-shadow: 0 25px 40px -20px rgba(255, 140, 0, 0.4); }
+    
+    .team-icon {
+      font-size: 3.5rem; color: #ffb347; margin-bottom: 20px;
+      transition: transform 0.4s;
+    }
+    .team-card:hover .team-icon { transform: scale(1.15); text-shadow: 0 0 25px #f59e0b; }
+    .team-card h3 { font-size: 1.5rem; color: #fff0db; margin-bottom: 10px; font-weight: 800; }
+    .team-card .field { color: #f4a261; font-size: 1rem; font-weight: 600; margin-bottom: 12px; }
+    .team-card p { color: #bda16b; font-size: 0.9rem; line-height: 1.7; }
+
+    /* بخش مأموریت */
+    .mission-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin: 50px 0; }
+    
+    .mission-card {
+      background: rgba(40, 30, 18, 0.5); backdrop-filter: blur(14px);
+      border-radius: 25px; padding: 35px 28px;
+      border: 1px solid rgba(255, 180, 60, 0.2);
+      transition: all 0.4s ease; text-align: center;
+    }
+    .mission-card:hover { border-color: #ffa726; transform: translateY(-8px); box-shadow: 0 20px 35px -15px rgba(255, 140, 0, 0.3); }
+    .mission-icon { font-size: 2.8rem; color: #ffb347; margin-bottom: 18px; }
+    .mission-card h3 { font-size: 1.4rem; color: #fff0db; margin-bottom: 12px; font-weight: 800; }
+    .mission-card p { color: #bda16b; font-size: 0.95rem; line-height: 1.8; }
+
+    /* بخش CTA */
+    .cta-section {
+      text-align: center; padding: 60px 30px; margin: 50px 0;
+      background: rgba(40, 30, 18, 0.4); backdrop-filter: blur(14px);
+      border-radius: 35px; border: 1px solid rgba(255, 180, 60, 0.15);
+    }
+    .cta-section h2 { font-size: 2rem; font-weight: 900; color: #ffcd94; margin-bottom: 15px; }
+    .cta-section p { color: #cdb088; margin-bottom: 30px; font-size: 1.1rem; }
+    
+    .btn {
+      padding: 16px 36px; border-radius: 50px; font-weight: 700; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px; transition: all 0.4s; font-size: 1.1rem;
+      font-family: 'Vazirmatn', sans-serif;
+    }
+    .btn-primary { background: linear-gradient(135deg, #ffa726, #f57c00); color: #1e140a; box-shadow: 0 15px 30px -8px rgba(245, 124, 0, 0.5); border: none; }
+    .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 25px 40px -8px rgba(255, 160, 20, 0.7); filter: brightness(1.1); }
+
+    /* فوتر */
+    footer { background: rgba(20, 15, 8, 0.8); backdrop-filter: blur(25px); border-top: 2px solid rgba(244, 162, 97, 0.4); padding: 50px 0 25px; margin-top: 60px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 35px; }
+    .footer-col { flex: 1 1 220px; }
+    .footer-logo { font-size: 2rem; font-weight: 900; color: #f4a261; }
+    
+    .enamad-box {
+      margin-top: 20px; background: rgba(255, 255, 255, 0.05); border-radius: 15px;
+      padding: 15px; display: inline-block; border: 1px solid rgba(255, 180, 60, 0.3);
+      transition: all 0.3s;
+    }
+    .enamad-box:hover { background: rgba(255, 255, 255, 0.1); border-color: #f4a261; transform: scale(1.05); box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3); }
+    .enamad-box img { width: 100px; height: auto; display: block; }
+    
+    .footer-links a { color: #cfb185; text-decoration: none; display: block; margin: 10px 0; transition: 0.3s; font-weight: 500; }
+    .footer-links a:hover { color: #ffb347; transform: translateX(-8px); }
+    .copyright { text-align: center; margin-top: 40px; color: #a6906c; }
+
+    @media (max-width: 768px) {
+      header { flex-direction: column; gap: 20px; border-radius: 40px; }
+      .page-title { font-size: 2.5rem; }
+      .nav-links { justify-content: center; }
+      .story-section { padding: 30px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- هدر -->
+    <header>
+      <a href="../index.html" class="logo">
+        <i class="fas fa-brain logo-icon"></i>
+        <span class="logo-text">رازی ۳۶۰</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html" class="nav-item"><i class="fas fa-home"></i> صفحه اصلی</a>
+        <a href="services.html" class="nav-item"><i class="fas fa-cogs"></i> خدمات</a>
+        <a href="about.html" class="nav-item active"><i class="fas fa-info-circle"></i> درباره ما</a>
+        <a href="contact.html" class="nav-item"><i class="fas fa-envelope"></i> تماس با ما</a>
+        <a href="shop.html" class="nav-item store-btn"><i class="fas fa-shopping-cart"></i> فروشگاه</a>
+      </div>
+    </header>
+
+    <!-- عنوان صفحه -->
+    <div class="page-header">
+      <h1 class="page-title">درباره ما</h1>
+      <p class="page-subtitle">با تیم جوان و متخصص رازی ۳۶۰ آشنا شوید</p>
+    </div>
+
+    <div class="about-content">
+      
+      <!-- داستان ما -->
+      <div class="story-section">
+        <h2 class="story-title">
+          <i class="fas fa-book-open"></i>
+          داستان رازی ۳۶۰
+        </h2>
+        <p class="story-text">
+          ما یک <span class="highlight">گروه دانشجویی</span> پرانرژی و متخصص هستیم که از ترکیب رشته‌های 
+          <span class="highlight">کامپیوتر</span>، <span class="highlight">حقوق</span>، 
+          <span class="highlight">مهندسی</span> و <span class="highlight">زبان انگلیسی</span> شکل گرفته‌ایم. 
+          چندین سال است که به‌صورت تخصصی در زمینه <span class="highlight">هوش مصنوعی</span> فعالیت می‌کنیم 
+          و باور داریم که این فناوری می‌تواند زندگی همه را متحول کند.
+        </p>
+        <p class="story-text">
+          هدف اصلی ما این است که <span class="highlight">هوش مصنوعی را از دنیای پیچیده و تخصصی</span> 
+          خارج کرده و آن را به <span class="highlight">زبان ساده و قابل فهم</span> برای همه افراد جامعه 
+          ارائه دهیم. ما تلاش می‌کنیم تا با استفاده از هوش مصنوعی، 
+          <span class="highlight">زندگی روزمره مردم را ساده‌تر، هوشمندتر و کارآمدتر</span> کنیم.
+        </p>
+        <p class="story-text">
+          از <span class="highlight">آموزش مبانی هوش مصنوعی</span> گرفته تا 
+          <span class="highlight">ارائه راهکارهای عملی</span> برای استفاده در کسب‌وکار، تحصیل و امور شخصی، 
+          رازی ۳۶۰ همراه شماست تا آینده را امروز زندگی کنید.
+        </p>
+      </div>
+
+      <!-- تیم ما -->
+      <div class="team-section">
+        <h2 class="team-title">👥 تیم تخصصی ما</h2>
+        <div class="team-grid">
+          
+          <div class="team-card">
+            <i class="fas fa-laptop-code team-icon"></i>
+            <h3>متخصصان کامپیوتر</h3>
+            <div class="field">هوش مصنوعی و برنامه‌نویسی</div>
+            <p>طراحی و پیاده‌سازی مدل‌های پیشرفته هوش مصنوعی، توسعه نرم‌افزارهای هوشمند و راهکارهای فنی</p>
+          </div>
+
+          <div class="team-card">
+            <i class="fas fa-balance-scale team-icon"></i>
+            <h3>متخصصان حقوق</h3>
+            <div class="field">حقوق و مشاوره</div>
+            <p>ارائه خدمات حقوقی هوشمند، تحلیل قراردادها و لوایح با کمک هوش مصنوعی و مشاوره تخصصی</p>
+          </div>
+
+          <div class="team-card">
+            <i class="fas fa-cogs team-icon"></i>
+            <h3>متخصصان مهندسی</h3>
+            <div class="field">تحلیل و بهینه‌سازی</div>
+            <p>حل مسائل پیچیده مهندسی با الگوریتم‌های هوش مصنوعی، بهینه‌سازی فرآیندها و سیستم‌ها</p>
+          </div>
+
+          <div class="team-card">
+            <i class="fas fa-language team-icon"></i>
+            <h3>متخصصان زبان انگلیسی</h3>
+            <div class="field">ترجمه و محتوا</div>
+            <p>ترجمه تخصصی متون علمی، تولید محتوای آموزشی و دسترسی به جدیدترین منابع جهانی هوش مصنوعی</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- مأموریت ما -->
+      <div class="mission-grid">
+        
+        <div class="mission-card">
+          <i class="fas fa-graduation-cap mission-icon"></i>
+          <h3>آموزش ساده</h3>
+          <p>یادگیری هوش مصنوعی را برای همه آسان و لذت‌بخش می‌کنیم، از مبتدی تا پیشرفته</p>
+        </div>
+
+        <div class="mission-card">
+          <i class="fas fa-hand-holding-heart mission-icon"></i>
+          <h3>کمک به دیگران</h3>
+          <p>با ارائه ابزارها و راهکارهای هوشمند، به مردم کمک می‌کنیم زندگی بهتری داشته باشند</p>
+        </div>
+
+        <div class="mission-card">
+          <i class="fas fa-lightbulb mission-icon"></i>
+          <h3>نوآوری کاربردی</h3>
+          <p>هوش مصنوعی را از آزمایشگاه به زندگی واقعی می‌آوریم و کاربردهای عملی آن را نشان می‌دهیم</p>
+        </div>
+
+        <div class="mission-card">
+          <i class="fas fa-users mission-icon"></i>
+          <h3>همکاری چندرشته‌ای</h3>
+          <p>با ترکیب تخصص‌های مختلف، راهکارهای جامع و کامل برای مشکلات واقعی ارائه می‌دهیم</p>
+        </div>
+
+      </div>
+
+      <!-- فراخوان -->
+      <div class="cta-section">
+        <h2>🤝 می‌خواهید با ما همکاری کنید؟</h2>
+        <p>همیشه به دنبال افراد بااستعداد و پرانرژی هستیم. اگر شما هم به هوش مصنوعی علاقه دارید، با ما تماس بگیرید!</p>
+        <a href="contact.html" class="btn btn-primary">
+          <i class="fas fa-paper-plane"></i> تماس با ما
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- فوتر -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <div class="footer-logo"><i class="fas fa-robot"></i> رازی ۳۶۰</div>
+          <p style="margin-top: 15px; color: #cdb088;">گروه دانشجویی متخصص در هوش مصنوعی</p>
+          <div class="enamad-box">
+            <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=666728&Code=DkrrjsLDcX9eK5iTH8wDmkrgY7MmVCCn'>
+              <img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=666728&Code=DkrrjsLDcX9eK5iTH8wDmkrgY7MmVCCn' alt='نماد اعتماد الکترونیکی' style='cursor:pointer' code='DkrrjsLDcX9eK5iTH8wDmkrgY7MmVCCn'>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col footer-links">
+          <h4 style="color: #ffcd94; margin-bottom: 15px;">دسترسی سریع</h4>
+          <a href="shop.html"><i class="fas fa-chevron-left"></i> فروشگاه محصولات</a>
+          <a href="shop.html"><i class="fas fa-chevron-left"></i> دوره‌های آموزشی</a>
+          <a href="services.html"><i class="fas fa-chevron-left"></i> خدمات ما</a>
+          <a href="contact.html"><i class="fas fa-chevron-left"></i> تماس با ما</a>
+        </div>
+        <div class="footer-col footer-links">
+          <h4 style="color: #ffcd94; margin-bottom: 15px;">اطلاعات تماس</h4>
+          <a href="#"><i class="fas fa-map-marker-alt"></i> کرمانشاه، بلوار گلریزان، پلاک ۱۰</a>
+          <a href="tel:09184737201"><i class="fas fa-phone"></i> ۰۹۱۸۴۷۳۷۲۰۱</a>
+          <a href="mailto:info@razi360.ir"><i class="fas fa-envelope"></i> info@razi360.ir</a>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© ۲۰۲۵ کلیه حقوق برای <span style="color:#f4a261;">رازی ۳۶۰</span> محفوظ است. طراحی خلاقانه و مدرن</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.logo').addEventListener('click', function(e) {
+      const icon = this.querySelector('.logo-icon');
+      icon.style.transform = 'rotate(360deg) scale(1.3)';
+      setTimeout(() => { icon.style.transform = ''; }, 500);
+    });
+  </script>
+</body>
+</html>
