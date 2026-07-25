@@ -63,20 +63,16 @@
     }
     .store-btn:hover { background: linear-gradient(135deg, #f5b06e, #f08c2e) !important; box-shadow: 0 15px 30px rgba(255, 160, 20, 0.7); }
     
-    /* ==================== دکمه ورود بازطراحی شده ==================== */
+    /* دکمه ورود */
     .login-btn {
       background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)) !important;
       border: 1.5px solid rgba(255, 180, 60, 0.5) !important;
-      color: #ffb347 !important;
-      font-weight: 700; position: relative; overflow: hidden;
-      box-shadow: 0 4px 15px rgba(255, 167, 38, 0.15);
-      backdrop-filter: blur(5px);
+      color: #ffb347 !important; font-weight: 700; position: relative; overflow: hidden;
+      box-shadow: 0 4px 15px rgba(255, 167, 38, 0.15); backdrop-filter: blur(5px);
     }
     .login-btn::before {
-      content: "";
-      position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,180,60,0.15), transparent);
-      transition: left 0.6s ease;
+      content: ""; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,180,60,0.15), transparent); transition: left 0.6s ease;
     }
     .login-btn:hover::before { left: 100%; }
     .login-btn:hover {
@@ -84,13 +80,9 @@
       border-color: #ffb347 !important; color: #ffd166 !important;
       transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255,167,38,0.35);
     }
-    .login-btn i { font-size: 1.2rem; }
-    
-    /* دکمه ورود وقتی کاربر وارد شده */
     .login-btn.logged-in {
       background: linear-gradient(135deg, rgba(76,175,80,0.2), rgba(46,125,50,0.1)) !important;
-      border-color: rgba(76,175,80,0.6) !important;
-      color: #81C784 !important;
+      border-color: rgba(76,175,80,0.6) !important; color: #81C784 !important;
       box-shadow: 0 4px 15px rgba(76,175,80,0.2);
     }
     .login-btn.logged-in:hover {
@@ -225,7 +217,7 @@
 </head>
 <body>
   <div class="container">
-    <!-- ==================== هدر با دکمه ورود بازطراحی شده ==================== -->
+    <!-- هدر -->
     <header>
       <a href="index.html" class="logo">
         <i class="fas fa-brain logo-icon"></i>
@@ -237,7 +229,6 @@
         <a href="pages/about.html" class="nav-item"><i class="fas fa-info-circle"></i> درباره ما</a>
         <a href="pages/contact.html" class="nav-item"><i class="fas fa-envelope"></i> تماس با ما</a>
         <a href="pages/shop.html" class="nav-item store-btn"><i class="fas fa-shopping-cart"></i> فروشگاه</a>
-        <!-- دکمه ورود/ثبت‌نام با استایل جدید -->
         <a href="pages/login.html" class="nav-item login-btn" id="auth-btn">
           <i class="fas fa-sign-in-alt"></i> ورود | ثبت‌نام
         </a>
@@ -293,7 +284,7 @@
       </a>
     </div>
 
-    <!-- محتوای سئو شده -->
+    <!-- محتوای سئو -->
     <div class="seo-content">
       <h2>🔍 چرا رازی ۳۶۰؟ بهترین مرکز آموزش هوش مصنوعی در کرمانشاه</h2>
       <p><strong>رازی ۳۶۰</strong> با بهره‌گیری از تیمی متخصص، خدمات <strong>آموزش هوش مصنوعی</strong>، <strong>وکیل آنلاین</strong>، <strong>نوشتن لایحه آنلاین</strong> و <strong>پرامپت رایگان</strong> را ارائه می‌دهد.</p>
@@ -310,67 +301,19 @@
       </ul>
     </div>
 
-    <!-- دوره‌های آموزشی -->
+    <!-- دوره‌ها -->
     <h2 class="section-title">🎓 دوره‌های آموزش هوش مصنوعی</h2>
-    <p style="text-align: center; color: #cdb088; font-size: 1.1rem; margin-bottom: 30px;">
-      از <strong>پرامپت رایگان</strong> تا <strong>آموزش هوش مصنوعی</strong> پیشرفته
-    </p>
+    <p style="text-align: center; color: #cdb088; font-size: 1.1rem; margin-bottom: 30px;">از <strong>پرامپت رایگان</strong> تا <strong>آموزش هوش مصنوعی</strong> پیشرفته</p>
     
     <div class="courses-grid">
-      <div class="course-card">
-        <div class="course-icon-wrapper"><i class="fas fa-robot course-icon"></i></div>
-        <span class="course-level">🎯 مقدماتی</span>
-        <h3 class="course-title">مبانی هوش مصنوعی و یادگیری ماشین</h3>
-        <p class="course-description">آشنایی کامل با <strong>هوش مصنوعی</strong> و پیاده‌سازی پروژه‌های عملی با پایتون</p>
-        <div class="course-details">
-          <span><i class="fas fa-clock"></i> ۴۸ ساعت</span>
-          <span><i class="fas fa-video"></i> ۳۲ جلسه</span>
-          <span><i class="fas fa-user-graduate"></i> ۲,۳۴۰ نفر</span>
-        </div>
-        <a href="pages/shop.html" class="btn-course"><i class="fas fa-arrow-left"></i> مشاهده دوره</a>
-      </div>
-      <div class="course-card">
-        <div class="course-icon-wrapper"><i class="fas fa-comment-dots course-icon"></i></div>
-        <span class="course-level">💬 کاربردی</span>
-        <h3 class="course-title">پرامپت نویسی حرفه‌ای ChatGPT</h3>
-        <p class="course-description">آموزش کامل <strong>پرامپت نویسی</strong> و کار با <strong>ChatGPT</strong></p>
-        <div class="course-details">
-          <span><i class="fas fa-clock"></i> ۲۰ ساعت</span>
-          <span><i class="fas fa-video"></i> ۱۴ جلسه</span>
-          <span><i class="fas fa-user-graduate"></i> ۱,۸۵۰ نفر</span>
-        </div>
-        <a href="pages/shop.html" class="btn-course"><i class="fas fa-arrow-left"></i> مشاهده دوره</a>
-      </div>
-      <div class="course-card">
-        <div class="course-icon-wrapper"><i class="fas fa-search course-icon"></i></div>
-        <span class="course-level">🔍 کاربردی</span>
-        <h3 class="course-title">راهنمای جامع DeepSeek</h3>
-        <p class="course-description">نصب و استفاده از <strong>DeepSeek</strong> - <strong>هوش مصنوعی رایگان</strong></p>
-        <div class="course-details">
-          <span><i class="fas fa-clock"></i> ۱۶ ساعت</span>
-          <span><i class="fas fa-video"></i> ۱۰ جلسه</span>
-          <span><i class="fas fa-user-graduate"></i> ۱,۲۳۰ نفر</span>
-        </div>
-        <a href="pages/shop.html" class="btn-course"><i class="fas fa-arrow-left"></i> مشاهده دوره</a>
-      </div>
-      <div class="course-card">
-        <div class="course-icon-wrapper"><i class="fas fa-credit-card course-icon"></i></div>
-        <span class="course-level">💳 خرید اکانت</span>
-        <h3 class="course-title">خرید اکانت ChatGPT و DeepSeek</h3>
-        <p class="course-description">راهنمای <strong>خرید اکانت ChatGPT</strong> از ایران با پرداخت ریالی</p>
-        <div class="course-details">
-          <span><i class="fas fa-clock"></i> ۸ ساعت</span>
-          <span><i class="fas fa-video"></i> ۶ جلسه</span>
-          <span><i class="fas fa-user-graduate"></i> ۲,۵۶۰ نفر</span>
-        </div>
-        <a href="pages/shop.html" class="btn-course"><i class="fas fa-arrow-left"></i> مشاهده دوره</a>
-      </div>
+      <div class="course-card"><div class="course-icon-wrapper"><i class="fas fa-robot course-icon"></i></div><span class="course-level">🎯 مقدماتی</span><h3 class="course-title">مبانی هوش مصنوعی و یادگیری ماشین</h3><p class="course-description">آشنایی کامل با <strong>هوش مصنوعی</strong> و پیاده‌سازی پروژه‌های عملی با پایتون</p><div class="course-details"><span><i class="fas fa-clock"></i> ۴۸ ساعت</span><span><i class="fas fa-video"></i> ۳۲ جلسه</span><span><i class="fas fa-user-graduate"></i> ۲,۳۴۰ نفر</span></div><a href="pages/shop.html" class="btn-course"><i class="fas fa-arrow-left"></i> مشاهده دوره</a></div>
+      <div class="course-card"><div class="course-icon-wrapper"><i class="fas fa-comment-dots course-icon"></i></div><span class="course-level">💬 کاربردی</span><h3 class="course-title">پرامپت نویسی حرفه‌ای ChatGPT</h3><p class="course-description">آموزش کامل <strong>پرامپت نویسی</strong> و کار با <strong>ChatGPT</strong></p><div class="course-details"><span><i class="fas fa-clock"></i> ۲۰ ساعت</span><span><i class="fas fa-video"></i> ۱۴ جلسه</span><span><i class="fas fa-user-graduate"></i> ۱,۸۵۰ نفر</span></div><a href="pages/shop.html" class="btn-course"><i class="fas fa-arrow-left"></i> مشاهده دوره</a></div>
+      <div class="course-card"><div class="course-icon-wrapper"><i class="fas fa-search course-icon"></i></div><span class="course-level">🔍 کاربردی</span><h3 class="course-title">راهنمای جامع DeepSeek</h3><p class="course-description">نصب و استفاده از <strong>DeepSeek</strong> - <strong>هوش مصنوعی رایگان</strong></p><div class="course-details"><span><i class="fas fa-clock"></i> ۱۶ ساعت</span><span><i class="fas fa-video"></i> ۱۰ جلسه</span><span><i class="fas fa-user-graduate"></i> ۱,۲۳۰ نفر</span></div><a href="pages/shop.html" class="btn-course"><i class="fas fa-arrow-left"></i> مشاهده دوره</a></div>
+      <div class="course-card"><div class="course-icon-wrapper"><i class="fas fa-credit-card course-icon"></i></div><span class="course-level">💳 خرید اکانت</span><h3 class="course-title">خرید اکانت ChatGPT و DeepSeek</h3><p class="course-description">راهنمای <strong>خرید اکانت ChatGPT</strong> از ایران با پرداخت ریالی</p><div class="course-details"><span><i class="fas fa-clock"></i> ۸ ساعت</span><span><i class="fas fa-video"></i> ۶ جلسه</span><span><i class="fas fa-user-graduate"></i> ۲,۵۶۰ نفر</span></div><a href="pages/shop.html" class="btn-course"><i class="fas fa-arrow-left"></i> مشاهده دوره</a></div>
     </div>
 
     <div style="text-align: center; margin-top: 40px;">
-      <a href="pages/shop.html" class="btn btn-outline" style="font-size: 1.2rem; padding: 18px 40px;">
-        <i class="fas fa-arrow-left"></i> مشاهده همه دوره‌های آموزشی
-      </a>
+      <a href="pages/shop.html" class="btn btn-outline" style="font-size: 1.2rem; padding: 18px 40px;"><i class="fas fa-arrow-left"></i> مشاهده همه دوره‌های آموزشی</a>
     </div>
   </div>
 
@@ -402,8 +345,7 @@
         </div>
       </div>
       <div class="copyright">
-        <p>© ۲۰۲۵ کلیه حقوق برای <span style="color:#f4a261;">رازی ۳۶۰</span> | 
-        <strong>آموزش هوش مصنوعی</strong> | <strong>وکیل آنلاین</strong> | <strong>پرامپت رایگان</strong></p>
+        <p>© ۲۰۲۵ کلیه حقوق برای <span style="color:#f4a261;">رازی ۳۶۰</span> | <strong>آموزش هوش مصنوعی</strong> | <strong>وکیل آنلاین</strong> | <strong>پرامپت رایگان</strong></p>
       </div>
     </div>
   </footer>
@@ -438,7 +380,7 @@
     });
   </script>
 
-  <!-- ==================== Firebase Auth ==================== -->
+  <!-- Firebase Auth -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
@@ -460,13 +402,15 @@
       if (user) {
         const name = user.displayName || user.email?.split('@')[0] || 'کاربر';
         authBtn.innerHTML = `<i class="fas fa-user-check"></i> ${name}`;
+        authBtn.href = 'pages/profile.html';
         authBtn.classList.add('logged-in');
-        authBtn.title = 'کلیک برای مشاهده پروفایل';
+        authBtn.title = 'مشاهده پروفایل';
         localStorage.setItem('razi360-user', JSON.stringify({
           uid: user.uid, name: user.displayName, email: user.email, photo: user.photoURL
         }));
       } else {
         authBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> ورود | ثبت‌نام';
+        authBtn.href = 'pages/login.html';
         authBtn.classList.remove('logged-in');
         authBtn.title = 'ورود یا ثبت‌نام در سایت';
         localStorage.removeItem('razi360-user');
