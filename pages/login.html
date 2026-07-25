@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ورود / ثبت‌نام | رازی ۳۶۰</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: linear-gradient(145deg, #1a140c, #241e14);
+      color: #f7efe2; display: flex; align-items: center; justify-content: center;
+      min-height: 100vh; padding: 20px;
+    }
+    
+    .auth-container {
+      background: rgba(40, 30, 18, 0.7); backdrop-filter: blur(14px);
+      border-radius: 30px; padding: 50px 40px; max-width: 420px; width: 100%;
+      border: 2px solid rgba(255, 180, 60, 0.3); text-align: center;
+    }
+    
+    .auth-logo { font-size: 3rem; color: #ffb347; margin-bottom: 10px; }
+    .auth-title { font-size: 1.6rem; font-weight: 900; color: #ffcd94; margin-bottom: 5px; }
+    .auth-subtitle { color: #cdb088; margin-bottom: 30px; font-size: 0.9rem; }
+    
+    .google-btn {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      width: 100%; padding: 16px; border-radius: 50px; font-weight: 700;
+      font-size: 1.05rem; cursor: pointer; transition: all 0.3s;
+      font-family: 'Vazirmatn', sans-serif; border: 2px solid rgba(255,255,255,0.2);
+      background: white; color: #333; margin-bottom: 20px;
+    }
+    .google-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.3); background: #f5f5f5; }
+    .google-btn img { width: 24px; height: 24px; }
+    
+    .divider { display: flex; align-items: center; gap: 15px; margin: 25px 0; color: #a6906c; font-size: 0.85rem; }
+    .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: rgba(255,180,60,0.2); }
+    
+    .auth-input {
+      width: 100%; padding: 14px 18px; margin-bottom: 12px; border-radius: 15px;
+      border: 1px solid rgba(255, 180, 60, 0.3); background: rgba(30, 24, 16, 0.8);
+      color: #f7efe2; font-family: 'Vazirmatn', sans-serif; font-size: 1rem;
+    }
+    .auth-input:focus { outline: none; border-color: #f4a261; }
+    
+    .auth-btn {
+      width: 100%; padding: 16px; border-radius: 50px; font-weight: 800;
+      font-size: 1.05rem; cursor: pointer; transition: all 0.3s;
+      font-family: 'Vazirmatn', sans-serif; border: none;
+      background: linear-gradient(135deg, #4CAF50, #2E7D32); color: white;
+    }
+    .auth-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(76,175,80,0.4); }
+    
+    .auth-back { color: #f4a261; text-decoration: none; display: inline-block; margin-top: 25px; font-weight: 600; font-size: 0.9rem; }
+    .auth-back:hover { color: #ffd166; }
+    
+    .auth-error { color: #ff6b6b; font-size: 0.85rem; margin-top: 10px; display: none; }
+    
+    #user-info { display: none; }
+    #user-info img { width: 60px; height: 60px; border-radius: 50%; margin-bottom: 15px; border: 2px solid #ffb347; }
+    #user-info h3 { color: #ffcd94; margin-bottom: 5px; }
+    #user-info p { color: #cdb088; font-size: 0.9rem; margin-bottom: 20px; }
+    
+    .logout-btn {
+      width: 100%; padding: 14px; border-radius: 50px; font-weight: 700;
+      cursor: pointer; transition: all 0.3s; font-family: 'Vazirmatn', sans-serif;
+      background: rgba(255,80,80,0.1); border: 1px solid #ff6b6b; color: #ff6b6b;
+    }
+    .logout-btn:hover { background: rgba(255,80,80,0.2); }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <i class="fas fa-brain auth-logo"></i>
+    <h2 class="auth-title">به رازی ۳۶۰ خوش آمدید</h2>
+    <p class="auth-subtitle">برای ادامه وارد شوید</p>
+    
+    <!-- بخش ورود با گوگل -->
+    <div id="login-section">
+      <button class="google-btn" onclick="signInWithGoogle()">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+        ورود با گوگل
+      </button>
+      
+      <div class="divider">یا</div>
+      
+      <form onsubmit="signInWithEmail(event)">
+        <input type="email" id="email" class="auth-input" placeholder="ایمیل خود را وارد کنید" required>
+        <input type="password" id="password" class="auth-input" placeholder="رمز عبور (حداقل ۶ کاراکتر)" required minlength="6">
+        <button type="submit" class="auth-btn"><i class="fas fa-sign-in-alt"></i> ورود / ثبت‌نام</button>
+        <p id="login-error" class="auth-error"></p>
+      </form>
+    </div>
+    
+    <!-- بخش اطلاعات کاربر -->
+    <div id="user-info">
+      <img id="user-photo" src="" alt="">
+      <h3 id="user-name"></h3>
+      <p id="user-email"></p>
+      <button class="logout-btn" onclick="signOut()"><i class="fas fa-sign-out-alt"></i> خروج از حساب</button>
+    </div>
+    
+    <a href="../index.html" class="auth-back"><i class="fas fa-arrow-right"></i> بازگشت به صفحه اصلی</a>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut as firebaseSignOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDSZgKxihsca86ovMjyv0clynX3ATgiqPs",
+      authDomain: "razi360-e3952.firebaseapp.com",
+      projectId: "razi360-e3952",
+      storageBucket: "razi360-e3952.firebasestorage.app",
+      messagingSenderId: "708191850694",
+      appId: "1:708191850694:web:1f8e42542c8371846047c7"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    // ورود با گوگل
+    window.signInWithGoogle = function() {
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          window.location.href = '../index.html';
+        })
+        .catch((error) => {
+          showError(error.message);
+        });
+    };
+
+    // ورود با ایمیل
+    window.signInWithEmail = function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          window.location.href = '../index.html';
+        })
+        .catch((error) => {
+          if (error.code === 'auth/user-not-found') {
+            // ثبت‌نام خودکار
+            createUserWithEmailAndPassword(auth, email, password)
+              .then(() => {
+                window.location.href = '../index.html';
+              })
+              .catch((err) => showError(err.message));
+          } else {
+            showError(getPersianError(error.code));
+          }
+        });
+    };
+
+    // خروج
+    window.signOut = function() {
+      firebaseSignOut(auth).then(() => {
+        showLoginSection();
+      });
+    };
+
+    function showError(msg) {
+      const el = document.getElementById('login-error');
+      el.textContent = '❌ ' + msg;
+      el.style.display = 'block';
+    }
+
+    function getPersianError(code) {
+      const messages = {
+        'auth/invalid-email': 'ایمیل نامعتبر است',
+        'auth/weak-password': 'رمز عبور باید حداقل ۶ کاراکتر باشد',
+        'auth/wrong-password': 'رمز عبور اشتباه است',
+        'auth/too-many-requests': 'تعداد تلاش‌های ناموفق زیاد است. لطفاً کمی صبر کنید'
+      };
+      return messages[code] || 'خطایی رخ داد. لطفاً دوباره تلاش کنید';
+    }
+
+    function showLoginSection() {
+      document.getElementById('login-section').style.display = 'block';
+      document.getElementById('user-info').style.display = 'none';
+    }
+
+    // بررسی وضعیت کاربر
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        document.getElementById('login-section').style.display = 'none';
+        document.getElementById('user-info').style.display = 'block';
+        document.getElementById('user-name').textContent = user.displayName || 'کاربر رازی ۳۶۰';
+        document.getElementById('user-email').textContent = user.email || '';
+        document.getElementById('user-photo').src = user.photoURL || 'https://via.placeholder.com/60/ffb347/1a140c?text=R';
+        localStorage.setItem('razi360-user', JSON.stringify({
+          uid: user.uid,
+          name: user.displayName,
+          email: user.email,
+          photo: user.photoURL
+        }));
+      }
+    });
+  </script>
+</body>
+</html>
