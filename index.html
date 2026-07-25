@@ -10,47 +10,17 @@
   <meta name="keywords" content="نوشتن لایحه آنلاین, وکیل آنلاین, لایحه آنلاین, رازی, دانشگاه رازی, آموزش هوش مصنوعی, پرامپت رایگان, هوش مصنوعی رایگان, هوش مصنوعی کرمانشاه, خرید اکانت ChatGPT, دستیار آموزشی هوش مصنوعی, رازی ۳۶۰">
   <meta name="author" content="رازی ۳۶۰">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-  <meta name="googlebot" content="index, follow">
   
   <!-- Open Graph -->
   <meta property="og:title" content="رازی ۳۶۰ | آموزش هوش مصنوعی، وکیل آنلاین، پرامپت رایگان">
   <meta property="og:description" content="آموزش هوش مصنوعی، وکیل آنلاین، نوشتن لایحه، پرامپت رایگان، خرید اکانت ChatGPT. نزدیک دانشگاه رازی کرمانشاه.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yourusername.github.io/razi360/">
+  <meta property="og:url" content="https://razi360.ir/">
   <meta property="og:locale" content="fa_IR">
-  <meta property="og:site_name" content="رازی ۳۶۰">
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="رازی ۳۶۰ | آموزش هوش مصنوعی و خدمات آنلاین">
-  <meta name="twitter:description" content="وکیل آنلاین، نوشتن لایحه، پرامپت رایگان، آموزش هوش مصنوعی در کرمانشاه">
   
   <!-- Canonical -->
-  <link rel="canonical" href="https://yourusername.github.io/razi360/">
+  <link rel="canonical" href="https://razi360.ir/">
   
-  <!-- Schema.org Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "رازی ۳۶۰",
-    "description": "مرکز تخصصی آموزش هوش مصنوعی، وکیل آنلاین، نوشتن لایحه و خدمات پرامپت نویسی در کرمانشاه",
-    "url": "https://yourusername.github.io/razi360/",
-    "telephone": "+989184737201",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "بلوار گلریزان، پلاک ۱۰",
-      "addressLocality": "کرمانشاه",
-      "addressCountry": "IR"
-    },
-    "sameAs": [
-      "https://t.me/razi360",
-      "https://eitaa.com/razi360",
-      "https://rubika.ir/razi360"
-    ]
-  }
-  </script>
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
   <style>
@@ -86,11 +56,48 @@
     .nav-item i { font-size: 1.1rem; transition: transform 0.3s; }
     .nav-item:hover { color: #fff7e6; background: rgba(255, 160, 30, 0.1); transform: translateY(-3px); box-shadow: 0 15px 25px -10px rgba(255, 140, 0, 0.4); }
     .nav-item:hover i { transform: translateY(-2px) scale(1.2); color: #ffb347; }
+    
     .store-btn {
       background: linear-gradient(135deg, #f4a261, #e67e22) !important;
       color: #1a140c !important; font-weight: 800; box-shadow: 0 8px 20px rgba(230, 126, 34, 0.5); border: none !important;
     }
     .store-btn:hover { background: linear-gradient(135deg, #f5b06e, #f08c2e) !important; box-shadow: 0 15px 30px rgba(255, 160, 20, 0.7); }
+    
+    /* ==================== دکمه ورود بازطراحی شده ==================== */
+    .login-btn {
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)) !important;
+      border: 1.5px solid rgba(255, 180, 60, 0.5) !important;
+      color: #ffb347 !important;
+      font-weight: 700; position: relative; overflow: hidden;
+      box-shadow: 0 4px 15px rgba(255, 167, 38, 0.15);
+      backdrop-filter: blur(5px);
+    }
+    .login-btn::before {
+      content: "";
+      position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,180,60,0.15), transparent);
+      transition: left 0.6s ease;
+    }
+    .login-btn:hover::before { left: 100%; }
+    .login-btn:hover {
+      background: linear-gradient(135deg, rgba(255,167,38,0.2), rgba(255,140,0,0.1)) !important;
+      border-color: #ffb347 !important; color: #ffd166 !important;
+      transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255,167,38,0.35);
+    }
+    .login-btn i { font-size: 1.2rem; }
+    
+    /* دکمه ورود وقتی کاربر وارد شده */
+    .login-btn.logged-in {
+      background: linear-gradient(135deg, rgba(76,175,80,0.2), rgba(46,125,50,0.1)) !important;
+      border-color: rgba(76,175,80,0.6) !important;
+      color: #81C784 !important;
+      box-shadow: 0 4px 15px rgba(76,175,80,0.2);
+    }
+    .login-btn.logged-in:hover {
+      background: linear-gradient(135deg, rgba(76,175,80,0.3), rgba(46,125,50,0.2)) !important;
+      border-color: #4CAF50 !important; color: #A5D6A7 !important;
+      box-shadow: 0 10px 30px rgba(76,175,80,0.4);
+    }
 
     .hero { display: flex; align-items: center; justify-content: space-between; margin: 50px auto 70px; flex-wrap: wrap; gap: 30px; }
     .hero-content { flex: 1 1 500px; }
@@ -138,7 +145,6 @@
     .service-card p { color: #d6b588; }
     .services-cta { text-align: center; margin: 30px 0 50px; }
 
-    /* ==================== بخش محتوای سئو ==================== */
     .seo-content {
       max-width: 900px; margin: 50px auto; padding: 40px;
       background: rgba(40, 30, 18, 0.5); backdrop-filter: blur(14px);
@@ -195,6 +201,20 @@
     .footer-links a:hover { color: #ffb347; transform: translateX(-8px); }
     .copyright { text-align: center; margin-top: 40px; color: #a6906c; }
 
+    /* پاپ‌آپ */
+    .popup-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); z-index: 9999; justify-content: center; align-items: center; padding: 20px; }
+    .popup-overlay.active { display: flex; }
+    .popup-container { background: linear-gradient(145deg, #241e14, #2b2113); border: 2px solid rgba(255,180,60,0.4); border-radius: 30px; padding: 45px 35px 35px; max-width: 480px; width: 100%; text-align: center; position: relative; }
+    .popup-close { position: absolute; top: 15px; left: 15px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #cdb088; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; }
+    .popup-icon { width: 80px; height: 80px; background: linear-gradient(135deg, rgba(255,167,38,0.3), rgba(245,124,0,0.2)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; border: 2px solid rgba(255,180,60,0.5); }
+    .popup-icon i { font-size: 2.5rem; color: #ffb347; }
+    .popup-title { font-size: 1.8rem; font-weight: 900; background: linear-gradient(to left, #ffd166, #f4a261); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .popup-subtitle { color: #cdb088; margin: 10px 0 20px; }
+    .popup-features { text-align: right; margin-bottom: 25px; }
+    .popup-feature { display: flex; align-items: center; gap: 10px; padding: 8px 0; color: #c4a87c; }
+    .popup-feature i { color: #4CAF50; }
+    .popup-download-btn { display: inline-flex; align-items: center; gap: 10px; width: 100%; padding: 16px; border-radius: 50px; font-weight: 800; background: linear-gradient(135deg, #4CAF50, #2E7D32); color: white; text-decoration: none; justify-content: center; }
+
     @media (max-width: 768px) {
       header { flex-direction: column; gap: 20px; border-radius: 40px; }
       .hero-title { font-size: 2.6rem; }
@@ -205,6 +225,7 @@
 </head>
 <body>
   <div class="container">
+    <!-- ==================== هدر با دکمه ورود بازطراحی شده ==================== -->
     <header>
       <a href="index.html" class="logo">
         <i class="fas fa-brain logo-icon"></i>
@@ -216,6 +237,10 @@
         <a href="pages/about.html" class="nav-item"><i class="fas fa-info-circle"></i> درباره ما</a>
         <a href="pages/contact.html" class="nav-item"><i class="fas fa-envelope"></i> تماس با ما</a>
         <a href="pages/shop.html" class="nav-item store-btn"><i class="fas fa-shopping-cart"></i> فروشگاه</a>
+        <!-- دکمه ورود/ثبت‌نام با استایل جدید -->
+        <a href="pages/login.html" class="nav-item login-btn" id="auth-btn">
+          <i class="fas fa-sign-in-alt"></i> ورود | ثبت‌نام
+        </a>
       </div>
     </header>
 
@@ -268,63 +293,27 @@
       </a>
     </div>
 
-    <!-- ==================== محتوای سئو شده ==================== -->
+    <!-- محتوای سئو شده -->
     <div class="seo-content">
       <h2>🔍 چرا رازی ۳۶۰؟ بهترین مرکز آموزش هوش مصنوعی در کرمانشاه</h2>
-      
-      <p>
-        <strong>رازی ۳۶۰</strong> به عنوان یکی از معتبرترین مراکز <strong>آموزش هوش مصنوعی</strong> در غرب کشور، 
-        با بهره‌گیری از تیمی متخصص در زمینه‌های کامپیوتر، حقوق، مهندسی و زبان انگلیسی، 
-        خدمات متنوعی از جمله <strong>وکیل آنلاین</strong>، <strong>نوشتن لایحه آنلاین</strong>، 
-        <strong>پرامپت رایگان</strong> و <strong>هوش مصنوعی رایگان</strong> را به شما عزیزان ارائه می‌دهد.
-      </p>
-      
+      <p><strong>رازی ۳۶۰</strong> با بهره‌گیری از تیمی متخصص، خدمات <strong>آموزش هوش مصنوعی</strong>، <strong>وکیل آنلاین</strong>، <strong>نوشتن لایحه آنلاین</strong> و <strong>پرامپت رایگان</strong> را ارائه می‌دهد.</p>
       <h3>🎓 آموزش هوش مصنوعی از مبتدی تا پیشرفته</h3>
-      <p>
-        آیا به دنبال <strong>آموزش هوش مصنوعی</strong> هستید؟ ما در <strong>رازی ۳۶۰</strong> 
-        دوره‌های کاملی از <strong>مبانی هوش مصنوعی</strong> تا <strong>پرامپت نویسی حرفه‌ای</strong> 
-        را برای شما تدارک دیده‌ایم. با شرکت در دوره‌های ما، می‌توانید به راحتی با ابزارهایی مانند 
-        <strong>ChatGPT</strong>، <strong>DeepSeek</strong> و <strong>Google Gemini</strong> کار کنید.
-      </p>
-      
+      <p>دوره‌های کامل از <strong>مبانی هوش مصنوعی</strong> تا <strong>پرامپت نویسی حرفه‌ای</strong> با ChatGPT، DeepSeek و Google Gemini.</p>
       <h3>⚖️ وکیل آنلاین و نوشتن لایحه با هوش مصنوعی</h3>
-      <p>
-        نیاز به <strong>وکیل آنلاین</strong> دارید؟ یا می‌خواهید <strong>لایحه آنلاین</strong> تنظیم کنید؟ 
-        تیم حقوقی <strong>رازی ۳۶۰</strong> با کمک <strong>هوش مصنوعی</strong>، 
-        خدمات <strong>نوشتن لایحه</strong>، تنظیم دادخواست، شکواییه و مشاوره حقوقی را 
-        به صورت کاملاً آنلاین و با بهترین کیفیت ارائه می‌دهد.
-      </p>
-      
-      <h3>💬 پرامپت رایگان و ابزارهای هوش مصنوعی رایگان</h3>
-      <p>
-        در <strong>رازی ۳۶۰</strong> ما به شما <strong>پرامپت رایگان</strong> برای 
-        <strong>ChatGPT</strong>، <strong>DeepSeek</strong> و سایر مدل‌های هوش مصنوعی ارائه می‌دهیم. 
-        همچنین می‌توانید از <strong>هوش مصنوعی رایگان</strong> ما برای انجام کارهای روزمره خود استفاده کنید.
-      </p>
-      
+      <p>خدمات <strong>وکیل آنلاین</strong>، <strong>نوشتن لایحه</strong>، تنظیم دادخواست و مشاوره حقوقی کاملاً آنلاین.</p>
       <h3>📍 نزدیک دانشگاه رازی کرمانشاه</h3>
-      <p>
-        دفتر ما در <strong>کرمانشاه، بلوار گلریزان، پلاک ۱۰</strong>، 
-        در نزدیکی <strong>دانشگاه رازی</strong> واقع شده است. 
-        دانشجویان <strong>دانشگاه رازی</strong> می‌توانند از تخفیف‌های ویژه ما بهره‌مند شوند. 
-        برای <strong>آموزش هوش مصنوعی</strong>، <strong>وکیل آنلاین</strong> و 
-        دریافت <strong>پرامپت رایگان</strong>، همین امروز با ما تماس بگیرید.
-      </p>
-      
+      <p>دفتر ما در <strong>کرمانشاه، بلوار گلریزان، پلاک ۱۰</strong>، نزدیک <strong>دانشگاه رازی</strong>.</p>
       <ul>
         <li><i class="fas fa-check-circle"></i> <strong>آموزش هوش مصنوعی</strong> با جدیدترین متدها</li>
         <li><i class="fas fa-check-circle"></i> <strong>وکیل آنلاین</strong> و <strong>نوشتن لایحه</strong> با پشتیبانی ۲۴/۷</li>
         <li><i class="fas fa-check-circle"></i> <strong>پرامپت رایگان</strong> برای تمام مدل‌های هوش مصنوعی</li>
-        <li><i class="fas fa-check-circle"></i> دسترسی به <strong>هوش مصنوعی رایگان</strong> برای دانشجویان</li>
-        <li><i class="fas fa-check-circle"></i> موقعیت مکانی عالی، نزدیک <strong>دانشگاه رازی</strong></li>
-        <li><i class="fas fa-check-circle"></i> <strong>خرید اکانت ChatGPT</strong> و DeepSeek با قیمت مناسب</li>
       </ul>
     </div>
 
     <!-- دوره‌های آموزشی -->
     <h2 class="section-title">🎓 دوره‌های آموزش هوش مصنوعی</h2>
     <p style="text-align: center; color: #cdb088; font-size: 1.1rem; margin-bottom: 30px;">
-      از <strong>پرامپت رایگان</strong> تا <strong>آموزش هوش مصنوعی</strong> پیشرفته - همه در <strong>رازی ۳۶۰</strong>
+      از <strong>پرامپت رایگان</strong> تا <strong>آموزش هوش مصنوعی</strong> پیشرفته
     </p>
     
     <div class="courses-grid">
@@ -332,7 +321,7 @@
         <div class="course-icon-wrapper"><i class="fas fa-robot course-icon"></i></div>
         <span class="course-level">🎯 مقدماتی</span>
         <h3 class="course-title">مبانی هوش مصنوعی و یادگیری ماشین</h3>
-        <p class="course-description">آشنایی کامل با <strong>هوش مصنوعی</strong>، الگوریتم‌های یادگیری ماشین و پیاده‌سازی پروژه‌های عملی</p>
+        <p class="course-description">آشنایی کامل با <strong>هوش مصنوعی</strong> و پیاده‌سازی پروژه‌های عملی با پایتون</p>
         <div class="course-details">
           <span><i class="fas fa-clock"></i> ۴۸ ساعت</span>
           <span><i class="fas fa-video"></i> ۳۲ جلسه</span>
@@ -344,7 +333,7 @@
         <div class="course-icon-wrapper"><i class="fas fa-comment-dots course-icon"></i></div>
         <span class="course-level">💬 کاربردی</span>
         <h3 class="course-title">پرامپت نویسی حرفه‌ای ChatGPT</h3>
-        <p class="course-description">آموزش کامل <strong>پرامپت نویسی</strong> و کار با <strong>ChatGPT</strong> - <strong>پرامپت رایگان</strong> همراه دوره</p>
+        <p class="course-description">آموزش کامل <strong>پرامپت نویسی</strong> و کار با <strong>ChatGPT</strong></p>
         <div class="course-details">
           <span><i class="fas fa-clock"></i> ۲۰ ساعت</span>
           <span><i class="fas fa-video"></i> ۱۴ جلسه</span>
@@ -356,7 +345,7 @@
         <div class="course-icon-wrapper"><i class="fas fa-search course-icon"></i></div>
         <span class="course-level">🔍 کاربردی</span>
         <h3 class="course-title">راهنمای جامع DeepSeek</h3>
-        <p class="course-description">نصب و استفاده از <strong>DeepSeek</strong> - <strong>هوش مصنوعی رایگان</strong> روی سیستم شخصی</p>
+        <p class="course-description">نصب و استفاده از <strong>DeepSeek</strong> - <strong>هوش مصنوعی رایگان</strong></p>
         <div class="course-details">
           <span><i class="fas fa-clock"></i> ۱۶ ساعت</span>
           <span><i class="fas fa-video"></i> ۱۰ جلسه</span>
@@ -365,22 +354,10 @@
         <a href="pages/shop.html" class="btn-course"><i class="fas fa-arrow-left"></i> مشاهده دوره</a>
       </div>
       <div class="course-card">
-        <div class="course-icon-wrapper"><i class="fas fa-gem course-icon"></i></div>
-        <span class="course-level">✨ کاربردی</span>
-        <h3 class="course-title">Google Gemini از مبتدی تا پیشرفته</h3>
-        <p class="course-description">آشنایی با <strong>هوش مصنوعی</strong> گوگل و ادغام با سرویس‌های گوگل</p>
-        <div class="course-details">
-          <span><i class="fas fa-clock"></i> ۱۸ ساعت</span>
-          <span><i class="fas fa-video"></i> ۱۲ جلسه</span>
-          <span><i class="fas fa-user-graduate"></i> ۹۸۰ نفر</span>
-        </div>
-        <a href="pages/shop.html" class="btn-course"><i class="fas fa-arrow-left"></i> مشاهده دوره</a>
-      </div>
-      <div class="course-card">
         <div class="course-icon-wrapper"><i class="fas fa-credit-card course-icon"></i></div>
         <span class="course-level">💳 خرید اکانت</span>
         <h3 class="course-title">خرید اکانت ChatGPT و DeepSeek</h3>
-        <p class="course-description">راهنمای <strong>خرید اکانت ChatGPT</strong> و DeepSeek Pro از ایران با پرداخت ریالی</p>
+        <p class="course-description">راهنمای <strong>خرید اکانت ChatGPT</strong> از ایران با پرداخت ریالی</p>
         <div class="course-details">
           <span><i class="fas fa-clock"></i> ۸ ساعت</span>
           <span><i class="fas fa-video"></i> ۶ جلسه</span>
@@ -397,14 +374,13 @@
     </div>
   </div>
 
+  <!-- فوتر -->
   <footer>
     <div class="container">
       <div class="footer-content">
         <div class="footer-col">
           <div class="footer-logo"><i class="fas fa-robot"></i> رازی ۳۶۰</div>
-          <p style="margin-top: 15px; color: #cdb088;">
-            <strong>آموزش هوش مصنوعی</strong> | <strong>وکیل آنلاین</strong> | <strong>پرامپت رایگان</strong>
-          </p>
+          <p style="margin-top: 15px; color: #cdb088;"><strong>آموزش هوش مصنوعی</strong> | <strong>وکیل آنلاین</strong> | <strong>پرامپت رایگان</strong></p>
           <div class="enamad-box">
             <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=666728&Code=DkrrjsLDcX9eK5iTH8wDmkrgY7MmVCCn'>
               <img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=666728&Code=DkrrjsLDcX9eK5iTH8wDmkrgY7MmVCCn' alt='نماد اعتماد الکترونیکی' style='cursor:pointer' code='DkrrjsLDcX9eK5iTH8wDmkrgY7MmVCCn'>
@@ -416,7 +392,7 @@
           <a href="pages/shop.html"><i class="fas fa-chevron-left"></i> فروشگاه محصولات</a>
           <a href="pages/shop.html"><i class="fas fa-chevron-left"></i> دوره‌های آموزشی</a>
           <a href="pages/contact.html"><i class="fas fa-chevron-left"></i> پشتیبانی آنلاین</a>
-          <a href="pages/blog.html"><i class="fas fa-chevron-left"></i> وبلاگ</a>
+          <a href="pages/login.html"><i class="fas fa-chevron-left"></i> ورود / ثبت‌نام</a>
         </div>
         <div class="footer-col footer-links">
           <h4 style="color: #ffcd94; margin-bottom: 15px;">اطلاعات تماس</h4>
@@ -448,31 +424,53 @@
     </div>
   </div>
 
-  <style>
-    .popup-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); z-index: 9999; justify-content: center; align-items: center; padding: 20px; }
-    .popup-overlay.active { display: flex; }
-    .popup-container { background: linear-gradient(145deg, #241e14, #2b2113); border: 2px solid rgba(255,180,60,0.4); border-radius: 30px; padding: 45px 35px 35px; max-width: 480px; width: 100%; text-align: center; position: relative; }
-    .popup-close { position: absolute; top: 15px; left: 15px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #cdb088; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; }
-    .popup-icon { width: 80px; height: 80px; background: linear-gradient(135deg, rgba(255,167,38,0.3), rgba(245,124,0,0.2)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; border: 2px solid rgba(255,180,60,0.5); }
-    .popup-icon i { font-size: 2.5rem; color: #ffb347; }
-    .popup-title { font-size: 1.8rem; font-weight: 900; background: linear-gradient(to left, #ffd166, #f4a261); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .popup-subtitle { color: #cdb088; margin: 10px 0 20px; }
-    .popup-features { text-align: right; margin-bottom: 25px; }
-    .popup-feature { display: flex; align-items: center; gap: 10px; padding: 8px 0; color: #c4a87c; }
-    .popup-feature i { color: #4CAF50; }
-    .popup-download-btn { display: inline-flex; align-items: center; gap: 10px; width: 100%; padding: 16px; border-radius: 50px; font-weight: 800; background: linear-gradient(135deg, #4CAF50, #2E7D32); color: white; text-decoration: none; justify-content: center; }
-  </style>
-
   <script>
     function showPopup() { setTimeout(() => { document.getElementById('download-popup').classList.add('active'); }, 2000); }
     function closePopup() { document.getElementById('download-popup').classList.remove('active'); }
     document.addEventListener('click', function(e) { if (e.target.id === 'download-popup') closePopup(); });
     document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePopup(); });
     document.addEventListener('DOMContentLoaded', showPopup);
+    
     document.querySelector('.logo').addEventListener('click', function(e) {
       e.preventDefault(); const icon = this.querySelector('.logo-icon');
       icon.style.transform = 'rotate(360deg) scale(1.3)';
       setTimeout(() => { icon.style.transform = ''; window.location.href = 'index.html'; }, 500);
+    });
+  </script>
+
+  <!-- ==================== Firebase Auth ==================== -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
+    
+    const firebaseConfig = {
+      apiKey: "AIzaSyDSZgKxihsca86ovMjyv0clynX3ATgiqPs",
+      authDomain: "razi360-e3952.firebaseapp.com",
+      projectId: "razi360-e3952",
+      storageBucket: "razi360-e3952.firebasestorage.app",
+      messagingSenderId: "708191850694",
+      appId: "1:708191850694:web:1f8e42542c8371846047c7"
+    };
+    
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const authBtn = document.getElementById('auth-btn');
+    
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const name = user.displayName || user.email?.split('@')[0] || 'کاربر';
+        authBtn.innerHTML = `<i class="fas fa-user-check"></i> ${name}`;
+        authBtn.classList.add('logged-in');
+        authBtn.title = 'کلیک برای مشاهده پروفایل';
+        localStorage.setItem('razi360-user', JSON.stringify({
+          uid: user.uid, name: user.displayName, email: user.email, photo: user.photoURL
+        }));
+      } else {
+        authBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> ورود | ثبت‌نام';
+        authBtn.classList.remove('logged-in');
+        authBtn.title = 'ورود یا ثبت‌نام در سایت';
+        localStorage.removeItem('razi360-user');
+      }
     });
   </script>
 </body>
