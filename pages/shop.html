@@ -15,7 +15,6 @@
     }
     .container { max-width: 1300px; margin: 0 auto; padding: 0 24px; }
     
-    /* هدر */
     header {
       display: flex; align-items: center; justify-content: space-between;
       padding: 18px 32px; margin: 20px auto 0; border-radius: 60px;
@@ -48,7 +47,6 @@
     .store-btn:hover { background: linear-gradient(135deg, #f5b06e, #f08c2e) !important; box-shadow: 0 15px 30px rgba(255, 160, 20, 0.7); }
     .store-btn.active { background: linear-gradient(135deg, #f4a261, #e67e22) !important; color: #1a140c !important; border: none !important; }
 
-    /* عنوان صفحه */
     .page-header { text-align: center; padding: 80px 20px 50px; }
     .page-title {
       font-size: 3.5rem; font-weight: 900;
@@ -57,7 +55,6 @@
     }
     .page-subtitle { font-size: 1.2rem; color: #cdb088; }
 
-    /* تب‌های دسته‌بندی */
     .category-tabs { display: flex; justify-content: center; gap: 15px; margin: 30px 0 50px; flex-wrap: wrap; }
     .category-tab {
       padding: 14px 30px; border-radius: 50px; font-weight: 700; font-size: 1.1rem;
@@ -75,7 +72,6 @@
     .hidden-section { display: none; }
     .visible-section { display: block; }
 
-    /* گرید محصولات */
     .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin: 40px 0 60px; }
     .product-card {
       background: rgba(40, 30, 18, 0.5); backdrop-filter: blur(14px); border-radius: 25px;
@@ -120,7 +116,6 @@
     }
     .btn-buy:hover { background: linear-gradient(135deg, #f5b06e, #f08c2e); box-shadow: 0 10px 20px rgba(230, 126, 34, 0.4); transform: translateY(-3px); }
 
-    /* فوتر */
     footer { background: rgba(20, 15, 8, 0.8); backdrop-filter: blur(25px); border-top: 2px solid rgba(244, 162, 97, 0.4); padding: 50px 0 25px; margin-top: 60px; }
     .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 35px; }
     .footer-col { flex: 1 1 220px; }
@@ -276,7 +271,6 @@
 </head>
 <body>
   <div class="container">
-    <!-- هدر -->
     <header>
       <a href="../index.html" class="logo">
         <i class="fas fa-brain logo-icon"></i>
@@ -291,13 +285,11 @@
       </div>
     </header>
 
-    <!-- عنوان صفحه -->
     <div class="page-header">
       <h1 class="page-title">🛒 فروشگاه رازی ۳۶۰</h1>
       <p class="page-subtitle">دوره‌های آموزشی و محصولات هوش مصنوعی با بهترین کیفیت</p>
     </div>
 
-    <!-- تب‌های دسته‌بندی -->
     <div class="category-tabs">
       <button class="category-tab active-tab" onclick="showCategory('courses')" id="tab-courses">
         <i class="fas fa-graduation-cap"></i> دوره‌های آموزشی
@@ -307,218 +299,152 @@
       </button>
     </div>
 
-    <!-- ==================== بخش دوره‌های آموزشی ==================== -->
+    <!-- ==================== دوره‌های آموزشی ==================== -->
     <div id="courses-section" class="visible-section">
       <div class="category-section-title"><i class="fas fa-graduation-cap"></i> دوره‌های آموزشی هوش مصنوعی</div>
       <div class="products-grid">
-        
         <div class="product-card">
-          <span class="product-badge">پرفروش</span>
-          <span class="course-type-badge">🎯 مقدماتی</span>
+          <span class="product-badge">پرفروش</span><span class="course-type-badge">🎯 مقدماتی</span>
           <div class="product-image-wrapper"><i class="fas fa-robot product-placeholder"></i></div>
           <div class="product-info">
             <div class="product-category"><i class="fas fa-laptop-code"></i> دوره ویدیویی</div>
             <h3 class="product-title">مبانی هوش مصنوعی و یادگیری ماشین</h3>
-            <p class="product-description">آشنایی کامل با مفاهیم پایه هوش مصنوعی، الگوریتم‌های یادگیری ماشین و پیاده‌سازی پروژه‌های عملی با پایتون</p>
+            <p class="product-description">آشنایی کامل با مفاهیم پایه هوش مصنوعی و پیاده‌سازی پروژه‌های عملی با پایتون</p>
             <div class="course-details-mini">
-              <span><i class="fas fa-clock"></i> ۴۸ ساعت</span>
-              <span><i class="fas fa-video"></i> ۳۲ جلسه</span>
-              <span><i class="fas fa-user-graduate"></i> ۲,۳۴۰ نفر</span>
+              <span><i class="fas fa-clock"></i> ۴۸ ساعت</span><span><i class="fas fa-video"></i> ۳۲ جلسه</span><span><i class="fas fa-user-graduate"></i> ۲,۳۴۰ نفر</span>
             </div>
-            <div class="product-footer">
-              <span class="product-price">۴۹۹,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> ثبت‌نام</a>
-            </div>
+            <div class="product-footer"><span class="product-price">۴۹۹,۰۰۰ تومان</span><a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> ثبت‌نام</a></div>
           </div>
         </div>
-
         <div class="product-card">
-          <span class="product-badge">جدید</span>
-          <span class="course-type-badge">💬 کاربردی</span>
+          <span class="product-badge">جدید</span><span class="course-type-badge">💬 کاربردی</span>
           <div class="product-image-wrapper"><i class="fas fa-comment-dots product-placeholder"></i></div>
           <div class="product-info">
             <div class="product-category"><i class="fas fa-laptop-code"></i> دوره ویدیویی</div>
             <h3 class="product-title">کار با ChatGPT و پرامپت نویسی حرفه‌ای</h3>
-            <p class="product-description">آموزش کامل کار با چت جی پی تی، نوشتن پرامپت‌های حرفه‌ای و استفاده از نسخه‌های رایگان و پولی</p>
+            <p class="product-description">آموزش کامل کار با چت جی پی تی و نوشتن پرامپت‌های حرفه‌ای</p>
             <div class="course-details-mini">
-              <span><i class="fas fa-clock"></i> ۲۰ ساعت</span>
-              <span><i class="fas fa-video"></i> ۱۴ جلسه</span>
-              <span><i class="fas fa-user-graduate"></i> ۱,۸۵۰ نفر</span>
+              <span><i class="fas fa-clock"></i> ۲۰ ساعت</span><span><i class="fas fa-video"></i> ۱۴ جلسه</span><span><i class="fas fa-user-graduate"></i> ۱,۸۵۰ نفر</span>
             </div>
-            <div class="product-footer">
-              <span class="product-price">۳۴۹,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> ثبت‌نام</a>
-            </div>
+            <div class="product-footer"><span class="product-price">۳۴۹,۰۰۰ تومان</span><a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> ثبت‌نام</a></div>
           </div>
         </div>
-
         <div class="product-card">
           <span class="course-type-badge">🔍 کاربردی</span>
           <div class="product-image-wrapper"><i class="fas fa-search product-placeholder"></i></div>
           <div class="product-info">
             <div class="product-category"><i class="fas fa-laptop-code"></i> دوره ویدیویی</div>
             <h3 class="product-title">راهنمای جامع DeepSeek</h3>
-            <p class="product-description">نصب، تنظیم و استفاده از دیپ سیک روی سیستم شخصی و سرور، مقایسه با مدل‌های دیگر و بهینه‌سازی پاسخ‌ها</p>
+            <p class="product-description">نصب، تنظیم و استفاده از دیپ سیک روی سیستم شخصی و سرور</p>
             <div class="course-details-mini">
-              <span><i class="fas fa-clock"></i> ۱۶ ساعت</span>
-              <span><i class="fas fa-video"></i> ۱۰ جلسه</span>
-              <span><i class="fas fa-user-graduate"></i> ۱,۲۳۰ نفر</span>
+              <span><i class="fas fa-clock"></i> ۱۶ ساعت</span><span><i class="fas fa-video"></i> ۱۰ جلسه</span><span><i class="fas fa-user-graduate"></i> ۱,۲۳۰ نفر</span>
             </div>
-            <div class="product-footer">
-              <span class="product-price">۲۹۹,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> ثبت‌نام</a>
-            </div>
+            <div class="product-footer"><span class="product-price">۲۹۹,۰۰۰ تومان</span><a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> ثبت‌نام</a></div>
           </div>
         </div>
-
         <div class="product-card">
           <span class="course-type-badge">✨ کاربردی</span>
           <div class="product-image-wrapper"><i class="fas fa-gem product-placeholder"></i></div>
           <div class="product-info">
             <div class="product-category"><i class="fas fa-laptop-code"></i> دوره ویدیویی</div>
             <h3 class="product-title">Google Gemini از مبتدی تا پیشرفته</h3>
-            <p class="product-description">آشنایی با قابلیت‌های جمینای گوگل، کار با نسخه‌های مختلف و ادغام با سرویس‌های گوگل</p>
+            <p class="product-description">آشنایی با قابلیت‌های جمینای گوگل و ادغام با سرویس‌های گوگل</p>
             <div class="course-details-mini">
-              <span><i class="fas fa-clock"></i> ۱۸ ساعت</span>
-              <span><i class="fas fa-video"></i> ۱۲ جلسه</span>
-              <span><i class="fas fa-user-graduate"></i> ۹۸۰ نفر</span>
+              <span><i class="fas fa-clock"></i> ۱۸ ساعت</span><span><i class="fas fa-video"></i> ۱۲ جلسه</span><span><i class="fas fa-user-graduate"></i> ۹۸۰ نفر</span>
             </div>
-            <div class="product-footer">
-              <span class="product-price">۳۲۹,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> ثبت‌نام</a>
-            </div>
+            <div class="product-footer"><span class="product-price">۳۲۹,۰۰۰ تومان</span><a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> ثبت‌نام</a></div>
           </div>
         </div>
-
         <div class="product-card">
-          <span class="product-badge">پرمخاطب</span>
-          <span class="course-type-badge">💳 خرید اکانت</span>
+          <span class="product-badge">پرمخاطب</span><span class="course-type-badge">💳 خرید اکانت</span>
           <div class="product-image-wrapper"><i class="fas fa-credit-card product-placeholder"></i></div>
           <div class="product-info">
             <div class="product-category"><i class="fas fa-laptop-code"></i> دوره ویدیویی</div>
             <h3 class="product-title">خرید دلاری اکانت رسمی از ایران</h3>
-            <p class="product-description">راهنمای کامل خرید اشتراک ChatGPT Plus، DeepSeek Pro، Gemini Advanced و سایر مدل‌ها با پرداخت دلاری از ایران</p>
+            <p class="product-description">راهنمای کامل خرید اشتراک ChatGPT Plus و DeepSeek Pro</p>
             <div class="course-details-mini">
-              <span><i class="fas fa-clock"></i> ۸ ساعت</span>
-              <span><i class="fas fa-video"></i> ۶ جلسه</span>
-              <span><i class="fas fa-user-graduate"></i> ۲,۵۶۰ نفر</span>
+              <span><i class="fas fa-clock"></i> ۸ ساعت</span><span><i class="fas fa-video"></i> ۶ جلسه</span><span><i class="fas fa-user-graduate"></i> ۲,۵۶۰ نفر</span>
             </div>
-            <div class="product-footer">
-              <span class="product-price">۱۹۹,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> ثبت‌نام</a>
-            </div>
+            <div class="product-footer"><span class="product-price">۱۹۹,۰۰۰ تومان</span><a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> ثبت‌نام</a></div>
           </div>
         </div>
-
         <div class="product-card">
-          <span class="product-badge">ویژه</span>
-          <span class="course-type-badge">🏆 جامع</span>
+          <span class="product-badge">ویژه</span><span class="course-type-badge">🏆 جامع</span>
           <div class="product-image-wrapper"><i class="fas fa-crown product-placeholder"></i></div>
           <div class="product-info">
             <div class="product-category"><i class="fas fa-laptop-code"></i> پکیج کامل</div>
             <h3 class="product-title">پکیج جامع هوش مصنوعی (VIP)</h3>
-            <p class="product-description">صفر تا صد هوش مصنوعی شامل تمام دوره‌های بالا + منتورینگ اختصاصی و پروژه‌های عملی</p>
+            <p class="product-description">صفر تا صد هوش مصنوعی شامل تمام دوره‌ها + منتورینگ اختصاصی</p>
             <div class="course-details-mini">
-              <span><i class="fas fa-clock"></i> ۲۰۰ ساعت</span>
-              <span><i class="fas fa-video"></i> ۱۲۰ جلسه</span>
-              <span><i class="fas fa-user-graduate"></i> ۸۹۰ نفر</span>
+              <span><i class="fas fa-clock"></i> ۲۰۰ ساعت</span><span><i class="fas fa-video"></i> ۱۲۰ جلسه</span><span><i class="fas fa-user-graduate"></i> ۸۹۰ نفر</span>
             </div>
-            <div class="product-footer">
-              <span class="product-price">۱,۴۹۰,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> ثبت‌نام</a>
-            </div>
+            <div class="product-footer"><span class="product-price">۱,۴۹۰,۰۰۰ تومان</span><a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> ثبت‌نام</a></div>
           </div>
         </div>
-
       </div>
     </div>
 
-    <!-- ==================== بخش محصولات ==================== -->
+    <!-- ==================== محصولات ==================== -->
     <div id="products-section" class="hidden-section">
       <div class="category-section-title"><i class="fas fa-box"></i> محصولات و خدمات</div>
       <div class="products-grid">
-        
         <div class="product-card">
           <span class="product-badge">جدید</span>
           <div class="product-image-wrapper"><i class="fas fa-calendar-check product-placeholder"></i></div>
           <div class="product-info">
             <div class="product-category"><i class="fas fa-mobile-alt"></i> نرم‌افزار</div>
             <h3 class="product-title">پلنر هوشمند روزانه</h3>
-            <p class="product-description">برنامه‌ریزی خودکار با هوش مصنوعی، مناسب برای مدیریت زمان و افزایش بهره‌وری</p>
-            <div class="product-footer">
-              <span class="product-price">۲۹۹,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> خرید</a>
-            </div>
+            <p class="product-description">برنامه‌ریزی خودکار با هوش مصنوعی برای مدیریت زمان</p>
+            <div class="product-footer"><span class="product-price">۲۹۹,۰۰۰ تومان</span><a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> خرید</a></div>
           </div>
         </div>
-
         <div class="product-card">
           <span class="product-badge">پرطرفدار</span>
           <div class="product-image-wrapper"><i class="fas fa-globe product-placeholder"></i></div>
           <div class="product-info">
             <div class="product-category"><i class="fas fa-globe"></i> خدمات</div>
             <h3 class="product-title">پکیج طراحی سایت اختصاصی</h3>
-            <p class="product-description">طراحی وب‌سایت حرفه‌ای با سئو پیشرفته، ریسپانسیو و پشتیبانی یکساله</p>
-            <div class="product-footer">
-              <span class="product-price">۴,۹۹۰,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> خرید</a>
-            </div>
+            <p class="product-description">طراحی وب‌سایت حرفه‌ای با سئو پیشرفته و پشتیبانی یکساله</p>
+            <div class="product-footer"><span class="product-price">۴,۹۹۰,۰۰۰ تومان</span><a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> خرید</a></div>
           </div>
         </div>
-
         <div class="product-card">
           <div class="product-image-wrapper"><i class="fas fa-graduation-cap product-placeholder"></i></div>
           <div class="product-info">
             <div class="product-category"><i class="fas fa-mobile-alt"></i> نرم‌افزار</div>
             <h3 class="product-title">دستیار آموزشی هوشمند</h3>
-            <p class="product-description">همراه تحصیلی مبتنی بر هوش مصنوعی برای دانشجویان و دانش‌آموزان</p>
-            <div class="product-footer">
-              <span class="product-price">۴۹۹,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> خرید</a>
-            </div>
+            <p class="product-description">همراه تحصیلی مبتنی بر هوش مصنوعی برای دانشجویان</p>
+            <div class="product-footer"><span class="product-price">۴۹۹,۰۰۰ تومان</span><a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> خرید</a></div>
           </div>
         </div>
-
         <div class="product-card">
           <span class="product-badge">ویژه</span>
           <div class="product-image-wrapper"><i class="fas fa-balance-scale product-placeholder"></i></div>
           <div class="product-info">
             <div class="product-category"><i class="fas fa-gavel"></i> خدمات</div>
             <h3 class="product-title">بسته مشاوره حقوقی هوشمند</h3>
-            <p class="product-description">تنظیم لایحه، دادخواست و مشاوره آنلاین با تحلیل هوشمند پرونده</p>
-            <div class="product-footer">
-              <span class="product-price">۱,۴۹۰,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> خرید</a>
-            </div>
+            <p class="product-description">تنظیم لایحه، دادخواست و مشاوره آنلاین</p>
+            <div class="product-footer"><span class="product-price">۱,۴۹۰,۰۰۰ تومان</span><a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> خرید</a></div>
           </div>
         </div>
-
         <div class="product-card">
           <div class="product-image-wrapper"><i class="fas fa-code product-placeholder"></i></div>
           <div class="product-info">
             <div class="product-category"><i class="fas fa-file-code"></i> محتوای دیجیتال</div>
             <h3 class="product-title">بسته پرامپت‌های کاربردی</h3>
-            <p class="product-description">مجموعه ۵۰۰ پرامپت حرفه‌ای برای ChatGPT و سایر مدل‌های هوش مصنوعی</p>
-            <div class="product-footer">
-              <span class="product-price">۱۴۹,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> خرید</a>
-            </div>
+            <p class="product-description">مجموعه ۵۰۰ پرامپت حرفه‌ای برای ChatGPT</p>
+            <div class="product-footer"><span class="product-price">۱۴۹,۰۰۰ تومان</span><a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> خرید</a></div>
           </div>
         </div>
-
         <div class="product-card">
           <div class="product-image-wrapper"><i class="fas fa-cloud product-placeholder"></i></div>
           <div class="product-info">
             <div class="product-category"><i class="fas fa-server"></i> زیرساخت</div>
             <h3 class="product-title">سرور ابری هوش مصنوعی</h3>
-            <p class="product-description">زیرساخت ابری اختصاصی با پردازنده گرافیکی برای آموزش و اجرای مدل‌های هوش مصنوعی</p>
-            <div class="product-footer">
-              <span class="product-price">از ۹۹۰,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> خرید</a>
-            </div>
+            <p class="product-description">زیرساخت ابری با پردازنده گرافیکی برای مدل‌های AI</p>
+            <div class="product-footer"><span class="product-price">از ۹۹۰,۰۰۰ تومان</span><a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> خرید</a></div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -608,8 +534,11 @@
   </div>
 
   <script>
-    // ==================== سیستم سبد خرید ====================
+    // ==================== سبد خرید ====================
     let cart = JSON.parse(localStorage.getItem('razi360-cart')) || [];
+    
+    // ==================== آدرس Google Sheet ====================
+    const GOOGLE_SHEET_API = 'https://script.google.com/macros/s/AKfycbw-l-IfW9kjhOrFkFnt2X5g_yzRp78JMOt0MKMaSsHf5JfuY841_0QxciFnwcLpUss/exec';
     
     function saveCart() { localStorage.setItem('razi360-cart', JSON.stringify(cart)); }
     
@@ -657,11 +586,8 @@
       const numericPrice = parseInt(price.replace(/[^0-9]/g, ''));
       const existingIndex = cart.findIndex(item => item.title === title);
       
-      if (existingIndex > -1) {
-        cart[existingIndex].quantity++;
-      } else {
-        cart.push({ title: title, price: numericPrice, icon: icon, quantity: 1 });
-      }
+      if (existingIndex > -1) { cart[existingIndex].quantity++; }
+      else { cart.push({ title: title, price: numericPrice, icon: icon, quantity: 1 }); }
       
       saveCart();
       updateCartUI();
@@ -680,18 +606,11 @@
       updateCartUI();
     }
     
-    function removeItem(index) {
-      cart.splice(index, 1);
-      saveCart();
-      updateCartUI();
-    }
+    function removeItem(index) { cart.splice(index, 1); saveCart(); updateCartUI(); }
     
     function clearCart() {
       if (confirm('آیا از خالی کردن سبد خرید اطمینان دارید؟')) {
-        cart = [];
-        saveCart();
-        updateCartUI();
-        showToast('🗑️ سبد خرید خالی شد');
+        cart = []; saveCart(); updateCartUI(); showToast('🗑️ سبد خرید خالی شد');
       }
     }
     
@@ -700,67 +619,55 @@
       document.getElementById('cart-overlay').classList.toggle('active');
     }
     
+    // ==================== ثبت سفارش در Google Sheet ====================
     function submitOrder() {
       const name = document.getElementById('customer-name').value.trim();
       const phone = document.getElementById('customer-phone').value.trim();
       const note = document.getElementById('customer-note').value.trim();
       
-      if (!name || !phone) {
-        alert('لطفاً نام و شماره تماس خود را وارد کنید.');
-        return;
-      }
+      if (!name || !phone) { alert('⚠️ لطفاً نام و شماره تماس خود را وارد کنید.'); return; }
+      if (cart.length === 0) { alert('⚠️ سبد خرید خالی است!'); return; }
       
-      if (cart.length === 0) {
-        alert('سبد خرید خالی است!');
-        return;
-      }
+      const now = new Date();
+      const orderData = {
+        id: 'ORD-' + now.getFullYear() + (now.getMonth()+1).toString().padStart(2,'0') + now.getDate().toString().padStart(2,'0') + '-' + Math.random().toString(36).substring(2, 6).toUpperCase(),
+        date: now.toLocaleDateString('fa-IR'),
+        time: now.toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' }),
+        customer: { name: name, phone: phone, note: note || '' },
+        products: cart.map(item => ({ title: item.title, price: item.price, quantity: item.quantity, total: item.price * item.quantity })),
+        total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+        status: 'جدید'
+      };
       
-      // ساخت پیام سفارش
-      let message = '🛒 *سفارش جدید از سایت رازی ۳۶۰*\n\n';
-      message += `👤 *مشتری:* ${name}\n`;
-      message += `📞 *تماس:* ${phone}\n`;
-      if (note) message += `📝 *توضیحات:* ${note}\n`;
-      message += '\n━━━━━━━━━━━━━━━\n\n';
-      message += '📦 *محصولات سفارش:*\n\n';
+      const submitBtn = document.querySelector('.cart-submit-btn');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال ثبت...';
+      submitBtn.disabled = true;
       
-      cart.forEach((item, index) => {
-        const itemTotal = item.price * item.quantity;
-        message += `${index + 1}. ${item.title}\n`;
-        message += `   💰 ${item.price.toLocaleString('fa-IR')} × ${item.quantity} = ${itemTotal.toLocaleString('fa-IR')} تومان\n\n`;
-      });
-      
-      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-      message += '━━━━━━━━━━━━━━━\n';
-      message += `💵 *جمع کل: ${total.toLocaleString('fa-IR')} تومان*\n`;
-      message += `📅 *تاریخ:* ${new Date().toLocaleDateString('fa-IR')}\n`;
-      
-      // ارسال به تلگرام شما (شماره +989033206428)
-      const telegramNumber = '989033206428';
-      window.open(`https://t.me/+${telegramNumber}?text=${encodeURIComponent(message)}`, '_blank');
-      
-      // نمایش پیغام موفقیت
-      document.getElementById('success-message').classList.add('active');
-      
-      // خالی کردن سبد
-      cart = [];
-      saveCart();
-      updateCartUI();
-      toggleCart();
+      fetch(GOOGLE_SHEET_API, {
+        method: 'POST',
+        body: JSON.stringify(orderData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          document.getElementById('success-message').classList.add('active');
+          document.getElementById('success-message').querySelector('p').innerHTML = `کد پیگیری: <strong style="color:#ffb347;">${data.orderId}</strong><br>همکاران ما به زودی با شما تماس خواهند گرفت.`;
+          cart = []; saveCart(); updateCartUI(); toggleCart();
+        } else {
+          alert('❌ خطا در ثبت سفارش. لطفاً دوباره تلاش کنید.');
+        }
+      })
+      .catch(error => { alert('❌ خطا در ارتباط با سرور. لطفاً اتصال اینترنت خود را بررسی کنید.'); })
+      .finally(() => { submitBtn.innerHTML = originalText; submitBtn.disabled = false; });
     }
     
-    function closeSuccess() {
-      document.getElementById('success-message').classList.remove('active');
-    }
+    function closeSuccess() { document.getElementById('success-message').classList.remove('active'); }
     
     function showToast(text) {
       const toast = document.createElement('div');
       toast.textContent = text;
-      toast.style.cssText = `
-        position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%);
-        background: #4CAF50; color: white; padding: 12px 25px; border-radius: 50px;
-        font-family: 'Vazirmatn', sans-serif; font-weight: 600; z-index: 10001;
-        animation: fadeInUp 0.3s ease;
-      `;
+      toast.style.cssText = 'position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:#4CAF50;color:white;padding:12px 25px;border-radius:50px;font-family:Vazirmatn,sans-serif;font-weight:600;z-index:10001;';
       document.body.appendChild(toast);
       setTimeout(() => { toast.remove(); }, 2000);
     }
@@ -775,10 +682,7 @@
             const priceText = card.querySelector('.product-price')?.textContent?.trim();
             const iconElement = card.querySelector('.product-placeholder');
             let icon = 'fa-box';
-            if (iconElement) {
-              const classes = iconElement.className.split(' ');
-              icon = classes.find(c => c.startsWith('fa-')) || 'fa-box';
-            }
+            if (iconElement) { const classes = iconElement.className.split(' '); icon = classes.find(c => c.startsWith('fa-')) || 'fa-box'; }
             if (title && priceText) { addToCart(title, priceText, icon); }
           }
         });
