@@ -7,515 +7,277 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
       background: linear-gradient(145deg, #1a140c 0%, #241e14 40%, #2b2113 100%);
-      color: #f7efe2;
-      line-height: 1.7;
-      overflow-x: hidden;
-      letter-spacing: 0.2px;
-      min-height: 100vh;
+      color: #f7efe2; line-height: 1.7; overflow-x: hidden; letter-spacing: 0.2px; min-height: 100vh;
     }
-
-    .glass {
-      background: rgba(30, 24, 16, 0.7);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(255, 180, 60, 0.2);
-      box-shadow: 0 25px 45px -10px rgba(180, 100, 20, 0.2);
-    }
-
-    .container {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
+    .container { max-width: 1300px; margin: 0 auto; padding: 0 24px; }
+    
+    /* هدر */
     header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 32px;
-      margin: 20px auto 0;
-      border-radius: 60px;
-      position: sticky;
-      top: 20px;
-      z-index: 1000;
-      flex-wrap: wrap;
-      background: rgba(22, 18, 10, 0.75);
-      backdrop-filter: blur(22px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 32px; margin: 20px auto 0; border-radius: 60px;
+      position: sticky; top: 20px; z-index: 1000; flex-wrap: wrap;
+      background: rgba(22, 18, 10, 0.75); backdrop-filter: blur(22px);
       border: 1px solid rgba(255, 170, 40, 0.25);
       box-shadow: 0 20px 35px rgba(255, 140, 0, 0.15);
     }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-
-    .logo-icon {
-      font-size: 2.5rem;
-      color: #ffb347;
-      filter: drop-shadow(0 0 14px #ff9f1c);
-      transition: transform 0.4s ease;
-    }
-
-    .logo:hover .logo-icon {
-      transform: rotate(10deg) scale(1.1);
-    }
-
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon { font-size: 2.5rem; color: #ffb347; filter: drop-shadow(0 0 14px #ff9f1c); transition: transform 0.4s; }
+    .logo:hover .logo-icon { transform: rotate(10deg) scale(1.1); }
     .logo-text {
-      font-size: 2rem;
-      font-weight: 900;
+      font-size: 2rem; font-weight: 900;
       background: linear-gradient(to left, #ffd166, #f4a261, #e9a554);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: 1px;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
+    .nav-links { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
     .nav-item {
-      text-decoration: none;
-      color: #f5e1c0;
-      font-weight: 600;
-      padding: 12px 20px;
-      border-radius: 40px;
-      position: relative;
-      transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
-      background: transparent;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 1rem;
+      text-decoration: none; color: #f5e1c0; font-weight: 600; padding: 12px 20px; border-radius: 40px;
+      transition: all 0.35s; background: transparent; display: flex; align-items: center; gap: 6px; font-size: 1rem;
     }
-
-    .nav-item i {
-      font-size: 1.1rem;
-      transition: transform 0.3s;
-    }
-
-    .nav-item::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 40px;
-      padding: 2px;
-      background: linear-gradient(135deg, #ffb347, #ff8c1a);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-
-    .nav-item:hover {
-      color: #fff7e6;
-      background: rgba(255, 160, 30, 0.1);
-      transform: translateY(-3px);
-      box-shadow: 0 15px 25px -10px rgba(255, 140, 0, 0.4);
-    }
-
-    .nav-item:hover::before {
-      opacity: 1;
-    }
-
-    .nav-item:hover i {
-      transform: translateY(-2px) scale(1.2);
-      color: #ffb347;
-    }
-
-    /* استایل دکمه فروشگاه - دقیقاً مانند صفحه اصلی */
+    .nav-item i { font-size: 1.1rem; transition: transform 0.3s; }
+    .nav-item:hover { color: #fff7e6; background: rgba(255, 160, 30, 0.1); transform: translateY(-3px); box-shadow: 0 15px 25px -10px rgba(255, 140, 0, 0.4); }
+    .nav-item:hover i { transform: translateY(-2px) scale(1.2); color: #ffb347; }
+    .nav-item.active { background: rgba(255, 160, 30, 0.15); color: #ffb347; border: 1px solid rgba(255, 180, 60, 0.3); }
     .store-btn {
       background: linear-gradient(135deg, #f4a261, #e67e22) !important;
-      color: #1a140c !important;
-      font-weight: 800;
-      box-shadow: 0 8px 20px rgba(230, 126, 34, 0.5);
-      border: none !important;
-      letter-spacing: 0.5px;
+      color: #1a140c !important; font-weight: 800; box-shadow: 0 8px 20px rgba(230, 126, 34, 0.5); border: none !important;
     }
+    .store-btn:hover { background: linear-gradient(135deg, #f5b06e, #f08c2e) !important; box-shadow: 0 15px 30px rgba(255, 160, 20, 0.7); }
+    .store-btn.active { background: linear-gradient(135deg, #f4a261, #e67e22) !important; color: #1a140c !important; border: none !important; }
 
-    .store-btn:hover {
-      background: linear-gradient(135deg, #f5b06e, #f08c2e) !important;
-      box-shadow: 0 15px 30px rgba(255, 160, 20, 0.7);
-      color: #0d0a05 !important;
-    }
-
-    /* حذف استایل active برای دکمه فروشگاه */
-    .store-btn.active {
-      background: linear-gradient(135deg, #f4a261, #e67e22) !important;
-      color: #1a140c !important;
-      border: none !important;
-    }
-
-    .page-header {
-      text-align: center;
-      padding: 80px 20px 50px;
-    }
-
+    /* عنوان صفحه */
+    .page-header { text-align: center; padding: 80px 20px 50px; }
     .page-title {
-      font-size: 3.5rem;
-      font-weight: 900;
+      font-size: 3.5rem; font-weight: 900;
       background: linear-gradient(to right, #ffddb0, #f9b953, #ffa726);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 15px;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 15px;
     }
+    .page-subtitle { font-size: 1.2rem; color: #cdb088; }
 
-    .page-subtitle {
-      font-size: 1.2rem;
-      color: #cdb088;
-    }
-
-    /* دکمه‌های دسته‌بندی */
-    .category-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 30px 0 50px;
-      flex-wrap: wrap;
-    }
-
+    /* تب‌های دسته‌بندی */
+    .category-tabs { display: flex; justify-content: center; gap: 15px; margin: 30px 0 50px; flex-wrap: wrap; }
     .category-tab {
-      padding: 14px 30px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      font-family: 'Vazirmatn', sans-serif;
-      cursor: pointer;
-      transition: all 0.4s ease;
-      border: 2px solid rgba(255, 180, 60, 0.3);
-      background: rgba(40, 30, 18, 0.5);
-      color: #cdb088;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
+      padding: 14px 30px; border-radius: 50px; font-weight: 700; font-size: 1.1rem;
+      cursor: pointer; transition: all 0.4s; border: 2px solid rgba(255, 180, 60, 0.3);
+      background: rgba(40, 30, 18, 0.5); color: #cdb088; display: flex; align-items: center; gap: 8px;
     }
-
-    .category-tab i {
-      font-size: 1.2rem;
-    }
-
-    .category-tab.active-tab {
-      background: linear-gradient(135deg, #ffa726, #f57c00);
-      color: #1a140c;
-      border-color: #ffa726;
-      box-shadow: 0 10px 25px rgba(245, 124, 0, 0.4);
-    }
-
-    .category-tab:hover:not(.active-tab) {
-      border-color: #f4a261;
-      color: #f4a261;
-      background: rgba(255, 160, 30, 0.1);
-    }
-
-    /* عنوان دسته */
+    .category-tab i { font-size: 1.2rem; }
+    .category-tab.active-tab { background: linear-gradient(135deg, #ffa726, #f57c00); color: #1a140c; border-color: #ffa726; box-shadow: 0 10px 25px rgba(245, 124, 0, 0.4); }
+    .category-tab:hover:not(.active-tab) { border-color: #f4a261; color: #f4a261; background: rgba(255, 160, 30, 0.1); }
     .category-section-title {
-      font-size: 2rem;
-      font-weight: 900;
-      color: #ffcd94;
-      margin: 60px 0 30px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding-bottom: 15px;
-      border-bottom: 2px solid rgba(255, 180, 60, 0.2);
+      font-size: 2rem; font-weight: 900; color: #ffcd94; margin: 60px 0 30px;
+      display: flex; align-items: center; gap: 12px; padding-bottom: 15px; border-bottom: 2px solid rgba(255, 180, 60, 0.2);
     }
-
-    .category-section-title i {
-      color: #ffb347;
-    }
+    .category-section-title i { color: #ffb347; }
+    .hidden-section { display: none; }
+    .visible-section { display: block; }
 
     /* گرید محصولات */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin: 40px 0 60px;
-    }
-
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin: 40px 0 60px; }
     .product-card {
-      background: rgba(40, 30, 18, 0.5);
-      backdrop-filter: blur(14px);
-      border-radius: 25px;
-      border: 1px solid rgba(255, 180, 60, 0.2);
-      overflow: hidden;
-      transition: all 0.45s cubic-bezier(0.2, 0.9, 0.4, 1);
-      position: relative;
+      background: rgba(40, 30, 18, 0.5); backdrop-filter: blur(14px); border-radius: 25px;
+      border: 1px solid rgba(255, 180, 60, 0.2); overflow: hidden;
+      transition: all 0.45s cubic-bezier(0.2, 0.9, 0.4, 1); position: relative;
     }
-
-    .product-card:hover {
-      transform: translateY(-12px);
-      border-color: #ffa726;
-      box-shadow: 0 30px 45px -20px rgba(255, 140, 0, 0.5);
-      background: rgba(50, 35, 20, 0.75);
-    }
-
+    .product-card:hover { transform: translateY(-12px); border-color: #ffa726; box-shadow: 0 30px 45px -20px rgba(255, 140, 0, 0.5); background: rgba(50, 35, 20, 0.75); }
     .product-image-wrapper {
-      width: 100%;
-      height: 220px;
-      background: linear-gradient(135deg, rgba(255, 167, 38, 0.1), rgba(245, 124, 0, 0.05));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-bottom: 1px solid rgba(255, 180, 60, 0.2);
-      overflow: hidden;
-      position: relative;
+      width: 100%; height: 220px; background: linear-gradient(135deg, rgba(255, 167, 38, 0.1), rgba(245, 124, 0, 0.05));
+      display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255, 180, 60, 0.2);
+      overflow: hidden; position: relative;
     }
-
-    .product-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .product-card:hover .product-image {
-      transform: scale(1.05);
-    }
-
-    .product-placeholder {
-      font-size: 4rem;
-      color: #f4a261;
-      opacity: 0.6;
-      transition: all 0.5s ease;
-    }
-
-    .product-card:hover .product-placeholder {
-      opacity: 1;
-      transform: scale(1.2);
-    }
-
+    .product-placeholder { font-size: 4rem; color: #f4a261; opacity: 0.6; transition: all 0.5s ease; }
+    .product-card:hover .product-placeholder { opacity: 1; transform: scale(1.2); }
     .product-badge {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: linear-gradient(135deg, #ffa726, #f57c00);
-      color: #1a140c;
-      padding: 6px 16px;
-      border-radius: 30px;
-      font-weight: 800;
-      font-size: 0.85rem;
-      z-index: 2;
+      position: absolute; top: 15px; right: 15px; background: linear-gradient(135deg, #ffa726, #f57c00);
+      color: #1a140c; padding: 6px 16px; border-radius: 30px; font-weight: 800; font-size: 0.85rem; z-index: 2;
       box-shadow: 0 5px 15px rgba(245, 124, 0, 0.4);
     }
-
     .course-type-badge {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      background: rgba(0, 0, 0, 0.7);
-      color: #ffb347;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      z-index: 2;
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(255, 180, 60, 0.3);
+      position: absolute; top: 15px; left: 15px; background: rgba(0, 0, 0, 0.7); color: #ffb347;
+      padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; z-index: 2;
+      backdrop-filter: blur(5px); border: 1px solid rgba(255, 180, 60, 0.3);
     }
-
-    .product-info {
-      padding: 25px;
-    }
-
-    .product-category {
-      color: #f4a261;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .product-title {
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: #fff0db;
-      margin-bottom: 10px;
-    }
-
-    .product-description {
-      color: #bda16b;
-      font-size: 0.9rem;
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
-    .course-details-mini {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 15px;
-      font-size: 0.8rem;
-      color: #a6906c;
-    }
-
-    .course-details-mini span {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .course-details-mini i {
-      color: #f4a261;
-      font-size: 0.9rem;
-    }
-
-    .product-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid rgba(255, 180, 60, 0.15);
-      padding-top: 20px;
-    }
-
+    .product-info { padding: 25px; }
+    .product-category { color: #f4a261; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 5px; }
+    .product-title { font-size: 1.3rem; font-weight: 800; color: #fff0db; margin-bottom: 10px; }
+    .product-description { color: #bda16b; font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6; }
+    .course-details-mini { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 15px; font-size: 0.8rem; color: #a6906c; }
+    .course-details-mini span { display: flex; align-items: center; gap: 4px; }
+    .course-details-mini i { color: #f4a261; font-size: 0.9rem; }
+    .product-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255, 180, 60, 0.15); padding-top: 20px; }
     .product-price {
-      font-size: 1.4rem;
-      font-weight: 900;
+      font-size: 1.4rem; font-weight: 900;
       background: linear-gradient(to left, #ffd166, #f4a261);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-
     .btn-buy {
-      padding: 10px 22px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      font-family: 'Vazirmatn', sans-serif;
-      background: linear-gradient(135deg, #f4a261, #e67e22);
-      color: #1a140c;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      text-decoration: none;
+      padding: 10px 22px; border-radius: 50px; font-weight: 700; font-size: 0.9rem;
+      background: linear-gradient(135deg, #f4a261, #e67e22); color: #1a140c; border: none;
+      cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 6px; text-decoration: none;
     }
-
-    .btn-buy:hover {
-      background: linear-gradient(135deg, #f5b06e, #f08c2e);
-      box-shadow: 0 10px 20px rgba(230, 126, 34, 0.4);
-      transform: translateY(-3px);
-    }
-
-    .hidden-section {
-      display: none;
-    }
-
-    .visible-section {
-      display: block;
-    }
+    .btn-buy:hover { background: linear-gradient(135deg, #f5b06e, #f08c2e); box-shadow: 0 10px 20px rgba(230, 126, 34, 0.4); transform: translateY(-3px); }
 
     /* فوتر */
-    footer {
-      background: rgba(20, 15, 8, 0.8);
-      backdrop-filter: blur(25px);
-      border-top: 2px solid rgba(244, 162, 97, 0.4);
-      padding: 50px 0 25px;
-      margin-top: 60px;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 35px;
-    }
-
-    .footer-col {
-      flex: 1 1 220px;
-    }
-
-    .footer-logo {
-      font-size: 2rem;
-      font-weight: 900;
-      color: #f4a261;
-    }
-
+    footer { background: rgba(20, 15, 8, 0.8); backdrop-filter: blur(25px); border-top: 2px solid rgba(244, 162, 97, 0.4); padding: 50px 0 25px; margin-top: 60px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 35px; }
+    .footer-col { flex: 1 1 220px; }
+    .footer-logo { font-size: 2rem; font-weight: 900; color: #f4a261; }
     .enamad-box {
-      margin-top: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      padding: 15px;
-      display: inline-block;
-      border: 1px solid rgba(255, 180, 60, 0.3);
-      transition: all 0.3s ease;
+      margin-top: 20px; background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 15px;
+      display: inline-block; border: 1px solid rgba(255, 180, 60, 0.3); transition: all 0.3s;
     }
+    .enamad-box:hover { background: rgba(255, 255, 255, 0.1); border-color: #f4a261; transform: scale(1.05); box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3); }
+    .enamad-box img { width: 100px; height: auto; display: block; }
+    .footer-links a { color: #cfb185; text-decoration: none; display: block; margin: 10px 0; transition: 0.3s; font-weight: 500; }
+    .footer-links a:hover { color: #ffb347; transform: translateX(-8px); }
+    .copyright { text-align: center; margin-top: 40px; color: #a6906c; }
 
-    .enamad-box:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: #f4a261;
-      transform: scale(1.05);
-      box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3);
+    /* ==================== سبد خرید ==================== */
+    #cart-floating-icon {
+      position: fixed; bottom: 30px; left: 30px; z-index: 9998;
+      background: linear-gradient(135deg, #f4a261, #e67e22);
+      width: 65px; height: 65px; border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 30px rgba(230, 126, 34, 0.6);
+      transition: all 0.3s ease; animation: cartFloat 3s infinite ease-in-out;
     }
-
-    .enamad-box img {
-      width: 100px;
-      height: auto;
-      display: block;
+    #cart-floating-icon:hover { transform: scale(1.1); }
+    #cart-floating-icon i { font-size: 1.6rem; color: #1a140c; }
+    @keyframes cartFloat { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+    
+    #cart-badge {
+      position: absolute; top: -8px; right: -8px;
+      background: #ff4444; color: white; min-width: 28px; height: 28px;
+      border-radius: 14px; font-size: 0.75rem; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      border: 2px solid #1a140c; padding: 0 6px;
     }
-
-    .footer-links a {
-      color: #cfb185;
-      text-decoration: none;
-      display: block;
-      margin: 10px 0;
-      transition: 0.3s;
-      font-weight: 500;
+    
+    #cart-overlay {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7); backdrop-filter: blur(3px); z-index: 9999;
     }
-
-    .footer-links a:hover {
-      color: #ffb347;
-      transform: translateX(-8px);
+    #cart-overlay.active { display: block; }
+    
+    #cart-panel {
+      position: fixed; top: 0; right: -420px; width: 400px; height: 100%;
+      background: linear-gradient(180deg, #1e180e, #241e14);
+      z-index: 10000; transition: right 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: -10px 0 40px rgba(0,0,0,0.6); display: flex; flex-direction: column;
+      font-family: 'Vazirmatn', sans-serif;
     }
-
-    .copyright {
-      text-align: center;
-      margin-top: 40px;
-      color: #a6906c;
+    #cart-panel.active { right: 0; }
+    
+    .cart-panel-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 25px; border-bottom: 1px solid rgba(255,180,60,0.2);
+    }
+    .cart-panel-header h3 { color: #ffb347; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; }
+    .cart-panel-header button {
+      background: rgba(255,255,255,0.1); border: none; color: #cdb088;
+      width: 35px; height: 35px; border-radius: 50%; cursor: pointer; font-size: 1rem; transition: all 0.3s;
+    }
+    .cart-panel-header button:hover { background: #ff4444; color: white; }
+    
+    .cart-empty-state { text-align: center; padding: 60px 30px; flex: 1; }
+    .cart-empty-state i { font-size: 4rem; color: #ffb347; opacity: 0.5; margin-bottom: 20px; }
+    .cart-empty-state p { color: #cdb088; margin-bottom: 20px; }
+    .cart-empty-state a { color: #f4a261; text-decoration: none; font-weight: 600; }
+    
+    #cart-items-container { flex: 1; overflow-y: auto; padding: 20px 25px; }
+    
+    .cart-item {
+      display: flex; align-items: center; gap: 15px; padding: 15px 0;
+      border-bottom: 1px solid rgba(255,180,60,0.1); animation: slideIn 0.3s ease;
+    }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+    
+    .cart-item-image {
+      width: 60px; height: 60px; background: rgba(255,167,38,0.1);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; color: #ffb347; flex-shrink: 0;
+    }
+    .cart-item-details { flex: 1; }
+    .cart-item-title { color: #fff0db; font-weight: 600; margin-bottom: 5px; font-size: 0.95rem; }
+    .cart-item-price { color: #f4a261; font-size: 0.9rem; }
+    
+    .cart-item-quantity { display: flex; align-items: center; gap: 8px; }
+    .qty-btn {
+      width: 30px; height: 30px; border-radius: 8px; border: 1px solid rgba(255,180,60,0.3);
+      background: rgba(255,167,38,0.1); color: #ffb347; cursor: pointer;
+      font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s;
+    }
+    .qty-btn:hover { background: rgba(255,167,38,0.3); }
+    .qty-number { color: #fff0db; font-weight: 600; min-width: 25px; text-align: center; }
+    
+    .cart-item-remove { color: #ff6b6b; cursor: pointer; font-size: 1rem; transition: all 0.3s; }
+    .cart-item-remove:hover { transform: scale(1.2); }
+    
+    #cart-summary { padding: 20px 25px; border-top: 2px solid rgba(255,180,60,0.2); }
+    .cart-total-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 0; font-size: 1.2rem; font-weight: 800;
+    }
+    .cart-total-row span:first-child { color: #cdb088; }
+    .cart-total-row span:last-child { color: #ffb347; font-size: 1.3rem; }
+    
+    .cart-customer-info { margin: 15px 0; }
+    .cart-customer-info input,
+    .cart-customer-info textarea {
+      width: 100%; padding: 12px 15px; margin-bottom: 10px;
+      border-radius: 12px; border: 1px solid rgba(255,180,60,0.3);
+      background: rgba(30, 24, 16, 0.8); color: #f7efe2;
+      font-family: 'Vazirmatn', sans-serif; font-size: 0.9rem;
+    }
+    .cart-customer-info textarea { height: 70px; resize: none; }
+    
+    .cart-submit-btn {
+      width: 100%; padding: 15px; border-radius: 50px; font-weight: 800;
+      background: linear-gradient(135deg, #4CAF50, #2E7D32); color: white;
+      border: none; cursor: pointer; font-family: 'Vazirmatn', sans-serif;
+      font-size: 1rem; margin-bottom: 10px; transition: all 0.3s;
+    }
+    .cart-submit-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(76,175,80,0.4); }
+    
+    .cart-clear-btn {
+      width: 100%; padding: 12px; border-radius: 50px; font-weight: 600;
+      background: transparent; color: #ff6b6b; border: 1px solid #ff6b6b;
+      cursor: pointer; font-family: 'Vazirmatn', sans-serif; font-size: 0.85rem; transition: all 0.3s;
+    }
+    .cart-clear-btn:hover { background: rgba(255,107,107,0.1); }
+    
+    #success-message {
+      display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      background: #241e14; border: 2px solid #4CAF50; border-radius: 25px;
+      padding: 40px; text-align: center; z-index: 10001; max-width: 450px; width: 90%;
+    }
+    #success-message.active { display: block; animation: msgSlideUp 0.5s ease; }
+    @keyframes msgSlideUp { from { opacity: 0; transform: translate(-50%, 30px); } to { opacity: 1; transform: translate(-50%, -50%); } }
+    #success-message i { font-size: 4rem; color: #4CAF50; margin-bottom: 15px; }
+    #success-message h3 { color: #81C784; margin-bottom: 10px; }
+    #success-message p { color: #cdb088; margin-bottom: 20px; }
+    #success-message button {
+      padding: 12px 30px; border-radius: 50px; font-weight: 700;
+      background: #4CAF50; color: white; border: none; cursor: pointer; font-family: 'Vazirmatn', sans-serif;
     }
 
     @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        gap: 20px;
-        border-radius: 40px;
-      }
-      .page-title {
-        font-size: 2.5rem;
-      }
-      .nav-links {
-        justify-content: center;
-      }
+      header { flex-direction: column; gap: 20px; border-radius: 40px; }
+      .page-title { font-size: 2.5rem; }
+      .nav-links { justify-content: center; }
+    }
+    @media (max-width: 500px) {
+      #cart-panel { width: 100%; right: -100%; }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <!-- هدر -->
-    <header class="glass">
+    <header>
       <a href="../index.html" class="logo">
         <i class="fas fa-brain logo-icon"></i>
         <span class="logo-text">رازی ۳۶۰</span>
@@ -525,7 +287,6 @@
         <a href="services.html" class="nav-item"><i class="fas fa-cogs"></i> خدمات</a>
         <a href="about.html" class="nav-item"><i class="fas fa-info-circle"></i> درباره ما</a>
         <a href="contact.html" class="nav-item"><i class="fas fa-envelope"></i> تماس با ما</a>
-        <!-- دکمه فروشگاه دقیقاً مانند صفحه اصلی -->
         <a href="shop.html" class="nav-item store-btn active"><i class="fas fa-shopping-cart"></i> فروشگاه</a>
       </div>
     </header>
@@ -548,23 +309,15 @@
 
     <!-- ==================== بخش دوره‌های آموزشی ==================== -->
     <div id="courses-section" class="visible-section">
-      <div class="category-section-title">
-        <i class="fas fa-graduation-cap"></i> دوره‌های آموزشی هوش مصنوعی
-      </div>
-      
+      <div class="category-section-title"><i class="fas fa-graduation-cap"></i> دوره‌های آموزشی هوش مصنوعی</div>
       <div class="products-grid">
         
-        <!-- دوره ۱: مبانی هوش مصنوعی -->
         <div class="product-card">
           <span class="product-badge">پرفروش</span>
           <span class="course-type-badge">🎯 مقدماتی</span>
-          <div class="product-image-wrapper">
-            <i class="fas fa-robot product-placeholder"></i>
-          </div>
+          <div class="product-image-wrapper"><i class="fas fa-robot product-placeholder"></i></div>
           <div class="product-info">
-            <div class="product-category">
-              <i class="fas fa-laptop-code"></i> دوره ویدیویی
-            </div>
+            <div class="product-category"><i class="fas fa-laptop-code"></i> دوره ویدیویی</div>
             <h3 class="product-title">مبانی هوش مصنوعی و یادگیری ماشین</h3>
             <p class="product-description">آشنایی کامل با مفاهیم پایه هوش مصنوعی، الگوریتم‌های یادگیری ماشین و پیاده‌سازی پروژه‌های عملی با پایتون</p>
             <div class="course-details-mini">
@@ -574,24 +327,17 @@
             </div>
             <div class="product-footer">
               <span class="product-price">۴۹۹,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy">
-                <i class="fas fa-shopping-basket"></i> ثبت‌نام
-              </a>
+              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> ثبت‌نام</a>
             </div>
           </div>
         </div>
 
-        <!-- دوره ۲: ChatGPT -->
         <div class="product-card">
           <span class="product-badge">جدید</span>
           <span class="course-type-badge">💬 کاربردی</span>
-          <div class="product-image-wrapper">
-            <i class="fas fa-comment-dots product-placeholder"></i>
-          </div>
+          <div class="product-image-wrapper"><i class="fas fa-comment-dots product-placeholder"></i></div>
           <div class="product-info">
-            <div class="product-category">
-              <i class="fas fa-laptop-code"></i> دوره ویدیویی
-            </div>
+            <div class="product-category"><i class="fas fa-laptop-code"></i> دوره ویدیویی</div>
             <h3 class="product-title">کار با ChatGPT و پرامپت نویسی حرفه‌ای</h3>
             <p class="product-description">آموزش کامل کار با چت جی پی تی، نوشتن پرامپت‌های حرفه‌ای و استفاده از نسخه‌های رایگان و پولی</p>
             <div class="course-details-mini">
@@ -601,23 +347,16 @@
             </div>
             <div class="product-footer">
               <span class="product-price">۳۴۹,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy">
-                <i class="fas fa-shopping-basket"></i> ثبت‌نام
-              </a>
+              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> ثبت‌نام</a>
             </div>
           </div>
         </div>
 
-        <!-- دوره ۳: DeepSeek -->
         <div class="product-card">
           <span class="course-type-badge">🔍 کاربردی</span>
-          <div class="product-image-wrapper">
-            <i class="fas fa-search product-placeholder"></i>
-          </div>
+          <div class="product-image-wrapper"><i class="fas fa-search product-placeholder"></i></div>
           <div class="product-info">
-            <div class="product-category">
-              <i class="fas fa-laptop-code"></i> دوره ویدیویی
-            </div>
+            <div class="product-category"><i class="fas fa-laptop-code"></i> دوره ویدیویی</div>
             <h3 class="product-title">راهنمای جامع DeepSeek</h3>
             <p class="product-description">نصب، تنظیم و استفاده از دیپ سیک روی سیستم شخصی و سرور، مقایسه با مدل‌های دیگر و بهینه‌سازی پاسخ‌ها</p>
             <div class="course-details-mini">
@@ -627,23 +366,16 @@
             </div>
             <div class="product-footer">
               <span class="product-price">۲۹۹,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy">
-                <i class="fas fa-shopping-basket"></i> ثبت‌نام
-              </a>
+              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> ثبت‌نام</a>
             </div>
           </div>
         </div>
 
-        <!-- دوره ۴: Gemini -->
         <div class="product-card">
           <span class="course-type-badge">✨ کاربردی</span>
-          <div class="product-image-wrapper">
-            <i class="fas fa-gem product-placeholder"></i>
-          </div>
+          <div class="product-image-wrapper"><i class="fas fa-gem product-placeholder"></i></div>
           <div class="product-info">
-            <div class="product-category">
-              <i class="fas fa-laptop-code"></i> دوره ویدیویی
-            </div>
+            <div class="product-category"><i class="fas fa-laptop-code"></i> دوره ویدیویی</div>
             <h3 class="product-title">Google Gemini از مبتدی تا پیشرفته</h3>
             <p class="product-description">آشنایی با قابلیت‌های جمینای گوگل، کار با نسخه‌های مختلف و ادغام با سرویس‌های گوگل</p>
             <div class="course-details-mini">
@@ -653,24 +385,17 @@
             </div>
             <div class="product-footer">
               <span class="product-price">۳۲۹,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy">
-                <i class="fas fa-shopping-basket"></i> ثبت‌نام
-              </a>
+              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> ثبت‌نام</a>
             </div>
           </div>
         </div>
 
-        <!-- دوره ۵: خرید اکانت -->
         <div class="product-card">
           <span class="product-badge">پرمخاطب</span>
           <span class="course-type-badge">💳 خرید اکانت</span>
-          <div class="product-image-wrapper">
-            <i class="fas fa-credit-card product-placeholder"></i>
-          </div>
+          <div class="product-image-wrapper"><i class="fas fa-credit-card product-placeholder"></i></div>
           <div class="product-info">
-            <div class="product-category">
-              <i class="fas fa-laptop-code"></i> دوره ویدیویی
-            </div>
+            <div class="product-category"><i class="fas fa-laptop-code"></i> دوره ویدیویی</div>
             <h3 class="product-title">خرید دلاری اکانت رسمی از ایران</h3>
             <p class="product-description">راهنمای کامل خرید اشتراک ChatGPT Plus، DeepSeek Pro، Gemini Advanced و سایر مدل‌ها با پرداخت دلاری از ایران</p>
             <div class="course-details-mini">
@@ -680,24 +405,17 @@
             </div>
             <div class="product-footer">
               <span class="product-price">۱۹۹,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy">
-                <i class="fas fa-shopping-basket"></i> ثبت‌نام
-              </a>
+              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> ثبت‌نام</a>
             </div>
           </div>
         </div>
 
-        <!-- دوره ۶: پکیج جامع -->
         <div class="product-card">
           <span class="product-badge">ویژه</span>
           <span class="course-type-badge">🏆 جامع</span>
-          <div class="product-image-wrapper">
-            <i class="fas fa-crown product-placeholder"></i>
-          </div>
+          <div class="product-image-wrapper"><i class="fas fa-crown product-placeholder"></i></div>
           <div class="product-info">
-            <div class="product-category">
-              <i class="fas fa-laptop-code"></i> پکیج کامل
-            </div>
+            <div class="product-category"><i class="fas fa-laptop-code"></i> پکیج کامل</div>
             <h3 class="product-title">پکیج جامع هوش مصنوعی (VIP)</h3>
             <p class="product-description">صفر تا صد هوش مصنوعی شامل تمام دوره‌های بالا + منتورینگ اختصاصی و پروژه‌های عملی</p>
             <div class="course-details-mini">
@@ -707,9 +425,7 @@
             </div>
             <div class="product-footer">
               <span class="product-price">۱,۴۹۰,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy">
-                <i class="fas fa-shopping-basket"></i> ثبت‌نام
-              </a>
+              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> ثبت‌نام</a>
             </div>
           </div>
         </div>
@@ -719,141 +435,95 @@
 
     <!-- ==================== بخش محصولات ==================== -->
     <div id="products-section" class="hidden-section">
-      <div class="category-section-title">
-        <i class="fas fa-box"></i> محصولات و خدمات
-      </div>
-      
+      <div class="category-section-title"><i class="fas fa-box"></i> محصولات و خدمات</div>
       <div class="products-grid">
         
-        <!-- محصول ۱: پلنر هوشمند -->
         <div class="product-card">
           <span class="product-badge">جدید</span>
-          <div class="product-image-wrapper">
-            <i class="fas fa-calendar-check product-placeholder"></i>
-          </div>
+          <div class="product-image-wrapper"><i class="fas fa-calendar-check product-placeholder"></i></div>
           <div class="product-info">
-            <div class="product-category">
-              <i class="fas fa-mobile-alt"></i> نرم‌افزار
-            </div>
+            <div class="product-category"><i class="fas fa-mobile-alt"></i> نرم‌افزار</div>
             <h3 class="product-title">پلنر هوشمند روزانه</h3>
             <p class="product-description">برنامه‌ریزی خودکار با هوش مصنوعی، مناسب برای مدیریت زمان و افزایش بهره‌وری</p>
             <div class="product-footer">
               <span class="product-price">۲۹۹,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy">
-                <i class="fas fa-shopping-basket"></i> خرید
-              </a>
+              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> خرید</a>
             </div>
           </div>
         </div>
 
-        <!-- محصول ۲: طراحی سایت -->
         <div class="product-card">
           <span class="product-badge">پرطرفدار</span>
-          <div class="product-image-wrapper">
-            <i class="fas fa-globe product-placeholder"></i>
-          </div>
+          <div class="product-image-wrapper"><i class="fas fa-globe product-placeholder"></i></div>
           <div class="product-info">
-            <div class="product-category">
-              <i class="fas fa-globe"></i> خدمات
-            </div>
+            <div class="product-category"><i class="fas fa-globe"></i> خدمات</div>
             <h3 class="product-title">پکیج طراحی سایت اختصاصی</h3>
             <p class="product-description">طراحی وب‌سایت حرفه‌ای با سئو پیشرفته، ریسپانسیو و پشتیبانی یکساله</p>
             <div class="product-footer">
               <span class="product-price">۴,۹۹۰,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy">
-                <i class="fas fa-shopping-basket"></i> خرید
-              </a>
+              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> خرید</a>
             </div>
           </div>
         </div>
 
-        <!-- محصول ۳: دستیار آموزشی -->
         <div class="product-card">
-          <div class="product-image-wrapper">
-            <i class="fas fa-graduation-cap product-placeholder"></i>
-          </div>
+          <div class="product-image-wrapper"><i class="fas fa-graduation-cap product-placeholder"></i></div>
           <div class="product-info">
-            <div class="product-category">
-              <i class="fas fa-mobile-alt"></i> نرم‌افزار
-            </div>
+            <div class="product-category"><i class="fas fa-mobile-alt"></i> نرم‌افزار</div>
             <h3 class="product-title">دستیار آموزشی هوشمند</h3>
             <p class="product-description">همراه تحصیلی مبتنی بر هوش مصنوعی برای دانشجویان و دانش‌آموزان</p>
             <div class="product-footer">
               <span class="product-price">۴۹۹,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy">
-                <i class="fas fa-shopping-basket"></i> خرید
-              </a>
+              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> خرید</a>
             </div>
           </div>
         </div>
 
-        <!-- محصول ۴: مشاوره حقوقی -->
         <div class="product-card">
           <span class="product-badge">ویژه</span>
-          <div class="product-image-wrapper">
-            <i class="fas fa-balance-scale product-placeholder"></i>
-          </div>
+          <div class="product-image-wrapper"><i class="fas fa-balance-scale product-placeholder"></i></div>
           <div class="product-info">
-            <div class="product-category">
-              <i class="fas fa-gavel"></i> خدمات
-            </div>
+            <div class="product-category"><i class="fas fa-gavel"></i> خدمات</div>
             <h3 class="product-title">بسته مشاوره حقوقی هوشمند</h3>
             <p class="product-description">تنظیم لایحه، دادخواست و مشاوره آنلاین با تحلیل هوشمند پرونده</p>
             <div class="product-footer">
               <span class="product-price">۱,۴۹۰,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy">
-                <i class="fas fa-shopping-basket"></i> خرید
-              </a>
+              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> خرید</a>
             </div>
           </div>
         </div>
 
-        <!-- محصول ۵: پرامپت‌ها -->
         <div class="product-card">
-          <div class="product-image-wrapper">
-            <i class="fas fa-code product-placeholder"></i>
-          </div>
+          <div class="product-image-wrapper"><i class="fas fa-code product-placeholder"></i></div>
           <div class="product-info">
-            <div class="product-category">
-              <i class="fas fa-file-code"></i> محتوای دیجیتال
-            </div>
+            <div class="product-category"><i class="fas fa-file-code"></i> محتوای دیجیتال</div>
             <h3 class="product-title">بسته پرامپت‌های کاربردی</h3>
             <p class="product-description">مجموعه ۵۰۰ پرامپت حرفه‌ای برای ChatGPT و سایر مدل‌های هوش مصنوعی</p>
             <div class="product-footer">
               <span class="product-price">۱۴۹,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy">
-                <i class="fas fa-shopping-basket"></i> خرید
-              </a>
+              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> خرید</a>
             </div>
           </div>
         </div>
 
-        <!-- محصول ۶: رایانش ابری -->
         <div class="product-card">
-          <div class="product-image-wrapper">
-            <i class="fas fa-cloud product-placeholder"></i>
-          </div>
+          <div class="product-image-wrapper"><i class="fas fa-cloud product-placeholder"></i></div>
           <div class="product-info">
-            <div class="product-category">
-              <i class="fas fa-server"></i> زیرساخت
-            </div>
+            <div class="product-category"><i class="fas fa-server"></i> زیرساخت</div>
             <h3 class="product-title">سرور ابری هوش مصنوعی</h3>
             <p class="product-description">زیرساخت ابری اختصاصی با پردازنده گرافیکی برای آموزش و اجرای مدل‌های هوش مصنوعی</p>
             <div class="product-footer">
               <span class="product-price">از ۹۹۰,۰۰۰ تومان</span>
-              <a href="#" class="btn-buy">
-                <i class="fas fa-shopping-basket"></i> خرید
-              </a>
+              <a href="#" class="btn-buy"><i class="fas fa-shopping-basket"></i> خرید</a>
             </div>
           </div>
         </div>
 
       </div>
     </div>
-
   </div>
 
-  <!-- فوتر با اینماد -->
+  <!-- فوتر -->
   <footer>
     <div class="container">
       <div class="footer-content">
@@ -886,7 +556,235 @@
     </div>
   </footer>
 
+  <!-- ==================== سبد خرید ==================== -->
+  <div id="cart-floating-icon" onclick="toggleCart()">
+    <i class="fas fa-shopping-cart"></i>
+    <span id="cart-badge">0</span>
+  </div>
+
+  <div id="cart-overlay" onclick="toggleCart()"></div>
+  
+  <div id="cart-panel">
+    <div class="cart-panel-header">
+      <h3><i class="fas fa-shopping-cart"></i> سبد خرید</h3>
+      <button onclick="toggleCart()"><i class="fas fa-times"></i></button>
+    </div>
+    
+    <div id="cart-empty" class="cart-empty-state">
+      <i class="fas fa-shopping-basket"></i>
+      <p>سبد خرید شما خالی است</p>
+      <a href="shop.html">مشاهده محصولات</a>
+    </div>
+    
+    <div id="cart-items-container"></div>
+    
+    <div id="cart-summary" style="display:none;">
+      <div class="cart-total-row">
+        <span>جمع کل:</span>
+        <span id="cart-total-price">۰ تومان</span>
+      </div>
+      
+      <div class="cart-customer-info">
+        <input type="text" id="customer-name" placeholder="نام و نام خانوادگی *" required>
+        <input type="tel" id="customer-phone" placeholder="شماره تماس *" required>
+        <textarea id="customer-note" placeholder="توضیحات سفارش (اختیاری)"></textarea>
+      </div>
+      
+      <button class="cart-submit-btn" onclick="submitOrder()">
+        <i class="fas fa-paper-plane"></i> ثبت سفارش
+      </button>
+      
+      <button class="cart-clear-btn" onclick="clearCart()">
+        <i class="fas fa-trash"></i> خالی کردن سبد
+      </button>
+    </div>
+  </div>
+
+  <div id="success-message">
+    <i class="fas fa-check-circle"></i>
+    <h3>سفارش شما با موفقیت ثبت شد!</h3>
+    <p>همکاران ما به زودی با شما تماس خواهند گرفت.</p>
+    <button onclick="closeSuccess()">متوجه شدم</button>
+  </div>
+
   <script>
+    // ==================== سیستم سبد خرید ====================
+    let cart = JSON.parse(localStorage.getItem('razi360-cart')) || [];
+    
+    function saveCart() { localStorage.setItem('razi360-cart', JSON.stringify(cart)); }
+    
+    function updateCartUI() {
+      const badge = document.getElementById('cart-badge');
+      const itemsContainer = document.getElementById('cart-items-container');
+      const emptyState = document.getElementById('cart-empty');
+      const summary = document.getElementById('cart-summary');
+      const totalPrice = document.getElementById('cart-total-price');
+      
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      badge.textContent = totalItems;
+      
+      if (cart.length === 0) {
+        emptyState.style.display = 'block';
+        itemsContainer.innerHTML = '';
+        summary.style.display = 'none';
+        return;
+      }
+      
+      emptyState.style.display = 'none';
+      summary.style.display = 'block';
+      
+      itemsContainer.innerHTML = cart.map((item, index) => `
+        <div class="cart-item">
+          <div class="cart-item-image"><i class="fas ${item.icon || 'fa-box'}"></i></div>
+          <div class="cart-item-details">
+            <div class="cart-item-title">${item.title}</div>
+            <div class="cart-item-price">${item.price.toLocaleString('fa-IR')} تومان</div>
+          </div>
+          <div class="cart-item-quantity">
+            <button class="qty-btn" onclick="changeQuantity(${index}, -1)">-</button>
+            <span class="qty-number">${item.quantity}</span>
+            <button class="qty-btn" onclick="changeQuantity(${index}, 1)">+</button>
+          </div>
+          <i class="fas fa-trash-alt cart-item-remove" onclick="removeItem(${index})" title="حذف"></i>
+        </div>
+      `).join('');
+      
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      totalPrice.textContent = total.toLocaleString('fa-IR') + ' تومان';
+    }
+    
+    function addToCart(title, price, icon = 'fa-box') {
+      const numericPrice = parseInt(price.replace(/[^0-9]/g, ''));
+      const existingIndex = cart.findIndex(item => item.title === title);
+      
+      if (existingIndex > -1) {
+        cart[existingIndex].quantity++;
+      } else {
+        cart.push({ title: title, price: numericPrice, icon: icon, quantity: 1 });
+      }
+      
+      saveCart();
+      updateCartUI();
+      
+      const cartIcon = document.getElementById('cart-floating-icon');
+      cartIcon.style.transform = 'scale(1.3)';
+      setTimeout(() => { cartIcon.style.transform = 'scale(1)'; }, 300);
+      
+      showToast('✅ به سبد خرید اضافه شد');
+    }
+    
+    function changeQuantity(index, delta) {
+      cart[index].quantity += delta;
+      if (cart[index].quantity <= 0) { cart.splice(index, 1); }
+      saveCart();
+      updateCartUI();
+    }
+    
+    function removeItem(index) {
+      cart.splice(index, 1);
+      saveCart();
+      updateCartUI();
+    }
+    
+    function clearCart() {
+      if (confirm('آیا از خالی کردن سبد خرید اطمینان دارید؟')) {
+        cart = [];
+        saveCart();
+        updateCartUI();
+        showToast('🗑️ سبد خرید خالی شد');
+      }
+    }
+    
+    function toggleCart() {
+      document.getElementById('cart-panel').classList.toggle('active');
+      document.getElementById('cart-overlay').classList.toggle('active');
+    }
+    
+    function submitOrder() {
+      const name = document.getElementById('customer-name').value.trim();
+      const phone = document.getElementById('customer-phone').value.trim();
+      const note = document.getElementById('customer-note').value.trim();
+      
+      if (!name || !phone) {
+        alert('لطفاً نام و شماره تماس خود را وارد کنید.');
+        return;
+      }
+      
+      if (cart.length === 0) {
+        alert('سبد خرید خالی است!');
+        return;
+      }
+      
+      // ساخت پیام سفارش
+      let message = '🛒 *سفارش جدید از سایت رازی ۳۶۰*\n\n';
+      message += `👤 *مشتری:* ${name}\n`;
+      message += `📞 *تماس:* ${phone}\n`;
+      if (note) message += `📝 *توضیحات:* ${note}\n`;
+      message += '\n━━━━━━━━━━━━━━━\n\n';
+      message += '📦 *محصولات سفارش:*\n\n';
+      
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        message += `${index + 1}. ${item.title}\n`;
+        message += `   💰 ${item.price.toLocaleString('fa-IR')} × ${item.quantity} = ${itemTotal.toLocaleString('fa-IR')} تومان\n\n`;
+      });
+      
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      message += '━━━━━━━━━━━━━━━\n';
+      message += `💵 *جمع کل: ${total.toLocaleString('fa-IR')} تومان*\n`;
+      message += `📅 *تاریخ:* ${new Date().toLocaleDateString('fa-IR')}\n`;
+      
+      // ارسال به تلگرام شما (شماره +989033206428)
+      const telegramNumber = '989033206428';
+      window.open(`https://t.me/+${telegramNumber}?text=${encodeURIComponent(message)}`, '_blank');
+      
+      // نمایش پیغام موفقیت
+      document.getElementById('success-message').classList.add('active');
+      
+      // خالی کردن سبد
+      cart = [];
+      saveCart();
+      updateCartUI();
+      toggleCart();
+    }
+    
+    function closeSuccess() {
+      document.getElementById('success-message').classList.remove('active');
+    }
+    
+    function showToast(text) {
+      const toast = document.createElement('div');
+      toast.textContent = text;
+      toast.style.cssText = `
+        position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%);
+        background: #4CAF50; color: white; padding: 12px 25px; border-radius: 50px;
+        font-family: 'Vazirmatn', sans-serif; font-weight: 600; z-index: 10001;
+        animation: fadeInUp 0.3s ease;
+      `;
+      document.body.appendChild(toast);
+      setTimeout(() => { toast.remove(); }, 2000);
+    }
+    
+    function bindBuyButtons() {
+      document.querySelectorAll('.btn-buy').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const card = this.closest('.product-card');
+          if (card) {
+            const title = card.querySelector('.product-title')?.textContent?.trim();
+            const priceText = card.querySelector('.product-price')?.textContent?.trim();
+            const iconElement = card.querySelector('.product-placeholder');
+            let icon = 'fa-box';
+            if (iconElement) {
+              const classes = iconElement.className.split(' ');
+              icon = classes.find(c => c.startsWith('fa-')) || 'fa-box';
+            }
+            if (title && priceText) { addToCart(title, priceText, icon); }
+          }
+        });
+      });
+    }
+    
     function showCategory(category) {
       const coursesSection = document.getElementById('courses-section');
       const productsSection = document.getElementById('products-section');
@@ -894,22 +792,22 @@
       const tabProducts = document.getElementById('tab-products');
       
       if (category === 'courses') {
-        coursesSection.classList.remove('hidden-section');
-        coursesSection.classList.add('visible-section');
-        productsSection.classList.remove('visible-section');
-        productsSection.classList.add('hidden-section');
-        tabCourses.classList.add('active-tab');
-        tabProducts.classList.remove('active-tab');
+        coursesSection.classList.remove('hidden-section'); coursesSection.classList.add('visible-section');
+        productsSection.classList.remove('visible-section'); productsSection.classList.add('hidden-section');
+        tabCourses.classList.add('active-tab'); tabProducts.classList.remove('active-tab');
       } else {
-        productsSection.classList.remove('hidden-section');
-        productsSection.classList.add('visible-section');
-        coursesSection.classList.remove('visible-section');
-        coursesSection.classList.add('hidden-section');
-        tabProducts.classList.add('active-tab');
-        tabCourses.classList.remove('active-tab');
+        productsSection.classList.remove('hidden-section'); productsSection.classList.add('visible-section');
+        coursesSection.classList.remove('visible-section'); coursesSection.classList.add('hidden-section');
+        tabProducts.classList.add('active-tab'); tabCourses.classList.remove('active-tab');
       }
     }
-
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      updateCartUI();
+      bindBuyButtons();
+      showCategory('courses');
+    });
+    
     document.querySelector('.logo').addEventListener('click', function(e) {
       const icon = this.querySelector('.logo-icon');
       icon.style.transform = 'rotate(360deg) scale(1.3)';
