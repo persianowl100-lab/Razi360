@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پروفایل کاربری | رازی ۳۶۰</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: linear-gradient(145deg, #1a140c, #241e14);
+      color: #f7efe2; line-height: 1.7; min-height: 100vh;
+    }
+    .container { max-width: 1300px; margin: 0 auto; padding: 0 24px; }
+    
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 32px; margin: 20px auto 0; border-radius: 60px;
+      background: rgba(22, 18, 10, 0.75); backdrop-filter: blur(22px);
+      border: 1px solid rgba(255, 170, 40, 0.25);
+    }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon { font-size: 2.5rem; color: #ffb347; }
+    .logo-text { font-size: 2rem; font-weight: 900; background: linear-gradient(to left, #ffd166, #f4a261); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    
+    .nav-links { display: flex; align-items: center; gap: 12px; }
+    .nav-item { text-decoration: none; color: #f5e1c0; font-weight: 600; padding: 12px 20px; border-radius: 40px; transition: all 0.35s; }
+    .nav-item:hover { color: #ffb347; background: rgba(255,160,30,0.1); }
+    
+    .profile-container { max-width: 900px; margin: 50px auto; display: grid; grid-template-columns: 280px 1fr; gap: 30px; }
+    
+    .profile-sidebar {
+      background: rgba(40, 30, 18, 0.5); backdrop-filter: blur(14px);
+      border-radius: 25px; padding: 35px 25px; text-align: center;
+      border: 1px solid rgba(255, 180, 60, 0.2); height: fit-content;
+    }
+    .profile-avatar {
+      width: 90px; height: 90px; border-radius: 50%; margin: 0 auto 15px;
+      border: 3px solid #ffb347; box-shadow: 0 0 25px rgba(255,167,38,0.3);
+    }
+    .profile-name { font-size: 1.2rem; font-weight: 800; color: #ffcd94; margin-bottom: 5px; }
+    .profile-email { color: #cdb088; font-size: 0.8rem; margin-bottom: 15px; word-break: break-all; }
+    
+    .profile-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0; }
+    .stat-box {
+      background: rgba(30,24,16,0.5); border-radius: 12px; padding: 15px 10px;
+      border: 1px solid rgba(255,180,60,0.15);
+    }
+    .stat-number { font-size: 1.5rem; font-weight: 900; color: #ffb347; }
+    .stat-label { font-size: 0.7rem; color: #a6906c; margin-top: 3px; }
+    
+    .logout-btn {
+      width: 100%; padding: 12px; border-radius: 50px; font-weight: 700; cursor: pointer;
+      background: rgba(255,80,80,0.1); border: 1px solid #ff6b6b; color: #ff6b6b;
+      font-family: 'Vazirmatn', sans-serif; transition: all 0.3s;
+    }
+    .logout-btn:hover { background: rgba(255,80,80,0.2); }
+    
+    .profile-content {
+      background: rgba(40, 30, 18, 0.5); backdrop-filter: blur(14px);
+      border-radius: 25px; padding: 35px; border: 1px solid rgba(255, 180, 60, 0.2);
+    }
+    .section-title { font-size: 1.4rem; font-weight: 800; color: #ffcd94; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    
+    .order-card {
+      background: rgba(30, 24, 16, 0.5); border-radius: 15px; padding: 18px;
+      margin-bottom: 12px; border: 1px solid rgba(255,180,60,0.1);
+      transition: all 0.3s;
+    }
+    .order-card:hover { border-color: #f4a261; }
+    .order-header { display: flex; justify-content: space-between; margin-bottom: 8px; flex-wrap: wrap; gap: 5px; }
+    .order-id { color: #ffb347; font-weight: 700; font-size: 0.85rem; }
+    .order-date { color: #a6906c; font-size: 0.75rem; }
+    .order-products { color: #cdb088; font-size: 0.85rem; margin-bottom: 10px; }
+    .order-footer { display: flex; justify-content: space-between; align-items: center; }
+    .order-total { color: #4CAF50; font-weight: 700; font-size: 0.95rem; }
+    .order-status {
+      display: inline-block; padding: 3px 10px; border-radius: 15px;
+      font-size: 0.7rem; font-weight: 700;
+    }
+    .status-new { background: rgba(255,167,38,0.2); color: #ffb347; }
+    
+    .empty-state { text-align: center; padding: 50px 20px; color: #a6906c; }
+    .empty-state i { font-size: 3rem; color: #ffb347; opacity: 0.4; margin-bottom: 15px; display: block; }
+    
+    .back-home { display: inline-flex; align-items: center; gap: 8px; color: #f4a261; text-decoration: none; margin-top: 20px; font-weight: 600; }
+    .back-home:hover { color: #ffd166; }
+    
+    @media (max-width: 768px) {
+      .profile-container { grid-template-columns: 1fr; }
+      header { flex-direction: column; gap: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="../index.html" class="logo">
+        <i class="fas fa-brain logo-icon"></i>
+        <span class="logo-text">رازی ۳۶۰</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html" class="nav-item"><i class="fas fa-home"></i> صفحه اصلی</a>
+        <a href="shop.html" class="nav-item"><i class="fas fa-shopping-cart"></i> فروشگاه</a>
+        <a href="contact.html" class="nav-item"><i class="fas fa-envelope"></i> تماس با ما</a>
+      </div>
+    </header>
+
+    <div class="profile-container">
+      <!-- سایدبار -->
+      <div class="profile-sidebar">
+        <img id="profile-photo" class="profile-avatar" src="" alt="آواتار">
+        <h3 id="profile-name" class="profile-name">در حال بارگذاری...</h3>
+        <p id="profile-email" class="profile-email"></p>
+        
+        <div class="profile-stats">
+          <div class="stat-box">
+            <div class="stat-number" id="order-count">۰</div>
+            <div class="stat-label">سفارش</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number" id="total-spent">۰</div>
+            <div class="stat-label">تومان خرید</div>
+          </div>
+        </div>
+        
+        <button class="logout-btn" onclick="handleLogout()">
+          <i class="fas fa-sign-out-alt"></i> خروج از حساب
+        </button>
+      </div>
+      
+      <!-- محتوا -->
+      <div class="profile-content">
+        <h3 class="section-title"><i class="fas fa-shopping-bag"></i> تاریخچه سفارشات</h3>
+        <div id="orders-list">
+          <div class="empty-state">
+            <i class="fas fa-box-open"></i>
+            <p>در حال بارگذاری...</p>
+          </div>
+        </div>
+        <a href="../index.html" class="back-home"><i class="fas fa-arrow-right"></i> بازگشت به صفحه اصلی</a>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
+    
+    const firebaseConfig = {
+      apiKey: "AIzaSyDSZgKxihsca86ovMjyv0clynX3ATgiqPs",
+      authDomain: "razi360-e3952.firebaseapp.com",
+      projectId: "razi360-e3952",
+      storageBucket: "razi360-e3952.firebasestorage.app",
+      messagingSenderId: "708191850694",
+      appId: "1:708191850694:web:1f8e42542c8371846047c7"
+    };
+    
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    let currentUser = null;
+
+    // بررسی وضعیت کاربر
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = 'login.html';
+        return;
+      }
+      
+      currentUser = user;
+      
+      // نمایش اطلاعات کاربر
+      document.getElementById('profile-name').textContent = user.displayName || 'کاربر';
+      document.getElementById('profile-email').textContent = user.email || '';
+      document.getElementById('profile-photo').src = user.photoURL || 'https://via.placeholder.com/90/ffb347/1a140c?text=کاربر';
+      
+      // بارگذاری تاریخچه سفارشات
+      loadOrderHistory(user.uid, user.email);
+    });
+
+    // بارگذاری تاریخچه از Local Storage
+    function loadOrderHistory(uid, email) {
+      const allOrders = JSON.parse(localStorage.getItem('razi360-all-orders') || '[]');
+      
+      // فیلتر سفارشات این کاربر
+      const userOrders = allOrders.filter(order => {
+        return order.customer?.userId === uid || 
+               order.customer?.userEmail === email ||
+               order.customer?.userId === 'guest'; // سفارشات مهمان هم نمایش داده شود
+      });
+      
+      const container = document.getElementById('orders-list');
+      
+      if (userOrders.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <i class="fas fa-box-open"></i>
+            <p>هنوز خریدی انجام نشده است</p>
+            <a href="shop.html" style="color:#ffb347;text-decoration:none;font-weight:600;">رفتن به فروشگاه</a>
+          </div>`;
+        document.getElementById('order-count').textContent = '۰';
+        document.getElementById('total-spent').textContent = '۰';
+        return;
+      }
+      
+      // مرتب‌سازی بر اساس تاریخ (جدیدترین اول)
+      userOrders.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      
+      // نمایش سفارشات
+      container.innerHTML = userOrders.map(order => `
+        <div class="order-card">
+          <div class="order-header">
+            <span class="order-id">🆔 ${order.id}</span>
+            <span class="order-date">📅 ${order.date} - ${order.time}</span>
+          </div>
+          <div class="order-products">📦 ${order.productsText || order.products?.map(p => `${p.title} (${p.quantity}x)`).join('، ') || 'محصول'}</div>
+          <div class="order-footer">
+            <span class="order-total">💰 ${(order.total || 0).toLocaleString('fa-IR')} تومان</span>
+            <span class="order-status status-new">${order.status || 'جدید'}</span>
+          </div>
+        </div>
+      `).join('');
+      
+      // آمار
+      document.getElementById('order-count').textContent = userOrders.length.toLocaleString('fa-IR');
+      const totalSpent = userOrders.reduce((sum, o) => sum + (o.total || 0), 0);
+      document.getElementById('total-spent').textContent = totalSpent.toLocaleString('fa-IR');
+    }
+
+    // خروج
+    window.handleLogout = function() {
+      signOut(auth).then(() => {
+        localStorage.removeItem('razi360-user');
+        window.location.href = '../index.html';
+      });
+    };
+  </script>
+</body>
+</html>
