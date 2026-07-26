@@ -16,59 +16,83 @@
     }
     .auth-container {
       background: rgba(40, 30, 18, 0.7); backdrop-filter: blur(14px);
-      border-radius: 30px; padding: 50px 40px; max-width: 420px; width: 100%;
+      border-radius: 30px; padding: 45px 35px; max-width: 430px; width: 100%;
       border: 2px solid rgba(255, 180, 60, 0.3); text-align: center;
     }
-    .auth-logo { font-size: 3rem; color: #ffb347; margin-bottom: 10px; }
-    .auth-title { font-size: 1.6rem; font-weight: 900; color: #ffcd94; margin-bottom: 5px; }
-    .auth-subtitle { color: #cdb088; margin-bottom: 25px; font-size: 0.9rem; }
+    .auth-logo { font-size: 3rem; color: #ffb347; margin-bottom: 8px; }
+    .auth-title { font-size: 1.5rem; font-weight: 900; color: #ffcd94; margin-bottom: 3px; }
+    .auth-subtitle { color: #cdb088; margin-bottom: 20px; font-size: 0.85rem; }
     
-    .auth-tabs { display: flex; gap: 8px; margin-bottom: 25px; }
+    .auth-tabs { display: flex; gap: 6px; margin-bottom: 22px; background: rgba(0,0,0,0.2); border-radius: 50px; padding: 4px; }
     .auth-tab {
-      flex: 1; padding: 10px; border-radius: 50px; font-weight: 700; cursor: pointer;
-      transition: all 0.3s; border: 2px solid rgba(255, 180, 60, 0.3);
-      background: transparent; color: #cdb088; font-family: 'Vazirmatn', sans-serif; font-size: 0.85rem;
+      flex: 1; padding: 10px 8px; border-radius: 50px; font-weight: 700; cursor: pointer;
+      transition: all 0.3s; border: none; background: transparent; color: #a6906c;
+      font-family: 'Vazirmatn', sans-serif; font-size: 0.8rem;
     }
-    .auth-tab.active { background: linear-gradient(135deg, #ffa726, #f57c00); color: #1a140c; border-color: #ffa726; }
+    .auth-tab.active { background: linear-gradient(135deg, #ffa726, #f57c00); color: #1a140c; box-shadow: 0 5px 15px rgba(245,124,0,0.3); }
+    .auth-tab:hover:not(.active) { color: #ffb347; }
     
-    .auth-form { display: flex; flex-direction: column; gap: 15px; }
-    .auth-input {
-      width: 100%; padding: 14px 18px; border-radius: 15px;
-      border: 1px solid rgba(255, 180, 60, 0.3); background: rgba(30, 24, 16, 0.8);
-      color: #f7efe2; font-family: 'Vazirmatn', sans-serif; font-size: 1rem; direction: ltr; text-align: center;
-    }
-    .auth-input:focus { outline: none; border-color: #f4a261; }
+    .auth-section { display: none; }
+    .auth-section.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     
     .google-btn {
-      display: flex; align-items: center; justify-content: center; gap: 12px;
-      width: 100%; padding: 16px; border-radius: 50px; font-weight: 700;
-      font-size: 1.05rem; cursor: pointer; transition: all 0.3s;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; padding: 15px; border-radius: 50px; font-weight: 700;
+      font-size: 1rem; cursor: pointer; transition: all 0.3s;
       font-family: 'Vazirmatn', sans-serif; border: 2px solid rgba(255,255,255,0.2);
-      background: white; color: #333; margin-bottom: 15px;
+      background: white; color: #333;
     }
-    .google-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
-    .google-btn img { width: 24px; height: 24px; }
+    .google-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.3); background: #f5f5f5; }
+    .google-btn img { width: 22px; height: 22px; }
     
-    .divider { display: flex; align-items: center; gap: 15px; margin: 20px 0; color: #a6906c; font-size: 0.85rem; }
+    .divider { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: #a6906c; font-size: 0.8rem; }
     .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: rgba(255,180,60,0.2); }
     
+    .auth-input {
+      width: 100%; padding: 14px 16px; margin-bottom: 12px; border-radius: 15px;
+      border: 1px solid rgba(255, 180, 60, 0.3); background: rgba(30, 24, 16, 0.8);
+      color: #f7efe2; font-family: 'Vazirmatn', sans-serif; font-size: 1rem;
+      direction: ltr; text-align: center; transition: all 0.3s;
+    }
+    .auth-input:focus { outline: none; border-color: #f4a261; box-shadow: 0 0 15px rgba(255,167,38,0.1); }
+    
     .auth-btn {
-      width: 100%; padding: 16px; border-radius: 50px; font-weight: 800;
-      font-size: 1.05rem; cursor: pointer; transition: all 0.3s;
+      width: 100%; padding: 15px; border-radius: 50px; font-weight: 800;
+      font-size: 1rem; cursor: pointer; transition: all 0.3s;
       font-family: 'Vazirmatn', sans-serif; border: none;
       background: linear-gradient(135deg, #4CAF50, #2E7D32); color: white;
     }
     .auth-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(76,175,80,0.4); }
-    .auth-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .auth-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
     
-    .auth-back { color: #f4a261; text-decoration: none; display: inline-block; margin-top: 25px; font-weight: 600; font-size: 0.9rem; }
-    .auth-error { color: #ff6b6b; font-size: 0.85rem; margin-top: 10px; display: none; }
-    .auth-success { color: #4CAF50; font-size: 0.85rem; margin-top: 10px; display: none; }
+    .auth-back {
+      color: #f4a261; text-decoration: none; display: inline-block; margin-top: 20px;
+      font-weight: 600; font-size: 0.85rem; transition: all 0.3s;
+    }
+    .auth-back:hover { color: #ffd166; }
     
-    #recaptcha-container { margin: 10px 0; }
+    .auth-message { font-size: 0.85rem; margin-top: 10px; display: none; padding: 10px; border-radius: 10px; }
+    .auth-message.error { background: rgba(255,80,80,0.1); color: #ff6b6b; display: block; }
+    .auth-message.success { background: rgba(76,175,80,0.1); color: #81C784; display: block; }
+    
+    #recaptcha-container { display: flex; justify-content: center; margin: 10px 0; }
+    
+    .phone-prefix {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
+      background: rgba(30, 24, 16, 0.8); border-radius: 15px; padding: 5px 15px;
+      border: 1px solid rgba(255, 180, 60, 0.3);
+    }
+    .phone-prefix span { color: #f4a261; font-weight: 700; font-size: 1.1rem; white-space: nowrap; }
+    .phone-prefix input {
+      border: none; background: transparent; color: #f7efe2; font-family: 'Vazirmatn', sans-serif;
+      font-size: 1rem; width: 100%; text-align: center; padding: 10px 0; direction: ltr;
+    }
+    .phone-prefix input:focus { outline: none; }
     
     @media (max-width: 400px) {
       .auth-container { padding: 30px 20px; }
+      .auth-tab { font-size: 0.7rem; padding: 8px 4px; }
     }
   </style>
 </head>
@@ -76,46 +100,72 @@
   <div class="auth-container">
     <i class="fas fa-brain auth-logo"></i>
     <h2 class="auth-title">به رازی ۳۶۰ خوش آمدید</h2>
-    <p class="auth-subtitle">برای ادامه وارد شوید</p>
+    <p class="auth-subtitle">یکی از روش‌های زیر را انتخاب کنید</p>
     
     <!-- تب‌ها -->
     <div class="auth-tabs">
-      <button class="auth-tab active" onclick="switchTab('google')" id="tab-google">گوگل</button>
-      <button class="auth-tab" onclick="switchTab('phone')" id="tab-phone">شماره تلفن</button>
-      <button class="auth-tab" onclick="switchTab('email')" id="tab-email">ایمیل</button>
+      <button class="auth-tab active" onclick="switchTab('google')" id="tab-google">
+        <i class="fab fa-google"></i> گوگل
+      </button>
+      <button class="auth-tab" onclick="switchTab('phone')" id="tab-phone">
+        <i class="fas fa-mobile-alt"></i> تلفن
+      </button>
+      <button class="auth-tab" onclick="switchTab('email')" id="tab-email">
+        <i class="fas fa-envelope"></i> ایمیل
+      </button>
     </div>
     
-    <!-- ورود با گوگل -->
-    <div id="google-section">
+    <!-- ==================== ورود با گوگل ==================== -->
+    <div id="google-section" class="auth-section active">
       <button class="google-btn" onclick="signInWithGoogle()">
         <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
         ورود با گوگل
       </button>
+      <p style="color:#a6906c;font-size:0.75rem;margin-top:15px;">با حساب گوگل خود وارد شوید</p>
     </div>
     
-    <!-- ورود با شماره تلفن -->
-    <div id="phone-section" style="display:none;">
+    <!-- ==================== ورود با شماره تلفن ==================== -->
+    <div id="phone-section" class="auth-section">
       <div id="recaptcha-container"></div>
+      
+      <!-- فرم شماره تلفن -->
       <form onsubmit="sendVerificationCode(event)" id="phone-form">
-        <input type="tel" id="phone-number" class="auth-input" placeholder="مثلاً ۰۹۱۲۳۴۵۶۷۸۹" required>
-        <button type="submit" class="auth-btn" id="send-code-btn"><i class="fas fa-paper-plane"></i> ارسال کد تأیید</button>
+        <div class="phone-prefix">
+          <span>+98</span>
+          <input type="tel" id="phone-number" placeholder="۹۱۲۳۴۵۶۷۸۹" required maxlength="10" pattern="[0-9]*" inputmode="numeric">
+        </div>
+        <p style="color:#a6906c;font-size:0.7rem;margin-bottom:12px;">شماره خود را بدون صفر وارد کنید (مثلاً ۹۱۲۳۴۵۶۷۸۹)</p>
+        <button type="submit" class="auth-btn" id="send-code-btn">
+          <i class="fas fa-paper-plane"></i> ارسال کد تأیید
+        </button>
       </form>
+      
+      <!-- فرم کد تأیید -->
       <form onsubmit="verifyCode(event)" id="code-form" style="display:none;">
-        <input type="text" id="verification-code" class="auth-input" placeholder="کد ۶ رقمی را وارد کنید" maxlength="6" required>
-        <button type="submit" class="auth-btn" id="verify-code-btn"><i class="fas fa-check"></i> تأیید کد</button>
+        <input type="text" id="verification-code" class="auth-input" placeholder="کد ۶ رقمی" maxlength="6" required pattern="[0-9]*" inputmode="numeric">
+        <p style="color:#a6906c;font-size:0.7rem;margin-bottom:12px;">کد ارسال شده به شماره شما را وارد کنید</p>
+        <button type="submit" class="auth-btn" id="verify-code-btn">
+          <i class="fas fa-check"></i> تأیید کد
+        </button>
+        <button type="button" class="auth-btn" style="background:transparent;border:1px solid #f4a261;color:#f4a261;margin-top:10px;" onclick="resetPhoneForm()">
+          <i class="fas fa-edit"></i> تغییر شماره
+        </button>
       </form>
-      <p id="phone-error" class="auth-error"></p>
-      <p id="phone-success" class="auth-success"></p>
+      
+      <div id="phone-message" class="auth-message"></div>
     </div>
     
-    <!-- ورود با ایمیل -->
-    <div id="email-section" style="display:none;">
+    <!-- ==================== ورود با ایمیل ==================== -->
+    <div id="email-section" class="auth-section">
       <form onsubmit="signInWithEmail(event)">
         <input type="email" id="email" class="auth-input" placeholder="ایمیل خود را وارد کنید" required>
-        <input type="password" id="password" class="auth-input" placeholder="رمز عبور" required minlength="6">
-        <button type="submit" class="auth-btn"><i class="fas fa-sign-in-alt"></i> ورود / ثبت‌نام</button>
-        <p id="email-error" class="auth-error"></p>
+        <input type="password" id="password" class="auth-input" placeholder="رمز عبور (حداقل ۶ کاراکتر)" required minlength="6">
+        <button type="submit" class="auth-btn" id="email-btn">
+          <i class="fas fa-sign-in-alt"></i> ورود / ثبت‌نام
+        </button>
       </form>
+      <div id="email-message" class="auth-message"></div>
+      <p style="color:#a6906c;font-size:0.7rem;margin-top:15px;">اگر حساب ندارید، به صورت خودکار ثبت‌نام می‌شوید</p>
     </div>
     
     <a href="../index.html" class="auth-back"><i class="fas fa-arrow-right"></i> بازگشت به صفحه اصلی</a>
@@ -130,8 +180,7 @@
       signInWithEmailAndPassword, 
       createUserWithEmailAndPassword,
       signInWithPhoneNumber,
-      RecaptchaVerifier,
-      signOut
+      RecaptchaVerifier
     } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
 
     const firebaseConfig = {
@@ -149,12 +198,14 @@
 
     // ==================== تب‌ها ====================
     window.switchTab = function(tab) {
-      document.getElementById('google-section').style.display = tab === 'google' ? 'block' : 'none';
-      document.getElementById('phone-section').style.display = tab === 'phone' ? 'block' : 'none';
-      document.getElementById('email-section').style.display = tab === 'email' ? 'block' : 'none';
-      document.getElementById('tab-google').classList.toggle('active', tab === 'google');
-      document.getElementById('tab-phone').classList.toggle('active', tab === 'phone');
-      document.getElementById('tab-email').classList.toggle('active', tab === 'email');
+      document.querySelectorAll('.auth-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+      
+      document.getElementById(tab + '-section').classList.add('active');
+      document.getElementById('tab-' + tab).classList.add('active');
+      
+      // پاک کردن پیام‌ها
+      document.querySelectorAll('.auth-message').forEach(m => { m.style.display = 'none'; m.textContent = ''; });
     };
 
     // ==================== ورود با گوگل ====================
@@ -162,71 +213,106 @@
       const provider = new GoogleAuthProvider();
       signInWithPopup(auth, provider)
         .then(() => { window.location.href = '../index.html'; })
-        .catch((error) => { alert('❌ ' + error.message); });
+        .catch((error) => { showMessage('google', error.message, 'error'); });
     };
 
     // ==================== ارسال کد تأیید ====================
     window.sendVerificationCode = function(e) {
       e.preventDefault();
-      const phoneNumber = document.getElementById('phone-number').value;
-      const formattedPhone = '+98' + phoneNumber.replace(/^0/, '').replace(/[^0-9]/g, '');
       
-      document.getElementById('send-code-btn').disabled = true;
-      document.getElementById('send-code-btn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال ارسال...';
+      let phoneNumber = document.getElementById('phone-number').value.trim();
       
+      // حذف تمام کاراکترهای غیر عددی
+      phoneNumber = phoneNumber.replace(/[^0-9]/g, '');
+      
+      // تبدیل هوشمند به فرمت +98
+      if (phoneNumber.startsWith('0')) {
+        phoneNumber = '+98' + phoneNumber.substring(1);
+      } else if (phoneNumber.startsWith('98')) {
+        phoneNumber = '+' + phoneNumber;
+      } else if (phoneNumber.startsWith('+98')) {
+        // درسته
+      } else if (phoneNumber.length === 10 && phoneNumber.startsWith('9')) {
+        phoneNumber = '+98' + phoneNumber;
+      } else {
+        showMessage('phone', 'شماره تلفن نامعتبر است. شماره را بدون صفر وارد کنید (مثلاً ۹۱۲۳۴۵۶۷۸۹)', 'error');
+        return;
+      }
+      
+      const btn = document.getElementById('send-code-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال ارسال...';
+      hideMessage('phone');
+      
+      // ایجاد reCAPTCHA
       window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
         'size': 'normal',
         'callback': () => {}
       });
       
-      const appVerifier = window.recaptchaVerifier;
-      
-      signInWithPhoneNumber(auth, formattedPhone, appVerifier)
+      signInWithPhoneNumber(auth, phoneNumber, window.recaptchaVerifier)
         .then((result) => {
           confirmationResult = result;
           document.getElementById('phone-form').style.display = 'none';
-          document.getElementById('code-form').style.display = 'flex';
-          document.getElementById('phone-success').textContent = '✅ کد تأیید به شماره شما ارسال شد';
-          document.getElementById('phone-success').style.display = 'block';
-          document.getElementById('phone-error').style.display = 'none';
+          document.getElementById('code-form').style.display = 'block';
+          showMessage('phone', '✅ کد تأیید به شماره ' + phoneNumber + ' ارسال شد', 'success');
         })
         .catch((error) => {
-          document.getElementById('phone-error').textContent = '❌ ' + getPersianError(error.code);
-          document.getElementById('phone-error').style.display = 'block';
+          showMessage('phone', getPersianError(error.code), 'error');
+          if (window.recaptchaVerifier) {
+            window.recaptchaVerifier.render().then((widgetId) => {
+              if (typeof grecaptcha !== 'undefined') grecaptcha.reset(widgetId);
+            });
+          }
         })
         .finally(() => {
-          document.getElementById('send-code-btn').disabled = false;
-          document.getElementById('send-code-btn').innerHTML = '<i class="fas fa-paper-plane"></i> ارسال کد تأیید';
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-paper-plane"></i> ارسال کد تأیید';
         });
     };
 
     // ==================== تأیید کد ====================
     window.verifyCode = function(e) {
       e.preventDefault();
-      const code = document.getElementById('verification-code').value;
+      const code = document.getElementById('verification-code').value.trim();
       
-      document.getElementById('verify-code-btn').disabled = true;
-      document.getElementById('verify-code-btn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال تأیید...';
+      const btn = document.getElementById('verify-code-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال تأیید...';
+      hideMessage('phone');
       
       confirmationResult.confirm(code)
         .then(() => {
           window.location.href = '../index.html';
         })
-        .catch((error) => {
-          document.getElementById('phone-error').textContent = '❌ کد اشتباه است. دوباره تلاش کنید';
-          document.getElementById('phone-error').style.display = 'block';
+        .catch(() => {
+          showMessage('phone', '❌ کد اشتباه است. دوباره تلاش کنید', 'error');
         })
         .finally(() => {
-          document.getElementById('verify-code-btn').disabled = false;
-          document.getElementById('verify-code-btn').innerHTML = '<i class="fas fa-check"></i> تأیید کد';
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-check"></i> تأیید کد';
         });
+    };
+
+    // ==================== تغییر شماره ====================
+    window.resetPhoneForm = function() {
+      document.getElementById('phone-form').style.display = 'block';
+      document.getElementById('code-form').style.display = 'none';
+      document.getElementById('verification-code').value = '';
+      confirmationResult = null;
+      hideMessage('phone');
     };
 
     // ==================== ورود با ایمیل ====================
     window.signInWithEmail = function(e) {
       e.preventDefault();
-      const email = document.getElementById('email').value;
+      const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
+      
+      const btn = document.getElementById('email-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال ورود...';
+      hideMessage('email');
       
       signInWithEmailAndPassword(auth, email, password)
         .then(() => { window.location.href = '../index.html'; })
@@ -234,24 +320,50 @@
           if (error.code === 'auth/user-not-found') {
             createUserWithEmailAndPassword(auth, email, password)
               .then(() => { window.location.href = '../index.html'; })
-              .catch((err) => { document.getElementById('email-error').textContent = '❌ ' + err.message; document.getElementById('email-error').style.display = 'block'; });
+              .catch((err) => { showMessage('email', getPersianError(err.code), 'error'); });
           } else {
-            document.getElementById('email-error').textContent = '❌ ' + getPersianError(error.code);
-            document.getElementById('email-error').style.display = 'block';
+            showMessage('email', getPersianError(error.code), 'error');
           }
+        })
+        .finally(() => {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> ورود / ثبت‌نام';
         });
     };
+
+    // ==================== توابع کمکی ====================
+    function showMessage(section, text, type) {
+      const el = document.getElementById(section + '-message');
+      if (el) {
+        el.textContent = text;
+        el.className = 'auth-message ' + type;
+        el.style.display = 'block';
+      }
+    }
+
+    function hideMessage(section) {
+      const el = document.getElementById(section + '-message');
+      if (el) {
+        el.style.display = 'none';
+        el.textContent = '';
+      }
+    }
 
     function getPersianError(code) {
       const messages = {
         'auth/invalid-phone-number': 'شماره تلفن نامعتبر است',
+        'auth/missing-phone-number': 'لطفاً شماره تلفن را وارد کنید',
         'auth/too-many-requests': 'تعداد درخواست‌ها زیاد است. کمی صبر کنید',
         'auth/invalid-verification-code': 'کد تأیید اشتباه است',
+        'auth/code-expired': 'کد تأیید منقضی شده است. دوباره درخواست دهید',
         'auth/invalid-email': 'ایمیل نامعتبر است',
         'auth/weak-password': 'رمز عبور باید حداقل ۶ کاراکتر باشد',
-        'auth/wrong-password': 'رمز عبور اشتباه است'
+        'auth/wrong-password': 'رمز عبور اشتباه است',
+        'auth/user-not-found': 'کاربری با این ایمیل یافت نشد',
+        'auth/email-already-in-use': 'این ایمیل قبلاً ثبت شده است',
+        'auth/popup-closed-by-user': 'پنجره ورود بسته شد'
       };
-      return messages[code] || 'خطایی رخ داد. دوباره تلاش کنید';
+      return messages[code] || 'خطایی رخ داد. لطفاً دوباره تلاش کنید';
     }
   </script>
 </body>
