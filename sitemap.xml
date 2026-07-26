@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://razi360.github.io/razi360/</loc>
+    <loc>https://razi360.ir/</loc>
     <priority>1.0</priority>
-    <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://razi360.github.io/razi360/pages/shop.html</loc>
+    <loc>https://razi360.ir/pages/shop.html</loc>
     <priority>0.9</priority>
-    <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://razi360.github.io/razi360/pages/services.html</loc>
+    <loc>https://razi360.ir/pages/services.html</loc>
     <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://razi360.github.io/razi360/pages/about.html</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://razi360.github.io/razi360/pages/contact.html</loc>
+    <loc>https://razi360.ir/pages/about.html</loc>
     <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://razi360.ir/pages/contact.html</loc>
+    <priority>0.8</priority>
   </url>
 </urlset>
