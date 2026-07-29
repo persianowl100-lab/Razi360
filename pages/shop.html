@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   
-  <!-- 🆕 رفع خطای Content Security Policy -->
-  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' https://cdnjs.cloudflare.com;">
+  <!-- 🆕 CSP اصلاح‌شده - jsdelivr برای فونت اضافه شد -->
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net;">
   
   <title>فروشگاه | رازی ۳۶۰</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -237,8 +237,8 @@
     <div class="page-header"><h1 class="page-title">🛒 فروشگاه رازی ۳۶۰</h1><p class="page-subtitle">دوره‌های آموزشی و محصولات هوش مصنوعی با بهترین کیفیت</p></div>
 
     <div class="category-tabs">
-      <button class="category-tab active-tab" onclick="showCategory('courses')" id="tab-courses"><i class="fas fa-graduation-cap"></i> دوره‌های آموزشی</button>
-      <button class="category-tab" onclick="showCategory('products')" id="tab-products"><i class="fas fa-box"></i> محصولات</button>
+      <button class="category-tab active-tab" onclick="window.showCategory('courses')" id="tab-courses"><i class="fas fa-graduation-cap"></i> دوره‌های آموزشی</button>
+      <button class="category-tab" onclick="window.showCategory('products')" id="tab-products"><i class="fas fa-box"></i> محصولات</button>
     </div>
 
     <div id="courses-section" class="visible-section">
@@ -283,10 +283,10 @@
   </footer>
 
   <!-- سبد خرید -->
-  <div id="cart-floating-icon" onclick="toggleCart()"><i class="fas fa-shopping-cart"></i><span id="cart-badge">0</span></div>
-  <div id="cart-overlay" onclick="toggleCart()"></div>
+  <div id="cart-floating-icon" onclick="window.toggleCart()"><i class="fas fa-shopping-cart"></i><span id="cart-badge">0</span></div>
+  <div id="cart-overlay" onclick="window.toggleCart()"></div>
   <div id="cart-panel">
-    <div class="cart-panel-header"><h3><i class="fas fa-shopping-cart"></i> سبد خرید</h3><button onclick="toggleCart()"><i class="fas fa-times"></i></button></div>
+    <div class="cart-panel-header"><h3><i class="fas fa-shopping-cart"></i> سبد خرید</h3><button onclick="window.toggleCart()"><i class="fas fa-times"></i></button></div>
     <div id="cart-empty" class="cart-empty-state"><i class="fas fa-shopping-basket"></i><p>سبد خرید شما خالی است</p><a href="shop.html">مشاهده محصولات</a></div>
     <div id="cart-items-container"></div>
     <div id="cart-summary" style="display:none;">
@@ -296,11 +296,11 @@
         <input type="tel" id="customer-phone" placeholder="شماره تماس *" required>
         <textarea id="customer-note" placeholder="توضیحات سفارش (اختیاری)"></textarea>
       </div>
-      <button class="cart-submit-btn" onclick="submitOrder()"><i class="fas fa-paper-plane"></i> ثبت سفارش</button>
-      <button class="cart-clear-btn" onclick="clearCart()"><i class="fas fa-trash"></i> خالی کردن سبد</button>
+      <button class="cart-submit-btn" onclick="window.submitOrder()"><i class="fas fa-paper-plane"></i> ثبت سفارش</button>
+      <button class="cart-clear-btn" onclick="window.clearCart()"><i class="fas fa-trash"></i> خالی کردن سبد</button>
     </div>
   </div>
-  <div id="success-message"><i class="fas fa-check-circle"></i><h3>سفارش شما با موفقیت ثبت شد!</h3><p></p><button onclick="closeSuccess()">متوجه شدم</button></div>
+  <div id="success-message"><i class="fas fa-check-circle"></i><h3>سفارش شما با موفقیت ثبت شد!</h3><p></p><button onclick="window.closeSuccess()">متوجه شدم</button></div>
 
   <script>
     // ==================== داده‌ها ====================
@@ -325,18 +325,13 @@
     // ==================== سبد خرید ====================
     let cart = [];
     
-    // پاکسازی داده‌های خراب
     try {
       const raw = localStorage.getItem('razi360-cart');
       if (raw) {
         const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed)) {
-          cart = parsed.filter(item => item && item.title && item.price);
-        }
+        if (Array.isArray(parsed)) cart = parsed.filter(item => item && item.title && item.price);
       }
-    } catch(e) {
-      cart = [];
-    }
+    } catch(e) { cart = []; }
     
     function saveCart() { localStorage.setItem('razi360-cart', JSON.stringify(cart)); }
     
@@ -350,15 +345,9 @@
       const totalItems = cart.reduce((s, i) => s + (i.qty || 1), 0);
       badge.textContent = totalItems;
       
-      if (cart.length === 0) {
-        emptyState.style.display = 'block';
-        itemsContainer.innerHTML = '';
-        summary.style.display = 'none';
-        return;
-      }
+      if (cart.length === 0) { emptyState.style.display = 'block'; itemsContainer.innerHTML = ''; summary.style.display = 'none'; return; }
       
-      emptyState.style.display = 'none';
-      summary.style.display = 'block';
+      emptyState.style.display = 'none'; summary.style.display = 'block';
       
       itemsContainer.innerHTML = cart.map((item, i) => {
         const price = item.price || 0;
@@ -366,16 +355,9 @@
         const total = price * qty;
         return `<div class="cart-item">
           <div class="cart-item-image"><i class="fas ${item.icon || 'fa-box'}"></i></div>
-          <div class="cart-item-details">
-            <div class="cart-item-title">${item.title}</div>
-            <div class="cart-item-price">${price.toLocaleString('fa-IR')} × ${qty} = ${total.toLocaleString('fa-IR')} تومان</div>
-          </div>
-          <div class="cart-item-quantity">
-            <button class="qty-btn" onclick="window.changeQty(${i},-1)">−</button>
-            <span class="qty-number">${qty}</span>
-            <button class="qty-btn" onclick="window.changeQty(${i},1)">+</button>
-          </div>
-          <i class="fas fa-trash-alt cart-item-remove" onclick="window.removeItem(${i})" title="حذف"></i>
+          <div class="cart-item-details"><div class="cart-item-title">${item.title}</div><div class="cart-item-price">${price.toLocaleString('fa-IR')} × ${qty} = ${total.toLocaleString('fa-IR')} تومان</div></div>
+          <div class="cart-item-quantity"><button class="qty-btn" onclick="window.changeQty(${i},-1)">−</button><span class="qty-number">${qty}</span><button class="qty-btn" onclick="window.changeQty(${i},1)">+</button></div>
+          <i class="fas fa-trash-alt cart-item-remove" onclick="window.removeItem(${i})"></i>
         </div>`;
       }).join('');
       
@@ -383,81 +365,35 @@
       totalPrice.textContent = total.toLocaleString('fa-IR') + ' تومان';
     }
 
-    // توابع global
     window.addToCart = function(title, priceText, icon) {
       const price = parseInt(String(priceText).replace(/[^0-9]/g, ''));
       if (!price || isNaN(price)) return;
-      
       const exist = cart.findIndex(i => i.title === title);
-      if (exist > -1) {
-        cart[exist].qty = (cart[exist].qty || 1) + 1;
-      } else {
-        cart.push({title: title, price: price, icon: icon, qty: 1});
-      }
-      
-      saveCart();
-      updateCartUI();
-      
+      if (exist > -1) cart[exist].qty = (cart[exist].qty || 1) + 1;
+      else cart.push({title: title, price: price, icon: icon, qty: 1});
+      saveCart(); updateCartUI();
       const cartIcon = document.getElementById('cart-floating-icon');
-      if (cartIcon) {
-        cartIcon.style.transform = 'scale(1.3)';
-        setTimeout(function() { if(cartIcon) cartIcon.style.transform = 'scale(1)'; }, 300);
-      }
+      if (cartIcon) { cartIcon.style.transform = 'scale(1.3)'; setTimeout(function() { if(cartIcon) cartIcon.style.transform = 'scale(1)'; }, 300); }
     };
 
-    window.changeQty = function(i, d) {
-      if (!cart[i]) return;
-      cart[i].qty = (cart[i].qty || 1) + d;
-      if (cart[i].qty <= 0) cart.splice(i, 1);
-      saveCart();
-      updateCartUI();
-    };
-
-    window.removeItem = function(i) {
-      cart.splice(i, 1);
-      saveCart();
-      updateCartUI();
-    };
-
-    window.clearCart = function() {
-      if (confirm('آیا از خالی کردن سبد خرید اطمینان دارید؟')) {
-        cart = [];
-        saveCart();
-        updateCartUI();
-      }
-    };
-
-    window.toggleCart = function() {
-      document.getElementById('cart-panel').classList.toggle('active');
-      document.getElementById('cart-overlay').classList.toggle('active');
-    };
-
+    window.changeQty = function(i, d) { if (!cart[i]) return; cart[i].qty = (cart[i].qty || 1) + d; if (cart[i].qty <= 0) cart.splice(i, 1); saveCart(); updateCartUI(); };
+    window.removeItem = function(i) { cart.splice(i, 1); saveCart(); updateCartUI(); };
+    window.clearCart = function() { if (confirm('خالی شود؟')) { cart = []; saveCart(); updateCartUI(); } };
+    window.toggleCart = function() { document.getElementById('cart-panel').classList.toggle('active'); document.getElementById('cart-overlay').classList.toggle('active'); };
+    
     window.submitOrder = function() {
       const name = document.getElementById('customer-name').value.trim();
       const phone = document.getElementById('customer-phone').value.trim();
-      const note = document.getElementById('customer-note').value.trim();
-      
-      if (!name || !phone) return alert('⚠️ لطفاً نام و شماره تماس خود را وارد کنید.');
-      if (!cart.length) return alert('⚠️ سبد خرید خالی است!');
-      
+      if (!name || !phone) return alert('نام و تلفن را وارد کنید');
+      if (!cart.length) return alert('سبد خالی است');
       const total = cart.reduce((s, i) => s + ((i.price || 0) * (i.qty || 1)), 0);
-      
-      document.getElementById('success-message').querySelector('p').innerHTML = 
-        `کد پیگیری: <strong style="color:#ffb347;">ORD-${Date.now().toString(36).toUpperCase()}</strong><br>
-         مبلغ: <strong style="color:#4CAF50;">${total.toLocaleString('fa-IR')} تومان</strong><br>
-         همکاران ما به زودی با شما تماس خواهند گرفت.`;
+      document.getElementById('success-message').querySelector('p').innerHTML = `کد: ORD-${Date.now().toString(36).toUpperCase()} | ${total.toLocaleString('fa-IR')} تومان`;
       document.getElementById('success-message').classList.add('active');
-      
-      cart = [];
-      saveCart();
-      updateCartUI();
-      toggleCart();
+      cart = []; saveCart(); updateCartUI(); toggleCart();
     };
-
-    window.closeSuccess = function() {
-      document.getElementById('success-message').classList.remove('active');
-    };
-
+    
+    window.closeSuccess = function() { document.getElementById('success-message').classList.remove('active'); };
+    
     window.showCategory = function(cat) {
       document.getElementById('courses-section').style.display = cat === 'courses' ? 'block' : 'none';
       document.getElementById('products-section').style.display = cat === 'products' ? 'block' : 'none';
@@ -465,48 +401,24 @@
       document.getElementById('tab-products').classList.toggle('active-tab', cat === 'products');
     };
 
-    // ساخت کارت‌ها
-    function escapeQuote(str) {
-      return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
-    }
+    function esc(s) { return s.replace(/'/g, "\\'"); }
 
     document.getElementById('courses-grid').innerHTML = coursesData.map(p => `
-      <div class="product-card">
-        ${p.badge ? '<span class="product-badge">' + p.badge + '</span>' : ''}
-        <span class="course-type-badge">${p.level}</span>
+      <div class="product-card">${p.badge?'<span class="product-badge">'+p.badge+'</span>':''}<span class="course-type-badge">${p.level}</span>
         <div class="product-image-wrapper"><i class="fas ${p.icon} product-placeholder"></i></div>
-        <div class="product-info">
-          <div class="product-category"><i class="fas fa-laptop-code"></i> دوره ویدیویی</div>
-          <h3 class="product-title">${p.title}</h3>
-          <p class="product-description">${p.desc}</p>
-          <div class="course-details-mini">
-            <span><i class="fas fa-clock"></i> ${p.duration}</span>
-            <span><i class="fas fa-video"></i> ${p.sessions}</span>
-            <span><i class="fas fa-user-graduate"></i> ${p.students}</span>
-          </div>
-          <div class="product-footer">
-            <span class="product-price">${p.price}</span>
-            <button class="btn-buy" onclick="window.addToCart('${escapeQuote(p.title)}', '${p.price}', '${p.icon}')"><i class="fas fa-shopping-basket"></i> ثبت‌نام</button>
-          </div>
+        <div class="product-info"><div class="product-category">دوره ویدیویی</div><h3 class="product-title">${p.title}</h3><p class="product-description">${p.desc}</p>
+          <div class="course-details-mini"><span>${p.duration}</span><span>${p.sessions}</span><span>${p.students}</span></div>
+          <div class="product-footer"><span class="product-price">${p.price}</span><button class="btn-buy" onclick="window.addToCart('${esc(p.title)}','${p.price}','${p.icon}')"><i class="fas fa-shopping-basket"></i> ثبت‌نام</button></div>
         </div>
-      </div>
-    `).join('');
+      </div>`).join('');
 
     document.getElementById('products-grid').innerHTML = productsData.map(p => `
-      <div class="product-card">
-        ${p.badge ? '<span class="product-badge">' + p.badge + '</span>' : ''}
+      <div class="product-card">${p.badge?'<span class="product-badge">'+p.badge+'</span>':''}
         <div class="product-image-wrapper"><i class="fas ${p.icon} product-placeholder"></i></div>
-        <div class="product-info">
-          <div class="product-category"><i class="fas fa-tag"></i> ${p.cat}</div>
-          <h3 class="product-title">${p.title}</h3>
-          <p class="product-description">${p.desc}</p>
-          <div class="product-footer">
-            <span class="product-price">${p.price}</span>
-            <button class="btn-buy" onclick="window.addToCart('${escapeQuote(p.title)}', '${p.price}', '${p.icon}')"><i class="fas fa-shopping-basket"></i> خرید</button>
-          </div>
+        <div class="product-info"><div class="product-category">${p.cat}</div><h3 class="product-title">${p.title}</h3><p class="product-description">${p.desc}</p>
+          <div class="product-footer"><span class="product-price">${p.price}</span><button class="btn-buy" onclick="window.addToCart('${esc(p.title)}','${p.price}','${p.icon}')"><i class="fas fa-shopping-basket"></i> خرید</button></div>
         </div>
-      </div>
-    `).join('');
+      </div>`).join('');
 
     updateCartUI();
   </script>
