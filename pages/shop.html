@@ -2,16 +2,16 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>فروشگاه | رازی ۳۶۰</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Vazirmatn', sans-serif;
       background: linear-gradient(145deg, #1a140c, #241e14);
-      color: #f7efe2; line-height: 1.7; overflow-x: hidden; min-height: 100vh;
+      color: #f7efe2; line-height: 1.7; min-height: 100vh;
     }
     .container { max-width: 1300px; margin: 0 auto; padding: 0 24px; }
     
@@ -34,14 +34,12 @@
     .store-btn { background: linear-gradient(135deg, #f4a261, #e67e22) !important; color: #1a140c !important; font-weight: 800; }
     .page-header { text-align: center; padding: 80px 20px 50px; }
     .page-title { font-size: 3.5rem; font-weight: 900; background: linear-gradient(to right, #ffddb0, #ffa726); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .page-subtitle { font-size: 1.2rem; color: #cdb088; }
     .category-tabs { display: flex; justify-content: center; gap: 15px; margin: 30px 0 50px; }
     .category-tab {
       padding: 14px 30px; border-radius: 50px; font-weight: 700; cursor: pointer;
       border: 2px solid rgba(255,180,60,0.3); background: rgba(40,30,18,0.5); color: #cdb088;
     }
     .category-tab.active-tab { background: linear-gradient(135deg, #ffa726, #f57c00); color: #1a140c; border-color: #ffa726; }
-    .category-section-title { font-size: 2rem; color: #ffcd94; margin: 60px 0 30px; }
     .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin: 40px 0 60px; }
     .product-card {
       background: rgba(40,30,18,0.5); backdrop-filter: blur(14px); border-radius: 25px;
@@ -75,8 +73,6 @@
     footer { background: rgba(20,15,8,0.8); border-top: 2px solid rgba(244,162,97,0.4); padding: 40px 0 25px; margin-top: 60px; }
     .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
     .footer-logo { font-size: 2rem; font-weight: 900; color: #f4a261; }
-    .enamad-box { margin-top: 20px; background: rgba(255,255,255,0.05); border-radius: 15px; padding: 15px; display: inline-block; border: 1px solid rgba(255,180,60,0.3); }
-    .enamad-box img { width: 100px; }
     .footer-links a { color: #cfb185; text-decoration: none; display: block; margin: 8px 0; }
     .copyright { text-align: center; margin-top: 40px; color: #a6906c; }
 
@@ -122,14 +118,8 @@
       width: 100%; padding: 10px; margin-bottom: 8px; border-radius: 10px;
       border: 1px solid rgba(255,180,60,0.3); background: rgba(0,0,0,0.3); color: #fff;
     }
-    .btn-submit {
-      width: 100%; padding: 12px; border-radius: 50px; font-weight: 800;
-      background: #4CAF50; color: white; border: none; cursor: pointer; margin-bottom: 8px;
-    }
-    .btn-clear {
-      width: 100%; padding: 10px; border-radius: 50px; font-weight: 600;
-      background: transparent; color: #ff6b6b; border: 1px solid #ff6b6b; cursor: pointer;
-    }
+    .btn-submit { width: 100%; padding: 12px; border-radius: 50px; font-weight: 800; background: #4CAF50; color: white; border: none; cursor: pointer; margin-bottom: 8px; }
+    .btn-clear { width: 100%; padding: 10px; border-radius: 50px; font-weight: 600; background: transparent; color: #ff6b6b; border: 1px solid #ff6b6b; cursor: pointer; }
     @media (max-width: 500px) { #cart-panel { width: 100%; right: -100%; } }
   </style>
 </head>
@@ -146,29 +136,28 @@
       </div>
     </header>
 
-    <div class="page-header"><h1 class="page-title">🛒 فروشگاه رازی ۳۶۰</h1><p class="page-subtitle">دوره‌های آموزشی و محصولات هوش مصنوعی</p></div>
+    <div class="page-header"><h1 class="page-title">🛒 فروشگاه رازی ۳۶۰</h1><p style="color:#cdb088;">دوره‌های آموزشی و محصولات هوش مصنوعی</p></div>
 
     <div class="category-tabs">
       <button class="category-tab active-tab" onclick="showTab('courses')">دوره‌ها</button>
       <button class="category-tab" onclick="showTab('products')">محصولات</button>
     </div>
 
-    <div id="tab-courses"><div class="category-section-title">دوره‌های آموزشی</div><div class="products-grid" id="courses-grid"></div></div>
-    <div id="tab-products" style="display:none;"><div class="category-section-title">محصولات و خدمات</div><div class="products-grid" id="products-grid"></div></div>
+    <div id="tab-courses"><h2 style="color:#ffcd94;margin-bottom:20px;">دوره‌های آموزشی</h2><div class="products-grid" id="courses-grid"></div></div>
+    <div id="tab-products" style="display:none;"><h2 style="color:#ffcd94;margin-bottom:20px;">محصولات و خدمات</h2><div class="products-grid" id="products-grid"></div></div>
   </div>
 
   <footer>
     <div class="container">
       <div class="footer-content">
-        <div class="footer-col"><div class="footer-logo"><i class="fas fa-robot"></i> رازی ۳۶۰</div><p style="color:#cdb088;">ارائه‌دهنده راهکارهای نوین هوش مصنوعی</p><div class="enamad-box"><a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=666728&Code=DkrrjsLDcX9eK5iTH8wDmkrgY7MmVCCn'><img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=666728&Code=DkrrjsLDcX9eK5iTH8wDmkrgY7MmVCCn' alt='نماد'></a></div></div>
-        <div class="footer-col"><h4 style="color:#ffcd94;">دسترسی سریع</h4><a href="shop.html">فروشگاه</a><a href="contact.html">پشتیبانی</a><a href="login.html">ورود</a></div>
-        <div class="footer-col"><h4 style="color:#ffcd94;">تماس</h4><a href="tel:09184737201">۰۹۱۸۴۷۳۷۲۰۱</a></div>
+        <div><div class="footer-logo"><i class="fas fa-robot"></i> رازی ۳۶۰</div><p style="color:#cdb088;">ارائه‌دهنده راهکارهای نوین هوش مصنوعی</p></div>
+        <div class="footer-links"><h4 style="color:#ffcd94;">دسترسی سریع</h4><a href="shop.html">فروشگاه</a><a href="contact.html">پشتیبانی</a><a href="login.html">ورود</a></div>
+        <div class="footer-links"><h4 style="color:#ffcd94;">تماس</h4><a href="tel:09184737201">۰۹۱۸۴۷۳۷۲۰۱</a></div>
       </div>
       <div class="copyright"><p>© ۲۰۲۵ <span style="color:#f4a261;">رازی ۳۶۰</span></p></div>
     </div>
   </footer>
 
-  <!-- سبد خرید -->
   <div id="cart-icon" onclick="toggleCart()"><i class="fas fa-shopping-cart"></i><span id="cart-count">0</span></div>
   <div id="cart-overlay" onclick="toggleCart()"></div>
   <div id="cart-panel">
@@ -187,12 +176,12 @@
   <script>
     // ==================== داده‌ها ====================
     const courses = [
-      {title:"مبانی هوش مصنوعی و یادگیری ماشین",price:"۴۹۹,۰۰۰ تومان",icon:"fa-robot",badge:"پرفروش",level:"🎯 مقدماتی",desc:"آشنایی کامل با مفاهیم پایه هوش مصنوعی",duration:"۴۸ ساعت",sessions:"۳۲ جلسه",students:"۲,۳۴۰ نفر"},
-      {title:"کار با ChatGPT و پرامپت نویسی حرفه‌ای",price:"۳۴۹,۰۰۰ تومان",icon:"fa-comment-dots",badge:"جدید",level:"💬 کاربردی",desc:"آموزش کامل کار با چت جی پی تی",duration:"۲۰ ساعت",sessions:"۱۴ جلسه",students:"۱,۸۵۰ نفر"},
-      {title:"راهنمای جامع DeepSeek",price:"۲۹۹,۰۰۰ تومان",icon:"fa-search",badge:"",level:"🔍 کاربردی",desc:"نصب و استفاده از دیپ سیک",duration:"۱۶ ساعت",sessions:"۱۰ جلسه",students:"۱,۲۳۰ نفر"},
-      {title:"Google Gemini از مبتدی تا پیشرفته",price:"۳۲۹,۰۰۰ تومان",icon:"fa-gem",badge:"",level:"✨ کاربردی",desc:"آشنایی با جمینای گوگل",duration:"۱۸ ساعت",sessions:"۱۲ جلسه",students:"۹۸۰ نفر"},
-      {title:"خرید دلاری اکانت رسمی از ایران",price:"۱۹۹,۰۰۰ تومان",icon:"fa-credit-card",badge:"پرمخاطب",level:"💳 خرید اکانت",desc:"خرید اشتراک ChatGPT Plus",duration:"۸ ساعت",sessions:"۶ جلسه",students:"۲,۵۶۰ نفر"},
-      {title:"پکیج جامع هوش مصنوعی (VIP)",price:"۱,۴۹۰,۰۰۰ تومان",icon:"fa-crown",badge:"ویژه",level:"🏆 جامع",desc:"صفر تا صد هوش مصنوعی",duration:"۲۰۰ ساعت",sessions:"۱۲۰ جلسه",students:"۸۹۰ نفر"}
+      {title:"مبانی هوش مصنوعی و یادگیری ماشین",price:"۴۹۹,۰۰۰ تومان",icon:"fa-robot",badge:"پرفروش",level:"🎯 مقدماتی",desc:"آشنایی کامل با مفاهیم پایه هوش مصنوعی",duration:"۴۸ ساعت"},
+      {title:"کار با ChatGPT و پرامپت نویسی حرفه‌ای",price:"۳۴۹,۰۰۰ تومان",icon:"fa-comment-dots",badge:"جدید",level:"💬 کاربردی",desc:"آموزش کامل کار با چت جی پی تی",duration:"۲۰ ساعت"},
+      {title:"راهنمای جامع DeepSeek",price:"۲۹۹,۰۰۰ تومان",icon:"fa-search",badge:"",level:"🔍 کاربردی",desc:"نصب و استفاده از دیپ سیک",duration:"۱۶ ساعت"},
+      {title:"Google Gemini از مبتدی تا پیشرفته",price:"۳۲۹,۰۰۰ تومان",icon:"fa-gem",badge:"",level:"✨ کاربردی",desc:"آشنایی با جمینای گوگل",duration:"۱۸ ساعت"},
+      {title:"خرید دلاری اکانت رسمی از ایران",price:"۱۹۹,۰۰۰ تومان",icon:"fa-credit-card",badge:"پرمخاطب",level:"💳 خرید اکانت",desc:"خرید اشتراک ChatGPT Plus",duration:"۸ ساعت"},
+      {title:"پکیج جامع هوش مصنوعی (VIP)",price:"۱,۴۹۰,۰۰۰ تومان",icon:"fa-crown",badge:"ویژه",level:"🏆 جامع",desc:"صفر تا صد هوش مصنوعی",duration:"۲۰۰ ساعت"}
     ];
     
     const products = [
@@ -205,94 +194,134 @@
     ];
 
     // ==================== سبد خرید ====================
-    let cart = JSON.parse(localStorage.getItem('razi360-cart') || '[]');
+    let cart = [];
+    
+    // پاکسازی cart از داده‌های خراب
+    function cleanCart() {
+      const raw = localStorage.getItem('razi360-cart');
+      if (raw) {
+        try {
+          const parsed = JSON.parse(raw);
+          cart = parsed.filter(item => item && item.title && typeof item.price === 'number' && item.price > 0);
+        } catch(e) {
+          cart = [];
+        }
+      }
+      if (!cart.length) cart = [];
+    }
+    
+    cleanCart();
     
     function saveCart() { localStorage.setItem('razi360-cart', JSON.stringify(cart)); }
     
     function updateCartUI() {
-      document.getElementById('cart-count').textContent = cart.reduce((s, i) => s + i.qty, 0);
-      const container = document.getElementById('cart-items');
-      const summary = document.getElementById('cart-summary');
+      const countEl = document.getElementById('cart-count');
+      const itemsEl = document.getElementById('cart-items');
+      const summaryEl = document.getElementById('cart-summary');
+      const totalEl = document.getElementById('cart-total');
+      
+      const totalItems = cart.reduce((s, i) => s + (i.qty || 1), 0);
+      countEl.textContent = totalItems;
       
       if (cart.length === 0) {
-        container.innerHTML = '<p style="color:#a6906c;text-align:center;margin-top:50px;">سبد خرید خالی است</p>';
-        summary.style.display = 'none';
+        itemsEl.innerHTML = '<p style="color:#a6906c;text-align:center;margin-top:50px;">سبد خرید خالی است</p>';
+        summaryEl.style.display = 'none';
         return;
       }
       
-      summary.style.display = 'block';
-      container.innerHTML = cart.map((item, i) => {
-        const price = item.price;
-        const total = price * item.qty;
+      summaryEl.style.display = 'block';
+      itemsEl.innerHTML = cart.map((item, i) => {
+        const price = item.price || 0;
+        const qty = item.qty || 1;
+        const total = price * qty;
         return `<div class="cart-item">
-          <i class="fas ${item.icon}"></i>
+          <i class="fas ${item.icon || 'fa-box'}"></i>
           <div class="cart-item-info">
             <div class="cart-item-title">${item.title}</div>
-            <div class="cart-item-price">${price.toLocaleString('fa-IR')} × ${item.qty} = ${total.toLocaleString('fa-IR')} تومان</div>
+            <div class="cart-item-price">${price.toLocaleString('fa-IR')} × ${qty} = ${total.toLocaleString('fa-IR')} تومان</div>
           </div>
           <div class="cart-qty">
-            <button onclick="changeQty(${i},-1)">−</button><span>${item.qty}</span><button onclick="changeQty(${i},1)">+</button>
+            <button onclick="changeQty(${i},-1)">−</button><span>${qty}</span><button onclick="changeQty(${i},1)">+</button>
           </div>
           <span class="cart-remove" onclick="removeItem(${i})">🗑️</span>
         </div>`;
       }).join('');
       
-      const total = cart.reduce((s, i) => s + (i.price * i.qty), 0);
-      document.getElementById('cart-total').textContent = total.toLocaleString('fa-IR') + ' تومان';
+      const total = cart.reduce((s, i) => s + ((i.price || 0) * (i.qty || 1)), 0);
+      totalEl.textContent = total.toLocaleString('fa-IR') + ' تومان';
     }
 
-    // تابع عمومی برای افزودن به سبد
-    function addToCart(title, priceText, icon) {
+    // تابع افزودن به سبد - global
+    window.addToCart = function(title, priceText, icon) {
       const price = parseInt(priceText.replace(/[^0-9]/g, ''));
-      if (!price) return;
+      if (!price || isNaN(price)) return alert('خطا در قیمت محصول');
       
       const exist = cart.findIndex(i => i.title === title);
-      if (exist > -1) { cart[exist].qty++; }
-      else { cart.push({title, price, icon, qty: 1}); }
+      if (exist > -1) {
+        cart[exist].qty = (cart[exist].qty || 1) + 1;
+      } else {
+        cart.push({title: title, price: price, icon: icon, qty: 1});
+      }
       
       saveCart();
       updateCartUI();
       
-      // انیمیشن
       const iconEl = document.getElementById('cart-icon');
-      iconEl.style.transform = 'scale(1.3)';
-      setTimeout(() => iconEl.style.transform = 'scale(1)', 300);
-      
-      // پیغام
-      showToast('✅ به سبد اضافه شد');
-    }
+      if (iconEl) {
+        iconEl.style.transform = 'scale(1.3)';
+        setTimeout(() => { if(iconEl) iconEl.style.transform = 'scale(1)'; }, 300);
+      }
+    };
 
-    // توابع عمومی
-    function changeQty(i, d) { cart[i].qty += d; if (cart[i].qty <= 0) cart.splice(i,1); saveCart(); updateCartUI(); }
-    function removeItem(i) { cart.splice(i,1); saveCart(); updateCartUI(); }
-    function clearCart() { if(confirm('خالی شود؟')) { cart = []; saveCart(); updateCartUI(); } }
-    function toggleCart() { document.getElementById('cart-panel').classList.toggle('show'); document.getElementById('cart-overlay').classList.toggle('show'); }
-    
-    function submitOrder() {
+    window.changeQty = function(i, d) {
+      if (!cart[i]) return;
+      cart[i].qty = (cart[i].qty || 1) + d;
+      if (cart[i].qty <= 0) cart.splice(i, 1);
+      saveCart();
+      updateCartUI();
+    };
+
+    window.removeItem = function(i) {
+      cart.splice(i, 1);
+      saveCart();
+      updateCartUI();
+    };
+
+    window.clearCart = function() {
+      if (confirm('خالی شود؟')) {
+        cart = [];
+        saveCart();
+        updateCartUI();
+      }
+    };
+
+    window.toggleCart = function() {
+      document.getElementById('cart-panel').classList.toggle('show');
+      document.getElementById('cart-overlay').classList.toggle('show');
+    };
+
+    window.submitOrder = function() {
       const name = document.getElementById('cust-name').value.trim();
       const phone = document.getElementById('cust-phone').value.trim();
       if (!name || !phone) return alert('نام و تلفن را وارد کنید');
       if (!cart.length) return alert('سبد خالی است');
       
-      const total = cart.reduce((s, i) => s + (i.price * i.qty), 0);
-      alert(`✅ سفارش ثبت شد!\n\nکد: ORD-${Date.now().toString(36).toUpperCase()}\nمبلغ: ${total.toLocaleString('fa-IR')} تومان\n\nهمکاران ما با شما تماس خواهند گرفت.`);
+      const total = cart.reduce((s, i) => s + ((i.price || 0) * (i.qty || 1)), 0);
+      alert(`✅ سفارش ثبت شد!\n\nمبلغ: ${total.toLocaleString('fa-IR')} تومان\n\nهمکاران ما تماس خواهند گرفت.`);
       
-      cart = []; saveCart(); updateCartUI(); toggleCart();
-    }
-    
-    function showToast(text) {
-      const t = document.createElement('div');
-      t.textContent = text;
-      t.style.cssText = 'position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:#4CAF50;color:white;padding:12px 25px;border-radius:50px;z-index:9999;font-weight:600;';
-      document.body.appendChild(t);
-      setTimeout(() => t.remove(), 2000);
-    }
+      cart = [];
+      saveCart();
+      updateCartUI();
+      toggleCart();
+    };
 
-    function showTab(tab) {
+    window.showTab = function(tab) {
       document.getElementById('tab-courses').style.display = tab === 'courses' ? 'block' : 'none';
       document.getElementById('tab-products').style.display = tab === 'products' ? 'block' : 'none';
-      document.querySelectorAll('.category-tab').forEach((b, i) => b.classList.toggle('active-tab', (tab === 'courses' && i === 0) || (tab === 'products' && i === 1)));
-    }
+      document.querySelectorAll('.category-tab').forEach((b, i) => {
+        b.classList.toggle('active-tab', (tab === 'courses' && i === 0) || (tab === 'products' && i === 1));
+      });
+    };
 
     // ==================== ساخت کارت‌ها ====================
     document.getElementById('courses-grid').innerHTML = courses.map(p => `
@@ -303,7 +332,7 @@
         <div class="product-info">
           <h3 class="product-title">${p.title}</h3>
           <p class="product-description">${p.desc}</p>
-          <div style="color:#a6906c;font-size:0.8rem;margin-bottom:15px;">${p.duration} | ${p.sessions} | ${p.students}</div>
+          <div style="color:#a6906c;font-size:0.8rem;margin-bottom:15px;">${p.duration}</div>
           <div class="product-footer">
             <span class="product-price">${p.price}</span>
             <button class="btn-buy" onclick="addToCart('${p.title.replace(/'/g, "\\'")}', '${p.price}', '${p.icon}')"><i class="fas fa-shopping-basket"></i> ثبت‌نام</button>
