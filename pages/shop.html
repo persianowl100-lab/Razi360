@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   
-  <!-- 🆕 CSP اصلاح‌شده - jsdelivr برای فونت اضافه شد -->
-  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net;">
-  
   <title>فروشگاه | رازی ۳۶۰</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
@@ -237,8 +234,8 @@
     <div class="page-header"><h1 class="page-title">🛒 فروشگاه رازی ۳۶۰</h1><p class="page-subtitle">دوره‌های آموزشی و محصولات هوش مصنوعی با بهترین کیفیت</p></div>
 
     <div class="category-tabs">
-      <button class="category-tab active-tab" onclick="window.showCategory('courses')" id="tab-courses"><i class="fas fa-graduation-cap"></i> دوره‌های آموزشی</button>
-      <button class="category-tab" onclick="window.showCategory('products')" id="tab-products"><i class="fas fa-box"></i> محصولات</button>
+      <button class="category-tab active-tab" onclick="showCategory('courses')" id="tab-courses"><i class="fas fa-graduation-cap"></i> دوره‌های آموزشی</button>
+      <button class="category-tab" onclick="showCategory('products')" id="tab-products"><i class="fas fa-box"></i> محصولات</button>
     </div>
 
     <div id="courses-section" class="visible-section">
@@ -283,10 +280,10 @@
   </footer>
 
   <!-- سبد خرید -->
-  <div id="cart-floating-icon" onclick="window.toggleCart()"><i class="fas fa-shopping-cart"></i><span id="cart-badge">0</span></div>
-  <div id="cart-overlay" onclick="window.toggleCart()"></div>
+  <div id="cart-floating-icon" onclick="toggleCart()"><i class="fas fa-shopping-cart"></i><span id="cart-badge">0</span></div>
+  <div id="cart-overlay" onclick="toggleCart()"></div>
   <div id="cart-panel">
-    <div class="cart-panel-header"><h3><i class="fas fa-shopping-cart"></i> سبد خرید</h3><button onclick="window.toggleCart()"><i class="fas fa-times"></i></button></div>
+    <div class="cart-panel-header"><h3><i class="fas fa-shopping-cart"></i> سبد خرید</h3><button onclick="toggleCart()"><i class="fas fa-times"></i></button></div>
     <div id="cart-empty" class="cart-empty-state"><i class="fas fa-shopping-basket"></i><p>سبد خرید شما خالی است</p><a href="shop.html">مشاهده محصولات</a></div>
     <div id="cart-items-container"></div>
     <div id="cart-summary" style="display:none;">
@@ -296,11 +293,11 @@
         <input type="tel" id="customer-phone" placeholder="شماره تماس *" required>
         <textarea id="customer-note" placeholder="توضیحات سفارش (اختیاری)"></textarea>
       </div>
-      <button class="cart-submit-btn" onclick="window.submitOrder()"><i class="fas fa-paper-plane"></i> ثبت سفارش</button>
-      <button class="cart-clear-btn" onclick="window.clearCart()"><i class="fas fa-trash"></i> خالی کردن سبد</button>
+      <button class="cart-submit-btn" onclick="submitOrder()"><i class="fas fa-paper-plane"></i> ثبت سفارش</button>
+      <button class="cart-clear-btn" onclick="clearCart()"><i class="fas fa-trash"></i> خالی کردن سبد</button>
     </div>
   </div>
-  <div id="success-message"><i class="fas fa-check-circle"></i><h3>سفارش شما با موفقیت ثبت شد!</h3><p></p><button onclick="window.closeSuccess()">متوجه شدم</button></div>
+  <div id="success-message"><i class="fas fa-check-circle"></i><h3>سفارش شما با موفقیت ثبت شد!</h3><p></p><button onclick="closeSuccess()">متوجه شدم</button></div>
 
   <script>
     // ==================== داده‌ها ====================
@@ -356,8 +353,8 @@
         return `<div class="cart-item">
           <div class="cart-item-image"><i class="fas ${item.icon || 'fa-box'}"></i></div>
           <div class="cart-item-details"><div class="cart-item-title">${item.title}</div><div class="cart-item-price">${price.toLocaleString('fa-IR')} × ${qty} = ${total.toLocaleString('fa-IR')} تومان</div></div>
-          <div class="cart-item-quantity"><button class="qty-btn" onclick="window.changeQty(${i},-1)">−</button><span class="qty-number">${qty}</span><button class="qty-btn" onclick="window.changeQty(${i},1)">+</button></div>
-          <i class="fas fa-trash-alt cart-item-remove" onclick="window.removeItem(${i})"></i>
+          <div class="cart-item-quantity"><button class="qty-btn" onclick="changeQty(${i},-1)">−</button><span class="qty-number">${qty}</span><button class="qty-btn" onclick="changeQty(${i},1)">+</button></div>
+          <i class="fas fa-trash-alt cart-item-remove" onclick="removeItem(${i})"></i>
         </div>`;
       }).join('');
       
@@ -365,7 +362,7 @@
       totalPrice.textContent = total.toLocaleString('fa-IR') + ' تومان';
     }
 
-    window.addToCart = function(title, priceText, icon) {
+    function addToCart(title, priceText, icon) {
       const price = parseInt(String(priceText).replace(/[^0-9]/g, ''));
       if (!price || isNaN(price)) return;
       const exist = cart.findIndex(i => i.title === title);
@@ -374,14 +371,14 @@
       saveCart(); updateCartUI();
       const cartIcon = document.getElementById('cart-floating-icon');
       if (cartIcon) { cartIcon.style.transform = 'scale(1.3)'; setTimeout(function() { if(cartIcon) cartIcon.style.transform = 'scale(1)'; }, 300); }
-    };
+    }
 
-    window.changeQty = function(i, d) { if (!cart[i]) return; cart[i].qty = (cart[i].qty || 1) + d; if (cart[i].qty <= 0) cart.splice(i, 1); saveCart(); updateCartUI(); };
-    window.removeItem = function(i) { cart.splice(i, 1); saveCart(); updateCartUI(); };
-    window.clearCart = function() { if (confirm('خالی شود؟')) { cart = []; saveCart(); updateCartUI(); } };
-    window.toggleCart = function() { document.getElementById('cart-panel').classList.toggle('active'); document.getElementById('cart-overlay').classList.toggle('active'); };
+    function changeQty(i, d) { if (!cart[i]) return; cart[i].qty = (cart[i].qty || 1) + d; if (cart[i].qty <= 0) cart.splice(i, 1); saveCart(); updateCartUI(); }
+    function removeItem(i) { cart.splice(i, 1); saveCart(); updateCartUI(); }
+    function clearCart() { if (confirm('خالی شود؟')) { cart = []; saveCart(); updateCartUI(); } }
+    function toggleCart() { document.getElementById('cart-panel').classList.toggle('active'); document.getElementById('cart-overlay').classList.toggle('active'); }
     
-    window.submitOrder = function() {
+    function submitOrder() {
       const name = document.getElementById('customer-name').value.trim();
       const phone = document.getElementById('customer-phone').value.trim();
       if (!name || !phone) return alert('نام و تلفن را وارد کنید');
@@ -390,16 +387,16 @@
       document.getElementById('success-message').querySelector('p').innerHTML = `کد: ORD-${Date.now().toString(36).toUpperCase()} | ${total.toLocaleString('fa-IR')} تومان`;
       document.getElementById('success-message').classList.add('active');
       cart = []; saveCart(); updateCartUI(); toggleCart();
-    };
+    }
     
-    window.closeSuccess = function() { document.getElementById('success-message').classList.remove('active'); };
+    function closeSuccess() { document.getElementById('success-message').classList.remove('active'); }
     
-    window.showCategory = function(cat) {
+    function showCategory(cat) {
       document.getElementById('courses-section').style.display = cat === 'courses' ? 'block' : 'none';
       document.getElementById('products-section').style.display = cat === 'products' ? 'block' : 'none';
       document.getElementById('tab-courses').classList.toggle('active-tab', cat === 'courses');
       document.getElementById('tab-products').classList.toggle('active-tab', cat === 'products');
-    };
+    }
 
     function esc(s) { return s.replace(/'/g, "\\'"); }
 
@@ -408,7 +405,7 @@
         <div class="product-image-wrapper"><i class="fas ${p.icon} product-placeholder"></i></div>
         <div class="product-info"><div class="product-category">دوره ویدیویی</div><h3 class="product-title">${p.title}</h3><p class="product-description">${p.desc}</p>
           <div class="course-details-mini"><span>${p.duration}</span><span>${p.sessions}</span><span>${p.students}</span></div>
-          <div class="product-footer"><span class="product-price">${p.price}</span><button class="btn-buy" onclick="window.addToCart('${esc(p.title)}','${p.price}','${p.icon}')"><i class="fas fa-shopping-basket"></i> ثبت‌نام</button></div>
+          <div class="product-footer"><span class="product-price">${p.price}</span><button class="btn-buy" onclick="addToCart('${esc(p.title)}','${p.price}','${p.icon}')"><i class="fas fa-shopping-basket"></i> ثبت‌نام</button></div>
         </div>
       </div>`).join('');
 
@@ -416,7 +413,7 @@
       <div class="product-card">${p.badge?'<span class="product-badge">'+p.badge+'</span>':''}
         <div class="product-image-wrapper"><i class="fas ${p.icon} product-placeholder"></i></div>
         <div class="product-info"><div class="product-category">${p.cat}</div><h3 class="product-title">${p.title}</h3><p class="product-description">${p.desc}</p>
-          <div class="product-footer"><span class="product-price">${p.price}</span><button class="btn-buy" onclick="window.addToCart('${esc(p.title)}','${p.price}','${p.icon}')"><i class="fas fa-shopping-basket"></i> خرید</button></div>
+          <div class="product-footer"><span class="product-price">${p.price}</span><button class="btn-buy" onclick="addToCart('${esc(p.title)}','${p.price}','${p.icon}')"><i class="fas fa-shopping-basket"></i> خرید</button></div>
         </div>
       </div>`).join('');
 
