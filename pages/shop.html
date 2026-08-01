@@ -362,15 +362,41 @@
       totalPrice.textContent = total.toLocaleString('fa-IR') + ' تومان';
     }
 
+    // تبدیل اعداد فارسی/عربی به انگلیسی
+    function toEnglishDigits(str) {
+      return String(str)
+        .replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d))
+        .replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+    }
+
     function addToCart(title, priceText, icon) {
-      const price = parseInt(String(priceText).replace(/[^0-9]/g, ''));
-      if (!price || isNaN(price)) return;
+      // تبدیل اعداد فارسی به انگلیسی و استخراج عدد
+      const clean = toEnglishDigits(priceText).replace(/[^0-9]/g, '');
+      const price = parseInt(clean, 10);
+      
+      if (!price || isNaN(price)) {
+        console.warn('قیمت نامعتبر:', priceText);
+        return;
+      }
+
       const exist = cart.findIndex(i => i.title === title);
-      if (exist > -1) cart[exist].qty = (cart[exist].qty || 1) + 1;
-      else cart.push({title: title, price: price, icon: icon, qty: 1});
-      saveCart(); updateCartUI();
+      if (exist > -1) {
+        cart[exist].qty = (cart[exist].qty || 1) + 1;
+      } else {
+        cart.push({ title: title, price: price, icon: icon, qty: 1 });
+      }
+
+      saveCart();
+      updateCartUI();
+
+      // انیمیشن آیکون سبد
       const cartIcon = document.getElementById('cart-floating-icon');
-      if (cartIcon) { cartIcon.style.transform = 'scale(1.3)'; setTimeout(function() { if(cartIcon) cartIcon.style.transform = 'scale(1)'; }, 300); }
+      if (cartIcon) {
+        cartIcon.style.transform = 'scale(1.3)';
+        setTimeout(() => {
+          if (cartIcon) cartIcon.style.transform = 'scale(1)';
+        }, 300);
+      }
     }
 
     function changeQty(i, d) { if (!cart[i]) return; cart[i].qty = (cart[i].qty || 1) + d; if (cart[i].qty <= 0) cart.splice(i, 1); saveCart(); updateCartUI(); }
