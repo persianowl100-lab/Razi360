@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ورود | رازی ۳۶۰</title>
+  <meta name="description" content="ورود به رازی ۳۶۰ با پیامک">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: linear-gradient(145deg, #1a140c 0%, #241e14 50%, #2b2113 100%);
+      color: #f7efe2;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .auth-card {
+      background: rgba(40, 30, 18, 0.75);
+      backdrop-filter: blur(18px);
+      border: 2px solid rgba(255, 180, 60, 0.28);
+      border-radius: 28px;
+      padding: 42px 36px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    }
+    .logo { text-align: center; margin-bottom: 8px; }
+    .logo i {
+      font-size: 3.2rem;
+      color: #ffb347;
+      filter: drop-shadow(0 0 16px rgba(255, 179, 71, 0.5));
+    }
+    .title {
+      text-align: center;
+      font-size: 1.55rem;
+      font-weight: 900;
+      color: #ffcd94;
+      margin-bottom: 4px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #bda16b;
+      font-size: 0.9rem;
+      margin-bottom: 28px;
+    }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      color: #cdb088;
+      margin-bottom: 7px;
+      font-weight: 600;
+    }
+    .input-wrap { position: relative; }
+    .input-wrap i {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #a6906c;
+    }
+    input {
+      width: 100%;
+      padding: 15px 46px 15px 18px;
+      border-radius: 16px;
+      border: 1.5px solid rgba(255, 180, 60, 0.25);
+      background: rgba(0, 0, 0, 0.25);
+      color: #fff0db;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s;
+      direction: ltr;
+      text-align: left;
+    }
+    input:focus {
+      border-color: #f4a261;
+      box-shadow: 0 0 0 3px rgba(244, 162, 97, 0.15);
+    }
+    input::placeholder { color: #7a6a4e; }
+    .btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Vazirmatn', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #ffa726, #f57c00);
+      color: #1a140c;
+      box-shadow: 0 8px 22px rgba(245, 124, 0, 0.35);
+    }
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(245, 124, 0, 0.5);
+    }
+    .btn-primary:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+    .btn-secondary {
+      background: transparent;
+      border: 1.5px solid rgba(255, 180, 60, 0.4);
+      color: #ffb347;
+      margin-top: 10px;
+    }
+    .btn-secondary:hover { background: rgba(255, 180, 60, 0.08); }
+    .message {
+      margin-top: 14px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: none;
+      text-align: center;
+    }
+    .message.error {
+      display: block;
+      background: rgba(255, 80, 80, 0.12);
+      color: #ff8a8a;
+      border: 1px solid rgba(255, 80, 80, 0.25);
+    }
+    .message.success {
+      display: block;
+      background: rgba(76, 175, 80, 0.12);
+      color: #81c784;
+      border: 1px solid rgba(76, 175, 80, 0.25);
+    }
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 26px;
+      color: #f4a261;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .back-link:hover { color: #ffd166; }
+    .otp-hint {
+      text-align: center;
+      color: #bda16b;
+      font-size: 0.85rem;
+      margin-bottom: 18px;
+    }
+    .otp-hint strong { color: #ffcd94; }
+    .resend-timer {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: #a6906c;
+    }
+    @media (max-width: 480px) {
+      .auth-card { padding: 32px 22px; }
+      .title { font-size: 1.35rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-card">
+    <div class="logo"><i class="fas fa-brain"></i></div>
+    <h1 class="title">ورود به رازی ۳۶۰</h1>
+    <p class="subtitle">شماره موبایل خود را وارد کنید</p>
+
+    <div id="step-phone">
+      <div class="form-group">
+        <label>شماره موبایل</label>
+        <div class="input-wrap">
+          <i class="fas fa-phone"></i>
+          <input type="tel" id="phone-input" placeholder="0912xxxxxxx" maxlength="11" inputmode="numeric" autocomplete="tel">
+        </div>
+      </div>
+      <button class="btn btn-primary" id="send-btn" onclick="handleSendOtp()">
+        <i class="fas fa-paper-plane"></i> دریافت کد تأیید
+      </button>
+      <div id="phone-msg" class="message"></div>
+    </div>
+
+    <div id="step-code" style="display:none;">
+      <p class="otp-hint">کد ۶ رقمی به شماره <strong id="display-phone"></strong> ارسال شد</p>
+      <div class="form-group">
+        <label>کد تأیید</label>
+        <div class="input-wrap">
+          <i class="fas fa-key"></i>
+          <input type="text" id="code-input" placeholder="------" maxlength="6" inputmode="numeric" autocomplete="one-time-code">
+        </div>
+      </div>
+      <button class="btn btn-primary" id="verify-btn" onclick="handleVerifyOtp()">
+        <i class="fas fa-check"></i> تأیید و ورود
+      </button>
+      <button class="btn btn-secondary" onclick="resetPhoneStep()">
+        <i class="fas fa-edit"></i> تغییر شماره
+      </button>
+      <div class="resend-timer" id="resend-timer"></div>
+      <div id="code-msg" class="message"></div>
+    </div>
+
+    <a href="../index.html" class="back-link">
+      <i class="fas fa-arrow-right"></i> بازگشت به صفحه اصلی
+    </a>
+  </div>
+
+  <script type="module">
+    import { sendOtp, verifyOtp, isLoggedIn } from "../js/auth.js";
+
+    if (isLoggedIn()) {
+      window.location.href = "../index.html";
+    }
+
+    let currentPhone = "";
+    let resendCountdown = 0;
+    let timerInterval = null;
+
+    window.handleSendOtp = async function () {
+      const phone = document.getElementById("phone-input").value.trim();
+      const btn = document.getElementById("send-btn");
+
+      if (!/^09\d{9}$/.test(phone)) {
+        showMsg("phone", "شماره موبایل باید ۱۱ رقم و با ۰۹ شروع شود", "error");
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال ارسال...';
+
+      try {
+        const result = await sendOtp(phone);
+        if (result.success) {
+          currentPhone = phone;
+          document.getElementById("display-phone").textContent = phone;
+          document.getElementById("step-phone").style.display = "none";
+          document.getElementById("step-code").style.display = "block";
+          document.getElementById("code-input").focus();
+          startResendTimer(60);
+          showMsg("code", "کد تأیید ارسال شد", "success");
+        } else {
+          showMsg("phone", result.message || "خطا در ارسال کد", "error");
+        }
+      } catch (e) {
+        console.error(e);
+        showMsg("phone", "خطا در ارتباط با سرور. آدرس API را بررسی کنید", "error");
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> دریافت کد تأیید';
+      }
+    };
+
+    window.handleVerifyOtp = async function () {
+      const code = document.getElementById("code-input").value.trim();
+      const btn = document.getElementById("verify-btn");
+
+      if (!/^\d{6}$/.test(code)) {
+        showMsg("code", "کد باید ۶ رقم باشد", "error");
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال بررسی...';
+
+      try {
+        const result = await verifyOtp(currentPhone, code);
+        if (result.success) {
+          showMsg("code", "ورود موفقیت‌آمیز! در حال انتقال...", "success");
+          setTimeout(() => window.location.href = "../index.html", 700);
+        } else {
+          showMsg("code", result.message || "کد اشتباه است", "error");
+        }
+      } catch (e) {
+        console.error(e);
+        showMsg("code", "خطا در ارتباط با سرور", "error");
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-check"></i> تأیید و ورود';
+      }
+    };
+
+    window.resetPhoneStep = function () {
+      document.getElementById("step-code").style.display = "none";
+      document.getElementById("step-phone").style.display = "block";
+      document.getElementById("code-input").value = "";
+      document.getElementById("code-msg").style.display = "none";
+      clearInterval(timerInterval);
+    };
+
+    function startResendTimer(seconds) {
+      resendCountdown = seconds;
+      const el = document.getElementById("resend-timer");
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        if (resendCountdown <= 0) {
+          clearInterval(timerInterval);
+          el.innerHTML = '<a href="#" onclick="handleSendOtp(); return false;" style="color:#ffb347;font-weight:700;">ارسال مجدد کد</a>';
+          return;
+        }
+        el.textContent = `ارسال مجدد تا ${resendCountdown} ثانیه دیگر`;
+        resendCountdown--;
+      }, 1000);
+    }
+
+    function showMsg(section, text, type) {
+      const el = document.getElementById(section + "-msg");
+      el.textContent = text;
+      el.className = "message " + type;
+    }
+
+    document.getElementById("phone-input")?.addEventListener("keydown", e => {
+      if (e.key === "Enter") handleSendOtp();
+    });
+    document.getElementById("code-input")?.addEventListener("keydown", e => {
+      if (e.key === "Enter") handleVerifyOtp();
+    });
+  </script>
+</body>
+</html>
