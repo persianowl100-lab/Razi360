@@ -4,140 +4,500 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>پروفایل کاربری | رازی ۳۶۰</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+  
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Vazirmatn', sans-serif;
-      background: linear-gradient(145deg, #1a140c, #241e14);
+      background: linear-gradient(145deg, #1a140c 0%, #241e14 40%, #2b2113 100%);
       color: #f7efe2;
       min-height: 100vh;
-      line-height: 1.7;
     }
-    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* هدر */
     header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 28px; margin: 20px auto 0; border-radius: 60px;
-      background: rgba(22, 18, 10, 0.75); backdrop-filter: blur(22px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 25px;
+      margin: 20px 0 30px;
+      border-radius: 60px;
+      background: rgba(22, 18, 10, 0.75);
+      backdrop-filter: blur(22px);
       border: 1px solid rgba(255, 170, 40, 0.25);
-      max-width: 900px;
+      box-shadow: 0 20px 35px rgba(255, 140, 0, 0.15);
     }
-    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .logo-icon { font-size: 2.2rem; color: #ffb347; }
-    .logo-text {
-      font-size: 1.7rem; font-weight: 900;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #f7efe2;
+      font-weight: 900;
+      font-size: 1.5rem;
+    }
+    .logo i {
+      color: #ffb347;
+      font-size: 2rem;
+    }
+    .logo span {
       background: linear-gradient(to left, #ffd166, #f4a261);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .nav-item {
-      text-decoration: none; color: #f5e1c0; font-weight: 600;
-      padding: 10px 18px; border-radius: 40px; transition: 0.3s;
+    .back-btn {
+      color: #cdb088;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 180, 60, 0.2);
+      transition: 0.3s;
+      font-weight: 600;
     }
-    .nav-item:hover { color: #ffb347; background: rgba(255,160,30,0.1); }
-
+    .back-btn:hover {
+      background: rgba(255, 180, 60, 0.1);
+      color: #ffb347;
+    }
+    
+    /* کارت پروفایل */
     .profile-card {
-      margin: 50px auto;
       background: rgba(40, 30, 18, 0.6);
       backdrop-filter: blur(14px);
+      border-radius: 30px;
+      padding: 40px 30px;
       border: 1px solid rgba(255, 180, 60, 0.25);
-      border-radius: 28px;
-      padding: 40px 35px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    }
+    
+    .profile-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(255, 167, 38, 0.3), rgba(245, 124, 0, 0.1));
+      border: 3px solid #ffb347;
+      font-size: 3rem;
+      color: #ffb347;
+      box-shadow: 0 0 40px rgba(255, 167, 38, 0.2);
+    }
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .profile-name {
       text-align: center;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #fff0db;
+      margin-bottom: 5px;
     }
-    .avatar {
-      width: 100px; height: 100px; border-radius: 50%;
-      margin: 0 auto 18px; border: 3px solid #ffb347;
-      box-shadow: 0 0 25px rgba(255,167,38,0.3);
-      object-fit: cover; background: rgba(255,180,60,0.15);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2.8rem; color: #ffb347;
+    .profile-provider {
+      text-align: center;
+      color: #cdb088;
+      font-size: 0.9rem;
+      margin-bottom: 25px;
     }
-    .avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-    .name { font-size: 1.5rem; font-weight: 800; color: #ffcd94; margin-bottom: 6px; }
-    .meta { color: #cdb088; font-size: 0.95rem; margin-bottom: 8px; }
-    .provider-badge {
-      display: inline-block; padding: 5px 14px; border-radius: 20px;
-      font-size: 0.8rem; font-weight: 700; margin-top: 10px;
-      background: rgba(255,167,38,0.15); color: #f4a261;
+    .profile-provider span {
+      display: inline-block;
+      padding: 4px 16px;
+      border-radius: 20px;
+      background: rgba(255, 167, 38, 0.15);
+      color: #f4a261;
+      font-weight: 600;
+      font-size: 0.8rem;
     }
-    .actions { margin-top: 30px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    
+    /* اطلاعات */
+    .info-grid {
+      display: grid;
+      gap: 15px;
+      margin: 25px 0;
+    }
+    .info-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 15px;
+      border: 1px solid rgba(255, 180, 60, 0.08);
+      transition: 0.3s;
+    }
+    .info-item:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255, 180, 60, 0.2);
+    }
+    .info-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #cdb088;
+      font-weight: 500;
+    }
+    .info-label i {
+      color: #ffb347;
+      width: 20px;
+    }
+    .info-value {
+      color: #f7efe2;
+      font-weight: 600;
+      direction: ltr;
+    }
+    
+    /* دکمه‌ها */
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 30px;
+    }
     .btn {
-      padding: 12px 28px; border-radius: 50px; font-weight: 700;
-      font-family: 'Vazirmatn', sans-serif; font-size: 0.95rem;
-      cursor: pointer; transition: 0.3s; text-decoration: none;
-      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 20px;
+      border-radius: 15px;
+      border: none;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: 'Vazirmatn', sans-serif;
+      text-decoration: none;
     }
-    .btn-logout {
-      background: transparent; border: 1.5px solid rgba(255,80,80,0.5);
-      color: #ff8a8a;
-    }
-    .btn-logout:hover { background: rgba(255,80,80,0.1); }
-    .btn-home {
+    .btn-primary {
       background: linear-gradient(135deg, #ffa726, #f57c00);
-      color: #1a140c; border: none;
+      color: #1e140a;
+      box-shadow: 0 8px 25px rgba(245, 124, 0, 0.3);
     }
-    .btn-home:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(245,124,0,0.4); }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(255, 160, 20, 0.5);
+    }
+    .btn-danger {
+      background: linear-gradient(135deg, #ff6b6b, #c0392b);
+      color: white;
+    }
+    .btn-danger:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(255, 80, 80, 0.4);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(255, 180, 60, 0.3);
+      color: #cdb088;
+    }
+    .btn-outline:hover {
+      background: rgba(255, 180, 60, 0.1);
+      border-color: #ffb347;
+      color: #ffb347;
+    }
+    .btn-full {
+      grid-column: 1 / -1;
+    }
+    
+    /* وضعیت */
+    .status-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .status-online {
+      background: rgba(76, 175, 80, 0.2);
+      color: #81C784;
+    }
+    
+    /* لودینگ */
+    .loading {
+      text-align: center;
+      padding: 60px 20px;
+      color: #cdb088;
+    }
+    .loading i {
+      font-size: 3rem;
+      color: #ffb347;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+    
+    .hidden {
+      display: none !important;
+    }
+    
+    /* پیام خطا */
+    .error-box {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(255, 80, 80, 0.1);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 80, 80, 0.2);
+    }
+    .error-box i {
+      font-size: 3rem;
+      color: #ff6b6b;
+      margin-bottom: 15px;
+    }
+    .error-box h3 {
+      color: #ff6b6b;
+      margin-bottom: 10px;
+    }
+    .error-box p {
+      color: #cdb088;
+    }
+    
+    /* پاسخگو */
+    @media (max-width: 480px) {
+      .actions {
+        grid-template-columns: 1fr;
+      }
+      header {
+        flex-direction: column;
+        gap: 10px;
+        border-radius: 30px;
+      }
+      .profile-card {
+        padding: 25px 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <header class="container">
+<div class="container">
+  
+  <!-- هدر -->
+  <header>
     <a href="../index.html" class="logo">
-      <i class="fas fa-brain logo-icon"></i>
-      <span class="logo-text">رازی ۳۶۰</span>
+      <i class="fas fa-brain"></i>
+      <span>رازی ۳۶۰</span>
     </a>
-    <a href="../index.html" class="nav-item"><i class="fas fa-home"></i> صفحه اصلی</a>
+    <a href="../index.html" class="back-btn">
+      <i class="fas fa-arrow-right"></i> بازگشت
+    </a>
   </header>
 
-  <div class="container">
-    <div class="profile-card" id="profile-content">
-      <div class="avatar" id="avatar"><i class="fas fa-user"></i></div>
-      <div class="name" id="user-name">در حال بارگذاری...</div>
-      <div class="meta" id="user-meta"></div>
-      <div class="provider-badge" id="provider-badge"></div>
-
-      <div class="actions">
-        <a href="../index.html" class="btn btn-home"><i class="fas fa-home"></i> صفحه اصلی</a>
-        <button class="btn btn-logout" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> خروج</button>
-      </div>
+  <!-- محتوای پروفایل -->
+  <div id="profileContent">
+    
+    <!-- حالت لودینگ -->
+    <div id="loadingState" class="loading">
+      <i class="fas fa-spinner"></i>
+      <p style="margin-top:15px;">در حال بارگذاری اطلاعات...</p>
     </div>
+
+    <!-- حالت خطا -->
+    <div id="errorState" class="hidden error-box">
+      <i class="fas fa-exclamation-circle"></i>
+      <h3>خطا در بارگذاری</h3>
+      <p id="errorMessage">مشکلی در دریافت اطلاعات کاربر وجود دارد.</p>
+      <a href="login.html" class="btn btn-primary" style="margin-top:20px;display:inline-flex;">
+        <i class="fas fa-sign-in-alt"></i> ورود مجدد
+      </a>
+    </div>
+
+    <!-- حالت پروفایل -->
+    <div id="profileState" class="hidden profile-card">
+      
+      <!-- آواتار -->
+      <div class="profile-avatar" id="profileAvatar">
+        <i class="fas fa-user"></i>
+      </div>
+      
+      <!-- نام -->
+      <h1 class="profile-name" id="profileName">کاربر</h1>
+      <div class="profile-provider">
+        <span id="profileProvider">📱 ورود با موبایل</span>
+      </div>
+      
+      <!-- اطلاعات -->
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="info-label"><i class="fas fa-id-badge"></i> شناسه کاربری</span>
+          <span class="info-value" id="profileId">-</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label"><i class="fas fa-phone"></i> شماره موبایل</span>
+          <span class="info-value" id="profilePhone">-</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label"><i class="fas fa-calendar-alt"></i> تاریخ عضویت</span>
+          <span class="info-value" id="profileDate">-</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label"><i class="fas fa-shield-alt"></i> وضعیت</span>
+          <span class="info-value"><span class="status-badge status-online">✅ فعال</span></span>
+        </div>
+      </div>
+      
+      <!-- دکمه‌ها -->
+      <div class="actions">
+        <a href="shop.html" class="btn btn-primary">
+          <i class="fas fa-shopping-cart"></i> فروشگاه
+        </a>
+        <a href="orders.html" class="btn btn-outline">
+          <i class="fas fa-list"></i> سفارشات
+        </a>
+        <button onclick="handleLogout()" class="btn btn-danger btn-full">
+          <i class="fas fa-sign-out-alt"></i> خروج از حساب
+        </button>
+      </div>
+      
+    </div>
+    
   </div>
+</div>
 
-  <script type="module">
-    import { requireAuth, getUser, logout } from "../js/auth.js";
+<script type="module">
+  import { isLoggedIn, getUser, logout, fetchMe } from "../js/auth.js";
 
-    // اگر لاگین نباشد → برو به صفحه ورود
-    if (!requireAuth()) throw new Error("not logged in");
+  // ─── المنت‌ها ──────────────────────────────────────
+  const loadingState = document.getElementById('loadingState');
+  const errorState = document.getElementById('errorState');
+  const profileState = document.getElementById('profileState');
+  const errorMessage = document.getElementById('errorMessage');
 
-    const user = getUser();
+  const profileName = document.getElementById('profileName');
+  const profileProvider = document.getElementById('profileProvider');
+  const profileId = document.getElementById('profileId');
+  const profilePhone = document.getElementById('profilePhone');
+  const profileDate = document.getElementById('profileDate');
+  const profileAvatar = document.getElementById('profileAvatar');
 
-    // نمایش اطلاعات
-    document.getElementById("user-name").textContent = user.name || "کاربر";
+  // ─── خروج ──────────────────────────────────────────
+  window.handleLogout = function() {
+    if (confirm('آیا مطمئن هستید که می‌خواهید خارج شوید؟')) {
+      logout();
+      window.location.href = '../index.html';
+    }
+  };
 
-    let metaText = "";
-    if (user.phone) metaText = "۰" + user.phone.slice(2); // نمایش با صفر
-    else if (user.username) metaText = "@" + user.username;
-    else if (user.telegramId) metaText = "شناسه تلگرام: " + user.telegramId;
-    document.getElementById("user-meta").textContent = metaText;
-
+  // ─── نمایش پروفایل ────────────────────────────────
+  function showProfile(user) {
+    // نام
+    profileName.textContent = user.name || 'کاربر';
+    
+    // روش ورود
     const providerMap = {
-      phone: "ورود با پیامک",
-      telegram: "ورود با تلگرام"
+      'phone': '📱 ورود با موبایل',
+      'telegram': '✈️ ورود با تلگرام',
+      'google': '🔵 ورود با گوگل'
     };
-    document.getElementById("provider-badge").textContent = providerMap[user.provider] || user.provider;
+    profileProvider.textContent = providerMap[user.provider] || '🔐 ورود';
 
-    // عکس پروفایل تلگرام
-    if (user.photoUrl) {
-      document.getElementById("avatar").innerHTML = `<img src="${user.photoUrl}" alt="avatar">`;
+    // شناسه
+    profileId.textContent = user.id || '-';
+    
+    // شماره موبایل
+    if (user.phone) {
+      // نمایش به فرمت فارسی
+      const phone = String(user.phone);
+      let displayPhone = phone;
+      if (phone.startsWith('98')) {
+        displayPhone = '0' + phone.slice(2);
+      }
+      profilePhone.textContent = displayPhone;
+    } else {
+      profilePhone.textContent = 'ثبت نشده';
     }
 
-    window.handleLogout = function () {
-      if (confirm("آیا مطمئن هستید که می‌خواهید خارج شوید؟")) {
-        logout();
+    // تاریخ عضویت
+    if (user.createdAt) {
+      const date = new Date(user.createdAt);
+      profileDate.textContent = new Intl.DateTimeFormat('fa-IR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      }).format(date);
+    } else {
+      profileDate.textContent = '-';
+    }
+
+    // آواتار
+    if (user.photoUrl) {
+      profileAvatar.innerHTML = `<img src="${user.photoUrl}" alt="${user.name}">`;
+    } else if (user.name) {
+      const initial = user.name.charAt(0);
+      profileAvatar.innerHTML = `<span style="font-size:3rem;color:#ffb347;">${initial}</span>`;
+    }
+
+    // نمایش پروفایل
+    loadingState.classList.add('hidden');
+    profileState.classList.remove('hidden');
+  }
+
+  // ─── نمایش خطا ──────────────────────────────────────
+  function showError(message) {
+    loadingState.classList.add('hidden');
+    errorState.classList.remove('hidden');
+    errorMessage.textContent = message || 'مشکلی در دریافت اطلاعات کاربر وجود دارد.';
+  }
+
+  // ─── بارگذاری پروفایل ──────────────────────────────
+
+  async function loadProfile() {
+    // ۱. بررسی لاگین
+    if (!isLoggedIn()) {
+      window.location.href = 'login.html';
+      return;
+    }
+
+    // ۲. اطلاعات از localStorage
+    let user = getUser();
+    
+    if (user) {
+      // نمایش موقت از localStorage
+      showProfile(user);
+    } else {
+      // در حال بارگذاری
+      loadingState.classList.remove('hidden');
+      profileState.classList.add('hidden');
+      errorState.classList.add('hidden');
+    }
+
+    // ۳. دریافت اطلاعات از سرور (به‌روز)
+    try {
+      const freshUser = await fetchMe();
+      
+      if (freshUser) {
+        // به‌روزرسانی با اطلاعات تازه
+        showProfile(freshUser);
+      } else if (!user) {
+        // اگر هیچ اطلاعاتی نبود
+        showError('اطلاعات کاربر یافت نشد. لطفاً مجدداً وارد شوید.');
       }
-    };
-  </script>
+    } catch (error) {
+      console.error('❌ خطا در دریافت پروفایل:', error);
+      
+      // اگر اطلاعات localStorage داشتیم، همان را نشان بدهیم
+      if (!user) {
+        showError('خطا در ارتباط با سرور. لطفاً بعداً تلاش کنید.');
+      }
+    }
+  }
+
+  // ─── اجرا ──────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', loadProfile);
+</script>
+
 </body>
 </html>
