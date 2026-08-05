@@ -1,40 +1,98 @@
 /**
  * رازی ۳۶۰ - پرداخت با بانک ملت
  * ---------------------------------
- * این فایل وظیفه ارتباط با درگاه پرداخت بانک ملت را دارد.
- * قبل از استفاده:
- * 1. API_BASE را به آدرس Worker خود تغییر دهید
- * 2. اطلاعات درگاه را از بانک دریافت کنید
+ * این فایل فقط مسئول ارتباط با Worker است
  */
 
 const PAYMENT_CONFIG = {
-  // ✅ آدرس Worker شما
+  // ⚠️ این آدرس باید دقیقاً با Worker یکی باشد
   API_BASE: "https://razi360-auth.persianowl100.workers.dev",
-  
-  // 📌 اطلاعات درگاه (از بانک ملت دریافت شده)
+
   TERMINAL_ID: "9591783",
   USERNAME: "IPG9591783",
   PASSWORD: "94150004",
-  
-  // 🔄 آدرس بازگشت از بانک
+
   CALLBACK_URL: "https://razi360.ir/pages/callback.html",
 };
 
-// ─── تاریخ و ساعت جاری ──────────────────────────────────
-
 function getCurrentDate() {
   const now = new Date();
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-  return `${year}${month}${day}`;
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, "0");
+  const d = String(now.getDate()).padStart(2, "0");
+  return `${y}${m}${d}`;
 }
 
 function getCurrentTime() {
   const now = new Date();
-  const hours = String(now.getHours()).padStart(2, "0");
-  const minutes = String(now.getMinutes()).padStart(2, "0");
-  const seconds = String(now.getSeconds()).padStart(2, "0");
+  const h = String(now.getHours()).padStart(2, "0");
+  const min = String(now.getMinutes()).padStart(2, "0");
+  const s = String(now.getSeconds()).padStart(2, "0");
+  return `${h}${min}${s}`;
+}
+
+// ─── شروع پرداخت ──────────────────────────────────
+export async function initiatePayment(orderId, amount, description = "") {
+  // ✅ آدرس درست
+  const url = `${PAYMENT_CONFIG.API_BASE}/api/payment/initiate`;
+
+  console.log("📤 [payment] آدرس:", url);
+  console.log("📤 [payment] مبلغ:", amount);
+
+  const payload = {
+    terminalId: PAYMENT_CONFIG.TERMINAL_ID,
+    userName: PAYMENT_CONFIG.USERNAME,
+    userPassword: PAYMENT_CONFIG.PASSWORD,
+    orderId: orderId,
+    amount: amount,
+    localDate: getCurrentDate(),
+    localTime: getCurrentTime(),
+    additionalData: description || "خرید از رازی‌۳۶۰",
+    callBackUrl: PAYMENT_CONFIG.CALLBACK_URL,
+    payerId: 0,
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const result = await response.json();
+    console.log("📥 [payment] نتیجه:", result);
+
+    if (result.success && result.refId) {
+      const bankUrl =
+        "https://bpm.shaparak.ir/pgwchannel/startpay.mellat?RefId=" +
+        result.refId;
+      window.location.href = bankUrl;
+      return result;
+    } else {
+      throw new Error(result.message || "خطا در شروع پرداخت");
+    }
+  } catch (error) {
+    console.error("❌ [payment] خطا:", error);
+    throw error;
+  }
+}
+
+// ─── تست اتصال ──────────────────────────────────
+export async function testPaymentConnection() {
+  const url = `${PAYMENT_CONFIG.API_BASE}/health`;
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    console.log("✅ اتصال به Worker برقرار است:", data);
+    return { success: true, data };
+  } catch (e) {
+    console.error("❌ خطا در اتصال:", e);
+    return { success: false, error: e.message };
+  }
+}  const seconds = String(now.getSeconds()).padStart(2, "0");
   return `${hours}${minutes}${seconds}`;
 }
 
