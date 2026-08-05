@@ -7,7 +7,6 @@ export default {
     const url = new URL(request.url);
     const path = url.pathname;
 
-    // CORS
     const corsHeaders = {
       "Access-Control-Allow-Origin": env.ALLOWED_ORIGIN || "*",
       "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
@@ -22,7 +21,7 @@ export default {
     try {
       // ─── روتر ───────────────────────────────────────────
       const routes = {
-        // 🔐 مسیرهای احراز هویت (موجود)
+        // 🔐 مسیرهای احراز هویت
         "/api/auth/send-otp": handleSendOtp,
         "/api/auth/verify-otp": handleVerifyOtp,
         "/api/auth/telegram": handleTelegramLogin,
@@ -58,7 +57,7 @@ export default {
 };
 
 // ════════════════════════════════════════════════════════════
-//  بخش ۱: توابع احراز هویت (موجود - بدون تغییر)
+//  بخش ۱: توابع احراز هویت
 // ════════════════════════════════════════════════════════════
 
 async function handleHealth(request, env, corsHeaders) {
@@ -78,7 +77,6 @@ async function handleHealth(request, env, corsHeaders) {
       kv: kvStatus,
       jwtSecret: env.JWT_SECRET ? "✅ set" : "❌ missing",
       kavenegar: env.KAVENEGAR_API_KEY ? "✅ set" : "❌ missing",
-      template: env.KAVENEGAR_TEMPLATE || "razi360-otp",
       uptime: "running"
     }, 200, corsHeaders);
   } catch (error) {
@@ -137,14 +135,12 @@ async function handleSendOtp(request, env, corsHeaders) {
             ...(env.ENVIRONMENT === "development" && { debugCode: code })
           }, 200, corsHeaders);
         } else {
-          console.error("Kavenegar error:", smsData);
           return json({ 
             success: false, 
-            message: "خطا در ارسال پیامک: " + (smsData.return?.message || "خطای ناشناخته")
+            message: "خطا در ارسال پیامک"
           }, 500, corsHeaders);
         }
       } catch (kavenegarError) {
-        console.error("Kavenegar exception:", kavenegarError);
         return json({ 
           success: false, 
           message: "خطا در ارتباط با سرویس پیامک"
@@ -160,10 +156,9 @@ async function handleSendOtp(request, env, corsHeaders) {
     }
 
   } catch (error) {
-    console.error('Send OTP error:', error);
     return json({ 
       success: false, 
-      message: "خطا در سرور: " + error.message
+      message: "خطا در سرور"
     }, 500, corsHeaders);
   }
 }
@@ -209,10 +204,9 @@ async function handleVerifyOtp(request, env, corsHeaders) {
     }, 200, corsHeaders);
 
   } catch (error) {
-    console.error('Verify OTP error:', error);
     return json({ 
       success: false, 
-      message: "خطا در سرور: " + error.message
+      message: "خطا در سرور"
     }, 500, corsHeaders);
   }
 }
@@ -251,7 +245,7 @@ async function handleMe(request, env, corsHeaders) {
 }
 
 // ════════════════════════════════════════════════════════════
-//  بخش ۲: توابع پرداخت (جدید - اضافه کنید)
+//  بخش ۲: توابع پرداخت (جدید)
 // ════════════════════════════════════════════════════════════
 
 async function handlePaymentInitiate(request, env, corsHeaders) {
@@ -505,7 +499,7 @@ async function handlePaymentSettle(request, env, corsHeaders) {
 }
 
 // ════════════════════════════════════════════════════════════
-//  بخش ۳: توابع کمکی مشترک
+//  بخش ۳: توابع کمکی
 // ════════════════════════════════════════════════════════════
 
 function normalizePhone(phone) {
