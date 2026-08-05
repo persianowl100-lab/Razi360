@@ -555,7 +555,7 @@
       const count = getItemCount();
       badge.textContent = count;
 
-      // بررسی لاگین (از طریق تابع سراسری)
+      // بررسی لاگین
       const loggedIn = typeof window.isLoggedIn === 'function' ? window.isLoggedIn() : false;
 
       if (!loggedIn && cart.length > 0) {
@@ -602,21 +602,22 @@
       document.getElementById('cartOverlay').classList.toggle('show');
     }
 
-    // ─── پرداخت ──────────────────────────────────────────
+    // ─── پرداخت (رفع خطا) ──────────────────────────────
     async function processPayment() {
+      // بررسی خالی بودن سبد خرید
       if (cart.length === 0) {
         alert('سبد خرید شما خالی است!');
-        return;
+        return; // ✅ return درست داخل تابع
       }
 
       // بررسی لاگین
       if (typeof window.isLoggedIn === 'function' && !window.isLoggedIn()) {
-        const confirm = window.confirm('برای پرداخت باید وارد حساب خود شوید. آیا به صفحه ورود بروید؟');
-        if (confirm) {
+        const confirmResult = confirm('برای پرداخت باید وارد حساب خود شوید. آیا به صفحه ورود بروید؟');
+        if (confirmResult) {
           localStorage.setItem('razi360_redirect_after_login', window.location.pathname);
           window.location.href = 'login.html';
         }
-        return;
+        return; // ✅ return درست داخل تابع
       }
 
       const total = getTotal();
@@ -627,10 +628,15 @@
         checkoutBtn.disabled = true;
         checkoutBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال اتصال به درگاه...';
 
-        // ایمپورت پویای payment.js
-        const { initiatePayment } = await import('../js/payment.js');
-        const result = await initiatePayment(orderId, total, `خرید از رازی ۳۶۰ - ${cart.length} محصول`);
+        // ایمپورت پویا
+        const paymentModule = await import('../js/payment.js');
+        const result = await paymentModule.initiatePayment(
+          orderId,
+          total,
+          `خرید از رازی ۳۶۰ - ${cart.length} محصول`
+        );
 
+        // اگر به درگاه هدایت نشد
         if (!result.success) {
           alert('خطا در اتصال به درگاه: ' + (result.message || 'خطای ناشناخته'));
           checkoutBtn.disabled = false;
@@ -677,25 +683,6 @@
         }
       });
 
-      // بررسی دوره‌ای لاگین
-      setInterval(function() {
-        if (typeof window.isLoggedIn === 'function') {
-          const loggedIn = window.isLoggedIn();
-          const checkoutBtn = document.getElementById('checkoutBtn');
-          const loginRequired = document.getElementById('loginRequired');
-          
-          if (cart.length > 0) {
-            if (!loggedIn) {
-              loginRequired.style.display = 'block';
-              checkoutBtn.disabled = true;
-            } else {
-              loginRequired.style.display = 'none';
-              checkoutBtn.disabled = false;
-            }
-          }
-        }
-      }, 5000);
-
       console.log('✅ فروشگاه بارگذاری شد');
       console.log('📦 محصولات:', products.length);
       console.log('🛒 سبد خرید:', cart.length, 'مورد');
@@ -709,9 +696,6 @@
     window.processPayment = processPayment;
     window.products = products;
     window.cart = cart;
-
-    // ─── دریافت تابع isLoggedIn از ماژول auth ──────────
-    // این تابع بعد از بارگذاری کامل توسط اسکریپت زیر تنظیم می‌شود
   </script>
 
   <!-- ============================================ -->
@@ -726,9 +710,7 @@
     window.logout = logout;
 
     // به‌روزرسانی سبد خرید بعد از تنظیم isLoggedIn
-    if (typeof window.renderCart === 'function') {
-      window.renderCart();
-    }
+    renderCart();
 
     console.log('✅ ماژول auth بارگذاری شد');
     console.log('🔐 وضعیت لاگین:', isLoggedIn());
