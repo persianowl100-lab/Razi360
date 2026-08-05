@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نتیجه پرداخت | رازی ۳۶۰</title>
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Vazirmatn,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(145deg,#1a140c,#241e14);color:#f7efe2;padding:20px}
+    .card{background:rgba(40,30,18,.85);border:2px solid rgba(255,180,60,.3);border-radius:24px;
+      padding:40px 28px;max-width:420px;width:100%;text-align:center}
+    .icon{font-size:3rem;margin-bottom:12px}
+    h1{font-size:1.25rem;margin-bottom:10px;color:#ffcd94}
+    p{color:#cdb088;font-size:.95rem;line-height:1.7;margin-bottom:6px}
+    .ok{color:#81c784}.err{color:#ff8a8a}
+    a{display:inline-block;margin-top:22px;padding:12px 28px;border-radius:50px;
+      background:linear-gradient(135deg,#ffa726,#f57c00);color:#1a140c;text-decoration:none;font-weight:800}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon" id="icon">⏳</div>
+    <h1 id="title">در حال بررسی...</h1>
+    <p id="msg"></p>
+    <p id="detail" style="font-size:.8rem;opacity:.85"></p>
+    <a href="../index.html">بازگشت به خانه</a>
+    <a href="shop.html" style="margin-right:8px;background:transparent;border:1px solid #f4a261;color:#f4a261">فروشگاه</a>
+  </div>
+  <script>
+    const q = new URLSearchParams(location.search);
+    const icon = document.getElementById("icon");
+    const title = document.getElementById("title");
+    const msg = document.getElementById("msg");
+    const detail = document.getElementById("detail");
+
+    const resCode = q.get("ResCode");
+    const ok = q.get("ok");
+    const saleRef = q.get("SaleReferenceId");
+    const orderId = q.get("SaleOrderId");
+
+    if (ok === "1" || resCode === "0") {
+      icon.textContent = "✅";
+      title.className = "ok";
+      title.textContent = "پرداخت موفق";
+      msg.textContent = "تراکنش با موفقیت انجام شد.";
+      if (saleRef) detail.textContent = "کد پیگیری: " + saleRef;
+      try {
+        const orders = JSON.parse(localStorage.getItem("razi360-all-orders") || "[]");
+        orders.push({
+          id: orderId || Date.now(),
+          saleReferenceId: saleRef,
+          status: "paid",
+          createdAt: new Date().toISOString()
+        });
+        localStorage.setItem("razi360-all-orders", JSON.stringify(orders));
+        sessionStorage.removeItem("razi360_pending_order");
+      } catch (e) {}
+    } else if (resCode) {
+      icon.textContent = "❌";
+      title.className = "err";
+      title.textContent = "پرداخت ناموفق";
+      msg.textContent = "کد پاسخ بانک: " + resCode;
+    } else {
+      icon.textContent = "⚠️";
+      title.textContent = "اطلاعات بازگشت ناقص است";
+      msg.textContent = "اگر مبلغ از حساب کم شده با پشتیبانی تماس بگیرید.";
+    }
+  </script>
+</body>
+</html>
