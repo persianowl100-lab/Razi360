@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>فروشگاه | رازی ۳۶۰</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
-      font-family: 'Vazirmatn', sans-serif;
-      background: linear-gradient(145deg, #1a140c 0%, #241e14 40%, #2b2113 100%);
+      font-family: "Vazirmatn", sans-serif;
+      background: #1a140c;
       color: #f7efe2;
       min-height: 100vh;
     }
@@ -20,18 +23,16 @@
       margin: 0 auto;
       padding: 20px;
     }
-    
     header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       padding: 15px 25px;
-      margin: 20px 0 30px;
-      border-radius: 60px;
       background: rgba(22, 18, 10, 0.75);
-      backdrop-filter: blur(22px);
+      border-radius: 60px;
+      backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 170, 40, 0.25);
-      box-shadow: 0 20px 35px rgba(255, 140, 0, 0.15);
+      margin-bottom: 30px;
     }
     .logo {
       display: flex;
@@ -54,17 +55,15 @@
     .back-btn {
       color: #cdb088;
       text-decoration: none;
-      padding: 10px 18px;
+      padding: 8px 18px;
       border-radius: 30px;
       border: 1px solid rgba(255, 180, 60, 0.2);
       transition: 0.3s;
-      font-weight: 600;
     }
     .back-btn:hover {
       background: rgba(255, 180, 60, 0.1);
       color: #ffb347;
     }
-    
     .page-title {
       text-align: center;
       font-size: 2.5rem;
@@ -72,101 +71,94 @@
       background: linear-gradient(to left, #ffd166, #f4a261);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 10px;
     }
-    .page-subtitle {
-      text-align: center;
-      color: #cdb088;
-      margin-bottom: 40px;
-    }
-    
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 25px;
-      margin-bottom: 40px;
+      margin: 30px 0;
     }
     .product-card {
       background: rgba(40, 30, 18, 0.6);
-      backdrop-filter: blur(14px);
       border-radius: 24px;
       padding: 25px 20px;
       border: 1px solid rgba(255, 180, 60, 0.15);
-      transition: all 0.4s;
+      transition: 0.3s;
       display: flex;
       flex-direction: column;
     }
     .product-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(255, 180, 60, 0.4);
-      box-shadow: 0 20px 40px rgba(255, 140, 0, 0.15);
+      transform: translateY(-5px);
+      border-color: #ffb347;
     }
     .product-icon {
       font-size: 2.5rem;
       color: #ffb347;
-      margin-bottom: 15px;
     }
     .product-title {
       font-size: 1.2rem;
       font-weight: 800;
-      color: #fff0db;
-      margin-bottom: 8px;
-    }
-    .product-desc {
-      color: #bda16b;
-      font-size: 0.9rem;
-      margin-bottom: 15px;
-      flex-grow: 1;
+      margin: 10px 0 5px;
     }
     .product-price {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 900;
       color: #ffb347;
-      margin-bottom: 15px;
-      direction: ltr;
-    }
-    .product-price span {
-      font-size: 0.9rem;
-      color: #cdb088;
-      font-weight: 400;
+      margin: 10px 0;
     }
     .add-to-cart {
-      padding: 12px 20px;
-      border-radius: 12px;
+      background: #ffa726;
+      color: #1a140c;
       border: none;
-      background: linear-gradient(135deg, #ffa726, #f57c00);
-      color: #1e140a;
+      padding: 12px;
+      border-radius: 12px;
       font-weight: 700;
-      font-size: 0.95rem;
       cursor: pointer;
-      transition: all 0.3s;
-      font-family: 'Vazirmatn', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      transition: 0.3s;
     }
     .add-to-cart:hover {
       transform: scale(1.03);
-      box-shadow: 0 10px 25px rgba(245, 124, 0, 0.4);
     }
     .add-to-cart.in-cart {
-      background: linear-gradient(135deg, #4CAF50, #2E7D32);
-      color: white;
+      background: #4caf50;
+      color: #fff;
     }
-    
+    .cart-toggle {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background: #ffa726;
+      border: none;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      color: #1a140c;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255, 170, 40, 0.4);
+      z-index: 999;
+    }
+    .cart-toggle .badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: red;
+      color: #fff;
+      border-radius: 50%;
+      padding: 2px 8px;
+      font-size: 0.7rem;
+    }
     .cart-sidebar {
       position: fixed;
       top: 0;
-      left: -420px;
-      width: 400px;
+      left: -400px;
+      width: 380px;
       height: 100vh;
-      background: rgba(20, 15, 8, 0.97);
-      backdrop-filter: blur(25px);
+      background: #1a140c;
       border-right: 2px solid rgba(255, 180, 60, 0.2);
+      padding: 25px;
+      transition: 0.4s;
       z-index: 1000;
-      transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      padding: 25px 20px;
       display: flex;
       flex-direction: column;
     }
@@ -176,11 +168,8 @@
     .cart-overlay {
       display: none;
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
       z-index: 999;
     }
     .cart-overlay.show {
@@ -189,243 +178,86 @@
     .cart-header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      border-bottom: 1px solid rgba(255, 180, 60, 0.2);
       padding-bottom: 15px;
-      border-bottom: 1px solid rgba(255,180,60,0.15);
-      margin-bottom: 15px;
     }
-    .cart-header h2 {
-      color: #fff0db;
-      font-size: 1.5rem;
-    }
-    .cart-close {
-      background: none;
-      border: none;
-      color: #cdb088;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    .cart-close:hover { color: #ff6b6b; }
     .cart-items {
-      flex-grow: 1;
+      flex: 1;
       overflow-y: auto;
-      padding-right: 5px;
+      margin: 15px 0;
     }
     .cart-item {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255,180,60,0.08);
-    }
-    .cart-item-info {
-      flex-grow: 1;
-    }
-    .cart-item-title {
-      color: #f7efe2;
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-    .cart-item-price {
-      color: #ffb347;
-      font-size: 0.85rem;
-      direction: ltr;
-    }
-    .cart-item-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .cart-item-actions button {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,180,60,0.2);
-      background: rgba(255,255,255,0.05);
-      color: #f7efe2;
-      cursor: pointer;
-      font-size: 0.9rem;
-    }
-    .cart-item-actions button:hover {
-      background: rgba(255,180,60,0.15);
-    }
-    .cart-item-actions .qty {
-      color: #f7efe2;
-      font-weight: 600;
-      min-width: 20px;
-      text-align: center;
-    }
-    .cart-item-actions .remove-btn {
-      color: #ff6b6b;
-      border-color: rgba(255,80,80,0.2);
-    }
-    .cart-item-actions .remove-btn:hover {
-      background: rgba(255,80,80,0.15);
-    }
-    .cart-footer {
-      border-top: 1px solid rgba(255,180,60,0.15);
-      padding-top: 15px;
-      margin-top: 15px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 180, 60, 0.05);
     }
     .cart-total {
+      font-size: 1.3rem;
+      font-weight: 800;
       display: flex;
       justify-content: space-between;
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: #fff0db;
-      margin-bottom: 15px;
-    }
-    .cart-total span:last-child {
-      color: #ffb347;
-      direction: ltr;
-    }
-    .cart-empty {
-      text-align: center;
-      color: #cdb088;
-      padding: 40px 0;
-    }
-    .cart-empty i {
-      font-size: 3rem;
-      color: #6a5f4a;
-      margin-bottom: 15px;
+      border-top: 1px solid rgba(255, 180, 60, 0.2);
+      padding-top: 15px;
     }
     .btn-checkout {
       width: 100%;
-      padding: 16px;
-      border-radius: 15px;
+      background: #ffa726;
+      color: #1a140c;
       border: none;
-      background: linear-gradient(135deg, #ffa726, #f57c00);
-      color: #1e140a;
+      padding: 14px;
+      border-radius: 12px;
       font-weight: 800;
       font-size: 1.1rem;
+      margin-top: 10px;
       cursor: pointer;
-      transition: all 0.3s;
-      font-family: 'Vazirmatn', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-    .btn-checkout:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 30px rgba(245, 124, 0, 0.4);
     }
     .btn-checkout:disabled {
-      opacity: 0.5;
+      opacity: 0.4;
       cursor: not-allowed;
     }
-    .btn-checkout i {
-      font-size: 1.2rem;
-    }
-    
-    .cart-toggle {
-      position: fixed;
-      bottom: 30px;
-      left: 30px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #ffa726, #f57c00);
-      border: none;
-      color: #1e140a;
-      font-size: 1.5rem;
-      cursor: pointer;
-      box-shadow: 0 10px 30px rgba(245, 124, 0, 0.4);
-      z-index: 100;
-      transition: all 0.3s;
-    }
-    .cart-toggle:hover {
-      transform: scale(1.1);
-    }
-    .cart-toggle .badge {
-      position: absolute;
-      top: -8px;
-      right: -8px;
-      background: #ff4444;
-      color: white;
-      border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      font-size: 0.7rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-    }
-
     .login-required {
-      text-align: center;
-      padding: 15px;
       background: rgba(255, 167, 38, 0.1);
-      border-radius: 12px;
-      border: 1px solid rgba(255, 167, 38, 0.2);
-      margin-bottom: 15px;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
       color: #ffb347;
+      margin-bottom: 10px;
     }
     .login-required a {
       color: #ffb347;
       font-weight: 700;
-      text-decoration: underline;
     }
-    
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
       .cart-sidebar {
         width: 100%;
         left: -100%;
-      }
-      header {
-        flex-direction: column;
-        gap: 10px;
-        border-radius: 30px;
-      }
-      .products-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-    @media (max-width: 480px) {
-      .products-grid {
-        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- سبد خرید شناور -->
   <div class="cart-overlay" id="cartOverlay"></div>
   <div class="cart-sidebar" id="cartSidebar">
     <div class="cart-header">
-      <h2><i class="fas fa-shopping-cart"></i> سبد خرید</h2>
-      <button class="cart-close" id="closeCartBtn"><i class="fas fa-times"></i></button>
+      <h3>🛒 سبد خرید</h3>
+      <button id="closeCartBtn" style="background:none;border:none;color:#fff;font-size:1.5rem;">✕</button>
     </div>
-    
     <div id="loginRequired" class="login-required" style="display:none;">
       <i class="fas fa-info-circle"></i>
-      برای پرداخت باید <a href="login.html">وارد حساب</a> خود شوید.
+      برای پرداخت <a href="login.html">وارد حساب</a> شوید.
     </div>
-    
-    <div class="cart-items" id="cartItems">
-      <div class="cart-empty">
-        <i class="fas fa-shopping-basket"></i>
-        <p>سبد خرید شما خالی است</p>
-        <p style="font-size:0.85rem;color:#6a5f4a;">محصولات را به سبد خرید اضافه کنید</p>
-      </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-total">
+      <span>جمع کل</span>
+      <span id="cartTotal">۰ ریال</span>
     </div>
-    <div class="cart-footer">
-      <div class="cart-total">
-        <span>جمع کل</span>
-        <span id="cartTotal">۰ ریال</span>
-      </div>
-      <button class="btn-checkout" id="checkoutBtn" disabled>
-        <i class="fas fa-credit-card"></i> پرداخت با بانک ملت
-      </button>
-      <p style="text-align:center;color:#6a5f4a;font-size:0.7rem;margin-top:8px;">
-        پرداخت از طریق درگاه امن بانک ملت
-      </p>
-    </div>
+    <button class="btn-checkout" id="checkoutBtn" disabled>
+      <i class="fas fa-credit-card"></i> پرداخت
+    </button>
   </div>
 
-  <!-- دکمه باز کردن سبد خرید -->
   <button class="cart-toggle" id="cartToggle">
     <i class="fas fa-shopping-cart"></i>
     <span class="badge" id="cartBadge">0</span>
@@ -433,288 +265,187 @@
 
   <div class="container">
     <header>
-      <a href="../index.html" class="logo">
-        <i class="fas fa-brain"></i>
-        <span>رازی ۳۶۰</span>
-      </a>
-      <a href="../index.html" class="back-btn">
-        <i class="fas fa-arrow-right"></i> بازگشت
-      </a>
+      <a href="../index.html" class="logo"><i class="fas fa-brain"></i><span>رازی ۳۶۰</span></a>
+      <a href="../index.html" class="back-btn">بازگشت</a>
     </header>
-
-    <h1 class="page-title">🛍️ فروشگاه رازی ۳۶۰</h1>
-    <p class="page-subtitle">دوره‌ها و محصولات آموزش هوش مصنوعی</p>
-
+    <h1 class="page-title">🛍️ فروشگاه</h1>
     <div class="products-grid" id="productsGrid"></div>
-
-    <div style="text-align:center;padding:20px;background:rgba(255,255,255,0.03);border-radius:15px;border:1px solid rgba(255,180,60,0.08);">
-      <p style="color:#6a5f4a;font-size:0.85rem;">
-        <i class="fas fa-shield-alt" style="color:#ffb347;"></i>
-        تمامی تراکنش‌ها از طریق درگاه امن بانک ملت انجام می‌شود.
-      </p>
-    </div>
   </div>
 
   <script>
-    // ============================================
-    // همه کد در یک اسکریپت معمولی
-    // ============================================
-    
-    // ─── محصولات ──────────────────────────────────────
+    // ─── محصولات ──────────────────────────────
     const products = [
-      { id: 1, icon: 'fa-robot', title: 'مبانی هوش مصنوعی', desc: 'آشنایی کامل با هوش مصنوعی و مفاهیم پایه', price: 250000 },
-      { id: 2, icon: 'fa-comment-dots', title: 'ChatGPT و پرامپت نویسی', desc: 'آموزش حرفه‌ای پرامپت نویسی با ChatGPT', price: 180000 },
-      { id: 3, icon: 'fa-search', title: 'راهنمای DeepSeek', desc: 'آموزش کار با هوش مصنوعی رایگان DeepSeek', price: 150000 },
-      { id: 4, icon: 'fa-credit-card', title: 'اکانت ChatGPT اشتراکی', desc: 'اکانت ChatGPT آماده استفاده از ایران', price: 89000 },
-      { id: 5, icon: 'fa-balance-scale', title: 'خدمات وکیل آنلاین', desc: 'مشاوره حقوقی و نوشتن لایحه با هوش مصنوعی', price: 350000 },
-      { id: 6, icon: 'fa-code', title: 'پرامپت‌های تخصصی', desc: 'مجموعه پرامپت‌های حرفه‌ای برای کاربردهای مختلف', price: 99000 },
+      { id: 1, icon: "fa-robot", title: "مبانی هوش مصنوعی", price: 250000 },
+      { id: 2, icon: "fa-comment-dots", title: "ChatGPT و پرامپت", price: 180000 },
+      { id: 3, icon: "fa-search", title: "راهنمای DeepSeek", price: 150000 },
+      { id: 4, icon: "fa-credit-card", title: "اکانت ChatGPT", price: 89000 },
+      { id: 5, icon: "fa-balance-scale", title: "وکیل آنلاین", price: 350000 },
+      { id: 6, icon: "fa-code", title: "پرامپت تخصصی", price: 99000 },
     ];
 
-    // ─── سبد خرید ──────────────────────────────────────
-    let cart = JSON.parse(localStorage.getItem('razi360_cart') || '[]');
+    let cart = JSON.parse(localStorage.getItem("razi360_cart") || "[]");
 
     function saveCart() {
-      localStorage.setItem('razi360_cart', JSON.stringify(cart));
+      localStorage.setItem("razi360_cart", JSON.stringify(cart));
       renderCart();
-      updateProductButtons();
+      updateButtons();
     }
 
-    function addToCart(productId) {
-      const product = products.find(p => p.id === productId);
-      if (!product) return;
-      const existing = cart.find(item => item.id === productId);
-      if (existing) {
-        existing.quantity += 1;
-      } else {
-        cart.push({ ...product, quantity: 1 });
-      }
+    function addToCart(id) {
+      const p = products.find(x => x.id === id);
+      if (!p) return;
+      const exist = cart.find(x => x.id === id);
+      if (exist) exist.quantity++;
+      else cart.push({ ...p, quantity: 1 });
       saveCart();
     }
 
-    function removeFromCart(productId) {
-      cart = cart.filter(item => item.id !== productId);
+    function removeItem(id) {
+      cart = cart.filter(x => x.id !== id);
       saveCart();
     }
 
-    function updateQuantity(productId, delta) {
-      const item = cart.find(i => i.id === productId);
+    function changeQty(id, delta) {
+      const item = cart.find(x => x.id === id);
       if (!item) return;
       item.quantity += delta;
-      if (item.quantity <= 0) {
-        removeFromCart(productId);
-      } else {
-        saveCart();
-      }
+      if (item.quantity <= 0) removeItem(id);
+      else saveCart();
     }
 
     function getTotal() {
-      return cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      return cart.reduce((s, i) => s + i.price * i.quantity, 0);
     }
 
-    function getItemCount() {
-      return cart.reduce((sum, item) => sum + item.quantity, 0);
+    function getCount() {
+      return cart.reduce((s, i) => s + i.quantity, 0);
     }
 
-    // ─── رندر ──────────────────────────────────────────
+    // ─── رندر ──────────────────────────────────
     function renderProducts() {
-      const grid = document.getElementById('productsGrid');
+      const grid = document.getElementById("productsGrid");
       grid.innerHTML = products.map(p => `
         <div class="product-card">
           <div class="product-icon"><i class="fas ${p.icon}"></i></div>
-          <h3 class="product-title">${p.title}</h3>
-          <p class="product-desc">${p.desc}</p>
-          <div class="product-price">${p.price.toLocaleString()} <span>ریال</span></div>
+          <div class="product-title">${p.title}</div>
+          <div class="product-price">${p.price.toLocaleString()} ریال</div>
           <button class="add-to-cart" data-id="${p.id}" onclick="addToCart(${p.id})">
-            <i class="fas fa-plus"></i> افزودن به سبد خرید
+            <i class="fas fa-plus"></i> افزودن
           </button>
         </div>
-      `).join('');
-      updateProductButtons();
+      `).join("");
+      updateButtons();
     }
 
-    function updateProductButtons() {
-      document.querySelectorAll('.add-to-cart').forEach(btn => {
-        const id = parseInt(btn.dataset.id);
-        if (cart.some(item => item.id === id)) {
-          btn.classList.add('in-cart');
-          btn.innerHTML = '<i class="fas fa-check"></i> در سبد خرید';
+    function updateButtons() {
+      document.querySelectorAll(".add-to-cart").forEach(btn => {
+        const id = +btn.dataset.id;
+        if (cart.some(x => x.id === id)) {
+          btn.classList.add("in-cart");
+          btn.innerHTML = '<i class="fas fa-check"></i> در سبد';
         } else {
-          btn.classList.remove('in-cart');
-          btn.innerHTML = '<i class="fas fa-plus"></i> افزودن به سبد خرید';
+          btn.classList.remove("in-cart");
+          btn.innerHTML = '<i class="fas fa-plus"></i> افزودن';
         }
       });
     }
 
     function renderCart() {
-      const container = document.getElementById('cartItems');
-      const totalEl = document.getElementById('cartTotal');
-      const checkoutBtn = document.getElementById('checkoutBtn');
-      const badge = document.getElementById('cartBadge');
-      const loginRequired = document.getElementById('loginRequired');
+      const container = document.getElementById("cartItems");
+      const totalEl = document.getElementById("cartTotal");
+      const badge = document.getElementById("cartBadge");
+      const checkoutBtn = document.getElementById("checkoutBtn");
+      const loginReq = document.getElementById("loginRequired");
 
-      const count = getItemCount();
-      badge.textContent = count;
-
-      // بررسی لاگین
-      const loggedIn = typeof window.isLoggedIn === 'function' ? window.isLoggedIn() : false;
-
-      if (!loggedIn && cart.length > 0) {
-        loginRequired.style.display = 'block';
-        checkoutBtn.disabled = true;
-      } else {
-        loginRequired.style.display = 'none';
-        checkoutBtn.disabled = cart.length === 0;
-      }
+      const loggedIn = typeof window.isLoggedIn === "function" && window.isLoggedIn();
 
       if (cart.length === 0) {
-        container.innerHTML = `
-          <div class="cart-empty">
-            <i class="fas fa-shopping-basket"></i>
-            <p>سبد خرید شما خالی است</p>
-            <p style="font-size:0.85rem;color:#6a5f4a;">محصولات را به سبد خرید اضافه کنید</p>
-          </div>
-        `;
-        totalEl.textContent = '۰ ریال';
+        container.innerHTML = "<p style='color:#888;text-align:center;margin-top:30px;'>سبد خرید خالی است</p>";
+        totalEl.textContent = "۰ ریال";
+        badge.textContent = "0";
+        checkoutBtn.disabled = true;
+        loginReq.style.display = "none";
         return;
       }
 
+      badge.textContent = getCount();
+      checkoutBtn.disabled = !loggedIn;
+      loginReq.style.display = loggedIn ? "none" : "block";
+
       container.innerHTML = cart.map(item => `
         <div class="cart-item">
-          <div class="cart-item-info">
-            <div class="cart-item-title">${item.title}</div>
-            <div class="cart-item-price">${(item.price * item.quantity).toLocaleString()} ریال</div>
-          </div>
-          <div class="cart-item-actions">
-            <button onclick="updateQuantity(${item.id}, -1)">-</button>
-            <span class="qty">${item.quantity}</span>
-            <button onclick="updateQuantity(${item.id}, 1)">+</button>
-            <button class="remove-btn" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button>
-          </div>
+          <span>${item.title} (${item.quantity})</span>
+          <span>
+            <button onclick="changeQty(${item.id},-1)">-</button>
+            <button onclick="changeQty(${item.id},1)">+</button>
+            <button onclick="removeItem(${item.id})" style="color:red;">✕</button>
+          </span>
         </div>
-      `).join('');
+      `).join("");
 
-      totalEl.textContent = getTotal().toLocaleString() + ' ریال';
+      totalEl.textContent = getTotal().toLocaleString() + " ریال";
     }
 
-    // ─── باز و بسته کردن سبد خرید ──────────────────────
-    function toggleCart() {
-      document.getElementById('cartSidebar').classList.toggle('open');
-      document.getElementById('cartOverlay').classList.toggle('show');
-    }
-
-    // ─── پرداخت (رفع خطا) ──────────────────────────────
-    async function processPayment() {
-      // بررسی خالی بودن سبد خرید
+    // ─── پرداخت ──────────────────────────────────
+    function processPayment() {
       if (cart.length === 0) {
-        alert('سبد خرید شما خالی است!');
-        return; // ✅ return درست داخل تابع
+        alert("سبد خرید خالی است");
+        return;
       }
 
-      // بررسی لاگین
-      if (typeof window.isLoggedIn === 'function' && !window.isLoggedIn()) {
-        const confirmResult = confirm('برای پرداخت باید وارد حساب خود شوید. آیا به صفحه ورود بروید؟');
-        if (confirmResult) {
-          localStorage.setItem('razi360_redirect_after_login', window.location.pathname);
-          window.location.href = 'login.html';
+      if (typeof window.isLoggedIn === "function" && !window.isLoggedIn()) {
+        if (confirm("برای پرداخت باید وارد شوید. به صفحه ورود بروید؟")) {
+          localStorage.setItem("razi360_redirect_after_login", location.pathname);
+          location.href = "login.html";
         }
-        return; // ✅ return درست داخل تابع
+        return;
       }
 
       const total = getTotal();
       const orderId = Date.now();
-      const checkoutBtn = document.getElementById('checkoutBtn');
 
-      try {
-        checkoutBtn.disabled = true;
-        checkoutBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال اتصال به درگاه...';
-
-        // ایمپورت پویا
-        const paymentModule = await import('../js/payment.js');
-        const result = await paymentModule.initiatePayment(
-          orderId,
-          total,
-          `خرید از رازی ۳۶۰ - ${cart.length} محصول`
-        );
-
-        // اگر به درگاه هدایت نشد
-        if (!result.success) {
-          alert('خطا در اتصال به درگاه: ' + (result.message || 'خطای ناشناخته'));
-          checkoutBtn.disabled = false;
-          checkoutBtn.innerHTML = '<i class="fas fa-credit-card"></i> پرداخت با بانک ملت';
-        }
-
-      } catch (error) {
-        console.error('❌ خطا:', error);
-        alert('خطا در اتصال به درگاه: ' + error.message);
-        checkoutBtn.disabled = false;
-        checkoutBtn.innerHTML = '<i class="fas fa-credit-card"></i> پرداخت با بانک ملت';
-      }
+      import("../js/payment.js")
+        .then(module => module.initiatePayment(orderId, total, "خرید از رازی‌۳۶۰"))
+        .catch(err => {
+          console.error("❌ خطا:", err);
+          alert("خطا در اتصال به درگاه: " + err.message);
+          document.getElementById("checkoutBtn").disabled = false;
+          document.getElementById("checkoutBtn").innerHTML = '<i class="fas fa-credit-card"></i> پرداخت';
+        });
     }
 
-    // ─── اتصال به رویدادها ──────────────────────────────
-    document.addEventListener('DOMContentLoaded', function() {
+    // ─── رویدادها ──────────────────────────────
+    document.addEventListener("DOMContentLoaded", function() {
       renderProducts();
       renderCart();
 
-      // دکمه‌های سبد خرید
-      document.getElementById('cartToggle').addEventListener('click', toggleCart);
-      document.getElementById('closeCartBtn').addEventListener('click', toggleCart);
-      document.getElementById('cartOverlay').addEventListener('click', toggleCart);
-
-      // دکمه پرداخت
-      document.getElementById('checkoutBtn').addEventListener('click', processPayment);
-
-      // بستن با کلید Escape
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-          const sidebar = document.getElementById('cartSidebar');
-          if (sidebar.classList.contains('open')) {
-            toggleCart();
-          }
-        }
-      });
-
-      // به‌روزرسانی خودکار
-      window.addEventListener('storage', function(e) {
-        if (e.key === 'razi360_cart') {
-          cart = JSON.parse(e.newValue || '[]');
-          renderCart();
-          updateProductButtons();
-        }
-      });
-
-      console.log('✅ فروشگاه بارگذاری شد');
-      console.log('📦 محصولات:', products.length);
-      console.log('🛒 سبد خرید:', cart.length, 'مورد');
+      document.getElementById("cartToggle").onclick = () => {
+        document.getElementById("cartSidebar").classList.toggle("open");
+        document.getElementById("cartOverlay").classList.toggle("show");
+      };
+      document.getElementById("closeCartBtn").onclick = () => {
+        document.getElementById("cartSidebar").classList.remove("open");
+        document.getElementById("cartOverlay").classList.remove("show");
+      };
+      document.getElementById("cartOverlay").onclick = () => {
+        document.getElementById("cartSidebar").classList.remove("open");
+        document.getElementById("cartOverlay").classList.remove("show");
+      };
+      document.getElementById("checkoutBtn").onclick = processPayment;
     });
 
-    // ─── توابع سراسری برای onclick ──────────────────────
     window.addToCart = addToCart;
-    window.removeFromCart = removeFromCart;
-    window.updateQuantity = updateQuantity;
-    window.toggleCart = toggleCart;
+    window.removeItem = removeItem;
+    window.changeQty = changeQty;
     window.processPayment = processPayment;
-    window.products = products;
-    window.cart = cart;
   </script>
 
-  <!-- ============================================ -->
-  <!-- اسکریپت ماژول برای دریافت توابع auth -->
-  <!-- ============================================ -->
   <script type="module">
-    import { isLoggedIn, getUser, logout } from '../js/auth.js';
-    
-    // تابع isLoggedIn را در دسترس همه قرار بده
+    import { isLoggedIn, getUser } from "../js/auth.js";
     window.isLoggedIn = isLoggedIn;
     window.getUser = getUser;
-    window.logout = logout;
-
-    // به‌روزرسانی سبد خرید بعد از تنظیم isLoggedIn
     renderCart();
-
-    console.log('✅ ماژول auth بارگذاری شد');
-    console.log('🔐 وضعیت لاگین:', isLoggedIn());
+    console.log("✅ auth متصل شد، وضعیت لاگین:", isLoggedIn());
   </script>
-
 </body>
 </html>
