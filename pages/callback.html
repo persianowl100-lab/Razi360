@@ -1,291 +1,92 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>نتیجه پرداخت | رازی ۳۶۰</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-  
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Vazirmatn', sans-serif;
-      background: linear-gradient(145deg, #1a140c 0%, #241e14 40%, #2b2113 100%);
+      background: #1a140c;
       color: #f7efe2;
-      min-height: 100vh;
+      font-family: 'Vazirmatn', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      min-height: 100vh;
     }
-    .result-card {
+    .box {
+      background: rgba(40, 30, 18, 0.7);
+      padding: 40px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 180, 60, 0.2);
       max-width: 500px;
-      width: 100%;
-      padding: 40px 30px;
-      background: rgba(30, 24, 16, 0.9);
-      backdrop-filter: blur(20px);
-      border-radius: 30px;
-      border: 1px solid rgba(255, 180, 60, 0.3);
+      width: 90%;
       text-align: center;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
     }
-    .result-icon {
+    .success {
+      color: #4caf50;
       font-size: 4rem;
-      margin-bottom: 20px;
     }
-    .result-icon.success { color: #4CAF50; }
-    .result-icon.fail { color: #ff6b6b; }
-    .result-icon.pending { color: #ffb347; }
-    .result-title {
-      font-size: 1.8rem;
-      font-weight: 900;
-      margin-bottom: 10px;
+    .fail {
+      color: #ff6b6b;
+      font-size: 4rem;
     }
-    .result-title.success { color: #81C784; }
-    .result-title.fail { color: #ff6b6b; }
-    .result-title.pending { color: #ffb347; }
-    .result-details {
-      text-align: right;
-      margin: 20px 0;
-      padding: 15px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 15px;
-      border: 1px solid rgba(255,180,60,0.1);
-    }
-    .detail-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(255,180,60,0.05);
-    }
-    .detail-row:last-child { border-bottom: none; }
-    .detail-label { color: #cdb088; font-weight: 500; }
-    .detail-value { color: #f7efe2; font-weight: 600; direction: ltr; }
     .btn {
       display: inline-block;
-      padding: 14px 30px;
-      border-radius: 15px;
-      border: none;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s;
+      margin-top: 20px;
+      padding: 12px 30px;
+      background: #ffa726;
+      color: #1a140c;
+      border-radius: 12px;
       text-decoration: none;
-      font-family: 'Vazirmatn', sans-serif;
-      margin-top: 15px;
+      font-weight: 700;
     }
-    .btn-primary {
-      background: linear-gradient(135deg, #ffa726, #f57c00);
-      color: #1e140a;
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 30px rgba(245, 124, 0, 0.4);
-    }
-    .btn-secondary {
-      background: rgba(255,255,255,0.1);
-      color: #cdb088;
-      border: 1px solid rgba(255,180,60,0.2);
-    }
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.15);
-      color: #f7efe2;
-    }
-    .loading {
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      100% { transform: rotate(360deg); }
-    }
-    .hidden { display: none; }
   </style>
 </head>
 <body>
-
-  <div class="result-card" id="resultCard">
-    <div class="result-icon pending" id="resultIcon">
-      <i class="fas fa-spinner loading"></i>
-    </div>
-    <h1 class="result-title pending" id="resultTitle">در حال بررسی پرداخت...</h1>
-    <p id="resultMessage" style="color:#cdb088;">لطفاً چند لحظه صبر کنید...</p>
-    
-    <div class="result-details" id="resultDetails">
-      <div class="detail-row">
-        <span class="detail-label">کد مرجع</span>
-        <span class="detail-value" id="refIdValue">-</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-label">شماره سفارش</span>
-        <span class="detail-value" id="orderIdValue">-</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-label">مبلغ</span>
-        <span class="detail-value" id="amountValue">-</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-label">وضعیت</span>
-        <span class="detail-value" id="statusValue">-</span>
-      </div>
-    </div>
-    
-    <div id="resultActions" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-      <a href="../index.html" class="btn btn-primary">بازگشت به صفحه اصلی</a>
-      <a href="profile.html" class="btn btn-secondary">پروفایل من</a>
-    </div>
+  <div class="box" id="resultBox">
+    <div id="icon" class="fail">❌</div>
+    <h2 id="title">در حال بررسی...</h2>
+    <p id="message"></p>
+    <a href="../index.html" class="btn">بازگشت به خانه</a>
   </div>
 
-  <script type="module">
-    import { verifyPayment, settlePayment } from "../js/payment.js";
+  <script>
+    const params = new URLSearchParams(location.search);
+    const resCode = params.get("ResCode");
+    const refId = params.get("RefId");
+    const saleOrderId = params.get("SaleOrderId");
+    const saleReferenceId = params.get("SaleReferenceId");
 
-    // ─── دریافت پارامترها ────────────────────────────
-    function getUrlParams() {
-      const params = new URLSearchParams(window.location.search);
-      return {
-        refId: params.get("RefId"),
-        resCode: params.get("ResCode"),
-        saleOrderId: params.get("SaleOrderId"),
-        saleReferenceId: params.get("SaleReferenceId"),
-        cardHolderPan: params.get("CardHolderPan"),
-        finalAmount: params.get("FinalAmount"),
-      };
+    const icon = document.getElementById("icon");
+    const title = document.getElementById("title");
+    const msg = document.getElementById("message");
+
+    if (resCode === "0") {
+      icon.className = "success";
+      icon.textContent = "✅";
+      title.textContent = "پرداخت موفق";
+      msg.textContent = "سفارش شما ثبت شد.";
+
+      // ذخیره سفارش
+      const orders = JSON.parse(localStorage.getItem("razi360_orders") || "[]");
+      orders.push({
+        orderId: saleOrderId,
+        refId: refId,
+        amount: params.get("FinalAmount") || "نامشخص",
+        date: new Date().toISOString(),
+        status: "paid"
+      });
+      localStorage.setItem("razi360_orders", JSON.stringify(orders));
+
+      // پاک کردن سبد خرید
+      localStorage.removeItem("razi360_cart");
+    } else {
+      icon.className = "fail";
+      icon.textContent = "❌";
+      title.textContent = "پرداخت ناموفق";
+      msg.textContent = "کد خطا: " + resCode;
     }
-
-    // ─── نمایش نتیجه ──────────────────────────────────
-    function showResult(success, title, message, icon) {
-      const iconEl = document.getElementById("resultIcon");
-      const titleEl = document.getElementById("resultTitle");
-      const msgEl = document.getElementById("resultMessage");
-      const detailsEl = document.getElementById("resultDetails");
-      
-      if (success) {
-        iconEl.className = "result-icon success";
-        iconEl.innerHTML = `<i class="fas fa-check-circle"></i>`;
-        titleEl.className = "result-title success";
-      } else {
-        iconEl.className = "result-icon fail";
-        iconEl.innerHTML = `<i class="fas fa-times-circle"></i>`;
-        titleEl.className = "result-title fail";
-      }
-      
-      titleEl.textContent = title;
-      msgEl.textContent = message;
-      detailsEl.style.display = "block";
-    }
-
-    // ─── پردازش نتیجه ──────────────────────────────────
-    async function processPayment() {
-      const params = getUrlParams();
-      console.log("📥 پارامترهای بازگشتی:", params);
-
-      const refId = document.getElementById("refIdValue");
-      const orderId = document.getElementById("orderIdValue");
-      const amount = document.getElementById("amountValue");
-      const status = document.getElementById("statusValue");
-
-      // نمایش اطلاعات اولیه
-      refId.textContent = params.refId || "-";
-      orderId.textContent = params.saleOrderId || "-";
-      amount.textContent = params.finalAmount ? `${Number(params.finalAmount).toLocaleString()} ریال` : "-";
-
-      // بررسی کد پاسخ
-      if (params.resCode === "0") {
-        // تراکنش موفق
-        status.textContent = "✅ موفق";
-        status.style.color = "#81C784";
-        
-        try {
-          // ۱. تأیید پرداخت
-          const verifyResult = await verifyPayment(
-            params.refId,
-            params.saleOrderId,
-            params.saleOrderId,
-            params.saleReferenceId
-          );
-          
-          if (verifyResult.success) {
-            // ۲. تسویه پرداخت
-            const settleResult = await settlePayment(
-              params.saleOrderId,
-              params.saleOrderId,
-              params.saleReferenceId
-            );
-            
-            if (settleResult.success) {
-              showResult(
-                true,
-                "✅ پرداخت با موفقیت انجام شد",
-                "سفارش شما ثبت شد و وجه به حساب شما واریز خواهد شد.",
-                "success"
-              );
-              // ذخیره در localStorage
-              const orders = JSON.parse(localStorage.getItem("razi360_orders") || "[]");
-              orders.push({
-                orderId: params.saleOrderId,
-                refId: params.refId,
-                amount: params.finalAmount,
-                date: new Date().toISOString(),
-                status: "paid",
-              });
-              localStorage.setItem("razi360_orders", JSON.stringify(orders));
-            } else {
-              showResult(
-                false,
-                "⚠️ خطا در تسویه",
-                "پرداخت انجام شده اما تسویه با مشکل مواجه شد. با پشتیبانی تماس بگیرید.",
-                "fail"
-              );
-              status.textContent = "⚠️ خطا در تسویه";
-              status.style.color = "#ffb347";
-            }
-          } else {
-            showResult(
-              false,
-              "❌ خطا در تأیید پرداخت",
-              verifyResult.message || "تراکنش تأیید نشد. لطفاً با پشتیبانی تماس بگیرید.",
-              "fail"
-            );
-            status.textContent = "❌ ناموفق";
-            status.style.color = "#ff6b6b";
-          }
-        } catch (error) {
-          console.error("❌ خطا:", error);
-          showResult(
-            false,
-            "❌ خطا در پردازش",
-            "مشکلی در ارتباط با سرور رخ داد. لطفاً دوباره تلاش کنید.",
-            "fail"
-          );
-          status.textContent = "❌ خطا";
-          status.style.color = "#ff6b6b";
-        }
-      } else {
-        // تراکنش ناموفق
-        const errorMessages = {
-          "11": "شماره کارت نامعتبر است",
-          "12": "موجودی کافی نیست",
-          "13": "رمز نادرست است",
-          "14": "تعداد دفعات وارد کردن رمز بیش از حد مجاز است",
-          "15": "کارت نامعتبر است",
-          "17": "کاربر از انجام تراکنش منصرف شده است",
-          "18": "تاریخ انقضای کارت گذشته است",
-          "19": "مبلغ برداشت وجه بیش از حد مجاز است",
-        };
-        
-        const errorMsg = errorMessages[params.resCode] || "خطای ناشناخته";
-        showResult(
-          false,
-          "❌ پرداخت ناموفق",
-          errorMsg,
-          "fail"
-        );
-        status.textContent = "❌ ناموفق";
-        status.style.color = "#ff6b6b";
-      }
-    }
-
-    // ─── اجرا ──────────────────────────────────────────
-    document.addEventListener("DOMContentLoaded", processPayment);
   </script>
 </body>
 </html>
