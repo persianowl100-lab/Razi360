@@ -22,7 +22,7 @@
       min-height: 100vh;
     }
     .container {
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
       padding: 20px;
     }
@@ -80,6 +80,7 @@
       padding: 40px 30px;
       border: 1px solid rgba(255, 180, 60, 0.25);
       box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+      margin-bottom: 30px;
     }
     
     .profile-avatar {
@@ -95,6 +96,7 @@
       font-size: 3rem;
       color: #ffb347;
       box-shadow: 0 0 40px rgba(255, 167, 38, 0.2);
+      position: relative;
     }
     .profile-avatar img {
       width: 100%;
@@ -103,13 +105,34 @@
       object-fit: cover;
     }
     
+    .profile-name-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 5px;
+    }
     .profile-name {
-      text-align: center;
       font-size: 1.8rem;
       font-weight: 900;
       color: #fff0db;
-      margin-bottom: 5px;
     }
+    .edit-name-btn {
+      background: rgba(255, 180, 60, 0.15);
+      border: 1px solid rgba(255, 180, 60, 0.2);
+      color: #cdb088;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 0.9rem;
+    }
+    .edit-name-btn:hover {
+      background: rgba(255, 180, 60, 0.25);
+      color: #ffb347;
+    }
+    
     .profile-provider {
       text-align: center;
       color: #cdb088;
@@ -163,6 +186,67 @@
       direction: ltr;
     }
     
+    /* ویرایش نام */
+    .edit-name-form {
+      display: none;
+      margin: 15px 0;
+      padding: 15px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 15px;
+      border: 1px solid rgba(255, 180, 60, 0.15);
+    }
+    .edit-name-form.show {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .edit-name-form input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 2px solid rgba(255, 180, 60, 0.2);
+      background: rgba(255,255,255,0.05);
+      color: #f7efe2;
+      font-size: 1rem;
+      font-family: 'Vazirmatn', sans-serif;
+      margin-bottom: 10px;
+    }
+    .edit-name-form input:focus {
+      outline: none;
+      border-color: #ffb347;
+    }
+    .edit-name-form .btn-group {
+      display: flex;
+      gap: 10px;
+    }
+    .edit-name-form button {
+      padding: 10px 25px;
+      border-radius: 12px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Vazirmatn', sans-serif;
+      transition: 0.3s;
+    }
+    .btn-save {
+      background: linear-gradient(135deg, #ffa726, #f57c00);
+      color: #1e140a;
+    }
+    .btn-save:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(245, 124, 0, 0.3);
+    }
+    .btn-cancel {
+      background: rgba(255,255,255,0.1);
+      color: #cdb088;
+    }
+    .btn-cancel:hover {
+      background: rgba(255,255,255,0.15);
+    }
+    
     /* دکمه‌ها */
     .actions {
       display: grid;
@@ -214,6 +298,90 @@
     }
     .btn-full {
       grid-column: 1 / -1;
+    }
+    
+    /* سفارشات */
+    .orders-section {
+      background: rgba(40, 30, 18, 0.6);
+      backdrop-filter: blur(14px);
+      border-radius: 30px;
+      padding: 30px;
+      border: 1px solid rgba(255, 180, 60, 0.25);
+    }
+    .orders-section h2 {
+      color: #fff0db;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .orders-section h2 i {
+      color: #ffb347;
+    }
+    .order-item {
+      padding: 15px 20px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 15px;
+      border: 1px solid rgba(255, 180, 60, 0.08);
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .order-item:last-child {
+      margin-bottom: 0;
+    }
+    .order-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .order-id {
+      color: #f7efe2;
+      font-weight: 600;
+      direction: ltr;
+    }
+    .order-date {
+      color: #cdb088;
+      font-size: 0.85rem;
+    }
+    .order-amount {
+      color: #ffb347;
+      font-weight: 800;
+      direction: ltr;
+      font-size: 1.1rem;
+    }
+    .order-status {
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .status-paid {
+      background: rgba(76, 175, 80, 0.2);
+      color: #81C784;
+    }
+    .status-pending {
+      background: rgba(255, 167, 38, 0.2);
+      color: #ffb347;
+    }
+    .status-failed {
+      background: rgba(255, 80, 80, 0.2);
+      color: #ff6b6b;
+    }
+    
+    .no-orders {
+      text-align: center;
+      color: #cdb088;
+      padding: 30px 0;
+    }
+    .no-orders i {
+      font-size: 3rem;
+      color: #6a5f4a;
+      margin-bottom: 15px;
     }
     
     /* وضعیت */
@@ -281,6 +449,10 @@
       .profile-card {
         padding: 25px 20px;
       }
+      .order-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
@@ -319,50 +491,79 @@
     </div>
 
     <!-- حالت پروفایل -->
-    <div id="profileState" class="hidden profile-card">
+    <div id="profileState" class="hidden">
       
-      <!-- آواتار -->
-      <div class="profile-avatar" id="profileAvatar">
-        <i class="fas fa-user"></i>
+      <!-- کارت پروفایل -->
+      <div class="profile-card">
+        
+        <!-- آواتار -->
+        <div class="profile-avatar" id="profileAvatar">
+          <i class="fas fa-user"></i>
+        </div>
+        
+        <!-- نام + دکمه ویرایش -->
+        <div class="profile-name-wrapper">
+          <h1 class="profile-name" id="profileName">کاربر</h1>
+          <button class="edit-name-btn" onclick="toggleEditName()" title="ویرایش نام">
+            <i class="fas fa-pen"></i>
+          </button>
+        </div>
+        
+        <!-- فرم ویرایش نام -->
+        <div class="edit-name-form" id="editNameForm">
+          <input type="text" id="newNameInput" placeholder="نام جدید خود را وارد کنید" maxlength="50">
+          <div class="btn-group">
+            <button class="btn-save" onclick="saveName()">ذخیره</button>
+            <button class="btn-cancel" onclick="toggleEditName()">انصراف</button>
+          </div>
+        </div>
+        
+        <div class="profile-provider">
+          <span id="profileProvider">📱 ورود با موبایل</span>
+        </div>
+        
+        <!-- اطلاعات -->
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label"><i class="fas fa-id-badge"></i> شناسه کاربری</span>
+            <span class="info-value" id="profileId">-</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label"><i class="fas fa-phone"></i> شماره موبایل</span>
+            <span class="info-value" id="profilePhone">-</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label"><i class="fas fa-calendar-alt"></i> تاریخ عضویت</span>
+            <span class="info-value" id="profileDate">-</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label"><i class="fas fa-shield-alt"></i> وضعیت</span>
+            <span class="info-value"><span class="status-badge status-online">✅ فعال</span></span>
+          </div>
+        </div>
+        
+        <!-- دکمه‌ها -->
+        <div class="actions">
+          <a href="shop.html" class="btn btn-primary">
+            <i class="fas fa-shopping-cart"></i> فروشگاه
+          </a>
+          <button onclick="handleLogout()" class="btn btn-danger btn-full">
+            <i class="fas fa-sign-out-alt"></i> خروج از حساب
+          </button>
+        </div>
+        
       </div>
       
-      <!-- نام -->
-      <h1 class="profile-name" id="profileName">کاربر</h1>
-      <div class="profile-provider">
-        <span id="profileProvider">📱 ورود با موبایل</span>
-      </div>
-      
-      <!-- اطلاعات -->
-      <div class="info-grid">
-        <div class="info-item">
-          <span class="info-label"><i class="fas fa-id-badge"></i> شناسه کاربری</span>
-          <span class="info-value" id="profileId">-</span>
+      <!-- بخش سفارشات -->
+      <div class="orders-section">
+        <h2><i class="fas fa-receipt"></i> سفارشات من</h2>
+        <div id="ordersList">
+          <div class="no-orders">
+            <i class="fas fa-shopping-bag"></i>
+            <p>هنوز سفارشی ثبت نکرده‌اید</p>
+            <p style="font-size:0.85rem;color:#6a5f4a;">برای مشاهده سفارشات، از فروشگاه خرید کنید</p>
+          </div>
         </div>
-        <div class="info-item">
-          <span class="info-label"><i class="fas fa-phone"></i> شماره موبایل</span>
-          <span class="info-value" id="profilePhone">-</span>
-        </div>
-        <div class="info-item">
-          <span class="info-label"><i class="fas fa-calendar-alt"></i> تاریخ عضویت</span>
-          <span class="info-value" id="profileDate">-</span>
-        </div>
-        <div class="info-item">
-          <span class="info-label"><i class="fas fa-shield-alt"></i> وضعیت</span>
-          <span class="info-value"><span class="status-badge status-online">✅ فعال</span></span>
-        </div>
-      </div>
-      
-      <!-- دکمه‌ها -->
-      <div class="actions">
-        <a href="shop.html" class="btn btn-primary">
-          <i class="fas fa-shopping-cart"></i> فروشگاه
-        </a>
-        <a href="orders.html" class="btn btn-outline">
-          <i class="fas fa-list"></i> سفارشات
-        </a>
-        <button onclick="handleLogout()" class="btn btn-danger btn-full">
-          <i class="fas fa-sign-out-alt"></i> خروج از حساب
-        </button>
       </div>
       
     </div>
@@ -377,7 +578,7 @@
     logout, 
     fetchMe,
     checkAuthStatus,
-    autoLoginCheck
+    saveSession
   } from "../js/auth.js";
 
   // ─── المنت‌ها ──────────────────────────────────────
@@ -392,6 +593,8 @@
   const profilePhone = document.getElementById('profilePhone');
   const profileDate = document.getElementById('profileDate');
   const profileAvatar = document.getElementById('profileAvatar');
+  const editNameForm = document.getElementById('editNameForm');
+  const newNameInput = document.getElementById('newNameInput');
 
   // ─── خروج ──────────────────────────────────────────
   window.handleLogout = function() {
@@ -401,10 +604,51 @@
     }
   };
 
+  // ─── ویرایش نام ──────────────────────────────────
+  window.toggleEditName = function() {
+    editNameForm.classList.toggle('show');
+    if (editNameForm.classList.contains('show')) {
+      newNameInput.value = profileName.textContent;
+      newNameInput.focus();
+    }
+  };
+
+  window.saveName = function() {
+    const newName = newNameInput.value.trim();
+    if (!newName || newName.length < 2) {
+      alert('نام باید حداقل ۲ کاراکتر باشد');
+      return;
+    }
+    
+    // ذخیره در localStorage
+    const user = getUser();
+    if (user) {
+      user.name = newName;
+      user.updatedAt = new Date().toISOString();
+      
+      // به‌روزرسانی در localStorage
+      const token = localStorage.getItem('razi360_token');
+      if (token) {
+        saveSession(token, user);
+      }
+      
+      // به‌روزرسانی نمایش
+      profileName.textContent = newName;
+      
+      // بستن فرم
+      editNameForm.classList.remove('show');
+      
+      // ذخیره در سرور (اختیاری - در نسخه بعدی)
+      alert('✅ نام شما با موفقیت تغییر یافت');
+    }
+  };
+
   // ─── نمایش پروفایل ────────────────────────────────
   function showProfile(user) {
+    // نام
     profileName.textContent = user.name || 'کاربر';
     
+    // روش ورود
     const providerMap = {
       'phone': '📱 ورود با موبایل',
       'telegram': '✈️ ورود با تلگرام',
@@ -412,8 +656,10 @@
     };
     profileProvider.textContent = providerMap[user.provider] || '🔐 ورود';
 
+    // شناسه
     profileId.textContent = user.id || '-';
     
+    // شماره موبایل
     if (user.phone) {
       const phone = String(user.phone);
       let displayPhone = phone;
@@ -425,6 +671,7 @@
       profilePhone.textContent = 'ثبت نشده';
     }
 
+    // تاریخ عضویت
     if (user.createdAt) {
       const date = new Date(user.createdAt);
       profileDate.textContent = new Intl.DateTimeFormat('fa-IR', {
@@ -438,6 +685,7 @@
       profileDate.textContent = '-';
     }
 
+    // آواتار
     if (user.photoUrl) {
       profileAvatar.innerHTML = `<img src="${user.photoUrl}" alt="${user.name}">`;
     } else if (user.name) {
@@ -445,8 +693,45 @@
       profileAvatar.innerHTML = `<span style="font-size:3rem;color:#ffb347;">${initial}</span>`;
     }
 
+    // نمایش سفارشات
+    renderOrders();
+
+    // نمایش پروفایل
     loadingState.classList.add('hidden');
     profileState.classList.remove('hidden');
+  }
+
+  // ─── رندر سفارشات ──────────────────────────────────
+  function renderOrders() {
+    const container = document.getElementById('ordersList');
+    const orders = JSON.parse(localStorage.getItem('razi360_orders') || '[]');
+    
+    if (orders.length === 0) {
+      container.innerHTML = `
+        <div class="no-orders">
+          <i class="fas fa-shopping-bag"></i>
+          <p>هنوز سفارشی ثبت نکرده‌اید</p>
+          <p style="font-size:0.85rem;color:#6a5f4a;">برای مشاهده سفارشات، از فروشگاه خرید کنید</p>
+        </div>
+      `;
+      return;
+    }
+
+    // مرتب‌سازی از جدید به قدیم
+    orders.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    container.innerHTML = orders.map(order => `
+      <div class="order-item">
+        <div class="order-info">
+          <span class="order-id">#${order.orderId}</span>
+          <span class="order-date">${new Date(order.date).toLocaleDateString('fa-IR')} - ${new Date(order.date).toLocaleTimeString('fa-IR')}</span>
+        </div>
+        <div>
+          <span class="order-amount">${Number(order.amount).toLocaleString()} ریال</span>
+          <span class="order-status status-${order.status || 'paid'}">${order.status === 'paid' ? '✅ پرداخت شده' : '⏳ در انتظار'}</span>
+        </div>
+      </div>
+    `).join('');
   }
 
   // ─── نمایش خطا ──────────────────────────────────────
