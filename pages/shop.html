@@ -1,5 +1,220 @@
-console.log('محصولات:', products);
-console.log('سبد خرید:', cart);      justify-content: space-between;
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فروشگاه | رازی ۳۶۰</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: linear-gradient(145deg, #1a140c 0%, #241e14 40%, #2b2113 100%);
+      color: #f7efe2;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 25px;
+      margin: 20px 0 30px;
+      border-radius: 60px;
+      background: rgba(22, 18, 10, 0.75);
+      backdrop-filter: blur(22px);
+      border: 1px solid rgba(255, 170, 40, 0.25);
+      box-shadow: 0 20px 35px rgba(255, 140, 0, 0.15);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #f7efe2;
+      font-weight: 900;
+      font-size: 1.5rem;
+    }
+    .logo i {
+      color: #ffb347;
+      font-size: 2rem;
+    }
+    .logo span {
+      background: linear-gradient(to left, #ffd166, #f4a261);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .back-btn {
+      color: #cdb088;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 180, 60, 0.2);
+      transition: 0.3s;
+      font-weight: 600;
+    }
+    .back-btn:hover {
+      background: rgba(255, 180, 60, 0.1);
+      color: #ffb347;
+    }
+    
+    .page-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: linear-gradient(to left, #ffd166, #f4a261);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+    .page-subtitle {
+      text-align: center;
+      color: #cdb088;
+      margin-bottom: 40px;
+    }
+    
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+    .product-card {
+      background: rgba(40, 30, 18, 0.6);
+      backdrop-filter: blur(14px);
+      border-radius: 24px;
+      padding: 25px 20px;
+      border: 1px solid rgba(255, 180, 60, 0.15);
+      transition: all 0.4s;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255, 180, 60, 0.4);
+      box-shadow: 0 20px 40px rgba(255, 140, 0, 0.15);
+    }
+    .product-icon {
+      font-size: 2.5rem;
+      color: #ffb347;
+      margin-bottom: 15px;
+    }
+    .product-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #fff0db;
+      margin-bottom: 8px;
+    }
+    .product-desc {
+      color: #bda16b;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      flex-grow: 1;
+    }
+    .product-price {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #ffb347;
+      margin-bottom: 15px;
+      direction: ltr;
+    }
+    .product-price span {
+      font-size: 0.9rem;
+      color: #cdb088;
+      font-weight: 400;
+    }
+    .add-to-cart {
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(135deg, #ffa726, #f57c00);
+      color: #1e140a;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: 'Vazirmatn', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .add-to-cart:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 25px rgba(245, 124, 0, 0.4);
+    }
+    .add-to-cart.in-cart {
+      background: linear-gradient(135deg, #4CAF50, #2E7D32);
+      color: white;
+    }
+    
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      left: -420px;
+      width: 400px;
+      height: 100vh;
+      background: rgba(20, 15, 8, 0.97);
+      backdrop-filter: blur(25px);
+      border-right: 2px solid rgba(255, 180, 60, 0.2);
+      z-index: 1000;
+      transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 25px 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .cart-sidebar.open {
+      left: 0;
+    }
+    .cart-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 999;
+    }
+    .cart-overlay.show {
+      display: block;
+    }
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255,180,60,0.15);
+      margin-bottom: 15px;
+    }
+    .cart-header h2 {
+      color: #fff0db;
+      font-size: 1.5rem;
+    }
+    .cart-close {
+      background: none;
+      border: none;
+      color: #cdb088;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .cart-close:hover { color: #ff6b6b; }
+    .cart-items {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding-right: 5px;
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 12px 0;
       border-bottom: 1px solid rgba(255,180,60,0.08);
     }
@@ -103,7 +318,6 @@ console.log('سبد خرید:', cart);      justify-content: space-between;
       font-size: 1.2rem;
     }
     
-    /* دکمه باز کردن سبد خرید */
     .cart-toggle {
       position: fixed;
       bottom: 30px;
@@ -139,7 +353,6 @@ console.log('سبد خرید:', cart);      justify-content: space-between;
       font-weight: 700;
     }
 
-    /* پیام لاگین */
     .login-required {
       text-align: center;
       padding: 15px;
@@ -179,14 +392,13 @@ console.log('سبد خرید:', cart);      justify-content: space-between;
 <body>
 
   <!-- سبد خرید شناور -->
-  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <div class="cart-overlay" id="cartOverlay"></div>
   <div class="cart-sidebar" id="cartSidebar">
     <div class="cart-header">
       <h2><i class="fas fa-shopping-cart"></i> سبد خرید</h2>
-      <button class="cart-close" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+      <button class="cart-close" id="closeCartBtn"><i class="fas fa-times"></i></button>
     </div>
     
-    <!-- پیام لاگین -->
     <div id="loginRequired" class="login-required" style="display:none;">
       <i class="fas fa-info-circle"></i>
       برای پرداخت باید <a href="login.html">وارد حساب</a> خود شوید.
@@ -204,7 +416,7 @@ console.log('سبد خرید:', cart);      justify-content: space-between;
         <span>جمع کل</span>
         <span id="cartTotal">۰ ریال</span>
       </div>
-      <button class="btn-checkout" id="checkoutBtn" onclick="processPayment()" disabled>
+      <button class="btn-checkout" id="checkoutBtn" disabled>
         <i class="fas fa-credit-card"></i> پرداخت با بانک ملت
       </button>
       <p style="text-align:center;color:#6a5f4a;font-size:0.7rem;margin-top:8px;">
@@ -214,13 +426,12 @@ console.log('سبد خرید:', cart);      justify-content: space-between;
   </div>
 
   <!-- دکمه باز کردن سبد خرید -->
-  <button class="cart-toggle" onclick="toggleCart()">
+  <button class="cart-toggle" id="cartToggle">
     <i class="fas fa-shopping-cart"></i>
     <span class="badge" id="cartBadge">0</span>
   </button>
 
   <div class="container">
-    <!-- هدر -->
     <header>
       <a href="../index.html" class="logo">
         <i class="fas fa-brain"></i>
@@ -231,16 +442,11 @@ console.log('سبد خرید:', cart);      justify-content: space-between;
       </a>
     </header>
 
-    <!-- عنوان -->
     <h1 class="page-title">🛍️ فروشگاه رازی ۳۶۰</h1>
     <p class="page-subtitle">دوره‌ها و محصولات آموزش هوش مصنوعی</p>
 
-    <!-- محصولات -->
-    <div class="products-grid" id="productsGrid">
-      <!-- محصولات توسط جاوااسکریپت ساخته می‌شوند -->
-    </div>
+    <div class="products-grid" id="productsGrid"></div>
 
-    <!-- اطلاعات امنیتی -->
     <div style="text-align:center;padding:20px;background:rgba(255,255,255,0.03);border-radius:15px;border:1px solid rgba(255,180,60,0.08);">
       <p style="color:#6a5f4a;font-size:0.85rem;">
         <i class="fas fa-shield-alt" style="color:#ffb347;"></i>
@@ -249,68 +455,33 @@ console.log('سبد خرید:', cart);      justify-content: space-between;
     </div>
   </div>
 
-  <script type="module">
-    import { isLoggedIn, getUser } from "../js/auth.js";
-    import { initiatePayment } from "../js/payment.js";
-
+  <script>
+    // ============================================
+    // همه کد در یک اسکریپت معمولی
+    // ============================================
+    
     // ─── محصولات ──────────────────────────────────────
     const products = [
-      {
-        id: 1,
-        icon: 'fa-robot',
-        title: 'مبانی هوش مصنوعی',
-        desc: 'آشنایی کامل با هوش مصنوعی و مفاهیم پایه',
-        price: 250000,
-      },
-      {
-        id: 2,
-        icon: 'fa-comment-dots',
-        title: 'ChatGPT و پرامپت نویسی',
-        desc: 'آموزش حرفه‌ای پرامپت نویسی با ChatGPT',
-        price: 180000,
-      },
-      {
-        id: 3,
-        icon: 'fa-search',
-        title: 'راهنمای DeepSeek',
-        desc: 'آموزش کار با هوش مصنوعی رایگان DeepSeek',
-        price: 150000,
-      },
-      {
-        id: 4,
-        icon: 'fa-credit-card',
-        title: 'اکانت ChatGPT اشتراکی',
-        desc: 'اکانت ChatGPT آماده استفاده از ایران',
-        price: 89000,
-      },
-      {
-        id: 5,
-        icon: 'fa-balance-scale',
-        title: 'خدمات وکیل آنلاین',
-        desc: 'مشاوره حقوقی و نوشتن لایحه با هوش مصنوعی',
-        price: 350000,
-      },
-      {
-        id: 6,
-        icon: 'fa-code',
-        title: 'پرامپت‌های تخصصی',
-        desc: 'مجموعه پرامپت‌های حرفه‌ای برای کاربردهای مختلف',
-        price: 99000,
-      },
+      { id: 1, icon: 'fa-robot', title: 'مبانی هوش مصنوعی', desc: 'آشنایی کامل با هوش مصنوعی و مفاهیم پایه', price: 250000 },
+      { id: 2, icon: 'fa-comment-dots', title: 'ChatGPT و پرامپت نویسی', desc: 'آموزش حرفه‌ای پرامپت نویسی با ChatGPT', price: 180000 },
+      { id: 3, icon: 'fa-search', title: 'راهنمای DeepSeek', desc: 'آموزش کار با هوش مصنوعی رایگان DeepSeek', price: 150000 },
+      { id: 4, icon: 'fa-credit-card', title: 'اکانت ChatGPT اشتراکی', desc: 'اکانت ChatGPT آماده استفاده از ایران', price: 89000 },
+      { id: 5, icon: 'fa-balance-scale', title: 'خدمات وکیل آنلاین', desc: 'مشاوره حقوقی و نوشتن لایحه با هوش مصنوعی', price: 350000 },
+      { id: 6, icon: 'fa-code', title: 'پرامپت‌های تخصصی', desc: 'مجموعه پرامپت‌های حرفه‌ای برای کاربردهای مختلف', price: 99000 },
     ];
 
-    // ─── مدیریت سبد خرید ──────────────────────────────
+    // ─── سبد خرید ──────────────────────────────────────
     let cart = JSON.parse(localStorage.getItem('razi360_cart') || '[]');
 
     function saveCart() {
       localStorage.setItem('razi360_cart', JSON.stringify(cart));
-      updateUI();
+      renderCart();
+      updateProductButtons();
     }
 
     function addToCart(productId) {
       const product = products.find(p => p.id === productId);
       if (!product) return;
-
       const existing = cart.find(item => item.id === productId);
       if (existing) {
         existing.quantity += 1;
@@ -328,7 +499,6 @@ console.log('سبد خرید:', cart);      justify-content: space-between;
     function updateQuantity(productId, delta) {
       const item = cart.find(i => i.id === productId);
       if (!item) return;
-      
       item.quantity += delta;
       if (item.quantity <= 0) {
         removeFromCart(productId);
@@ -345,7 +515,7 @@ console.log('سبد خرید:', cart);      justify-content: space-between;
       return cart.reduce((sum, item) => sum + item.quantity, 0);
     }
 
-    // ─── رندر محصولات ──────────────────────────────────
+    // ─── رندر ──────────────────────────────────────────
     function renderProducts() {
       const grid = document.getElementById('productsGrid');
       grid.innerHTML = products.map(p => `
@@ -354,80 +524,15 @@ console.log('سبد خرید:', cart);      justify-content: space-between;
           <h3 class="product-title">${p.title}</h3>
           <p class="product-desc">${p.desc}</p>
           <div class="product-price">${p.price.toLocaleString()} <span>ریال</span></div>
-          <button class="add-to-cart" data-id="${p.id}" onclick="window.addToCartHandler(${p.id})">
+          <button class="add-to-cart" data-id="${p.id}" onclick="addToCart(${p.id})">
             <i class="fas fa-plus"></i> افزودن به سبد خرید
           </button>
         </div>
       `).join('');
-
-      // بررسی محصولات در سبد خرید
-      document.querySelectorAll('.add-to-cart').forEach(btn => {
-        const id = parseInt(btn.dataset.id);
-        if (cart.some(item => item.id === id)) {
-          btn.classList.add('in-cart');
-          btn.innerHTML = '<i class="fas fa-check"></i> در سبد خرید';
-        }
-      });
+      updateProductButtons();
     }
 
-    // ─── رندر سبد خرید ──────────────────────────────────
-    function renderCart() {
-      const container = document.getElementById('cartItems');
-      const totalEl = document.getElementById('cartTotal');
-      const checkoutBtn = document.getElementById('checkoutBtn');
-      const badge = document.getElementById('cartBadge');
-      const loginRequired = document.getElementById('loginRequired');
-
-      // به‌روزرسانی نشانگر
-      const count = getItemCount();
-      badge.textContent = count;
-
-      // بررسی لاگین
-      const loggedIn = isLoggedIn();
-      if (!loggedIn && cart.length > 0) {
-        loginRequired.style.display = 'block';
-      } else {
-        loginRequired.style.display = 'none';
-      }
-
-      if (cart.length === 0) {
-        container.innerHTML = `
-          <div class="cart-empty">
-            <i class="fas fa-shopping-basket"></i>
-            <p>سبد خرید شما خالی است</p>
-            <p style="font-size:0.85rem;color:#6a5f4a;">محصولات را به سبد خرید اضافه کنید</p>
-          </div>
-        `;
-        totalEl.textContent = '۰ ریال';
-        checkoutBtn.disabled = true;
-        return;
-      }
-
-      container.innerHTML = cart.map(item => `
-        <div class="cart-item">
-          <div class="cart-item-info">
-            <div class="cart-item-title">${item.title}</div>
-            <div class="cart-item-price">${(item.price * item.quantity).toLocaleString()} ریال</div>
-          </div>
-          <div class="cart-item-actions">
-            <button onclick="window.updateQty(${item.id}, -1)">-</button>
-            <span class="qty">${item.quantity}</span>
-            <button onclick="window.updateQty(${item.id}, 1)">+</button>
-            <button class="remove-btn" onclick="window.removeItem(${item.id})"><i class="fas fa-trash"></i></button>
-          </div>
-        </div>
-      `).join('');
-
-      const total = getTotal();
-      totalEl.textContent = total.toLocaleString() + ' ریال';
-      
-      // فقط اگر لاگین باشد دکمه پرداخت فعال می‌شود
-      checkoutBtn.disabled = !loggedIn;
-    }
-
-    function updateUI() {
-      renderCart();
-      // به‌روزرسانی دکمه‌های محصولات
+    function updateProductButtons() {
       document.querySelectorAll('.add-to-cart').forEach(btn => {
         const id = parseInt(btn.dataset.id);
         if (cart.some(item => item.id === id)) {
@@ -440,29 +545,74 @@ console.log('سبد خرید:', cart);      justify-content: space-between;
       });
     }
 
-    // ─── توابع سراسری ──────────────────────────────────
-    window.addToCartHandler = addToCart;
-    window.updateQty = updateQuantity;
-    window.removeItem = removeFromCart;
+    function renderCart() {
+      const container = document.getElementById('cartItems');
+      const totalEl = document.getElementById('cartTotal');
+      const checkoutBtn = document.getElementById('checkoutBtn');
+      const badge = document.getElementById('cartBadge');
+      const loginRequired = document.getElementById('loginRequired');
+
+      const count = getItemCount();
+      badge.textContent = count;
+
+      // بررسی لاگین (از طریق تابع سراسری)
+      const loggedIn = typeof window.isLoggedIn === 'function' ? window.isLoggedIn() : false;
+
+      if (!loggedIn && cart.length > 0) {
+        loginRequired.style.display = 'block';
+        checkoutBtn.disabled = true;
+      } else {
+        loginRequired.style.display = 'none';
+        checkoutBtn.disabled = cart.length === 0;
+      }
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="cart-empty">
+            <i class="fas fa-shopping-basket"></i>
+            <p>سبد خرید شما خالی است</p>
+            <p style="font-size:0.85rem;color:#6a5f4a;">محصولات را به سبد خرید اضافه کنید</p>
+          </div>
+        `;
+        totalEl.textContent = '۰ ریال';
+        return;
+      }
+
+      container.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <div class="cart-item-info">
+            <div class="cart-item-title">${item.title}</div>
+            <div class="cart-item-price">${(item.price * item.quantity).toLocaleString()} ریال</div>
+          </div>
+          <div class="cart-item-actions">
+            <button onclick="updateQuantity(${item.id}, -1)">-</button>
+            <span class="qty">${item.quantity}</span>
+            <button onclick="updateQuantity(${item.id}, 1)">+</button>
+            <button class="remove-btn" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button>
+          </div>
+        </div>
+      `).join('');
+
+      totalEl.textContent = getTotal().toLocaleString() + ' ریال';
+    }
 
     // ─── باز و بسته کردن سبد خرید ──────────────────────
-    window.toggleCart = function() {
+    function toggleCart() {
       document.getElementById('cartSidebar').classList.toggle('open');
       document.getElementById('cartOverlay').classList.toggle('show');
-    };
+    }
 
     // ─── پرداخت ──────────────────────────────────────────
-    window.processPayment = async function() {
+    async function processPayment() {
       if (cart.length === 0) {
         alert('سبد خرید شما خالی است!');
         return;
       }
 
       // بررسی لاگین
-      if (!isLoggedIn()) {
+      if (typeof window.isLoggedIn === 'function' && !window.isLoggedIn()) {
         const confirm = window.confirm('برای پرداخت باید وارد حساب خود شوید. آیا به صفحه ورود بروید؟');
         if (confirm) {
-          // ذخیره مسیر بازگشت
           localStorage.setItem('razi360_redirect_after_login', window.location.pathname);
           window.location.href = 'login.html';
         }
@@ -477,13 +627,10 @@ console.log('سبد خرید:', cart);      justify-content: space-between;
         checkoutBtn.disabled = true;
         checkoutBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال اتصال به درگاه...';
 
-        const result = await initiatePayment(
-          orderId,
-          total,
-          `خرید از رازی ۳۶۰ - ${cart.length} محصول`
-        );
+        // ایمپورت پویای payment.js
+        const { initiatePayment } = await import('../js/payment.js');
+        const result = await initiatePayment(orderId, total, `خرید از رازی ۳۶۰ - ${cart.length} محصول`);
 
-        // اگر به درگاه هدایت نشد، خطا نشان بده
         if (!result.success) {
           alert('خطا در اتصال به درگاه: ' + (result.message || 'خطای ناشناخته'));
           checkoutBtn.disabled = false;
@@ -496,51 +643,96 @@ console.log('سبد خرید:', cart);      justify-content: space-between;
         checkoutBtn.disabled = false;
         checkoutBtn.innerHTML = '<i class="fas fa-credit-card"></i> پرداخت با بانک ملت';
       }
-    };
+    }
 
-    // ─── بارگذاری اولیه ──────────────────────────────────
-    renderProducts();
-    renderCart();
+    // ─── اتصال به رویدادها ──────────────────────────────
+    document.addEventListener('DOMContentLoaded', function() {
+      renderProducts();
+      renderCart();
 
-    // ─── بستن سبد خرید با کلیک خارج ────────────────────
-    document.addEventListener('click', function(e) {
-      const sidebar = document.getElementById('cartSidebar');
-      const toggle = document.querySelector('.cart-toggle');
-      if (!sidebar.contains(e.target) && !toggle.contains(e.target)) {
-        if (sidebar.classList.contains('open')) {
-          sidebar.classList.remove('open');
-          document.getElementById('cartOverlay').classList.remove('show');
+      // دکمه‌های سبد خرید
+      document.getElementById('cartToggle').addEventListener('click', toggleCart);
+      document.getElementById('closeCartBtn').addEventListener('click', toggleCart);
+      document.getElementById('cartOverlay').addEventListener('click', toggleCart);
+
+      // دکمه پرداخت
+      document.getElementById('checkoutBtn').addEventListener('click', processPayment);
+
+      // بستن با کلید Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          const sidebar = document.getElementById('cartSidebar');
+          if (sidebar.classList.contains('open')) {
+            toggleCart();
+          }
         }
-      }
-    });
+      });
 
-    // ─── به‌روزرسانی خودکار ──────────────────────────────
-    window.addEventListener('storage', function(e) {
-      if (e.key === 'razi360_cart') {
-        cart = JSON.parse(e.newValue || '[]');
-        updateUI();
-      }
-    });
+      // به‌روزرسانی خودکار
+      window.addEventListener('storage', function(e) {
+        if (e.key === 'razi360_cart') {
+          cart = JSON.parse(e.newValue || '[]');
+          renderCart();
+          updateProductButtons();
+        }
+      });
 
-    // ─── بررسی لاگین هنگام باز کردن سبد خرید ────────────
-    document.addEventListener('DOMContentLoaded', () => {
-      // هر ۵ ثانیه یکبار وضعیت لاگین را بررسی کن
-      setInterval(() => {
-        const loggedIn = isLoggedIn();
-        const checkoutBtn = document.getElementById('checkoutBtn');
-        const loginRequired = document.getElementById('loginRequired');
-        
-        if (cart.length > 0) {
-          if (!loggedIn) {
-            loginRequired.style.display = 'block';
-            checkoutBtn.disabled = true;
-          } else {
-            loginRequired.style.display = 'none';
-            checkoutBtn.disabled = false;
+      // بررسی دوره‌ای لاگین
+      setInterval(function() {
+        if (typeof window.isLoggedIn === 'function') {
+          const loggedIn = window.isLoggedIn();
+          const checkoutBtn = document.getElementById('checkoutBtn');
+          const loginRequired = document.getElementById('loginRequired');
+          
+          if (cart.length > 0) {
+            if (!loggedIn) {
+              loginRequired.style.display = 'block';
+              checkoutBtn.disabled = true;
+            } else {
+              loginRequired.style.display = 'none';
+              checkoutBtn.disabled = false;
+            }
           }
         }
       }, 5000);
+
+      console.log('✅ فروشگاه بارگذاری شد');
+      console.log('📦 محصولات:', products.length);
+      console.log('🛒 سبد خرید:', cart.length, 'مورد');
     });
+
+    // ─── توابع سراسری برای onclick ──────────────────────
+    window.addToCart = addToCart;
+    window.removeFromCart = removeFromCart;
+    window.updateQuantity = updateQuantity;
+    window.toggleCart = toggleCart;
+    window.processPayment = processPayment;
+    window.products = products;
+    window.cart = cart;
+
+    // ─── دریافت تابع isLoggedIn از ماژول auth ──────────
+    // این تابع بعد از بارگذاری کامل توسط اسکریپت زیر تنظیم می‌شود
   </script>
+
+  <!-- ============================================ -->
+  <!-- اسکریپت ماژول برای دریافت توابع auth -->
+  <!-- ============================================ -->
+  <script type="module">
+    import { isLoggedIn, getUser, logout } from '../js/auth.js';
+    
+    // تابع isLoggedIn را در دسترس همه قرار بده
+    window.isLoggedIn = isLoggedIn;
+    window.getUser = getUser;
+    window.logout = logout;
+
+    // به‌روزرسانی سبد خرید بعد از تنظیم isLoggedIn
+    if (typeof window.renderCart === 'function') {
+      window.renderCart();
+    }
+
+    console.log('✅ ماژول auth بارگذاری شد');
+    console.log('🔐 وضعیت لاگین:', isLoggedIn());
+  </script>
+
 </body>
 </html>
