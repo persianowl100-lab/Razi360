@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- جلوگیری از کش کردن صفحات احراز هویت -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  
   <title>ورود | رازی ۳۶۰</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
@@ -94,6 +100,8 @@
     .btn-primary:disabled {
       opacity: 0.6;
       cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
     }
     .btn-success {
       width: 100%;
@@ -210,7 +218,21 @@
       border: 1px solid rgba(255, 167, 38, 0.2);
     }
 
-    /* پیام موفقیت بزرگ */
+    /* تایمر */
+    .timer-text {
+      display: block;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #ffb347;
+      margin-top: 8px;
+      font-weight: 600;
+      direction: ltr;
+    }
+    .timer-text i {
+      margin-left: 5px;
+    }
+
+    /* اوورلی موفقیت */
     .success-overlay {
       display: none;
       position: fixed;
@@ -295,6 +317,12 @@
       >
         <i class="fas fa-paper-plane"></i> ارسال کد تأیید
       </button>
+      
+      <!-- تایمر -->
+      <div id="timerDisplay" class="timer-text" style="display:none;">
+        <i class="fas fa-clock"></i>
+        <span id="timerSeconds">60</span> ثانیه تا ارسال مجدد
+      </div>
 
       <!-- بخش OTP -->
       <div id="otpSection" class="otp-section">
@@ -342,7 +370,9 @@
       testConnection,
       isLoggedIn,
       getUser,
-      logout
+      logout,
+      checkAuthStatus,
+      autoLoginCheck
     } from "../js/auth.js";
 
     // ─── المنت‌ها ──────────────────────────────────────
@@ -354,6 +384,11 @@
     const otpSection = document.getElementById('otpSection');
     const messageEl = document.getElementById('message');
     const successOverlay = document.getElementById('successOverlay');
+    const timerDisplay = document.getElementById('timerDisplay');
+    const timerSeconds = document.getElementById('timerSeconds');
+
+    // ─── متغیرهای تایمر ──────────────────────────────
+    let timerInterval = null;
 
     // ─── نمایش پیام ──────────────────────────────────
     function showMessage(text, type = 'info') {
@@ -364,6 +399,33 @@
     function hideMessage() {
       messageEl.className = 'message';
       messageEl.textContent = '';
+    }
+
+    // ─── نمایش تایمر ──────────────────────────────────
+    function showTimer(seconds) {
+      timerDisplay.style.display = 'block';
+      timerSeconds.textContent = seconds;
+      
+      sendBtn.disabled = true;
+      
+      let remaining = seconds;
+      
+      if (timerInterval) {
+        clearInterval(timerInterval);
+      }
+      
+      timerInterval = setInterval(() => {
+        remaining--;
+        timerSeconds.textContent = remaining;
+        
+        if (remaining <= 0) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+          timerDisplay.style.display = 'none';
+          sendBtn.disabled = false;
+          sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> ارسال مجدد کد';
+        }
+      }, 1000);
     }
 
     // ─── بررسی وضعیت اتصال ──────────────────────────
@@ -390,7 +452,6 @@
     window.handleSendOtp = async function() {
       const phone = phoneInput.value.replace(/\D/g, '');
 
-      // اعتبارسنجی
       if (!phone || phone.length < 10) {
         showMessage('❌ شماره موبایل را به درستی وارد کنید (مثلاً ۰۹۱۲۳۴۵۶۷۸۹)', 'error');
         phoneInput.focus();
@@ -411,11 +472,9 @@
           otpSection.classList.add('show');
           otpCode.focus();
           
-          // غیرفعال کردن دکمه ارسال برای ۶۰ ثانیه
-          setTimeout(() => {
-            sendBtn.disabled = false;
-            sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> ارسال مجدد کد';
-          }, 60000);
+          // شروع تایمر ۶۰ ثانیه‌ای
+          showTimer(60);
+          
         } else {
           showMessage('❌ ' + (result.message || 'خطا در ارسال کد'), 'error');
           sendBtn.disabled = false;
@@ -450,10 +509,8 @@
         console.log('📥 نتیجه تأیید:', result);
 
         if (result.success) {
-          // نمایش اوورلی موفقیت
           successOverlay.classList.add('show');
           
-          // بعد از 1.5 ثانیه به پروفایل هدایت شود
           setTimeout(() => {
             window.location.href = 'profile.html';
           }, 1500);
@@ -484,25 +541,21 @@
 
     // ─── رویدادهای صفحه ──────────────────────────────
     document.addEventListener('DOMContentLoaded', async () => {
-      // اگر قبلاً لاگین است، به پروفایل برو
-      if (isLoggedIn()) {
-        const user = getUser();
-        if (user) {
-          window.location.href = 'profile.html';
-          return;
-        } else {
-          // اگر توکن دارد اما اطلاعات کاربر ندارد
-          logout();
-        }
+      // ✅ بررسی اعتبار توکن قبل از هر چیز
+      const status = await checkAuthStatus();
+      
+      if (status.valid && status.user) {
+        window.location.href = 'profile.html';
+        return;
       }
 
-      // بررسی اتصال
-      await checkConnection();
+      if (isLoggedIn() && !status.valid) {
+        logout();
+      }
 
-      // رندر دکمه تلگرام
+      await checkConnection();
       renderTelegramButton('telegram-login-container', handleTelegramSuccess);
 
-      // رویداد Enter برای فیلدها
       phoneInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
           e.preventDefault();
@@ -521,13 +574,21 @@
         }
       });
 
-      // فوکوس خودکار روی شماره موبایل
       setTimeout(() => phoneInput.focus(), 500);
+    });
+
+    // ✅ هنگام رفرش، دوباره بررسی کن
+    window.addEventListener('pageshow', async (event) => {
+      if (event.persisted) {
+        const status = await checkAuthStatus();
+        if (status.valid) {
+          window.location.href = 'profile.html';
+        }
+      }
     });
 
     // ─── بستن اوورلی با کلیک ──────────────────────────
     successOverlay.addEventListener('click', () => {
-      // اگر کاربر کلیک کرد، زودتر هدایت شود
       window.location.href = 'profile.html';
     });
   </script>
