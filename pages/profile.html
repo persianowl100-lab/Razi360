@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- جلوگیری از کش کردن صفحات احراز هویت -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  
   <title>پروفایل کاربری | رازی ۳۶۰</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
@@ -263,7 +269,6 @@
       color: #cdb088;
     }
     
-    /* پاسخگو */
     @media (max-width: 480px) {
       .actions {
         grid-template-columns: 1fr;
@@ -366,7 +371,14 @@
 </div>
 
 <script type="module">
-  import { isLoggedIn, getUser, logout, fetchMe } from "../js/auth.js";
+  import { 
+    isLoggedIn, 
+    getUser, 
+    logout, 
+    fetchMe,
+    checkAuthStatus,
+    autoLoginCheck
+  } from "../js/auth.js";
 
   // ─── المنت‌ها ──────────────────────────────────────
   const loadingState = document.getElementById('loadingState');
@@ -391,10 +403,8 @@
 
   // ─── نمایش پروفایل ────────────────────────────────
   function showProfile(user) {
-    // نام
     profileName.textContent = user.name || 'کاربر';
     
-    // روش ورود
     const providerMap = {
       'phone': '📱 ورود با موبایل',
       'telegram': '✈️ ورود با تلگرام',
@@ -402,12 +412,9 @@
     };
     profileProvider.textContent = providerMap[user.provider] || '🔐 ورود';
 
-    // شناسه
     profileId.textContent = user.id || '-';
     
-    // شماره موبایل
     if (user.phone) {
-      // نمایش به فرمت فارسی
       const phone = String(user.phone);
       let displayPhone = phone;
       if (phone.startsWith('98')) {
@@ -418,7 +425,6 @@
       profilePhone.textContent = 'ثبت نشده';
     }
 
-    // تاریخ عضویت
     if (user.createdAt) {
       const date = new Date(user.createdAt);
       profileDate.textContent = new Intl.DateTimeFormat('fa-IR', {
@@ -432,7 +438,6 @@
       profileDate.textContent = '-';
     }
 
-    // آواتار
     if (user.photoUrl) {
       profileAvatar.innerHTML = `<img src="${user.photoUrl}" alt="${user.name}">`;
     } else if (user.name) {
@@ -440,7 +445,6 @@
       profileAvatar.innerHTML = `<span style="font-size:3rem;color:#ffb347;">${initial}</span>`;
     }
 
-    // نمایش پروفایل
     loadingState.classList.add('hidden');
     profileState.classList.remove('hidden');
   }
@@ -455,48 +459,32 @@
   // ─── بارگذاری پروفایل ──────────────────────────────
 
   async function loadProfile() {
-    // ۱. بررسی لاگین
-    if (!isLoggedIn()) {
+    // ✅ بررسی اعتبار توکن
+    const status = await checkAuthStatus();
+    
+    if (!status.valid) {
       window.location.href = 'login.html';
       return;
     }
 
-    // ۲. اطلاعات از localStorage
-    let user = getUser();
+    const user = status.user || getUser();
     
     if (user) {
-      // نمایش موقت از localStorage
       showProfile(user);
     } else {
-      // در حال بارگذاری
-      loadingState.classList.remove('hidden');
-      profileState.classList.add('hidden');
-      errorState.classList.add('hidden');
-    }
-
-    // ۳. دریافت اطلاعات از سرور (به‌روز)
-    try {
-      const freshUser = await fetchMe();
-      
-      if (freshUser) {
-        // به‌روزرسانی با اطلاعات تازه
-        showProfile(freshUser);
-      } else if (!user) {
-        // اگر هیچ اطلاعاتی نبود
-        showError('اطلاعات کاربر یافت نشد. لطفاً مجدداً وارد شوید.');
-      }
-    } catch (error) {
-      console.error('❌ خطا در دریافت پروفایل:', error);
-      
-      // اگر اطلاعات localStorage داشتیم، همان را نشان بدهیم
-      if (!user) {
-        showError('خطا در ارتباط با سرور. لطفاً بعداً تلاش کنید.');
-      }
+      showError('اطلاعات کاربر یافت نشد. لطفاً مجدداً وارد شوید.');
     }
   }
 
   // ─── اجرا ──────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', loadProfile);
+  
+  // ✅ در صورت رفرش، دوباره بررسی کن
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+      loadProfile();
+    }
+  });
 </script>
 
 </body>
